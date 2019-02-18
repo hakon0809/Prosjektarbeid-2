@@ -23,5 +23,5 @@ Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/fonts/font = ExtResource( 1 )
 PanelContainer/styles/panel = ExtResource( 3 )
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-_sections_unfolded = [ "Button", "Button/fonts", "Label", "Label/colors", "Label/fonts", "PanelContainer/styles", "RichTextLabel", "RichTextLabel/colors" ]
+_sections_unfolded = [ "Button", "Button/fonts", "Button/styles", "Label", "Label/colors", "Label/fonts", "PanelContainer/styles", "RichTextLabel", "RichTextLabel/colors" ]
 

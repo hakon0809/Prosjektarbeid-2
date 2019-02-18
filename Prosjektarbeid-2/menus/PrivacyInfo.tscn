@@ -1,10 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ui/flowchart_theme.tres" type="Theme" id=1]
-[ext_resource path="res://ui/BG_blue.tres" type="StyleBox" id=2]
-[ext_resource path="res://ui/BG_white_grey-border.tres" type="StyleBox" id=3]
+[ext_resource path="res://menus/PrivacyInfo.gd" type="Script" id=1]
+[ext_resource path="res://ui/flowchart_theme.tres" type="Theme" id=2]
+[ext_resource path="res://ui/BG_red.tres" type="StyleBox" id=3]
 
 [node name="PrivacyChoice" type="Node" index="0"]
+
+script = ExtResource( 1 )
 
 [node name="PanelContainer" type="PanelContainer" parent="." index="0"]
 
@@ -22,7 +24,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 1 )
+theme = ExtResource( 2 )
 _sections_unfolded = [ "Theme" ]
 __meta__ = {
 "_edit_group_": true
@@ -59,15 +61,15 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_styles/normal = ExtResource( 2 )
+custom_styles/normal = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Facebook"
+text = "RichCorp"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_colors", "custom_constants" ]
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_styles" ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" index="1"]
 
@@ -111,9 +113,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 1.0
+margin_top = 38.0
 margin_right = 350.0
-margin_bottom = 346.0
+margin_bottom = 347.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -129,7 +131,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 350.0
-margin_bottom = 141.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 0, 60 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -147,7 +149,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 350.0
-margin_bottom = 141.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 350, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -155,7 +157,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "We show you bettter ads by using data from advertisers, app developers and publishers"
+text = "Before you decide, check out these awesome benefits you get from keeping it on"
 valign = 1
 autowrap = true
 percent_visible = 1.0
@@ -163,15 +165,31 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[node name="ChoiceText1" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 145.0
+margin_top = 109.0
 margin_right = 350.0
-margin_bottom = 345.0
+margin_bottom = 309.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ChoiceText" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/MarginContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 350.0
+margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -180,12 +198,16 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 bbcode_enabled = true
-bbcode_text = "We care about protecting your privacy. We don't sell your data, and we've designed our ad system so that we can show you relevant and useful ads without telling advertisers who you are. To show you better ads, we use data that advertisers, app developers and publishers provide us about your activity outside Facebook Company Products."
+bbcode_text = "Face recognition will help us protect you from impersonators, and help the visually impaired to know if you are in a photo, because we assume you are a good person who wants to help others. We will also help you kick ass against your enemies.
+
+If you keep it turned off we can't protect you from impersonators, and you are really mean towards visually impaired people. You will also be on your own against enemies."
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "We care about protecting your privacy. We don't sell your data, and we've designed our ad system so that we can show you relevant and useful ads without telling advertisers who you are. To show you better ads, we use data that advertisers, app developers and publishers provide us about your activity outside Facebook Company Products."
+text = "Face recognition will help us protect you from impersonators, and help the visually impaired to know if you are in a photo, because we assume you are a good person who wants to help others. We will also help you kick ass against your enemies.
+
+If you keep it turned off we can't protect you from impersonators, and you are really mean towards visually impaired people. You will also be on your own against enemies."
 scroll_active = true
 scroll_following = false
 selection_enabled = false
@@ -198,9 +220,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 350.0
+margin_top = 351.0
 margin_right = 350.0
-margin_bottom = 421.0
+margin_bottom = 384.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -209,47 +231,14 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="ManageButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer" index="0"]
+[node name="ContinueButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 350.0
-margin_bottom = 34.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 3 )
-custom_styles/focus = ExtResource( 3 )
-custom_styles/disabled = ExtResource( 3 )
-custom_styles/normal = ExtResource( 3 )
-custom_colors/font_color_disabled = Color( 0.546875, 0.546875, 0.546875, 1 )
-custom_colors/font_color = Color( 0.546875, 0.546875, 0.546875, 1 )
-custom_colors/font_color_hover = Color( 0.546875, 0.546875, 0.546875, 1 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "MANAGE DATA SETTINGS"
-flat = false
-align = 1
-_sections_unfolded = [ "custom_colors", "custom_styles" ]
-
-[node name="AcceptButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 38.0
-margin_right = 350.0
-margin_bottom = 71.0
+margin_bottom = 33.0
 rect_min_size = Vector2( 0, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -262,9 +251,11 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "ACCEPT AND CONTINUE"
+text = "CONTINUE"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect" ]
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 
 
