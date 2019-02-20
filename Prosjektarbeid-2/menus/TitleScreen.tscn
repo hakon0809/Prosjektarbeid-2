@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ui/Menu/daretoshare.png" type="Texture" id=1]
-[ext_resource path="res://menus/elianto_48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://menus/title_screen.gd" type="Script" id=1]
+[ext_resource path="res://ui/Menu/Elianto-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://menus/elianto_48.tres" type="DynamicFont" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 100
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="TitleScreen" type="Control" index="0"]
 
@@ -15,15 +24,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 1 )
 
 [node name="VSplitContainer" type="VSplitContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -33,86 +42,62 @@ size_flags_vertical = 1
 split_offset = 0
 collapsed = false
 dragger_visibility = 0
-
-[node name="TextureRect" type="TextureRect" parent="VSplitContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1000.0
-margin_bottom = 150.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 1 )
-stretch_mode = 0
-
-[node name="Menu" type="VBoxContainer" parent="VSplitContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 162.0
-margin_right = 1000.0
-margin_bottom = 828.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 _sections_unfolded = [ "Margin" ]
 
-[node name="Logo" type="Label" parent="VSplitContainer/Menu" index="0"]
+[node name="Label" type="Label" parent="VSplitContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1000.0
-margin_bottom = 14.0
+margin_right = 1024.0
+margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.984375, 0.438354, 0.438354, 1 )
+custom_colors/font_color_shadow = Color( 0.161514, 0.566406, 0.556917, 1 )
+custom_constants/shadow_offset_x = 10
+custom_constants/shadow_offset_y = 10
+text = "DARE TO SHARE"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Margin", "custom_colors", "custom_constants" ]
 
-[node name="Buttons" type="VBoxContainer" parent="VSplitContainer/Menu" index="1"]
+[node name="Buttons" type="VBoxContainer" parent="VSplitContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 18.0
-margin_right = 1000.0
-margin_bottom = 666.0
+margin_top = 112.0
+margin_right = 1024.0
+margin_bottom = 550.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Margin", "Size Flags" ]
+size_flags_horizontal = 7
+size_flags_vertical = 1
+custom_constants/separation = 50
+alignment = 1
+_sections_unfolded = [ "Size Flags", "custom_constants" ]
 
-[node name="Continue" type="Button" parent="VSplitContainer/Menu/Buttons" index="0"]
+[node name="Continue" type="Button" parent="VSplitContainer/Buttons" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1000.0
-margin_bottom = 20.0
+margin_top = 88.0
+margin_right = 1024.0
+margin_bottom = 142.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -120,47 +105,26 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
+action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
-flat = true
-align = 1
-_sections_unfolded = [ "Rect" ]
-
-[node name="Label" type="Label" parent="VSplitContainer/Menu/Buttons/Continue" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 20.0
-margin_bottom = 50.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
 text = "Continue"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Margin", "custom_colors", "custom_constants" ]
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
 
-[node name="newgame" type="Button" parent="VSplitContainer/Menu/Buttons" index="1"]
+[node name="newgame" type="Button" parent="VSplitContainer/Buttons" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 24.0
-margin_right = 1000.0
-margin_bottom = 44.0
+margin_top = 192.0
+margin_right = 1024.0
+margin_bottom = 246.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -168,46 +132,26 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
+action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
-flat = true
-align = 1
-
-[node name="Label" type="Label" parent="VSplitContainer/Menu/Buttons/newgame" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 50.0
-margin_bottom = 50.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
 text = "New Game"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Margin", "custom_colors", "custom_constants" ]
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
 
-[node name="Options" type="Button" parent="VSplitContainer/Menu/Buttons" index="2"]
+[node name="Options" type="Button" parent="VSplitContainer/Buttons" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 48.0
-margin_right = 1000.0
-margin_bottom = 68.0
+margin_top = 296.0
+margin_right = 1024.0
+margin_bottom = 350.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -215,35 +159,21 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
+action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
+text = "Options"
 flat = true
 align = 1
+_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Label" type="Label" parent="VSplitContainer/Menu/Buttons/Options" index="0"]
+[connection signal="pressed" from="VSplitContainer/Buttons/Continue" to="." method="_on_Continue_pressed"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 70.0
-margin_bottom = 50.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
-text = "Options"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Margin", "custom_colors", "custom_constants" ]
+[connection signal="pressed" from="VSplitContainer/Buttons/newgame" to="." method="_on_newgame_pressed"]
+
+[connection signal="pressed" from="VSplitContainer/Buttons/Options" to="." method="_on_Options_pressed"]
 
 
