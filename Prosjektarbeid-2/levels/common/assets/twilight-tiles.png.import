@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/twilight-tiles.png-626c76bcf7bf1de9319f95a4399ae20c.stex"
+path="res://.import/twilight-tiles.png-9ff824dea6fb67fae845cf8941a8c105.stex"
 
 [deps]
 
-source_file="res://done shit/twilight-tiles.png"
-dest_files=[ "res://.import/twilight-tiles.png-626c76bcf7bf1de9319f95a4399ae20c.stex" ]
+source_file="res://levels/common/assets/twilight-tiles.png"
+dest_files=[ "res://.import/twilight-tiles.png-9ff824dea6fb67fae845cf8941a8c105.stex" ]
 
 [params]
 

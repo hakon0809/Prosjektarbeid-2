@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset_update.png-e5a777c397f81b93dce18a079f421bc9.stex"
+path="res://.import/tileset_update.png-5560b1bb422b7b61575046c556c771ed.stex"
 
 [deps]
 
-source_file="res://done shit/tileset_update.png"
-dest_files=[ "res://.import/tileset_update.png-e5a777c397f81b93dce18a079f421bc9.stex" ]
+source_file="res://levels/common/assets/tileset_update.png"
+dest_files=[ "res://.import/tileset_update.png-5560b1bb422b7b61575046c556c771ed.stex" ]
 
 [params]
 

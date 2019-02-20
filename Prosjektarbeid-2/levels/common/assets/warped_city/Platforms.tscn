@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://tileset.png" type="Texture" id=1]
+[ext_resource path="res://levels/common/assets/tileset.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4.33333, 8 )
 
-[node name="Platforms" type="Node"]
+[node name="Platforms" type="Node" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 112, 216 )
+position = Vector2( 111.603, 216 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 112, 176, 16, 16 )
