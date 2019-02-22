@@ -4,9 +4,9 @@ extends RichTextLabel
 # var a = 2
 # var b = "textvar"
 
-var dialog = ["Dette spillet blir awesome med disse dialogboksene", 
-"Lorem ipsum lusum Lorem ipsum lusum Lorem ipsum lusum", 
-"Lalalal Bababba Lalalal Bababba Lalalal Bababba Lalalal"]
+var dialog = ["Vil dette spillet bli helt awesome med disse dialogboksene?", 
+"Lorem ipsum lusum Lorem ipsum lusum Lorem ipsum lusum?", 
+"Lalalal Bababba Lalalal Bababba Lalalal Bababba Lalalal?"]
 var page = 0
 
 func _ready():
@@ -28,6 +28,13 @@ func _input(event):
 #	# Update game logic here.
 #	pass
 
+func _on_Button_pressed():
+	#her kommer funksjonalitetet knyttet til brukervalg og dialogene
+	#registeres i f.eks et array de ulike valgene som er indeksert
+	pass # replace with function body
 
-func _on_Timer_timeout():
-	set_visible_characters(get_visible_characters()+1)
+
+func _on_Button2_pressed():
+	#her kommer funksjonalitetet knyttet til brukervalg og dialogene
+	#registeres i f.eks et array de ulike valgene som er indeksert
+	pass # replace with function body
