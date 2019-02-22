@@ -6,7 +6,7 @@
 [ext_resource path="res://ui/BG_white.tres" type="StyleBox" id=4]
 [ext_resource path="res://ui/segoe.tres" type="DynamicFont" id=5]
 
-[node name="PrivacyChoice" type="Node" index="0"]
+[node name="PrivacySettings" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -201,7 +201,6 @@ pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Allow face recognition"
 flat = false
 align = 0
 _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]

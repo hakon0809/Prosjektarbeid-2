@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Prosjektarbeid-2"
-run/main_scene="res://test/tests.tscn"
+run/main_scene="res://menus/PrivacyChoice.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]

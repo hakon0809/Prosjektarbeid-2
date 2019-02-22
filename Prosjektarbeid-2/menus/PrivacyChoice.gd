@@ -2,6 +2,7 @@ extends Node
 
 
 func _ready():
+	#TODO set text
 	pass
 
 func _on_ManageButton_pressed():

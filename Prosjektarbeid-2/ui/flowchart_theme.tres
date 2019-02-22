@@ -21,7 +21,10 @@ Button/styles/normal = ExtResource( 2 )
 Button/styles/pressed = ExtResource( 2 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/fonts/font = ExtResource( 1 )
+LinkButton/colors/font_color = Color( 0.219608, 0.631373, 0.952941, 1 )
+LinkButton/colors/font_color_hover = Color( 0.219608, 0.631373, 0.952941, 1 )
+LinkButton/colors/font_color_pressed = Color( 0.219608, 0.631373, 0.952941, 1 )
 PanelContainer/styles/panel = ExtResource( 3 )
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-_sections_unfolded = [ "Button", "Button/fonts", "Button/styles", "Label", "Label/colors", "Label/fonts", "PanelContainer/styles", "RichTextLabel", "RichTextLabel/colors" ]
+_sections_unfolded = [ "Button", "Button/fonts", "Button/styles", "LinkButton", "LinkButton/colors", "PanelContainer/styles", "RichTextLabel", "RichTextLabel/colors" ]
 
