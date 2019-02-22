@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entities/enemies/enemy.gd" type="Script" id=1]
+[ext_resource path="res://entities/enemies/knight iso char_run right_0.png" type="Texture" id=2]
+[ext_resource path="res://entities/enemies/knight iso char_run right_1.png" type="Texture" id=3]
+[ext_resource path="res://entities/enemies/knight iso char_run right_2.png" type="Texture" id=4]
+[ext_resource path="res://entities/enemies/knight iso char_run right_3.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.90448, 17.8035 )
+
+[node name="enemy" type="KinematicBody2D"]
+
+position = Vector2( 77.7351, 30.0966 )
+scale = Vector2( 0.869565, 0.853431 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 1, 1 )
+scale = Vector2( 0.473882, 0.485179 )
+frames = SubResource( 1 )
+animation = "walk"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+position = Vector2( 3.36462, 3.86107 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="2"]
+
+visible = false
+position = Vector2( 8.68501, 14.2596 )
+scale = Vector2( 1, 0.155434 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+

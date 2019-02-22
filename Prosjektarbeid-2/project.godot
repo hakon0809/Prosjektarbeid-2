@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Prosjektarbeid-2"
-run/main_scene="res://DialogBox.tscn"
+run/main_scene="res://test/tests.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
@@ -20,4 +20,5 @@ enabled=PoolStringArray( "gut" )
 
 [rendering]
 
+environment/default_clear_color=Color( 0.14902, 0.192157, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"
