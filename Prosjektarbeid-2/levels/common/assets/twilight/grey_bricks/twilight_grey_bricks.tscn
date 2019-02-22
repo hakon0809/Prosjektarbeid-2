@@ -1,8 +1,4 @@
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://levels/common/assets/twilight-tiles.png" type="Texture" id=1]
-
-
+[gd_scene load_steps=2 format=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,7 +9,6 @@ extents = Vector2( 8, 8 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 112, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -38,7 +33,6 @@ shape = SubResource( 1 )
 [node name="Sprite4" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, 64 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 112, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -63,7 +57,6 @@ shape = SubResource( 1 )
 [node name="Sprite7" type="Sprite" parent="." index="2"]
 
 position = Vector2( 0, 128 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 112, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -88,7 +81,6 @@ shape = SubResource( 1 )
 [node name="Sprite2" type="Sprite" parent="." index="3"]
 
 position = Vector2( 64, 0 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 128, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -113,7 +105,6 @@ shape = SubResource( 1 )
 [node name="Sprite5" type="Sprite" parent="." index="4"]
 
 position = Vector2( 64, 64 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 128, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -138,7 +129,6 @@ shape = SubResource( 1 )
 [node name="Sprite8" type="Sprite" parent="." index="5"]
 
 position = Vector2( 64, 128 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 128, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -163,7 +153,6 @@ shape = SubResource( 1 )
 [node name="Sprite3" type="Sprite" parent="." index="6"]
 
 position = Vector2( 128, 0 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 144, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -188,7 +177,6 @@ shape = SubResource( 1 )
 [node name="Sprite6" type="Sprite" parent="." index="7"]
 
 position = Vector2( 128, 64 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 144, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -213,7 +201,6 @@ shape = SubResource( 1 )
 [node name="Sprite9" type="Sprite" parent="." index="8"]
 
 position = Vector2( 128, 128 )
-texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 144, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
