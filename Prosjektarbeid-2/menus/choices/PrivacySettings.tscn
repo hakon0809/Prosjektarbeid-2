@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://menus/EndLevelSettings.gd" type="Script" id=1]
+[ext_resource path="res://menus/choices/PrivacySettings.gd" type="Script" id=1]
 [ext_resource path="res://ui/flowchart_theme.tres" type="Theme" id=2]
 [ext_resource path="res://ui/BG_red.tres" type="StyleBox" id=3]
+[ext_resource path="res://ui/BG_white.tres" type="StyleBox" id=4]
+[ext_resource path="res://ui/segoe.tres" type="DynamicFont" id=5]
 
-[node name="EndLevelSettings" type="Node"]
+
+[node name="PrivacySettings" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -113,10 +116,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 43.0
+margin_top = 93.0
 margin_right = 350.0
-margin_bottom = 343.0
-rect_min_size = Vector2( 0, 300 )
+margin_bottom = 293.0
+rect_min_size = Vector2( 0, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -168,7 +171,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer" index="1"]
+[node name="CheckButton" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -176,34 +179,32 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 64.0
 margin_right = 350.0
-margin_bottom = 264.0
-rect_min_size = Vector2( 0, 200 )
+margin_bottom = 96.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
+rect_clip_content = false
+focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
-scroll_deadzone = 0
-_sections_unfolded = [ "Rect" ]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/ScrollContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
 [node name="ButtonContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" index="1"]
 
@@ -211,9 +212,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 347.0
+margin_top = 297.0
 margin_right = 350.0
-margin_bottom = 380.0
+margin_bottom = 330.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -222,7 +223,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="ContinueButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer" index="0"]
+[node name="SaveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -230,6 +231,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 350.0
 margin_bottom = 33.0
+rect_min_size = Vector2( 0, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -241,10 +243,11 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "CONTINUE"
+text = "SAVE"
 flat = false
 align = 1
+_sections_unfolded = [ "Rect" ]
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 
 
