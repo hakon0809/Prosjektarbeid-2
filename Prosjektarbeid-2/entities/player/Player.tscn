@@ -98,7 +98,7 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
-"loop": true,
+"loop": false,
 "name": "Melee2",
 "speed": 10.0
 }, {
