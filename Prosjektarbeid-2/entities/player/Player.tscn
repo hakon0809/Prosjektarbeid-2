@@ -124,7 +124,7 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 extents = Vector2( 5.1212, 13 )
 
-[node name="Player" type="Node" index="0"]
+[node name="Player" type="Node"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 

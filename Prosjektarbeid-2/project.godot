@@ -18,6 +18,11 @@ config/icon="res://icon.png"
 
 enabled=PoolStringArray( "gut" )
 
+[input]
+
+ui_attack=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0
