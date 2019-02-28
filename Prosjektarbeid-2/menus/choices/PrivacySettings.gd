@@ -1,19 +1,18 @@
 extends Node
 
-var option
-onready var choice = get_node(
-		"PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/CheckButton")
+onready var content = preload("res://menus/choices/MenuText.gd")
+onready var choice = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/CheckButton
+var level
+var parent
+var active = false
 
 func _ready():
-	#TODO option = chosen
-	option = ["Option22", true]
-	choice.set_text(option[0])
-	if option[1]:
+	choice.set_text(content.SETTING[level-1])
+	if active:
 		choice.pressed = true
 	else:
 		choice.pressed = false
 
 func _on_SaveButton_pressed():
-	#TODO store choice
-	#TODO if prev scene
-	get_tree().change_scene("menus/EndLevelSettings.tscn")
+	self.queue_free()
+	parent.save_setting(active)

@@ -4,8 +4,7 @@
 [ext_resource path="res://ui/flowchart_theme.tres" type="Theme" id=2]
 [ext_resource path="res://ui/BG_red.tres" type="StyleBox" id=3]
 
-
-[node name="PrivacyChoice" type="Node" index="0"]
+[node name="PrivacyChoice" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -114,9 +113,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 38.0
+margin_top = 61.0
 margin_right = 350.0
-margin_bottom = 347.0
+margin_bottom = 325.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -132,7 +131,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 350.0
-margin_bottom = 105.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -149,8 +148,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = 13.0
 margin_right = 350.0
-margin_bottom = 105.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 350, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -158,7 +158,6 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "Before you decide, check out these awesome benefits you get from keeping it on"
 valign = 1
 autowrap = true
 percent_visible = 1.0
@@ -172,9 +171,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 109.0
+margin_top = 64.0
 margin_right = 350.0
-margin_bottom = 309.0
+margin_bottom = 264.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -199,16 +198,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 bbcode_enabled = true
-bbcode_text = "Face recognition will help us protect you from impersonators, and help the visually impaired to know if you are in a photo, because we assume you are a good person who wants to help others. We will also help you kick ass against your enemies.
-
-If you keep it turned off we can't protect you from impersonators, and you are really mean towards visually impaired people. You will also be on your own against enemies."
+bbcode_text = ""
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Face recognition will help us protect you from impersonators, and help the visually impaired to know if you are in a photo, because we assume you are a good person who wants to help others. We will also help you kick ass against your enemies.
-
-If you keep it turned off we can't protect you from impersonators, and you are really mean towards visually impaired people. You will also be on your own against enemies."
+text = ""
 scroll_active = true
 scroll_following = false
 selection_enabled = false
@@ -221,9 +216,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 351.0
+margin_top = 329.0
 margin_right = 350.0
-margin_bottom = 384.0
+margin_bottom = 362.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1

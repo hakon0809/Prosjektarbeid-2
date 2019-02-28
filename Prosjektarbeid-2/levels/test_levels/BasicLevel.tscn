@@ -3,7 +3,7 @@
 [ext_resource path="res://levels/common/assets/warped_city/warped_city_platform_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
