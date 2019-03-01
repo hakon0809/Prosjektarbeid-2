@@ -1,8 +1,8 @@
-extends Node
+extends Container
 
 onready var content = preload("res://menus/choices/MenuText.gd")
-onready var header = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/CenterContainer/Header
-onready var text = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/ChoiceText
+onready var header = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Header
+onready var text = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/ChoiceText
 var level
 var parent
 #onready var player
@@ -16,5 +16,4 @@ func _on_ManageButton_pressed():
 	parent.change_setting()
 
 func _on_AcceptButton_pressed():
-	self.queue_free()
 	parent.save_setting(true)

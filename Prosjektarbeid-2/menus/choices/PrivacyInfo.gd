@@ -1,8 +1,8 @@
-extends Node
+extends Container
 
 onready var content = preload("res://menus/choices/MenuText.gd")
-onready var header = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/CenterContainer/Header
-onready var text = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/InfoContainer/MarginContainer/ChoiceText
+onready var header = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Header
+onready var text = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/ChoiceText
 var level
 var parent
 

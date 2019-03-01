@@ -26,5 +26,5 @@ LinkButton/colors/font_color_hover = Color( 0.219608, 0.631373, 0.952941, 1 )
 LinkButton/colors/font_color_pressed = Color( 0.219608, 0.631373, 0.952941, 1 )
 PanelContainer/styles/panel = ExtResource( 3 )
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-_sections_unfolded = [ "Button", "Button/fonts", "Button/styles", "LinkButton", "LinkButton/colors", "PanelContainer/styles", "RichTextLabel", "RichTextLabel/colors" ]
+_sections_unfolded = [ "Button/fonts", "LinkButton/colors", "PanelContainer/styles", "RichTextLabel/colors" ]
 
