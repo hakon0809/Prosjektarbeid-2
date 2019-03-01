@@ -5,8 +5,10 @@ onready var setting = $PanelContainer/VBoxContainer/MarginContainer/VBoxContaine
 onready var button = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Button
 onready var popup = $PanelContainer/VBoxContainer/MarginContainer/PopupPanel
 var active
+var actives
 var level
 var parent
+var settings_menu = false
 
 func _ready():
 	popup.hide()
@@ -18,7 +20,7 @@ func _ready():
 
 func _on_SaveButton_pressed():
 	if active:
-		parent.save_setting(active)
+		parent.save_setting(level, active)
 	else:
 		popup.show()
 	
@@ -30,7 +32,7 @@ func _on_Button_toggled(button_pressed):
 
 func _on_YesButton_pressed():
 	popup.hide()
-	parent.save_setting(active)
+	parent.save_setting(level, active)
 
 
 func _on_NoButton_pressed():

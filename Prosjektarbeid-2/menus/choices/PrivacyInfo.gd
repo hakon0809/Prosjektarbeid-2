@@ -12,4 +12,4 @@ func _ready():
 
 func _on_ContinueButton_pressed():
 	self.queue_free()
-	parent.show_setting()
+	parent.show_setting(true, level)

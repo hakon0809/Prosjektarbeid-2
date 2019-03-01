@@ -7,3 +7,4 @@ func _on_Button_pressed():
 	p.level = 1
 	self.add_child(p)
 	p.choice()
+	p.end_level = false
