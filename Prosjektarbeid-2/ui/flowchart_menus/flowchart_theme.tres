@@ -1,14 +1,13 @@
-[gd_resource type="Theme" load_steps=6 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
-[ext_resource path="res://ui/segoe-bold.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ui/BG_blue.tres" type="StyleBox" id=2]
-[ext_resource path="res://ui/BG_white.tres" type="StyleBox" id=3]
-[ext_resource path="res://ui/BG_white_grey-border.tres" type="StyleBox" id=4]
-[ext_resource path="res://ui/segoe.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/flowchart_menus/segoe-bold.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/flowchart_menus/BG_blue.tres" type="StyleBox" id=2]
+[ext_resource path="res://ui/flowchart_menus/BG_white.tres" type="StyleBox" id=3]
+[ext_resource path="res://ui/flowchart_menus/segoe.tres" type="DynamicFont" id=4]
 
 [resource]
 
-default_font = ExtResource( 5 )
+default_font = ExtResource( 4 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -26,7 +25,7 @@ LinkButton/colors/font_color = Color( 0.219608, 0.631373, 0.952941, 1 )
 LinkButton/colors/font_color_hover = Color( 0.219608, 0.631373, 0.952941, 1 )
 LinkButton/colors/font_color_pressed = Color( 0.219608, 0.631373, 0.952941, 1 )
 PanelContainer/styles/panel = ExtResource( 3 )
-PopupPanel/styles/panel = ExtResource( 4 )
+PopupPanel/styles/panel = null
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-_sections_unfolded = [ "Button/fonts", "LinkButton/colors", "PanelContainer/styles", "PopupPanel", "PopupPanel/styles", "RichTextLabel/colors" ]
+_sections_unfolded = [ "Button/colors", "Button/fonts", "Label/fonts", "LinkButton/colors", "PanelContainer/styles", "PopupPanel/styles", "RichTextLabel/colors" ]
 

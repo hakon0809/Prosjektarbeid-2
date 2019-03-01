@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://ui/flowchart_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/flowchart_menus/flowchart_theme.tres" type="Theme" id=1]
 [ext_resource path="res://menus/choices/PrivacySettings.gd" type="Script" id=2]
-[ext_resource path="res://ui/BG_red.tres" type="StyleBox" id=3]
-[ext_resource path="res://ui/segoe.tres" type="DynamicFont" id=4]
+[ext_resource path="res://ui/flowchart_menus/BG_red.tres" type="StyleBox" id=3]
+[ext_resource path="res://ui/flowchart_menus/segoe.tres" type="DynamicFont" id=4]
 [ext_resource path="res://menus/choices/toggleOff.png" type="Texture" id=5]
 [ext_resource path="res://menus/choices/toggleOn.png" type="Texture" id=6]
-[ext_resource path="res://ui/BG_white_grey-border.tres" type="StyleBox" id=7]
+[ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=7]
 
 [node name="PrivacySettings" type="Container"]
 

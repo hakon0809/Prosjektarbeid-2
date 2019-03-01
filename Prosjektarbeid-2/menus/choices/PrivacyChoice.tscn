@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ui/flowchart_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/flowchart_menus/flowchart_theme.tres" type="Theme" id=1]
 [ext_resource path="res://menus/choices/PrivacyChoice.gd" type="Script" id=2]
-[ext_resource path="res://ui/BG_red.tres" type="StyleBox" id=3]
-[ext_resource path="res://ui/BG_white_grey-border.tres" type="StyleBox" id=4]
+[ext_resource path="res://ui/flowchart_menus/BG_red.tres" type="StyleBox" id=3]
+[ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=4]
 
 [node name="PrivacyChoice" type="Container"]
 
