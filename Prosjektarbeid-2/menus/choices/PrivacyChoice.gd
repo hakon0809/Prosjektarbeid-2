@@ -16,4 +16,4 @@ func _on_ManageButton_pressed():
 	parent.change_setting()
 
 func _on_AcceptButton_pressed():
-	parent.save_setting(true)
+	parent.save_setting(level, true)
