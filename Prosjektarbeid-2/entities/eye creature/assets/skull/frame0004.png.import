@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eye monster idle 2.png-844bbd94d42c60e6df83bbb9bbbd94ef.stex"
+path="res://.import/frame0004.png-ef3c9983369bdbc9c007c6a35780f982.stex"
 
 [deps]
 
-source_file="res://entities/eye creature/assets/eye monster idle 2.png"
-dest_files=[ "res://.import/eye monster idle 2.png-844bbd94d42c60e6df83bbb9bbbd94ef.stex" ]
+source_file="res://entities/eye creature/assets/skull/frame0004.png"
+dest_files=[ "res://.import/frame0004.png-ef3c9983369bdbc9c007c6a35780f982.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

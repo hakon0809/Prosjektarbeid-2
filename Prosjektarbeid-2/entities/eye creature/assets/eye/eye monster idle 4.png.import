@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eye monster idle 1.png-eb6616609b03934773532ef1b977cf17.stex"
+path="res://.import/eye monster idle 4.png-afc5d26f694baeba86b0d8d033f6b404.stex"
 
 [deps]
 
-source_file="res://entities/eye creature/assets/eye monster idle 1.png"
-dest_files=[ "res://.import/eye monster idle 1.png-eb6616609b03934773532ef1b977cf17.stex" ]
+source_file="res://entities/eye creature/assets/eye/eye monster idle 4.png"
+dest_files=[ "res://.import/eye monster idle 4.png-afc5d26f694baeba86b0d8d033f6b404.stex" ]
 
 [params]
 
