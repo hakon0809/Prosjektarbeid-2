@@ -6,6 +6,7 @@ const FLOOR =Vector2(0, -1)
 var velocity =Vector2()
 
 var direction = 1
+var health = 100
 
 
 func _ready():
