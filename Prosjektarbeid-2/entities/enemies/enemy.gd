@@ -6,7 +6,8 @@ const FLOOR =Vector2(0, -1)
 var velocity =Vector2()
 
 var direction = 1
-var health = 100
+var health = 1
+var damage = 1
 
 
 func _ready():
@@ -29,9 +30,28 @@ func _physics_process(delta):
 		direction= direction * -1
 		$RayCast2D.position.x *= -1
 		
-	if $RayCast2D.is_colliding() == false:
+	if not $RayCast2D.is_colliding():
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
+	
+	var bodies = $Area2D.get_overlapping_bodies()
+		##print(bodies)
+	
+	for body in bodies:
+		
+		if body.is_in_group("character"):
+			print(body)
+			body.take_damage(damage)
+		
+func take_damage(count): 
+	health -= count
+	if health < 0:
+		set_physics_process(false)
+		print ("npc dead")
+		health = 0
+	##	_change_state(DEAD)
+#		emit_signal("died")
+		return
 		
 		
 		
