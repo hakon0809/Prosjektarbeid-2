@@ -1,38 +1,39 @@
-extends Node
+extends MarginContainer
 
 onready var PrivacyChoice = preload("res://menus/choices/PrivacyChoice.tscn")
 onready var PrivacyInfo = preload("res://menus/choices/PrivacyInfo.tscn")
 onready var PrivacySetting = preload("res://menus/choices/PrivacySettings.tscn")
 onready var EndLevelSettings = preload("res://menus/choices/EndLevelSettings.tscn")
-onready var display = $Container/Sprite/Container
 var level
 var active_options = [false, false, false]
-var scale = 0.01
+var scale = Vector2(0, 0)
 var opening = true
 var end_level
 
-onready var sprite = $Container/Sprite
-
+func _ready():
+	self.rect_scale = Vector2(0, 0)
+	
 func _process(delta):
 	if opening:
-		if scale < 0.2:
-			sprite.set_scale(Vector2(scale, scale))
-			scale += 0.01
+		if scale.x < 1:
+			scale.x += 0.05
+			scale.y += 0.05
+			self.rect_scale = scale
 	else:
-		if scale > 0:
-			sprite.set_scale(Vector2(scale, scale))
-			scale -= 0.01
+		if scale.x > 0:
+			scale.x -= 0.05
+			scale.y -= 0.05
+			self.rect_scale = scale
 		else:
 			self.queue_free()
-
-func _ready():
-	sprite.set_scale(Vector2(0, 0))
-	
+			
+		
+		
 func choice():
 	var choice = PrivacyChoice.instance()
 	choice.level = level
 	choice.parent = self
-	display.add_child(choice)
+	add_child(choice)
 	
 func settings_menu(active):
 	active_options = active
@@ -40,20 +41,20 @@ func settings_menu(active):
 	settings.level = level
 	settings.parent = self
 	settings.active = active_options
-	display.add_chld(settings)
+	add_chld(settings)
 
 func change_setting():
 	var info = PrivacyInfo.instance()
 	info.level = level
 	info.parent = self
-	display.add_child(info)
+	add_child(info)
 		
 func show_setting(active, level):
 	var setting = PrivacySetting.instance()
 	setting.level = level
 	setting.parent = self
 	setting.active = active
-	display.add_child(setting)
+	add_child(setting)
 	
 func save_setting(option, active):
 	#TODO add armor to player

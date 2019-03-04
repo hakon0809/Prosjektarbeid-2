@@ -23,7 +23,7 @@ func _ready():
 				active_label[i].add_color_override("font_color", Color(180, 0, 0, 1))
 		else:
 			option[i].hide()
-	
+
 
 func _on_EditButton1_pressed():
 	parent.show_setting(active[0], 1)

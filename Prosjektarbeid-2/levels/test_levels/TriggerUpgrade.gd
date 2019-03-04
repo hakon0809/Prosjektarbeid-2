@@ -1,10 +1,10 @@
 extends Node
 
-onready var phone = preload("res://menus/choices/Phone.tscn")
+onready var choice = preload("res://menus/choices/ChoiceMenu.tscn")
 
 func _on_Button_pressed():
-	var p = phone.instance()
-	p.level = 1
-	self.add_child(p)
-	p.choice()
-	p.end_level = false
+	var c = choice.instance()
+	self.add_child(c)
+	c.level = 1
+	c.end_level = false
+	c.choice()
