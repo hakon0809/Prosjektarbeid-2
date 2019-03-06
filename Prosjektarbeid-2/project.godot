@@ -17,10 +17,18 @@ config/icon="res://icon.png"
 [display]
 
 window/handheld/emulate_touchscreen=true
+window/size/width=384
+window/size/height=216
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "gut" )
+
+[input]
+
+ui_attack=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
 
 [rendering]
 

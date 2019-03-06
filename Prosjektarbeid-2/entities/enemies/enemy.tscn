@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://entities/enemies/enemy.gd" type="Script" id=1]
 [ext_resource path="res://entities/enemies/knight iso char_run right_0.png" type="Texture" id=2]
@@ -20,15 +20,23 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 6.90448, 17.8035 )
 
-[node name="enemy" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=3]
 
-position = Vector2( 77.7351, 30.0966 )
+custom_solver_bias = 0.0
+extents = Vector2( 10, 19.7025 )
+
+[node name="enemy" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+
+position = Vector2( 102.471, 40.1342 )
 scale = Vector2( 0.869565, 0.853431 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -41,16 +49,8 @@ frames = SubResource( 1 )
 animation = "walk"
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="RayCast2D" type="RayCast2D" parent="." index="1"]
 
-visible = false
-position = Vector2( 3.36462, 3.86107 )
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="RayCast2D" type="RayCast2D" parent="." index="2"]
-
-visible = false
 position = Vector2( 8.68501, 14.2596 )
 scale = Vector2( 1, 0.155434 )
 enabled = true
@@ -58,5 +58,25 @@ exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 _sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( 3.36462, 3.86107 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 3 )
 
 
