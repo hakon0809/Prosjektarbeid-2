@@ -1,4 +1,4 @@
 extends Node
 
-func send_mail_like_an_amateur(results):
+func send_mail(results):
 	OS.shell_open("mailto:tsvork@live.no?subject=Results&body="+results)
