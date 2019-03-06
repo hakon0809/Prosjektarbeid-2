@@ -1,6 +1,6 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=61 format=2]
 
-[ext_resource path="res://entities/player/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://entities/player/Player2.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=2]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-idle-2-01.png" type="Texture" id=3]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-idle-2-02.png" type="Texture" id=4]
@@ -124,45 +124,36 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 extents = Vector2( 5.1212, 13 )
 
-[sub_resource type="GDScript" id=3]
+[node name="Player" type="Node2D"]
 
-script/source = "extends Area2D
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0" groups=[
+"character",
+]]
 
-
-
-func _on_Area2D_body_entered(body):
-	print(body.get_class())
-"
-
-[sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
-extents = Vector2( 8.38934, 19.9997 )
-
-[node name="Player" type="Node" index="0"]
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
-
-position = Vector2( 240, 360 )
+position = Vector2( 132.914, 63.455 )
+scale = Vector2( 1.4, 1.4 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+max_health = 10
 
 [node name="Sprite" type="AnimatedSprite" parent="KinematicBody2D" index="0"]
 
-position = Vector2( 1.52588e-005, -5.67566 )
 scale = Vector2( 1.2, 1.35135 )
 frames = SubResource( 1 )
-animation = "Melee2"
-frame = 5
+animation = "Hurt"
 playing = true
 _sections_unfolded = [ "Transform" ]
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
 
+visible = false
 position = Vector2( 3.5, -9.77516e-006 )
 scale = Vector2( 1.26923, 1.53846 )
 shape = SubResource( 2 )
@@ -177,13 +168,13 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = SubResource( 3 )
-_sections_unfolded = [ "Collision" ]
 
-[node name="SwordCollision" type="CollisionShape2D" parent="KinematicBody2D/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D/Area2D" index="0"]
 
-position = Vector2( 18.7962, -3.05176e-005 )
-shape = SubResource( 4 )
+position = Vector2( 0.515869, 0 )
+scale = Vector2( 0.630141, 0.923552 )
+build_mode = 0
+polygon = PoolVector2Array( 2.76501, -19.0046, 2.66335, 27.7442, 31.9368, 27.948, 29.8458, -18.9282 )
 _sections_unfolded = [ "Transform" ]
 
 
