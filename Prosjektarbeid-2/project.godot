@@ -14,6 +14,12 @@ config/name="Prosjektarbeid-2"
 run/main_scene="res://levels/test_levels/BasicLevel.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=384
+window/size/height=216
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "gut" )
