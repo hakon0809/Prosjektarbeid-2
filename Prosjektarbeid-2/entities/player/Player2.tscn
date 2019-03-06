@@ -1,6 +1,6 @@
 [gd_scene load_steps=61 format=2]
 
-[ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://entities/player/Player2.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=2]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-idle-2-01.png" type="Texture" id=3]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-idle-2-02.png" type="Texture" id=4]
@@ -148,7 +148,7 @@ max_health = 10
 scale = Vector2( 1.2, 1.35135 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 3
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 
