@@ -8,7 +8,7 @@ const JUMP_HEIGHT = -500
 var motion = Vector2()
 
 func _physics_process(delta):
-
+	
 	var friction = false
 	
 	motion.y += GRAVITY
