@@ -72,7 +72,7 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 extents = Vector2( 5.1212, 13 )
 
-[node name="Player" type="Node"]
+[node name="Player" type="Node2D"]
 
 [node name="Interface" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -80,16 +80,12 @@ extents = Vector2( 5.1212, 13 )
 "Character",
 ]]
 
-position = Vector2( 240, 360 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 2 )
-_sections_unfolded = [ "Z Index" ]
-__meta__ = {
-"_edit_group_": true
-}
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Sprite" type="AnimatedSprite" parent="KinematicBody2D" index="0"]
 
@@ -97,7 +93,7 @@ position = Vector2( -7.15256e-007, -5.67567 )
 scale = Vector2( 1.2, 1.35135 )
 frames = SubResource( 1 )
 animation = "Run"
-frame = 3
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 

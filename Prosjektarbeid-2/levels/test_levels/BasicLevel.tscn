@@ -34,4 +34,6 @@ _sections_unfolded = [ "Cell", "Z Index" ]
 
 [node name="Player" parent="." index="2" instance=ExtResource( 3 )]
 
+position = Vector2( 240, 352 )
+
 
