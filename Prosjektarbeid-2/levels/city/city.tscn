@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://levels/city/assets/village04-512-x-256_010.png" type="Texture" id=1]
 [ext_resource path="res://levels/city/assets/village04-512-x-256_007.png" type="Texture" id=2]
@@ -19,8 +19,14 @@
 [ext_resource path="res://entities/npc/PirateMan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://entities/npc/OldMan.tscn" type="PackedScene" id=18]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=19]
+[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=20]
 
-[node name="City" type="Node"]
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 64 )
+
+[node name="City" type="Node" index="0"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -241,6 +247,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="Platforms" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( -0.135864, -1.35597 )
 __meta__ = {
 "_edit_group_": true
@@ -289,6 +296,8 @@ tile_data = PoolIntArray( 524324, 5, 0, 589862, 1, 0, 589863, 2, 0, 655398, 8, 0
 _sections_unfolded = [ "Cell" ]
 
 [node name="npcs" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
 
 [node name="Father" parent="npcs" index="0" instance=ExtResource( 12 )]
 
@@ -447,7 +456,7 @@ scale = Vector2( 1, 1 )
 
 [node name="Sprite" parent="Player/KinematicBody2D" index="0"]
 
-frame = 0
+frame = 1
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
@@ -485,6 +494,27 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Limit" ]
+
+[node name="Area2D" type="Area2D" parent="." index="4"]
+
+position = Vector2( 1568, 96 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
 
 
 [editable path="npcs/Father"]
