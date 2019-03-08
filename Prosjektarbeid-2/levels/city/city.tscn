@@ -26,7 +26,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 64 )
 
-[node name="City" type="Node"]
+[node name="City" type="Node" index="0"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -445,9 +445,13 @@ position = Vector2( -560, 112 )
 scale = Vector2( 0.8, 0.8 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="KinematicBody2D" parent="Player" index="0"]
+[node name="KinematicBody2D" parent="Player" index="1"]
 
 scale = Vector2( 1, 1 )
+
+[node name="Sprite" parent="Player/KinematicBody2D" index="0"]
+
+frame = 3
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
