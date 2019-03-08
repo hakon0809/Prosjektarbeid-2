@@ -15,7 +15,7 @@ func _on_Continue_pressed():
 
 
 func _on_newgame_pressed():
-	get_tree().change_scene('res://menus/NewGame.tscn')
+	get_tree().change_scene('res://levels/city/city.tscn')
 
 
 func _on_Options_pressed():
