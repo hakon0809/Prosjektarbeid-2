@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://levels/city/assets/village04-512-x-256_010.png" type="Texture" id=1]
 [ext_resource path="res://levels/city/assets/village04-512-x-256_007.png" type="Texture" id=2]
@@ -18,11 +18,13 @@
 [ext_resource path="res://entities/npc/PotionSeller.tscn" type="PackedScene" id=16]
 [ext_resource path="res://entities/npc/PirateMan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://entities/npc/OldMan.tscn" type="PackedScene" id=18]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=19]
 
 [node name="City" type="Node" index="0"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
@@ -289,6 +291,8 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="npcs" type="Node2D" parent="." index="2"]
 
+editor/display_folded = true
+
 [node name="Father" parent="npcs" index="0" instance=ExtResource( 12 )]
 
 position = Vector2( 1088.77, 139.749 )
@@ -429,6 +433,10 @@ visible = false
 [node name="CollisionShape2D" parent="npcs/OldMan/StaticBody2D" index="2"]
 
 visible = false
+
+[node name="Player" parent="." index="3" instance=ExtResource( 19 )]
+
+position = Vector2( 40, 150 )
 
 
 [editable path="npcs/Father"]

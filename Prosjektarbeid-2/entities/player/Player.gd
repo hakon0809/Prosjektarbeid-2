@@ -30,13 +30,8 @@ func _physics_process(delta):
 #	if Input.is_action_pressed("ui_attack") && Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_attack") && Input.is_action_pressed("ui_left"):
 #		motion.x = 0
 #		$Sprite.play("Melee2")
-	if Input.is_action_pressed("ui_attack"):
-		motion.x = 0
-		$Sprite.play("Melee2")
-		if $Sprite.get_frame() == 5:
-			$Sprite.play("Idle")
 
-	elif Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right"):
 		if $Sprite.get_animation() == "Death":
 			pass
 		else:
@@ -103,13 +98,32 @@ func _physics_process(delta):
 	else:
 		if not $Sprite.get_animation() == "Death":
 			if motion.y < 0:
-				$Sprite.play("Jump")
+				if $Sprite.get_animation() == "Melee2":
+					if $Sprite.get_frame() == 5:
+						$Area2D.set_scale(Vector2(1, 1))
+						$Sprite.play("Jump")
+				else:
+					$Sprite.play("Jump")
 			elif motion.y > 0:
-				$Sprite.play("Fall")
+				if $Sprite.get_animation() == "Melee2":
+					if $Sprite.get_frame() == 5:
+						$Area2D.set_scale(Vector2(1, 1))
+						$Sprite.play("Fall")
+				else:
+					$Sprite.play("Fall")
 			if friction == true:
 				motion.x = lerp(motion.x, 0, 0.05)
-	
+		
+	if Input.is_action_just_pressed("ui_attack"):
+		$Sprite.play("Melee2")
+		friction = true
+		motion.x = lerp(motion.x, 0, 0.05)
+		if $Sprite.get_frame() == 5:
+			$Sprite.play("Idle")
+			
 	motion = move_and_slide(motion, UP)
+
+
 	
 	
 func take_damage(count):
