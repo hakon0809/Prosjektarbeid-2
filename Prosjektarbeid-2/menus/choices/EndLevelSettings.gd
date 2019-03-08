@@ -42,3 +42,9 @@ func _on_EditButton3_pressed():
 
 func _on_SaveButton_pressed():
 	parent.opening = false
+
+
+func _on_ActivateButton_pressed():
+	for i in range(0, level):
+		active[i] = true
+		parent.save_setting(i+1, active[i])

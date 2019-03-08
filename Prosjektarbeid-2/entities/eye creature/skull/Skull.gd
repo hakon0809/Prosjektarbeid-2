@@ -32,7 +32,7 @@ func _on_Area2D_body_exited(body):
 
 func _on_NextButton_pressed():
 	if index == text.size() - 1:
-		open_menu()
+		open_choice_menu()
 	if index < text.size() - 1:
 		index += 1
 		if index == text.size() - 1:
@@ -49,7 +49,7 @@ func _on_BackButton_pressed():
 		if index == 0:
 			$PopupDialog/PopupDialog/BackButton.set_disabled(true)
 			
-func open_menu():
+func open_choice_menu():
 	$PopupDialog/PopupDialog.hide()
 
 	interface.hide()
@@ -61,6 +61,7 @@ func open_menu():
 	c.level = level
 	c.end_level = false
 	var choice = c.choice(self)
+	
 
 func save_choice(active):
 	$PopupDialog/PopupDialog/NextButton.hide()

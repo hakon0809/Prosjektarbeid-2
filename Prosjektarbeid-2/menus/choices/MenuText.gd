@@ -1,12 +1,14 @@
 extends Node
 
-const CHOICE_HEAD_1 = "Share your geolocation data to get an armor upgrade"
+const CHOICE_HEAD_1 = "Share your geolocation data to recieve this armor upgrade"
 const CHOICE_HEAD_2 = "Turn on something to get this upgrade"
 const CHOICE_HEAD_3 = "Turn on something whatever to get this upgrade"
 
-const CHOICE_TXT_1 = "Sharing your location is good for you because reasons, "\
-		+ "and besides you will get an armor upgrade, so who cares amirite? "\
-		+ "If you don't think sharing is caring you can turn it off by managing your settings"
+const CHOICE_TXT_1 = "Sharing your location is really, really smart. "\
+		+ "Doing this will allow us to customize this and that for you based on your location, "\
+		+ "which is definitely extremely helpful for you. "\
+		+ "If you do not believe in the general concept of sharing you can change this preference "\
+		+ "by managing your settings."
 const CHOICE_TXT_2 = "Something else"
 const CHOICE_TXT_3 = "Something completely different"
 
@@ -17,12 +19,14 @@ const CHOICE_3 = [CHOICE_HEAD_3, CHOICE_TXT_3]
 const CHOICE = [CHOICE_1, CHOICE_2, CHOICE_3]
 
 
-const INFO_HEAD_1 = "Before you decide, check out these awesome benefits you get "\
+const INFO_HEAD_1 = "Hey there, before you decide, check out these awesome benefits you get "\
 		+ "from sharing your geolocation data"
 const INFO_HEAD_2 = "Before you decide, check out these awesome benefits you get from keeping it on"
 const INFO_HEAD_3 = "Before you decide, check out these awesome benefits you get from keeping it on"
 
-const INFO_TXT_1 = "You get an armor upgrade... nuff said"
+const INFO_TXT_1 = "- An exclusive armor upgrade to help you against your enemies"\
+		+ "\n"\
+		+ "- Other really important stuff"
 const INFO_TXT_2 = "Something else"
 const INFO_TXT_3 = "Something completely different"
 

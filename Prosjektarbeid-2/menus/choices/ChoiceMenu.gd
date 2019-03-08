@@ -37,13 +37,15 @@ func choice(parent):
 	choice.parent = self
 	add_child(choice)
 	
-func settings_menu(active):
+func settings_menu(parent, active):
+	self.parent = parent
+	end_level = true
 	active_options = active
 	var settings = EndLevelSettings.instance()
 	settings.level = level
 	settings.parent = self
 	settings.active = active_options
-	add_chld(settings)
+	add_child(settings)
 
 func change_setting():
 	var info = PrivacyInfo.instance()
@@ -59,12 +61,9 @@ func show_setting(active, level):
 	add_child(setting)
 	
 func save_setting(option, active):
-	if active:
-		active_options[option-1] = true
-	else:
-		active_options[option-1] = false
+	active_options[option-1] = active
+	parent.save_choice(active)
 	if end_level:
-		settings_menu(active_options)
+		settings_menu(parent, active_options)
 	else:
-		parent.save_choice(active)
 		opening = false
