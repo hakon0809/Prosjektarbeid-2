@@ -1,20 +1,23 @@
 extends KinematicBody2D
+
 const GRAVITY = 10
-const SPEED = 80
 const FLOOR =Vector2(0, -1)
 
 var velocity =Vector2()
-
 var direction = 1
 var health = 1
 var damage = 1
+var speed = 80
 
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	velocity.x = SPEED * direction
+	if speed == 0:
+		speed = 80
+	
+	velocity.x = speed * direction
 	
 	if direction == 1:
 		$AnimatedSprite.flip_h = false
@@ -30,7 +33,7 @@ func _physics_process(delta):
 		direction= direction * -1
 		$RayCast2D.position.x *= -1
 		
-	if not $RayCast2D.is_colliding():
+	if $RayCast2D.is_colliding() == false:
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
 	
@@ -46,13 +49,13 @@ func _physics_process(delta):
 func take_damage(count): 
 	health -= count
 	if health < 0:
-		set_physics_process(false)
+		$AnimatedSprite.play("die")
 		print ("npc dead")
 		health = 0
+		queue_free()
 	##	_change_state(DEAD)
 #		emit_signal("died")
 		return
-		
 		
 		
 	
