@@ -16,11 +16,10 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=384
-window/size/height=216
+window/size/width=544
+window/size/height=306
 window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
 
 [editor_plugins]
 

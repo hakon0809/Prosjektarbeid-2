@@ -26,7 +26,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 64 )
 
-[node name="City" type="Node" index="0"]
+[node name="City" type="Node"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -248,7 +248,6 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="Platforms" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
-position = Vector2( -0.135864, -1.35597 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -296,8 +295,6 @@ tile_data = PoolIntArray( 524324, 5, 0, 589862, 1, 0, 589863, 2, 0, 655398, 8, 0
 _sections_unfolded = [ "Cell" ]
 
 [node name="npcs" type="Node2D" parent="." index="2"]
-
-editor/display_folded = true
 
 [node name="Father" parent="npcs" index="0" instance=ExtResource( 12 )]
 
@@ -347,7 +344,6 @@ visible = false
 
 [node name="LanternMan" parent="npcs" index="2" instance=ExtResource( 14 )]
 
-editor/display_folded = true
 modulate = Color( 0.804688, 0.804688, 0.804688, 1 )
 position = Vector2( -57, 175 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -444,7 +440,6 @@ visible = false
 
 [node name="Player" parent="." index="3" instance=ExtResource( 19 )]
 
-editor/display_folded = true
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
 position = Vector2( -560, 112 )
 scale = Vector2( 0.8, 0.8 )
@@ -453,10 +448,6 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="KinematicBody2D" parent="Player" index="0"]
 
 scale = Vector2( 1, 1 )
-
-[node name="Sprite" parent="Player/KinematicBody2D" index="0"]
-
-frame = 1
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
@@ -479,7 +470,7 @@ limit_left = -630
 limit_top = -10000000
 limit_right = 1568
 limit_bottom = 10000000
-limit_smoothed = false
+limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = false
