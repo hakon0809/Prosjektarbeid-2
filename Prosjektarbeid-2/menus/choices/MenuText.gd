@@ -22,7 +22,7 @@ const INFO_HEAD_1 = "Before you decide, check out these awesome benefits you get
 const INFO_HEAD_2 = "Before you decide, check out these awesome benefits you get from keeping it on"
 const INFO_HEAD_3 = "Before you decide, check out these awesome benefits you get from keeping it on"
 
-const INFO_TXT_1 = "You get an armor upgrade... sheeesh"
+const INFO_TXT_1 = "You get an armor upgrade... nuff said"
 const INFO_TXT_2 = "Something else"
 const INFO_TXT_3 = "Something completely different"
 

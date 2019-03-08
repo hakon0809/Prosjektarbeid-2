@@ -9,6 +9,7 @@ var active_options = [false, false, false]
 var scale = Vector2(0, 0)
 var opening = true
 var end_level
+var parent
 
 func _ready():
 	self.rect_scale = Vector2(0, 0)
@@ -29,7 +30,8 @@ func _process(delta):
 			
 		
 		
-func choice():
+func choice(parent):
+	self.parent = parent
 	var choice = PrivacyChoice.instance()
 	choice.level = level
 	choice.parent = self
@@ -57,7 +59,6 @@ func show_setting(active, level):
 	add_child(setting)
 	
 func save_setting(option, active):
-	#TODO add armor to player
 	if active:
 		active_options[option-1] = true
 	else:
@@ -65,4 +66,5 @@ func save_setting(option, active):
 	if end_level:
 		settings_menu(active_options)
 	else:
+		parent.save_choice(active)
 		opening = false

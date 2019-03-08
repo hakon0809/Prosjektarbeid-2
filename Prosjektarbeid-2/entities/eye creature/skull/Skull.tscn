@@ -56,7 +56,7 @@ collision/safe_margin = 0.08
 
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 6
+frame = 12
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
@@ -80,6 +80,10 @@ audio_bus_name = "Master"
 shape = SubResource( 3 )
 
 [node name="PopupDialog" parent="." index="2" instance=ExtResource( 18 )]
+
+[node name="PopupDialog" parent="PopupDialog" index="0"]
+
+visible = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
