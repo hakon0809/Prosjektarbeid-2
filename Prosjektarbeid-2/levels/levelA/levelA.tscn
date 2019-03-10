@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/common/assets/warped_city/warped_city_platform_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-middle-trees.png" type="Texture" id=5]
 [ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-lights.png" type="Texture" id=6]
 [ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-front-trees.png" type="Texture" id=7]
+[ext_resource path="res://entities/enemies/enemy2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/levelA/VerticallyMovingPlatform.tscn" type="PackedScene" id=9]
 
 [node name="Node" type="Node" index="0"]
 
@@ -29,7 +31,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -851937, 1, 0, -851934, 1, 0, -851933, 1, 0, -851932, 1, 0, -786400, 1, 0, -786399, 1, 0, -655332, 1, 0, -458726, 1, 0, -262119, 1, 0, -262118, 1, 0, -262117, 1, 0, -262116, 1, 0, -262115, 1, 0, -262098, 1, 0, -262097, 1, 0, -262096, 1, 0, -262095, 1, 0, -262094, 1, 0, -262093, 1, 0, -262092, 1, 0, -131050, 1, 0, -131010, 1, 0, -131009, 1, 0, -131008, 1, 0, -131007, 1, 0, -131006, 1, 0, -131005, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65559, 1, 0, 196628, 1, 0, 196682, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 1, 0, 262168, 1, 0, 262169, 1, 0, 262170, 1, 0, 262171, 1, 0, 262213, 1, 0, 262214, 1, 0, 262215, 1, 0, 262216, 1, 0, 262217, 1, 0, 327699, 1, 0, 458811, 1, 0, 458812, 1, 0, 458813, 1, 0, 458814, 1, 0, 524289, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 1, 0, 589849, 1, 0, 589859, 1, 0, 589860, 1, 0, 589861, 1, 0, 589862, 1, 0, 589863, 1, 0, 589864, 1, 0, 589865, 1, 0, 589866, 1, 0, 589867, 1, 0, 589868, 1, 0, 589869, 1, 0, 786458, 1, 0, 786459, 1, 0, 786460, 1, 0, 786461, 1, 0, 786462, 1, 0, 786463, 1, 0, 786464, 1, 0, 786465, 1, 0, 786483, 1, 0, 786484, 1, 0, 786485, 1, 0, 786486, 1, 0, 786487, 1, 0, 786488, 1, 0, 786489, 1, 0, 786490, 1, 0, 917486, 1, 0, 917487, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0, 851984, 1, 0, 851985, 1, 0, 983023, 1, 0, 917522, 1, 0, 1048559, 1, 0, 1114096, 1, 0, 1048595, 1, 0, 1048615, 1, 0, 1114132, 1, 0, 1114151, 1, 0, 1114152, 1, 0, 1114153, 1, 0, 1114154, 1, 0, 1114155, 1, 0, 1114156, 1, 0, 1114157, 1, 0, 1114158, 1, 0, 1114159, 1, 0, 1114160, 1, 0, 1245205, 1, 0, 1376250, 1, 0, 1376251, 1, 0, 1376252, 1, 0, 1310726, 0, 0, 1310727, 1, 0, 1310728, 1, 0, 1310729, 1, 0, 1310730, 1, 0, 1310731, 2, 0, 1310766, 0, 0, 1310767, 1, 0, 1310768, 1, 0, 1310769, 1, 0, 1310770, 1, 0, 1310771, 1, 0, 1310772, 1, 0, 1310773, 1, 0, 1310774, 1, 0, 1310775, 1, 0, 1310776, 1, 0, 1310777, 2, 0, 1441784, 1, 0, 1441785, 1, 0, 1441786, 1, 0, 1376277, 1, 0, 1441815, 0, 0, 1441816, 1, 0, 1441817, 1, 0, 1441818, 1, 0, 1441819, 1, 0, 1441820, 1, 0, 1441821, 1, 0, 1441822, 1, 0, 1441823, 1, 0, 1441824, 1, 0, 1441825, 1, 0, 1441826, 1, 0, 1441827, 1, 0, 1441828, 1, 0, 1441829, 2, 0, 1572875, 0, 0, 1572876, 1, 0, 1572877, 1, 0, 1572878, 1, 0, 1572879, 1, 0, 1572880, 1, 0, 1572881, 1, 0, 1572882, 2, 0, 1703923, 1, 0, 1638403, 0, 0, 1638404, 1, 0, 1638405, 1, 0, 1638406, 1, 0, 1638407, 1, 0, 1638408, 1, 0, 1638409, 1, 0, 1638410, 2, 0, 1769459, 1, 0, 1703952, 0, 0, 1703953, 1, 0, 1703954, 1, 0, 1703955, 1, 0, 1703956, 1, 0, 1703957, 1, 0, 1703958, 1, 0, 1703959, 1, 0, 1703960, 1, 0, 1703961, 2, 0, 1703972, 0, 0, 1703973, 1, 0, 1703974, 1, 0, 1703975, 1, 0, 1703976, 1, 0, 1703977, 1, 0, 1703978, 1, 0, 1703979, 1, 0, 1703980, 1, 0, 1703981, 1, 0, 1703982, 1, 0, 1703983, 1, 0, 1703984, 1, 0, 1703985, 1, 0, 1703986, 1, 0, 1703987, 1, 0, 1703988, 2, 0, 1834996, 1, 0, 1834997, 1, 0, 1900571, 1, 0, 1966108, 1, 0, 2097181, 1, 0, 2359321, 1, 0, 2359322, 1, 0, 2359323, 1, 0, 2359324, 1, 0, 2359325, 1, 0, 2359326, 1, 0, 2359327, 1, 0, 2359328, 1, 0, 2359329, 1, 0, 2359330, 1, 0 )
+tile_data = PoolIntArray( 1572875, 0, 0, 1572876, 1, 0, 1572877, 1, 0, 1572878, 1, 0, 1572879, 1, 0, 1572880, 1, 0, 1572881, 1, 0, 1572882, 2, 0, 1703952, 0, 0, 1703953, 1, 0, 1703954, 1, 0, 1703955, 1, 0, 1703956, 1, 0, 1703957, 1, 0, 1703958, 1, 0, 1703959, 1, 0, 1703960, 1, 0, 1703961, 2, 0 )
 _sections_unfolded = [ "Cell" ]
 __meta__ = {
 "_edit_lock_": true
@@ -48,14 +50,13 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 scroll_offset = Vector2( 0, 0 )
 scroll_base_offset = Vector2( 0, 0 )
 scroll_base_scale = Vector2( 1, 1 )
-scroll_limit_begin = Vector2( 0, -160 )
-scroll_limit_end = Vector2( 0, 490 )
+scroll_limit_begin = Vector2( 0, 210 )
+scroll_limit_end = Vector2( 0, 500 )
 scroll_ignore_camera_zoom = false
 _sections_unfolded = [ "Scroll" ]
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 
-editor/display_folded = true
 motion_scale = Vector2( 0.2, 1 )
 motion_offset = Vector2( 0, 0 )
 motion_mirroring = Vector2( 0, 0 )
@@ -63,8 +64,8 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4" index="0"]
 
-position = Vector2( 267.235, 173.809 )
-scale = Vector2( 1.4614, 4.17499 )
+position = Vector2( 267.235, 356.551 )
+scale = Vector2( 1.4614, 1.89071 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
@@ -73,7 +74,6 @@ _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
 
-editor/display_folded = true
 motion_scale = Vector2( 0.3, 1 )
 motion_offset = Vector2( 0, 0 )
 motion_mirroring = Vector2( 0, 0 )
@@ -81,8 +81,8 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3" index="0"]
 
-position = Vector2( 267.235, 173.809 )
-scale = Vector2( 1.4614, 4.17499 )
+position = Vector2( 267.235, 357.912 )
+scale = Vector2( 1.4614, 1.87371 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
@@ -91,7 +91,6 @@ _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
 
-editor/display_folded = true
 motion_scale = Vector2( 0.4, 1 )
 motion_offset = Vector2( 0, 0 )
 motion_mirroring = Vector2( 0, 0 )
@@ -99,8 +98,8 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 
-position = Vector2( 267.235, 173.809 )
-scale = Vector2( 1.4614, 4.17499 )
+position = Vector2( 267.235, 356.551 )
+scale = Vector2( 1.4614, 1.89071 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
@@ -109,7 +108,6 @@ _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
 
-editor/display_folded = true
 motion_scale = Vector2( 0.5, 1 )
 motion_offset = Vector2( 0, 0 )
 motion_mirroring = Vector2( 0, 0 )
@@ -117,12 +115,23 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
-position = Vector2( 267.235, 173.809 )
-scale = Vector2( 1.4614, 4.17499 )
+position = Vector2( 267.235, 355.871 )
+scale = Vector2( 1.4614, 1.89921 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="EnemiesGoHere" type="Node" parent="." index="3"]
+
+[node name="enemy2" parent="EnemiesGoHere" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( 113.105, 349.784 )
+
+[node name="VerticallyMovingPlatform" parent="." index="4" instance=ExtResource( 9 )]
+
+position = Vector2( 370.222, 356.415 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 
