@@ -18,14 +18,20 @@ var health
 
 var damage = 1
 
+var max_depth = null
 
 func _ready():
 	for upgrade in upgrades:
 		if upgrade:
 			max_health += 10
 	health = max_health
+	if get_tree().get_current_scene().get("max_depth"):
+		max_depth = get_tree().get_current_scene().get("max_depth")
+
 
 func _physics_process(delta):
+	if max_depth and position.y > max_depth:
+		get_tree().reload_current_scene()
 
 	var friction = false
 	

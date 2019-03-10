@@ -26,7 +26,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 64 )
 
-[node name="City" type="Node" index="0"]
+[node name="City" type="Node"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -451,7 +451,7 @@ scale = Vector2( 1, 1 )
 
 [node name="Sprite" parent="Player/KinematicBody2D" index="0"]
 
-frame = 3
+frame = 1
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
