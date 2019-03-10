@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/buttons/flatDark36.png" type="Texture" id=7]
 [ext_resource path="res://ui/buttons/shadedDark37.png" type="Texture" id=8]
 
-[node name="Interface" type="CanvasLayer"]
+[node name="Interface" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -32,7 +32,7 @@ size_flags_vertical = 1
 
 [node name="Left" type="TouchScreenButton" parent="Control" index="0"]
 
-position = Vector2( 0, 160 )
+position = Vector2( 0, 265.927 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 2 )
@@ -47,7 +47,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Right" type="TouchScreenButton" parent="Control" index="1"]
 
-position = Vector2( 64, 160 )
+position = Vector2( 44.0985, 264.643 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 3 )
 pressed = ExtResource( 4 )
@@ -62,7 +62,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="A" type="TouchScreenButton" parent="Control" index="2"]
 
-position = Vector2( 256, 160 )
+position = Vector2( 462.094, 265.263 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
@@ -77,7 +77,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="B" type="TouchScreenButton" parent="Control" index="3"]
 
-position = Vector2( 320, 160 )
+position = Vector2( 503.933, 265.263 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
