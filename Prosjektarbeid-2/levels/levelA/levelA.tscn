@@ -1,0 +1,137 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/common/assets/warped_city/warped_city_platform_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-back-trees.png" type="Texture" id=3]
+[ext_resource path="res://levels/levelA/Sprite.gd" type="Script" id=4]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-middle-trees.png" type="Texture" id=5]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-lights.png" type="Texture" id=6]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-front-trees.png" type="Texture" id=7]
+[ext_resource path="res://entities/enemies/enemy2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/levelA/VerticallyMovingPlatform.tscn" type="PackedScene" id=9]
+
+[node name="Node" type="Node" index="0"]
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+position = Vector2( -132, 0 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 1572875, 0, 0, 1572876, 1, 0, 1572877, 1, 0, 1572878, 1, 0, 1572879, 1, 0, 1572880, 1, 0, 1572881, 1, 0, 1572882, 2, 0, 1703952, 0, 0, 1703953, 1, 0, 1703954, 1, 0, 1703955, 1, 0, 1703956, 1, 0, 1703957, 1, 0, 1703958, 1, 0, 1703959, 1, 0, 1703960, 1, 0, 1703961, 2, 0 )
+_sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2"]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 210 )
+scroll_limit_end = Vector2( 0, 500 )
+scroll_ignore_camera_zoom = false
+_sections_unfolded = [ "Scroll" ]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+motion_scale = Vector2( 0.2, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4" index="0"]
+
+position = Vector2( 267.235, 356.551 )
+scale = Vector2( 1.4614, 1.89071 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 7680, 160 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+
+motion_scale = Vector2( 0.3, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3" index="0"]
+
+position = Vector2( 267.235, 357.912 )
+scale = Vector2( 1.4614, 1.87371 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 7680, 160 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
+
+motion_scale = Vector2( 0.4, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+
+position = Vector2( 267.235, 356.551 )
+scale = Vector2( 1.4614, 1.89071 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 7680, 160 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
+
+motion_scale = Vector2( 0.5, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+position = Vector2( 267.235, 355.871 )
+scale = Vector2( 1.4614, 1.89921 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 7680, 160 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="EnemiesGoHere" type="Node" parent="." index="3"]
+
+[node name="enemy2" parent="EnemiesGoHere" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( 113.105, 349.784 )
+
+[node name="VerticallyMovingPlatform" parent="." index="4" instance=ExtResource( 9 )]
+
+position = Vector2( 370.222, 356.415 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+
