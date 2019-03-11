@@ -1,0 +1,117 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/dialogBox/DialogBox.gd" type="Script" id=1]
+
+[node name="Polygon2D" type="Polygon2D"]
+
+position = Vector2( -137.698, -288.666 )
+polygon = PoolVector2Array( 139.62, 292.322, 139.62, 466.28, 578.216, 466.28, 578.216, 292.322 )
+uv = PoolVector2Array(  )
+color = Color( 0.5, 0.482422, 0.482422, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Pause", "Transform", "Z Index" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 149.0
+margin_top = 302.0
+margin_right = 571.0
+margin_bottom = 459.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "BBCode", "Margin", "Pause", "Rect" ]
+
+[node name="Timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = false
+autostart = true
+
+[node name="ButtonYes" type="Button" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 499.0
+margin_top = 438.0
+margin_right = 533.0
+margin_bottom = 458.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Yes"
+flat = false
+align = 1
+
+[node name="ButtonNo" type="Button" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 540.0
+margin_top = 438.0
+margin_right = 570.0
+margin_bottom = 458.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "No"
+flat = false
+align = 1
+
+[connection signal="timeout" from="Timer" to="RichTextLabel" method="_on_Timer_timeout"]
+
+[connection signal="button_up" from="ButtonYes" to="RichTextLabel" method="_on_ButtonYes_button_up"]
+
+[connection signal="pressed" from="ButtonYes" to="RichTextLabel" method="_on_ButtonYes_pressed"]
+
+[connection signal="pressed" from="ButtonNo" to="RichTextLabel" method="_on_ButtonNo_pressed"]
+
+

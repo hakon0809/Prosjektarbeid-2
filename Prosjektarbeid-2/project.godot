@@ -11,8 +11,30 @@ config_version=3
 [application]
 
 config/name="Prosjektarbeid-2"
+run/main_scene="res://levels/test_levels/BasicLevel.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+
+window/size/width=544
+window/size/height=306
+window/dpi/allow_hidpi=true
+
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "gut" )
+
+[input]
+
+ui_attack=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.14902, 0.192157, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"
