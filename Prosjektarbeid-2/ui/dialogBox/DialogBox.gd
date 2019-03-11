@@ -3,6 +3,7 @@ extends RichTextLabel
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+#const DIALOG_CLASS = preload("res://ui/dialogBox/RichTextLabel.gd")
 
 var dialog = ["Vil dette spillet bli helt awesome med disse dialogboksene?", 
 "Lorem ipsum lusum Lorem ipsum lusum Lorem ipsum lusum?", 
@@ -31,13 +32,25 @@ func _input(event):
 func _on_Timer_timeout():
 	set_visible_characters(get_visible_characters()+1)
 
-func _on_Button_pressed():
+#func _on_Button_pressed():
 	#her kommer funksjonalitetet knyttet til brukervalg og dialogene
 	#registeres i f.eks et array de ulike valgene som er indeksert
-	pass # replace with function body
+#	pass # replace with function body
 
 
-func _on_Button2_pressed():
+#func _on_Button2_pressed():
 	#her kommer funksjonalitetet knyttet til brukervalg og dialogene
 	#registeres i f.eks et array de ulike valgene som er indeksert
-	pass # replace with function body
+#	pass # replace with function body
+
+
+func _on_ButtonYes_pressed():
+	print("knapp1")
+
+
+func _on_ButtonNo_pressed():
+	print("knapp2")
+
+
+func _on_ButtonYes_button_up():
+	print("button_up")
