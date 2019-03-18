@@ -13,17 +13,9 @@ var current_state = null
 var previous_state = null
 
 export var max_health = 10
-var upgrades = [false, false, false]
 var health
 
 var damage = 1
-
-
-func _ready():
-	for upgrade in upgrades:
-		if upgrade:
-			max_health += 10
-	health = max_health
 
 func _physics_process(delta):
 

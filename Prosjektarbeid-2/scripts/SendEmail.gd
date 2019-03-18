@@ -1,5 +1,17 @@
 extends Node
 
 func send_mail(results):
-	#TODO fix format -> 1st/2nd/3rd choice, changing settings, ballon game
-	OS.shell_open("mailto:daretoshare.results@gmail.com?subject=Results&body="+results)
+	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="
+	var globals = get_tree().get_root().globals
+	var activities = globals.get_all_activities()
+	for activity in activities:
+		for level in activity:
+			mailstring += format_data(level)+"%0A"
+	var data = globals
+	OS.shell_open(+results)
+	
+func format_data(level):
+	var datastring = ""
+	for data in level:
+		datastring += data+" "
+	return datastring

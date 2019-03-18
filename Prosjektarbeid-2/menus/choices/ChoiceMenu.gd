@@ -5,14 +5,17 @@ onready var PrivacyInfo = preload("res://menus/choices/PrivacyInfo.tscn")
 onready var PrivacySetting = preload("res://menus/choices/PrivacySettings.tscn")
 onready var EndLevelSettings = preload("res://menus/choices/EndLevelSettings.tscn")
 var level
-var active_options = [false, false, false]
+var active_options
 var scale = Vector2(0, 0)
 var opening = true
 var end_level
 var parent
+var globals
 
 func _ready():
 	self.rect_scale = Vector2(0, 0)
+	globals = get_tree().get_root().globals
+	active_options = globals.get_all_upgrades()
 	
 func _process(delta):
 	if opening:
@@ -37,7 +40,7 @@ func open_choice_menu(parent):
 	choice.parent = self
 	add_child(choice)
 	
-func open_settings_menu(parent, active):
+func open_settings_menu(parent):
 	self.parent = parent
 	end_level = true
 	active_options = active
@@ -53,17 +56,25 @@ func change_setting():
 	info.parent = self
 	add_child(info)
 		
-func show_setting(active, level):
+func show_setting(active, option):
 	var setting = PrivacySetting.instance()
+	setting.option = option
 	setting.level = level
 	setting.parent = self
 	setting.active = active
 	add_child(setting)
 	
 func save_setting(option, active):
-	active_options[option-1] = active
+	active_options[option] = active
 	parent.save_choice(active)
+	globals.set_upgrade(option, active)
 	if end_level:
-		open_settings_menu(parent, active_options)
+		open_settings_menu(parent)
 	else:
 		opening = false
+
+func save_activity(level, string):
+	if end_level:
+		globals.set_activity(1, level-1, string)
+	else:
+		globals.set_activity(0, level-1, string)

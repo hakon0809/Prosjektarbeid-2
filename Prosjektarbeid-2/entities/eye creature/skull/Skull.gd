@@ -12,7 +12,6 @@ onready var ChoiceMenu = preload("res://menus/choices/ChoiceMenu.tscn")
 var encountered = false
 var interface
 
-
 func _ready():
 	$PopupDialog/PopupDialog/RichTextLabel.set_text(text[index])
 	interface = get_tree().get_root().get_node("Node/Player/Interface/Control")
@@ -66,13 +65,10 @@ func open_choice_menu():
 func save_choice(active):
 	$PopupDialog/PopupDialog/NextButton.hide()
 	$PopupDialog/PopupDialog/BackButton.hide()
-	var upgrade = get_tree().get_root().get_node("Node/Player/KinematicBody2D").upgrades[level-1]
 	if active:
-		upgrade = true
 		$PopupDialog/PopupDialog/RichTextLabel.set_text("Good job, go get em")
 	else:
 		$PopupDialog/PopupDialog/RichTextLabel.set_text("Wrong choice kiddo")
-		upgrade = false
 	$PopupDialog/PopupDialog.popup_centered_ratio(0.5)
 	interface.show()
 	
