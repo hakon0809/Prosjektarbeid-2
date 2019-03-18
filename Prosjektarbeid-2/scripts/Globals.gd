@@ -27,10 +27,6 @@ func get_all_upgrades():
 	
 func set_activity(activity, level, string):
 	activities[activity][level-1].append(string)
-	for activity in activities:
-		for data in activity:
-			for string in data:
-				print(string)
 	
 func get_all_activities():
 	return activities
