@@ -8,7 +8,7 @@ func send_mail(results):
 		for level in activity:
 			mailstring += format_data(level)+"%0A"
 	var data = globals
-	OS.shell_open(+results)
+	OS.shell_open(mailstring)
 	
 func format_data(level):
 	var datastring = ""
