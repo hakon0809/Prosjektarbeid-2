@@ -30,14 +30,14 @@ func _process(delta):
 			
 		
 		
-func choice(parent):
+func open_choice_menu(parent):
 	self.parent = parent
 	var choice = PrivacyChoice.instance()
 	choice.level = level
 	choice.parent = self
 	add_child(choice)
 	
-func settings_menu(parent, active):
+func open_settings_menu(parent, active):
 	self.parent = parent
 	end_level = true
 	active_options = active
@@ -64,6 +64,6 @@ func save_setting(option, active):
 	active_options[option-1] = active
 	parent.save_choice(active)
 	if end_level:
-		settings_menu(parent, active_options)
+		open_settings_menu(parent, active_options)
 	else:
 		opening = false
