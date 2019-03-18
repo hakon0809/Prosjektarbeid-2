@@ -16,8 +16,6 @@ var settings_activity_3 = []
 var settings_activities = [settings_activity_1, settings_activity_2, settings_activity_3]
 var activities = [upgrade_activities, settings_activities]
 
-const email_script = preload("res://scripts/SendEmail.gd")
-
 func set_upgrade(upgrade, value):
 	upgrades[upgrade] = value
 	
@@ -28,7 +26,17 @@ func get_all_upgrades():
 	return upgrades
 	
 func set_activity(activity, level, string):
-	activities[activity][level-1].append(string)
+	activities[activity][level].append(string)
 	
 func send_email():
-	email_script.send_email(activities)
+	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="
+	for activity in activities:
+		for level in activity:
+			mailstring += format_data(level)+"%0A"
+	OS.shell_open(mailstring)
+	
+func format_data(level):
+	var datastring = "| "
+	for data in level:
+		datastring += data+" | "
+	return datastring
