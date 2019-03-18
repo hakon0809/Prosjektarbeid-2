@@ -55,12 +55,12 @@ func open_choice_menu():
 	interface.hide()
 	var c = ChoiceMenu.instance()
 	var node = get_tree().get_root()
-	var cv = CanvasLayer.new()
-	node.add_child(cv)
-	cv.add_child(c)
+	var cl = CanvasLayer.new()
+	node.add_child(cl)
+	cl.add_child(c)
 	c.level = level
 	c.end_level = false
-	var choice = c.choice(self)
+	c.open_choice_menu(self)
 	
 
 func save_choice(active):

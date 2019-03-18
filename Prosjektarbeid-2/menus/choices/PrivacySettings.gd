@@ -13,10 +13,8 @@ var settings_menu = false
 func _ready():
 	popup.hide()
 	setting.set_text(content.SETTING[level-1])
-	if active:
-		button.pressed = true
-	else:
-		button.pressed = false
+	button.pressed = active
+
 
 func _on_SaveButton_pressed():
 	if active:
