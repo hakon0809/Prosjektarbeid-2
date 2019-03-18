@@ -16,6 +16,8 @@ var settings_activity_3 = []
 var settings_activities = [settings_activity_1, settings_activity_2, settings_activity_3]
 var activities = [upgrade_activities, settings_activities]
 
+const email_script = preload("res://scripts/SendEmail.gd")
+
 func set_upgrade(upgrade, value):
 	upgrades[upgrade] = value
 	
@@ -28,6 +30,5 @@ func get_all_upgrades():
 func set_activity(activity, level, string):
 	activities[activity][level-1].append(string)
 	
-func get_all_activities():
-	return activities
-	
+func send_email():
+	email_script.send_email(activities)

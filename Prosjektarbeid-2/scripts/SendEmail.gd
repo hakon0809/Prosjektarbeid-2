@@ -1,9 +1,7 @@
 extends Node
 
-func send_mail(results):
+func send_email(activities):
 	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="
-	var globals = get_tree().get_root().globals
-	var activities = globals.get_all_activities()
 	for activity in activities:
 		for level in activity:
 			mailstring += format_data(level)+"%0A"
