@@ -17,6 +17,9 @@ var health
 
 var damage = 1
 
+func _ready():
+	health = max_health
+
 func _physics_process(delta):
 
 	var friction = false

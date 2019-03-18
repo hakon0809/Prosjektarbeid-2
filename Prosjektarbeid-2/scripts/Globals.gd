@@ -3,7 +3,7 @@ extends Node
 var upgrade_1 = false
 var upgrade_2 = false
 var upgrade_3 = false
-var secret_ugrade = false
+var secret_upgrade = false
 var upgrades = [secret_upgrade, upgrade_1, upgrade_2, upgrade_3]
 
 var upgrade_activity_1 = []
@@ -27,6 +27,11 @@ func get_all_upgrades():
 	
 func set_activity(activity, level, string):
 	activities[activity][level-1].append(string)
+	for activity in activities:
+		for data in activity:
+			for string in data:
+				print(string)
 	
 func get_all_activities():
 	return activities
+	

@@ -14,7 +14,7 @@ var globals
 
 func _ready():
 	self.rect_scale = Vector2(0, 0)
-	globals = get_tree().get_root().globals
+	globals = get_tree().get_root().get_node("Globals")
 	active_options = globals.get_all_upgrades()
 	
 func _process(delta):
@@ -43,7 +43,6 @@ func open_choice_menu(parent):
 func open_settings_menu(parent):
 	self.parent = parent
 	end_level = true
-	active_options = active
 	var settings = EndLevelSettings.instance()
 	settings.level = level
 	settings.parent = self
