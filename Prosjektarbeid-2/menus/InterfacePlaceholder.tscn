@@ -67,9 +67,9 @@ _sections_unfolded = [ "Rect", "Size Flags", "Textures" ]
 
 [connection signal="pressed" from="MarginContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 
-[connection signal="pressed" from="PauseMenu/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 
-[connection signal="pressed" from="PauseMenu/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 
 
 [editable path="PauseMenu"]
