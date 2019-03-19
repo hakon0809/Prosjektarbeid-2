@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="PauseMenu" type="MarginContainer"]
+[node name="PauseMenu" type="MarginContainer" index="0"]
 
 anchor_left = 0.5
 anchor_top = 0.0
@@ -14,10 +14,10 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
 _sections_unfolded = [ "custom_constants" ]
 
 [node name="PanelContainer" type="PanelContainer" parent="." index="0"]
