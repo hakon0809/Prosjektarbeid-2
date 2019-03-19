@@ -56,7 +56,7 @@ collision/safe_margin = 0.08
 
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
@@ -81,17 +81,11 @@ shape = SubResource( 3 )
 
 [node name="PopupDialog" parent="." index="2" instance=ExtResource( 18 )]
 
-[node name="PopupDialog" parent="PopupDialog" index="0"]
-
-visible = false
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 
-[connection signal="pressed" from="PopupDialog/PopupDialog/NextButton" to="." method="_on_NextButton_pressed"]
-
-[connection signal="pressed" from="PopupDialog/PopupDialog/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 
 [editable path="PopupDialog"]
