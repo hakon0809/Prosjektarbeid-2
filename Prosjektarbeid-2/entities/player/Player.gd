@@ -7,6 +7,9 @@ const MAX_SPEED = 200
 const JUMP_HEIGHT = -500
 var motion = Vector2()
 
+signal health_changed
+signal died
+
 
 enum STATES { IDLE, ATTACK, STAGGER, DIE, DEAD}
 var current_state = null
@@ -19,6 +22,7 @@ var damage = 1
 
 func _ready():
 	health = max_health
+	emit_signal("health_changed", health)
 
 func _physics_process(delta):
 
@@ -128,8 +132,10 @@ func _physics_process(delta):
 func take_damage(count):
 
 	health -= count
+	emit_signal("health_changed", health)
 	if health <= 0:
 		health = 0
+		emit_signal("health_changed", health)
 	##	_change_state(DEAD)
 #		emit_signal("died")
 		print("Character died")
