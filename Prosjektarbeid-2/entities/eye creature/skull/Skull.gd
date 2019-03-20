@@ -7,7 +7,7 @@ export var text = [
 	]
 var index = 0
 
-var level
+export var level = 0
 onready var ChoiceMenu = preload("res://menus/choices/ChoiceMenu.tscn")
 var encountered = false
 var interface

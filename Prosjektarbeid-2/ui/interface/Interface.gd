@@ -1,14 +1,14 @@
 extends CanvasLayer
 
-onready var number = $Control/HBoxContainer/MarginContainer/Background/Number
-onready var bar = $Control/HBoxContainer/TextureProgress
+onready var number = $Control/HUD/HPContainer/Background/MarginContainer/HBoxContainer/Number
+onready var bar = $Control/HUD/HPContainer/TextureProgress
 
-onready var pause_menu = $PauseMenu
+onready var pause_menu = $Control/PauseMenu
 var paused
 
 
 func _ready():
-	var player_max_health = $"../KinematicBody2D".max_health
+	var player_max_health = get_tree().get_root().get_node("Node/Player/KinematicBody2D").max_health
 	bar.max_value = player_max_health
 	pause_menu.hide()
 	paused = false
