@@ -6,33 +6,14 @@ onready var PrivacySetting = preload("res://menus/choices/PrivacySettings.tscn")
 onready var EndLevelSettings = preload("res://menus/choices/EndLevelSettings.tscn")
 var level
 var active_options
-var scale = Vector2(0, 0)
-var opening = true
 var end_level
 var parent
 var globals
 
 func _ready():
-	self.rect_scale = Vector2(0, 0)
 	globals = get_tree().get_root().get_node("Globals")
-	active_options = globals.get_all_upgrades()
+	active_options = globals.get_all_upgrades()	
 	
-func _process(delta):
-	if opening:
-		if scale.x < 1:
-			scale.x += 0.05
-			scale.y += 0.05
-			self.rect_scale = scale
-	else:
-		if scale.x > 0:
-			scale.x -= 0.05
-			scale.y -= 0.05
-			self.rect_scale = scale
-		else:
-			self.queue_free()
-			
-		
-		
 func open_choice_menu(parent):
 	self.parent = parent
 	var choice = PrivacyChoice.instance()
@@ -70,7 +51,7 @@ func save_setting(option, active):
 	if end_level:
 		open_settings_menu(parent)
 	else:
-		opening = false
+		self.queue_free()
 
 func save_activity(level, string):
 	if end_level:
