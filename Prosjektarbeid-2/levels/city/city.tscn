@@ -248,6 +248,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="Platforms" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
+position = Vector2( 0.495605, -1.79207 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -441,17 +442,13 @@ visible = false
 [node name="Player" parent="." index="3" instance=ExtResource( 19 )]
 
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
-position = Vector2( -485.092, 170.663 )
+position = Vector2( -484.156, 152.579 )
 scale = Vector2( 0.8, 0.8 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="KinematicBody2D" parent="Player" index="1"]
 
 scale = Vector2( 1, 1 )
-
-[node name="Sprite" parent="Player/KinematicBody2D" index="0"]
-
-frame = 0
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
