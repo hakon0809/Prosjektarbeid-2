@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/buttons/flatDark36.png" type="Texture" id=7]
 [ext_resource path="res://ui/buttons/shadedDark37.png" type="Texture" id=8]
 
-[node name="Interface" type="CanvasLayer" index="0"]
+[node name="Interface" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -32,7 +32,8 @@ size_flags_vertical = 1
 
 [node name="Left" type="TouchScreenButton" parent="Control" index="0"]
 
-position = Vector2( 0, 512 )
+position = Vector2( 0, 160 )
+scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 2 )
 bitmask = null
@@ -42,10 +43,12 @@ shape_visible = true
 passby_press = false
 action = "ui_left"
 visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
 
 [node name="Right" type="TouchScreenButton" parent="Control" index="1"]
 
-position = Vector2( 96, 512 )
+position = Vector2( 64, 160 )
+scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 3 )
 pressed = ExtResource( 4 )
 bitmask = null
@@ -55,10 +58,12 @@ shape_visible = true
 passby_press = false
 action = "ui_right"
 visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
 
 [node name="A" type="TouchScreenButton" parent="Control" index="2"]
 
-position = Vector2( 832, 512 )
+position = Vector2( 256, 160 )
+scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
 bitmask = null
@@ -68,10 +73,12 @@ shape_visible = true
 passby_press = false
 action = "ui_up"
 visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
 
 [node name="B" type="TouchScreenButton" parent="Control" index="3"]
 
-position = Vector2( 928, 512 )
+position = Vector2( 320, 160 )
+scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
 bitmask = null
@@ -81,5 +88,6 @@ shape_visible = true
 passby_press = false
 action = ""
 visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
 
 
