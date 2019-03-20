@@ -43,6 +43,7 @@ extents = Vector2( 16.1395, 13.3293 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 text = [ "Welcome to my first world, kiddo.", "Here you will have to make a choice.", "Do you want this piece of armor, or take your chances?" ]
+level = 0
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 
@@ -56,7 +57,7 @@ collision/safe_margin = 0.08
 
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 5
+frame = 12
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]

@@ -23,6 +23,7 @@ Globals="*res://scripts/Globals.gd"
 window/size/width=544
 window/size/height=306
 window/dpi/allow_hidpi=true
+window/handheld/emulate_touchscreen=true
 window/stretch/mode="viewport"
 
 [editor_plugins]
