@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://menus/InterfacePlaceholder.gd" type="Script" id=1]
-[ext_resource path="res://ui/Menu/icons8-pause-squared-36.png" type="Texture" id=2]
-[ext_resource path="res://ui/Menu/icons8-pause-button-36.png" type="Texture" id=3]
-[ext_resource path="res://ui/Menu/icons8-pause-squared-filled-36.png" type="Texture" id=4]
-[ext_resource path="res://menus/PauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/Menu/icons8-pause-squared-filled-36.png" type="Texture" id=2]
+[ext_resource path="res://menus/PauseMenu.tscn" type="PackedScene" id=3]
 
 [node name="Interface" type="CanvasLayer" index="0"]
 
@@ -57,13 +55,13 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
-texture_disabled = ExtResource( 3 )
-texture_focused = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 2 )
+texture_focused = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "Size Flags", "Textures" ]
 
-[node name="PauseMenu" parent="." index="1" instance=ExtResource( 5 )]
+[node name="PauseMenu" parent="." index="1" instance=ExtResource( 3 )]
 
 [connection signal="pressed" from="MarginContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 
