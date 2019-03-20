@@ -248,6 +248,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="Platforms" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
+position = Vector2( 0.495605, -1.79207 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -441,17 +442,13 @@ visible = false
 [node name="Player" parent="." index="3" instance=ExtResource( 19 )]
 
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
-position = Vector2( -560, 112 )
+position = Vector2( -484.156, 152.579 )
 scale = Vector2( 0.8, 0.8 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="KinematicBody2D" parent="Player" index="1"]
 
 scale = Vector2( 1, 1 )
-
-[node name="Sprite" parent="Player/KinematicBody2D" index="0"]
-
-frame = 3
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
@@ -461,34 +458,13 @@ visible = false
 
 visible = false
 
-[node name="Camera2D" type="Camera2D" parent="Player/KinematicBody2D" index="3"]
+[node name="Camera2D" parent="Player/KinematicBody2D" index="3"]
 
-position = Vector2( 0, 2.04341 )
-scale = Vector2( 1, 0.936143 )
-offset = Vector2( 75, -40 )
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -630
-limit_top = -10000000
-limit_right = 1568
-limit_bottom = 10000000
-limit_smoothed = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.36
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Drag Margin", "Limit" ]
+limit_left = -560
+limit_top = -135
+limit_right = 1536
+limit_bottom = 270
+_sections_unfolded = [ "Limit" ]
 
 [node name="Area2D" type="Area2D" parent="." index="4"]
 
