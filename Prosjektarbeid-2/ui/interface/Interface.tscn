@@ -26,7 +26,7 @@ extra_spacing_bottom = 2
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Interface" type="CanvasLayer"]
+[node name="Interface" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -225,7 +225,6 @@ _sections_unfolded = [ "Radial Fill", "Rect", "Size Flags", "Textures" ]
 
 [node name="ActionContainer" type="HBoxContainer" parent="Control/HUD" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -267,7 +266,7 @@ bitmask = null
 shape = null
 shape_centered = true
 shape_visible = true
-passby_press = false
+passby_press = true
 action = "ui_left"
 visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
@@ -300,7 +299,7 @@ bitmask = null
 shape = null
 shape_centered = true
 shape_visible = true
-passby_press = false
+passby_press = true
 action = "ui_right"
 visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
@@ -333,8 +332,8 @@ bitmask = null
 shape = null
 shape_centered = true
 shape_visible = true
-passby_press = false
-action = ""
+passby_press = true
+action = "ui_attack"
 visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
 
@@ -365,7 +364,7 @@ bitmask = null
 shape = null
 shape_centered = true
 shape_visible = true
-passby_press = false
+passby_press = true
 action = "ui_up"
 visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
