@@ -8,6 +8,10 @@ const JUMP_HEIGHT = -500
 var motion = Vector2()
 var friction = false
 
+var sword_sound = load("res://entities/player/sounds/sword-gesture1.ogg")
+var jump_sound = load("res://entities/player/sounds/jump.wav")
+onready var sound_player = $"../AudioStreamPlayer"
+
 
 #Different possible states, have not implemented STAGGER
 enum STATES { IDLE, RUNLEFT, RUNRIGHT, JUMP, ATTACK, HURT, DIE, STAGGER}
@@ -31,6 +35,10 @@ func _ready():
 	health = max_health
 	current_state = JUMP
 	emit_signal("health_changed", health)
+	
+func play_sound(sound):
+	sound_player.stream = sound
+	sound_player.play()
 
 #returns true if state change is possible 
 func is_change_state_possible():
@@ -80,6 +88,7 @@ func _change_state(new_state):
 		
 		JUMP:
 			if is_on_floor():
+				play_sound(jump_sound)
 				if Input.is_action_just_pressed("ui_up"):
 						motion.y = JUMP_HEIGHT
 				if friction == true:
@@ -106,6 +115,7 @@ func _change_state(new_state):
 		ATTACK:
 			attack_is_over = false
 			$Sprite.play("Melee2")
+			play_sound(sword_sound)
 			if $Sprite.get_frame() == 3:
 				var bodies = $Area2D.get_overlapping_bodies()
 				##print(bodies)
