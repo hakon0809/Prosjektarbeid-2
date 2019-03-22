@@ -5,17 +5,20 @@
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/common/assets/warped_city/warped_city_platform_tiles.tres" type="TileSet" id=4]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="Skull" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 144, 288 )
+level = 1
 
 [node name="enemy" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 112.462, 298.331 )
 
 [node name="Player" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 390, 250 )
 
 [node name="TileMap" type="TileMap" parent="." index="3"]
 

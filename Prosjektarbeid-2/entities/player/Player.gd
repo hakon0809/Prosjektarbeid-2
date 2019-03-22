@@ -8,8 +8,13 @@ const JUMP_HEIGHT = -500
 var motion = Vector2()
 var friction = false
 
+
 #Different possible states, have not implemented STAGGER
 enum STATES { IDLE, RUNLEFT, RUNRIGHT, JUMP, ATTACK, HURT, DIE, STAGGER}
+
+signal health_changed
+signal died
+
 var current_state = null
 var previous_state = null
 var next_state = null
@@ -24,7 +29,8 @@ var damage = 1
 
 func _ready():
 	health = max_health
-	current_state = IDLE
+	current_state = JUMP
+	emit_signal("health_changed", health)
 
 #returns true if state change is possible 
 func is_change_state_possible():
@@ -156,8 +162,11 @@ func _physics_process(delta):
 func take_damage(count):
 
 	health -= count
+	emit_signal("health_changed", health)
 	if health <= 0:
 		health = 0
+
+		emit_signal("health_changed", health)
 		print("Character died")
 		return
 
