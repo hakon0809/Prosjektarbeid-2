@@ -162,8 +162,8 @@ max_health = 10
 
 scale = Vector2( 1.2, 1.35135 )
 frames = SubResource( 1 )
-animation = "Idle"
-playing = true
+animation = "Melee2"
+frame = 5
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
@@ -189,7 +189,7 @@ position = Vector2( 0.515869, 0 )
 scale = Vector2( 0.630141, 0.923552 )
 build_mode = 0
 polygon = PoolVector2Array( 8.78229, -15.5696, 11.3495, 7.70134, 9.14905, 18.7113, -13.5887, 20.7131, -15.7891, 27.2189, 10.9827, 27.7194, 31.9368, 27.948, 40.3217, 19.7121, 39.5882, 4.69863, 35.9209, -6.31129, 28.9528, -13.3176 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D" index="3"]
 
