@@ -1,19 +1,27 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var rounds = 5
+var max_pumps = 10
+var score = 0
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
+	randomize()
+	new_round()
+	
+func new_round():
+	max_pumps = 10
+	score = 0
+	
 func _on_PumpButton_pressed():
-	pass
+	if max_pumps == explode(max_pumps):
+		rounds -= 1
+		new_round()
+	else:
+		score += 1
+		max_pumps -= 1
 
 func _on_CollectButton_pressed():
-	pass
+	new_round()
 	
 func explode(number):
 	return randi()%number+1
