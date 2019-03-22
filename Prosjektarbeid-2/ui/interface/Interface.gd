@@ -10,6 +10,10 @@ var paused
 func _ready():
 	var player_max_health = get_parent().get_node("KinematicBody2D").max_health
 	bar.max_value = player_max_health
+	if player_max_health > 10:
+		bar.texture_under = preload("res://ui/interface/lifebar_bg_upgrade_half.png")
+		bar.texture_over = preload("res://ui/interface/lifebar_fill_upgrade_half.png")
+
 	pause_menu.hide()
 	paused = false
 
