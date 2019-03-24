@@ -31,8 +31,13 @@ var health
 
 var damage = 1
 
+var max_depth = null
+
 func _ready():
+	set_max_health()
 	health = max_health
+	if get_tree().get_current_scene().get("max_depth"):
+		max_depth = get_tree().get_current_scene().get("max_depth")
 	current_state = JUMP
 	emit_signal("health_changed", health)
 	
@@ -49,9 +54,8 @@ func is_change_state_possible():
 			return false
 		elif attack_is_over == false:
 			return false
-			
 		#Air attack doesnt work as intended yet TODO
-		elif not is_on_floor() && next_state == ATTACK:
+		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
 			
 		elif not is_on_floor():
@@ -66,6 +70,7 @@ func _change_state(new_state):
 	
 	if is_change_state_possible():
 		current_state = new_state
+
 	
 	match current_state:
 		IDLE:
@@ -94,16 +99,19 @@ func _change_state(new_state):
 				if friction == true:
 					motion.x = lerp(motion.x, 0, 0.2)
 			else:
-				if Input.is_action_just_pressed("ui_attack"):
-					_change_state(ATTACK)
-				elif Input.is_action_pressed("ui_left"):
+				if Input.is_action_pressed("ui_left"):
 					motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 					$Sprite.flip_h = true
 					$Area2D.set_scale(Vector2(-1, 1))
+					
 				elif Input.is_action_pressed("ui_right"):
 					motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 					$Sprite.flip_h = false
 					$Area2D.set_scale(Vector2(1, 1))
+					
+				elif Input.is_action_just_pressed("ui_attack"):
+					_change_state(ATTACK)
+					
 				if motion.y < 0:
 					$Sprite.play("Jump")
 				elif motion.y > 0:
@@ -125,6 +133,8 @@ func _change_state(new_state):
 						body.take_damage(damage)
 			if $Sprite.get_frame() == 5:
 				attack_is_over = true
+				if not is_on_floor():
+					_change_state(JUMP)
 #			
 
 		HURT:
@@ -135,20 +145,24 @@ func _change_state(new_state):
 		DIE:
 			$Sprite.play("Death")
 			if $Sprite.get_frame() == 6:
-				get_tree().reload_current_scene()
+				restart_level()
 
 func _physics_process(delta):
-	
 	motion.y += GRAVITY
 
-
-	if health < 1:
+	if max_depth and position.y > max_depth:
+		restart_level()
+		
+	elif health < 1:
 		_change_state(DIE)
 
+	elif Input.is_action_pressed("ui_up"):
+		_change_state(JUMP)
+		
 	elif Input.is_action_just_pressed("ui_attack"):
 		_change_state(ATTACK)
 
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_just_pressed("ui_up"):
 		_change_state(JUMP)
 
 	elif Input.is_action_pressed("ui_right"):
@@ -166,6 +180,8 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, UP)
 
 
+func restart_level():
+	get_tree().reload_current_scene()
 	
 	
 #helper func so that the player can take damage
@@ -179,4 +195,15 @@ func take_damage(count):
 		emit_signal("health_changed", health)
 		print("Character died")
 		return
+		
+func upgrade_changed(upgrade):
+	if upgrade == 1:
+		set_max_health()
+
+func set_max_health():
+	if get_tree().get_root().get_node("Globals").get_upgrade(1):
+		max_health = 15
+	else:
+		max_health = 10
+	get_parent().get_node("Interface").set_health_bar(max_health)
 

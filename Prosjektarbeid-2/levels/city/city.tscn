@@ -23,7 +23,7 @@
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=21]
 [ext_resource path="res://levels/city/Area2D.gd" type="Script" id=22]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Node2D
 
@@ -51,7 +51,7 @@ func _on_Area2D_body_exited(body):
 	pass # replace with function body
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 64 )
@@ -474,16 +474,14 @@ visible = false
 
 [node name="Player" parent="." index="3" instance=ExtResource( 21 )]
 
-editor/display_folded = true
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
 position = Vector2( -480.898, 169.684 )
-scale = Vector2( 0.8, 0.8 )
-script = SubResource( 2 )
+script = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="KinematicBody2D" parent="Player" index="1"]
 
-scale = Vector2( 1, 1 )
+scale = Vector2( 0.8, 0.8 )
 
 [node name="Sprite" parent="Player/KinematicBody2D" index="0"]
 
@@ -503,7 +501,6 @@ limit_left = -560
 limit_top = -135
 limit_right = 1536
 limit_bottom = 270
-_sections_unfolded = [ "Limit" ]
 
 [node name="NextLevelArea" type="Area2D" parent="." index="4"]
 
@@ -523,15 +520,15 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelArea" index="0"]
 
-shape = SubResource( 1 )
-
-[connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_entered"]
+shape = SubResource( 2 )
 
 [connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_entered"]
 
-[connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_entered"]
 
 [connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_exited"]
+
+[connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_exited"]
 
 [connection signal="body_entered" from="NextLevelArea" to="NextLevelArea" method="_on_Area2D_body_entered"]
 
