@@ -64,7 +64,6 @@
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-04.png" type="Texture" id=62]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-05.png" type="Texture" id=63]
 
-
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -135,7 +134,7 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 extents = Vector2( 7.67985, 11.8218 )
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
