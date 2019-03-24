@@ -50,7 +50,7 @@ func _physics_process(delta):
 	
 		
 func take_damage(count): 
-	canmove = false
+	
 	health -= count
 	$AnimatedSprite.play("hurt")
 	if health < 0:
@@ -65,7 +65,7 @@ func movment():
 	if hitstun == 0:
 		velocity.x = speed * direction
 		velocity.y += GRAVITY
-		canmove = true
+		
 			
 	else:
 		velocity.x = knockdir.x * 10 * direction
@@ -83,10 +83,10 @@ func movment():
 func _on_Area2D_body_entered(body):
 	canmove = false
 	
+	
 	var bodies = $Area2D.get_overlapping_bodies()
-	
 	for body in bodies:
-	
+		
 		if body.is_in_group("character"):
 			$AnimatedSprite.play("attack")
 			body.take_damage(damage)
