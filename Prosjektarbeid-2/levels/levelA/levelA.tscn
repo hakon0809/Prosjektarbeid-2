@@ -17,7 +17,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 30, 20 )
 
-[node name="LevelNode" type="Node" index="0"]
+[node name="LevelNode" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -75,10 +75,6 @@ __meta__ = {
 
 editor/display_folded = true
 position = Vector2( -1164.86, 699.833 )
-
-[node name="KinematicBody2D" parent="Player" index="1"]
-
-scale = Vector2( 1, 1 )
 
 [node name="Sprite" parent="Player/KinematicBody2D" index="0"]
 

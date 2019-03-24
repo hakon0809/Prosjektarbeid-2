@@ -27,24 +27,29 @@ func _ready():
 
 func _on_EditButton1_pressed():
 	parent.show_setting(active[0], 1)
+	parent.save_activity(level, "edit_1")
 	self.queue_free()
 
 
 func _on_EditButton2_pressed():
 	parent.show_setting(active[1], 2)
+	parent.save_activity(level, "edit_2")
 	self.queue_free()
 
 
 func _on_EditButton3_pressed():
 	parent.show_setting(active[2], 3)
+	parent.save_activity(level, "edit_3")
 	self.queue_free()
 
 
 func _on_SaveButton_pressed():
-	parent.opening = false
+	parent.save_activity(level, "save")
+	parent.queue_free()
 
 
 func _on_ActivateButton_pressed():
 	for i in range(0, level):
 		active[i] = true
 		parent.save_setting(i+1, active[i])
+	parent.save_activity(level, "activate_all")

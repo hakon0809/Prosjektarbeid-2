@@ -7,28 +7,30 @@ export var text = [
 	]
 var index = 0
 
-var level
+export var level = 0
 onready var ChoiceMenu = preload("res://menus/choices/ChoiceMenu.tscn")
 var encountered = false
 var interface
 
+onready var dialog_text = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/RichTextLabel
+onready var button = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton
+onready var dialog = $PopupDialog/PopupDialog
 
 func _ready():
-	$PopupDialog/PopupDialog/RichTextLabel.set_text(text[index])
+	dialog_text.set_text(text[index])
 	interface = get_tree().get_root().get_node("Node/Player/Interface/Control")
+	dialog.hide()
 	
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
 		if not encountered:
-			$PopupDialog/PopupDialog.popup_centered_ratio(0.5)
+			dialog.show()
 			interface.hide()
 			encountered = true
-	if index == 0:
-		$PopupDialog/PopupDialog/BackButton.set_disabled(true)
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
-		$PopupDialog/PopupDialog.hide()
+		dialog.hide()
 
 func _on_NextButton_pressed():
 	if index == text.size() - 1:
@@ -36,43 +38,28 @@ func _on_NextButton_pressed():
 	if index < text.size() - 1:
 		index += 1
 		if index == text.size() - 1:
-			$PopupDialog/PopupDialog/NextButton.text = "Hmm"
-			$PopupDialog/PopupDialog/BackButton.hide()
-		$PopupDialog/PopupDialog/RichTextLabel.set_text(text[index])
-		if index != 0:
-			$PopupDialog/PopupDialog/BackButton.set_disabled(false)
-
-func _on_BackButton_pressed():
-	if index > 0:
-		index -= 1
-		$PopupDialog/PopupDialog/RichTextLabel.set_text(text[index])
-		if index == 0:
-			$PopupDialog/PopupDialog/BackButton.set_disabled(true)
+			button.text = "Lemme see"
+		dialog_text.set_text(text[index])
 			
 func open_choice_menu():
-	$PopupDialog/PopupDialog.hide()
-
+	dialog.hide()
 	interface.hide()
 	var c = ChoiceMenu.instance()
 	var node = get_tree().get_root()
-	var cv = CanvasLayer.new()
-	node.add_child(cv)
-	cv.add_child(c)
+	var cl = CanvasLayer.new()
+	node.add_child(cl)
+	cl.add_child(c)
 	c.level = level
 	c.end_level = false
-	var choice = c.choice(self)
+	c.open_choice_menu(self)
 	
 
 func save_choice(active):
-	$PopupDialog/PopupDialog/NextButton.hide()
-	$PopupDialog/PopupDialog/BackButton.hide()
-	var upgrade = get_tree().get_root().get_node("Node/Player/KinematicBody2D").upgrades[level-1]
+	button.hide()
 	if active:
-		upgrade = true
-		$PopupDialog/PopupDialog/RichTextLabel.set_text("Good job, go get em")
+		dialog_text.set_text("Good job, go get em")
 	else:
-		$PopupDialog/PopupDialog/RichTextLabel.set_text("Wrong choice kiddo")
-		upgrade = false
-	$PopupDialog/PopupDialog.popup_centered_ratio(0.5)
+		dialog_text.set_text("Wrong choice kiddo")
+	dialog.show()
 	interface.show()
 	

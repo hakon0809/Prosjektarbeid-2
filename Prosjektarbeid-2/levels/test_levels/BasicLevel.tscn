@@ -10,12 +10,15 @@
 [node name="Skull" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 144, 288 )
+level = 1
 
 [node name="enemy" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 112.462, 298.331 )
 
 [node name="Player" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 390, 250 )
 
 [node name="TileMap" type="TileMap" parent="." index="3"]
 
