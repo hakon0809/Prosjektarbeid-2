@@ -442,16 +442,7 @@ visible = false
 
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
 position = Vector2( -560, 112 )
-scale = Vector2( 0.8, 0.8 )
 _sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="KinematicBody2D" parent="Player" index="1"]
-
-scale = Vector2( 1, 1 )
-
-[node name="Sprite" parent="Player/KinematicBody2D" index="0"]
-
-frame = 1
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
