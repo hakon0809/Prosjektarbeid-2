@@ -45,7 +45,7 @@ func _on_EditButton3_pressed():
 
 func _on_SaveButton_pressed():
 	parent.save_activity(level, "save")
-	parent.opening = false
+	parent.queue_free()
 
 
 func _on_ActivateButton_pressed():

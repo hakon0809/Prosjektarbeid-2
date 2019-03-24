@@ -7,4 +7,5 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	print("put on some gobber m8")
+	#Globals.play_song() *insert song, optionally volume in db*
 	#get_tree().change_scene("res://levels/.....")

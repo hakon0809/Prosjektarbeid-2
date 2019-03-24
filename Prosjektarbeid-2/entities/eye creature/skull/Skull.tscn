@@ -43,6 +43,7 @@ extents = Vector2( 16.1395, 13.3293 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 text = [ "Welcome to my first world, kiddo.", "Here you will have to make a choice.", "Do you want this piece of armor, or take your chances?" ]
+level = 0
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 
@@ -56,7 +57,7 @@ collision/safe_margin = 0.08
 
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 5
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
@@ -80,6 +81,35 @@ audio_bus_name = "Master"
 shape = SubResource( 3 )
 
 [node name="PopupDialog" parent="." index="2" instance=ExtResource( 18 )]
+
+[node name="PanelContainer" parent="PopupDialog/PopupDialog" index="0"]
+
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="PopupDialog/PopupDialog/PanelContainer" index="0"]
+
+margin_right = 280.0
+margin_bottom = 84.0
+
+[node name="HBoxContainer" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
+
+margin_right = 273.0
+margin_bottom = 77.0
+
+[node name="RichTextLabel" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+
+margin_right = 245.0
+margin_bottom = 72.0
+
+[node name="NextButton" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+
+margin_left = 249.0
+margin_top = 58.0
+margin_right = 268.0
+margin_bottom = 72.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
