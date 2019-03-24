@@ -8,6 +8,10 @@ const JUMP_HEIGHT = -500
 var motion = Vector2()
 var friction = false
 
+var sword_sound = load("res://entities/player/sounds/sword-gesture1.ogg")
+var jump_sound = load("res://entities/player/sounds/jump.wav")
+onready var sound_player = $"../AudioStreamPlayer"
+
 
 #Different possible states, have not implemented STAGGER
 enum STATES { IDLE, RUNLEFT, RUNRIGHT, JUMP, ATTACK, HURT, DIE, STAGGER}
@@ -27,10 +31,19 @@ var health
 
 var damage = 1
 
+var max_depth = null
+
 func _ready():
+	set_max_health()
 	health = max_health
+	if get_tree().get_current_scene().get("max_depth"):
+		max_depth = get_tree().get_current_scene().get("max_depth")
 	current_state = JUMP
 	emit_signal("health_changed", health)
+	
+func play_sound(sound):
+	sound_player.stream = sound
+	sound_player.play()
 
 #returns true if state change is possible 
 func is_change_state_possible():
@@ -57,6 +70,7 @@ func _change_state(new_state):
 	
 	if is_change_state_possible():
 		current_state = new_state
+
 	
 	match current_state:
 		IDLE:
@@ -79,6 +93,7 @@ func _change_state(new_state):
 		
 		JUMP:
 			if is_on_floor():
+				play_sound(jump_sound)
 				if Input.is_action_just_pressed("ui_up"):
 						motion.y = JUMP_HEIGHT
 				if friction == true:
@@ -108,6 +123,7 @@ func _change_state(new_state):
 		ATTACK:
 			attack_is_over = false
 			$Sprite.play("Melee2")
+			play_sound(sword_sound)
 			if $Sprite.get_frame() == 3:
 				var bodies = $Area2D.get_overlapping_bodies()
 				##print(bodies)
@@ -133,6 +149,9 @@ func _change_state(new_state):
 
 func _physics_process(delta):
 	
+	if max_depth and position.y > max_depth:
+		get_tree().reload_current_scene()
+
 	motion.y += GRAVITY
 
 
@@ -145,6 +164,8 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("ui_attack"):
 		_change_state(ATTACK)
 
+	elif Input.is_action_just_pressed("ui_up"):
+		_change_state(JUMP)
 
 	elif Input.is_action_pressed("ui_right"):
 		_change_state(RUNRIGHT)
@@ -174,4 +195,15 @@ func take_damage(count):
 		emit_signal("health_changed", health)
 		print("Character died")
 		return
+		
+func upgrade_changed(upgrade):
+	if upgrade == 1:
+		set_max_health()
+
+func set_max_health():
+	if get_tree().get_root().get_node("Globals").get_upgrade(1):
+		max_health = 15
+	else:
+		max_health = 10
+	get_parent().get_node("Interface").set_health_bar(max_health)
 
