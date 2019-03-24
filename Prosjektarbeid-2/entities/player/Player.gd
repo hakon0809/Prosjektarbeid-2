@@ -130,6 +130,8 @@ func _change_state(new_state):
 				for body in bodies:
 					if body.is_in_group("Enemy"):
 						print(body)
+						body.hitstun = 10
+						body.knockdir = global_transform.origin - body.global_transform.origin
 						body.take_damage(damage)
 			if $Sprite.get_frame() == 5:
 				attack_is_over = true
