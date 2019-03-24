@@ -70,6 +70,7 @@ func _change_state(new_state):
 	
 	if is_change_state_possible():
 		current_state = new_state
+
 	
 	match current_state:
 		IDLE:
