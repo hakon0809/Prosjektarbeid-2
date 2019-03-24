@@ -93,9 +93,9 @@ func _change_state(new_state):
 		
 		JUMP:
 			if is_on_floor():
-				play_sound(jump_sound)
 				if Input.is_action_just_pressed("ui_up"):
-						motion.y = JUMP_HEIGHT
+					play_sound(jump_sound)
+					motion.y = JUMP_HEIGHT
 				if friction == true:
 					motion.x = lerp(motion.x, 0, 0.2)
 			else:
