@@ -155,7 +155,7 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("ui_attack"):
 		_change_state(ATTACK)
 
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_just_pressed("ui_up"):
 		_change_state(JUMP)
 
 	elif Input.is_action_pressed("ui_right"):
