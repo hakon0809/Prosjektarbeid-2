@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const GRAVITY = 20
+const GRAVITY = 0
 
 var speed = 150
 var velocity = Vector2()
@@ -20,6 +20,7 @@ func _physics_process(delta):
 	velocity.y = GRAVITY * delta
 	
 	translate(velocity)
+	
 	
 	var bodies = $Area2D.get_overlapping_bodies()
 		##print(bodies)

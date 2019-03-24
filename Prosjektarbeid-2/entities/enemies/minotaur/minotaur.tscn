@@ -238,6 +238,7 @@ shape = SubResource( 11 )
 
 [node name="overhead" type="Area2D" parent="KinematicBody2D" index="2"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -254,6 +255,7 @@ _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index"
 
 [node name="stab" type="Area2D" parent="KinematicBody2D" index="3"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -269,6 +271,7 @@ polygon = PoolVector2Array( 14, -2, 40, -2, 44, 3, 36, 9, 20, 4, 12, 6 )
 
 [node name="circle_sweep" type="Area2D" parent="KinematicBody2D" index="4"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -284,6 +287,7 @@ polygon = PoolVector2Array( 40, 16, 43, 12, 36, 6, 12, 3, -36, 1, -50, 7, -51, 1
 
 [node name="touch" type="Area2D" parent="KinematicBody2D" index="5"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

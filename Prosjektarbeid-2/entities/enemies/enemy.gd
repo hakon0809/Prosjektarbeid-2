@@ -5,11 +5,12 @@ const FLOOR =Vector2(0, -1)
 
 var velocity = Vector2()
 var direction = 1
-var health = 10
+var health = 3
 var damage = 1
 var speed = 80
-var knockback = 2000
+var knockdir = Vector2(1, 0)
 var canmove = true
+var hitstun = 0
 
 
 
@@ -17,12 +18,12 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-
 	
-	velocity.x = speed * direction
-	velocity.y += GRAVITY
-	velocity = move_and_slide(velocity, FLOOR)
 	
+	
+	movment()
+	
+		
 	if canmove:
 		$AnimatedSprite.play("walk")
 	
@@ -49,8 +50,9 @@ func _physics_process(delta):
 	
 		
 func take_damage(count): 
+	canmove = false
 	health -= count
-	print("enemy hit")
+	$AnimatedSprite.play("hurt")
 	if health < 0:
 		$AnimatedSprite.play("die")
 		print ("npc dead")
@@ -58,7 +60,24 @@ func take_damage(count):
 		queue_free()
 		return
 		
+func movment():
 	
+	if hitstun == 0:
+		velocity.x = speed * direction
+		velocity.y += GRAVITY
+		canmove = true
+			
+	else:
+		velocity.x = knockdir.x * 10 * direction
+		print(velocity.x)
+		hitstun -= 1
+		print(hitstun)
+	move_and_slide(velocity, FLOOR)
+
+		
+		
+		
+		
 	
 
 func _on_Area2D_body_entered(body):
