@@ -54,9 +54,8 @@ func is_change_state_possible():
 			return false
 		elif attack_is_over == false:
 			return false
-			
 		#Air attack doesnt work as intended yet TODO
-		elif not is_on_floor() && next_state == ATTACK:
+		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
 			
 		elif not is_on_floor():
@@ -100,16 +99,19 @@ func _change_state(new_state):
 				if friction == true:
 					motion.x = lerp(motion.x, 0, 0.2)
 			else:
-				if Input.is_action_just_pressed("ui_attack"):
-					_change_state(ATTACK)
-				elif Input.is_action_pressed("ui_left"):
+				if Input.is_action_pressed("ui_left"):
 					motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 					$Sprite.flip_h = true
 					$Area2D.set_scale(Vector2(-1, 1))
+					
 				elif Input.is_action_pressed("ui_right"):
 					motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 					$Sprite.flip_h = false
 					$Area2D.set_scale(Vector2(1, 1))
+					
+				elif Input.is_action_just_pressed("ui_attack"):
+					_change_state(ATTACK)
+					
 				if motion.y < 0:
 					$Sprite.play("Jump")
 				elif motion.y > 0:
@@ -131,6 +133,8 @@ func _change_state(new_state):
 						body.take_damage(damage)
 			if $Sprite.get_frame() == 5:
 				attack_is_over = true
+				if not is_on_floor():
+					_change_state(JUMP)
 #			
 
 		HURT:
@@ -154,6 +158,9 @@ func _physics_process(delta):
 	if health < 1:
 		_change_state(DIE)
 
+	elif Input.is_action_pressed("ui_up"):
+		_change_state(JUMP)
+		
 	elif Input.is_action_just_pressed("ui_attack"):
 		_change_state(ATTACK)
 
