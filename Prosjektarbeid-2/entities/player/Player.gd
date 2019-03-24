@@ -130,6 +130,8 @@ func _change_state(new_state):
 				for body in bodies:
 					if body.is_in_group("Enemy"):
 						print(body)
+						body.hitstun = 10
+						body.knockdir = global_transform.origin - body.global_transform.origin
 						body.take_damage(damage)
 			if $Sprite.get_frame() == 5:
 				attack_is_over = true
@@ -145,17 +147,15 @@ func _change_state(new_state):
 		DIE:
 			$Sprite.play("Death")
 			if $Sprite.get_frame() == 6:
-				get_tree().reload_current_scene()
+				restart_level()
 
 func _physics_process(delta):
-	
-	if max_depth and position.y > max_depth:
-		get_tree().reload_current_scene()
-
 	motion.y += GRAVITY
 
-
-	if health < 1:
+	if max_depth and position.y > max_depth:
+		restart_level()
+		
+	elif health < 1:
 		_change_state(DIE)
 
 	elif Input.is_action_pressed("ui_up"):
@@ -182,6 +182,8 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, UP)
 
 
+func restart_level():
+	get_tree().reload_current_scene()
 	
 	
 #helper func so that the player can take damage
