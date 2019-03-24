@@ -7,17 +7,17 @@
 [ext_resource path="res://entities/enemies/barbarian/barbarian_1_die_003.png" type="Texture" id=5]
 [ext_resource path="res://entities/enemies/barbarian/barbarian_1_die_004.png" type="Texture" id=6]
 [ext_resource path="res://entities/enemies/barbarian/barbarian_1_die_005.png" type="Texture" id=7]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_001.png" type="Texture" id=8]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_002.png" type="Texture" id=9]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_003.png" type="Texture" id=10]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_004.png" type="Texture" id=11]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_005.png" type="Texture" id=12]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_006.png" type="Texture" id=13]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_007.png" type="Texture" id=14]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_008.png" type="Texture" id=15]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_attack_001.png" type="Texture" id=16]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_attack_002.png" type="Texture" id=17]
-[ext_resource path="res://entities/enemies/barbarian/barbarian_1_attack_003.png" type="Texture" id=18]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_attack_001.png" type="Texture" id=8]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_attack_002.png" type="Texture" id=9]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_attack_003.png" type="Texture" id=10]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_001.png" type="Texture" id=11]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_002.png" type="Texture" id=12]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_003.png" type="Texture" id=13]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_004.png" type="Texture" id=14]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_005.png" type="Texture" id=15]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_006.png" type="Texture" id=16]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_007.png" type="Texture" id=17]
+[ext_resource path="res://entities/enemies/barbarian/barbarian_1_walk_008.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -32,15 +32,15 @@ animations = [ {
 "name": "die",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "walk",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": false,
 "name": "attack",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "walk",
+"speed": 6.0
 } ]
 
 [node name="barbarian" instance=ExtResource( 1 )]
@@ -48,16 +48,25 @@ animations = [ {
 [node name="AnimatedSprite" parent="." index="0"]
 
 frames = SubResource( 1 )
-animation = "attack"
-frame = 2
+animation = "walk"
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0.16703, 4.3265 )
+position = Vector2( 1.68227, 2.78261 )
+
+[node name="RayCast2D" parent="." index="2"]
+
+position = Vector2( 18.9503, 17.6912 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -22.265, -24.9107, -22.5385, 19.6767, 23.6831, 19.9554, 23.4098, -26.0254 )
+polygon = PoolVector2Array( 8.46752, 13.531, 63.5681, 32.9839, 62.0529, -36.1822, -18.8068, -34.6383, -20.9281, 21.868 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 
 

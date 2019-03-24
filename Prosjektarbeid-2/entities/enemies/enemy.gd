@@ -3,31 +3,39 @@ extends KinematicBody2D
 const GRAVITY = 10
 const FLOOR =Vector2(0, -1)
 
-var velocity =Vector2()
+var velocity = Vector2()
 var direction = 1
-var health = 1
+var health = 10
 var damage = 1
 var speed = 80
+var knockback = 2000
+var canmove = true
+
 
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	if speed == 0:
-		speed = 80
+
 	
 	velocity.x = speed * direction
+	velocity.y += GRAVITY
+	velocity = move_and_slide(velocity, FLOOR)
+	
+	if canmove:
+		$AnimatedSprite.play("walk")
+	
 	
 	if direction == 1:
 		$AnimatedSprite.flip_h = false
+		$Area2D.set_scale(Vector2(1, 1))
 	else:
 		$AnimatedSprite.flip_h= true
-	$AnimatedSprite.play("walk")
+		$Area2D.set_scale(Vector2(-1, 1))
 	
-	velocity.y += GRAVITY
 	
-	velocity = move_and_slide(velocity, FLOOR)
+	
 	
 	if is_on_wall():
 		direction= direction * -1
@@ -37,17 +45,18 @@ func _physics_process(delta):
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
 	
-	var bodies = $Area2D.get_overlapping_bodies()
-		##print(bodies)
+
 	
-	for body in bodies:
-		
-		if body.is_in_group("character"):
-			print(body)
-			body.take_damage(damage)
 		
 func take_damage(count): 
 	health -= count
+	if direction == 1:
+		velocity.x = - knockback
+		move_and_slide(velocity, FLOOR)
+	else:
+		velocity.x = knockback
+		move_and_slide(velocity, FLOOR)
+	print("enemy hit")
 	if health < 0:
 		$AnimatedSprite.play("die")
 		print ("npc dead")
@@ -57,10 +66,22 @@ func take_damage(count):
 #		emit_signal("died")
 		return
 		
-		
-	
-		
-		
 	
 	
+
+func _on_Area2D_body_entered(body):
+	canmove = false
 	
+	var bodies = $Area2D.get_overlapping_bodies()
+	
+	for body in bodies:
+	
+		if body.is_in_group("character"):
+			$AnimatedSprite.play("attack")
+			body.take_damage(damage)
+	
+	
+
+func _on_Area2D_body_exited(body):
+	if body.is_in_group("character"):
+		canmove = true
