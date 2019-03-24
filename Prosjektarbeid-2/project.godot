@@ -17,7 +17,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://scripts/Globals.gd"
-
 window/size/width=544
 window/size/height=306
 window/dpi/allow_hidpi=true
@@ -25,14 +24,16 @@ window/handheld/emulate_touchscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
+[display]
+
+window/size/width=544
+window/size/height=306
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "gut" )
-
-[input]
-
-ui_attack=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
- ]
 
 [importer_defaults]
 
@@ -54,6 +55,11 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[input]
+
+ui_attack=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
 
 [rendering]
 
