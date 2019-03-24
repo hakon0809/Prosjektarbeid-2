@@ -34,6 +34,7 @@ var damage = 1
 var max_depth = null
 
 func _ready():
+	set_max_health()
 	health = max_health
 	if get_tree().get_current_scene().get("max_depth"):
 		max_depth = get_tree().get_current_scene().get("max_depth")
@@ -186,4 +187,15 @@ func take_damage(count):
 		emit_signal("health_changed", health)
 		print("Character died")
 		return
+		
+func upgrade_changed(upgrade):
+	if upgrade == 1:
+		set_max_health()
+
+func set_max_health():
+	if get_tree().get_root().get_node("Globals").get_upgrade(1):
+		max_health = 15
+	else:
+		max_health = 10
+	get_parent().get_node("Interface").set_health_bar(max_health)
 
