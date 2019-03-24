@@ -8,7 +8,7 @@ var paused
 
 
 func _ready():
-	var player_max_health = get_tree().get_root().get_node("prison/Player/KinematicBody2D").max_health
+	var player_max_health = get_parent().get_node("KinematicBody2D").max_health
 	bar.max_value = player_max_health
 	pause_menu.hide()
 	paused = false
