@@ -58,6 +58,7 @@ func is_change_state_possible():
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
 			
+			
 		elif not is_on_floor():
 			return false
 		else:
@@ -158,7 +159,7 @@ func _physics_process(delta):
 	elif health < 1:
 		_change_state(DIE)
 
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_just_pressed("ui_up"):
 		_change_state(JUMP)
 		
 	elif Input.is_action_just_pressed("ui_attack"):
