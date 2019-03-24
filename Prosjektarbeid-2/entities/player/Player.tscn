@@ -64,6 +64,7 @@
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-04.png" type="Texture" id=62]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-05.png" type="Texture" id=63]
 
+
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -89,12 +90,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 23 ) ],
 "loop": true,
-"name": "Fall",
+"name": "Ranged",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
-"name": "Melee3",
+"name": "Fall",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
@@ -119,7 +120,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ) ],
 "loop": true,
-"name": "Ranged",
+"name": "Melee",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ) ],
