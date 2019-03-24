@@ -11,7 +11,12 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	
+	if speed < 0:
+		$Sprite.flip_h = true
+	
 	velocity.x = speed * delta
+	
 	velocity.y = GRAVITY * delta
 	
 	translate(velocity)

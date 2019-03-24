@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://entities/enemies/enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://entities/enemies/goblin2.gd" type="Script" id=2]
+[ext_resource path="res://entities/enemies/goblin.gd" type="Script" id=2]
 [ext_resource path="res://entities/enemies/goblinasset/goblin_2.png" type="Texture" id=3]
 [ext_resource path="res://entities/enemies/goblinasset/goblin_2_attack_001.png" type="Texture" id=4]
 [ext_resource path="res://entities/enemies/goblinasset/goblin_2_attack_002.png" type="Texture" id=5]
@@ -62,7 +62,6 @@ _sections_unfolded = [ "Collision" ]
 
 frames = SubResource( 1 )
 animation = "shot"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -73,9 +72,5 @@ position = Vector2( 1.57755, 3.99697 )
 
 position = Vector2( 4.79058, 1.98982 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="Area2D" parent="." index="4"]
-
-visible = false
 
 

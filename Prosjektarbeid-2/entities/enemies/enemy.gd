@@ -50,20 +50,12 @@ func _physics_process(delta):
 		
 func take_damage(count): 
 	health -= count
-	if direction == 1:
-		velocity.x = - knockback
-		move_and_slide(velocity, FLOOR)
-	else:
-		velocity.x = knockback
-		move_and_slide(velocity, FLOOR)
 	print("enemy hit")
 	if health < 0:
 		$AnimatedSprite.play("die")
 		print ("npc dead")
 		health = 0
 		queue_free()
-	##	_change_state(DEAD)
-#		emit_signal("died")
 		return
 		
 	
@@ -79,6 +71,7 @@ func _on_Area2D_body_entered(body):
 		if body.is_in_group("character"):
 			$AnimatedSprite.play("attack")
 			body.take_damage(damage)
+	
 	
 	
 

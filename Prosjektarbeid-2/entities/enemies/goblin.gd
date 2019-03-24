@@ -1,7 +1,6 @@
 extends "res://entities/enemies/enemy.gd"
 
-const RIGTHBALL = preload("rigthball.tscn")
-const LEFTBALL = preload("leftball.tscn")
+const ARROW = preload("arrow.tscn")
 
 
 var timer = null
@@ -24,23 +23,22 @@ func on_timeout():
 func _physics_process(delta):
 	
 	
-	if can_shoot && $AnimatedSprite.flip_h == false:
-		speed = 0 * delta
+	if can_shoot:
+		
 		$AnimatedSprite.play("shot")
-		var rigthball = RIGTHBALL.instance()
-		get_parent().add_child(rigthball)
-		rigthball.position = $Position2D.global_position
+		var arrow = ARROW.instance()
+		get_parent().add_child(arrow)
+		if $AnimatedSprite.flip_h == false:
+			arrow.position = $Position2D.global_position
+		else:
+			
+			arrow.speed= -arrow.speed
+			arrow.position = $Position2D.global_position
 		
 		can_shoot=false
 		timer.start()
 		
-	elif can_shoot && $AnimatedSprite.flip_h == true:
-		speed = 0 * delta
-		$AnimatedSprite.play("shot")
-		var leftball = LEFTBALL.instance()
-		get_parent().add_child(leftball)
-		leftball.position = $Position2D.global_position
-		can_shoot=false
-		timer.start()
 		
+		
+
 	
