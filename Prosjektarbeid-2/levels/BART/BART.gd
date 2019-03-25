@@ -5,8 +5,6 @@ var max_pumps
 var score = 0
 var total_score = 0
 var rounds_won = 0
-var burst_score = 0
-var bursts = 0
 
 func _ready():
 	randomize()
@@ -21,10 +19,6 @@ func new_round():
 func _on_PumpButton_pressed():
 	if explode(max_pumps+1):
 		rounds -= 1
-		burst_score += score
-		bursts += 1
-		var average = burst_score / bursts
-		print(str(average))
 		if rounds > 0:
 			new_round()
 	else:
