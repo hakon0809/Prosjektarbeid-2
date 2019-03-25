@@ -9,17 +9,18 @@ var rounds_won = 0
 func _ready():
 	randomize()
 	new_round()
+	get_tree().get_root().get_node("Globals").sound_player.stop()
 		
 func new_round():
-	$MarginContainer/Popup.hide()
-	$MarginContainer/HBoxContainer2.show()
+	$PanelContainer/MarginContainer/Popup.hide()
+	$PanelContainer/MarginContainer/HBoxContainer2.show()
+	$PanelContainer/BalloonSprite.texture = load("res://levels/BART/balloon_red.png")
 	max_pumps = 32
 	score = 0
 	rounds -= 1
-	$MarginContainer/HBoxContainer/ScoreLabel.text = str(score)
-	$BalloonSprite/Animation.play("Idle")
-	$BalloonSprite.scale = Vector2(1, 1)
-	$BalloonSprite.rotation_degrees = 0
+	$PanelContainer/MarginContainer/HBoxContainer/ScoreLabel.text = str(score)
+	$PanelContainer/BalloonSprite.scale = Vector2(0.5, 0.5)
+	$PanelContainer/BalloonSprite.rotation_degrees = 0
 	
 func finish():
 	if rounds_won > 0:
@@ -29,20 +30,20 @@ func finish():
 	
 func _on_PumpButton_pressed():
 	if explode(max_pumps+1):
-		$BalloonSprite/Animation.play("explode")
-		$MarginContainer/Popup.show()
-		$MarginContainer/HBoxContainer2.hide()
+		$PanelContainer/BalloonSprite.texture = null
+		$PanelContainer/MarginContainer/Popup.show()
+		$PanelContainer/MarginContainer/HBoxContainer2.hide()
 	else:
-		$BalloonSprite.scale += Vector2(0.1, 0.1)
+		$PanelContainer/BalloonSprite.scale += Vector2(0.02, 0.02)
 		rotate_balloon()
 		score += 1
-		$MarginContainer/HBoxContainer/ScoreLabel.text = str(score)
+		$PanelContainer/MarginContainer/HBoxContainer/ScoreLabel.text = str(score)
 		max_pumps -= 1
 
 func _on_CollectButton_pressed():
 	if score > 0:
 		total_score += score
-		$MarginContainer/HBoxContainer/TotalScoreLabel.text = str(total_score)
+		$PanelContainer/MarginContainer/HBoxContainer/TotalScoreLabel.text = str(total_score)
 		rounds_won += 1
 		if rounds > 0:
 			new_round()
@@ -59,9 +60,9 @@ func explode(number):
 	return number == randi()%number+1
 
 func rotate_balloon():
-	if $BalloonSprite.rotation_degrees < 0:
-		$BalloonSprite.rotation_degrees = randi()%11+1
+	if randi()%3+1 == 1:
+		$PanelContainer/BalloonSprite.rotation_degrees = randi()%6+1
 	else:
-		$BalloonSprite.rotation_degrees = -(randi()%11+1)
+		$PanelContainer/BalloonSprite.rotation_degrees = -(randi()%6+1)
 		
 
