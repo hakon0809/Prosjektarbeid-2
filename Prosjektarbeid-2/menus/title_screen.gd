@@ -5,8 +5,8 @@ func _on_Continue_pressed():
 
 
 func _on_newgame_pressed():
-	get_tree().change_scene('res://levels/city/city.tscn')
-	Globals.play_song(Globals.city_song, -17)
+	get_tree().change_scene('res://levels/prison/prison.tscn')
+	#Globals.play_song(Globals.city_song, -17)
 
 
 func _on_Options_pressed():
