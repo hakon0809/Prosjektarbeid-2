@@ -62,4 +62,5 @@ func save_choice(active):
 		dialog_text.set_text("Wrong choice kiddo")
 	dialog.show()
 	interface.show()
+	get_tree().change_scene("res://levels/levelA/levelA.tscn")
 	

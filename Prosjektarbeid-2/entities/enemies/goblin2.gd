@@ -3,15 +3,16 @@ extends KinematicBody2D
 const GRAVITY = 10
 const FLOOR =Vector2(0, -1)
 
-const RIGTHBALL = preload("rigthball.tscn")
-const LEFTBALL = preload("leftball.tscn")
-
-var velocity =Vector2()
+var velocity = Vector2()
 var direction = 1
-var health = 1
+var health = 10
 var damage = 1
 var speed = 80
+var knockback = 2000
+var canmove = true
 
+const ARROW = preload("arrow.tscn")
+const LEFTBALL = preload("leftball.tscn")
 
 
 var timer = null
@@ -29,70 +30,81 @@ func _ready():
 func on_timeout():
 	can_shoot=true
 
-
 func _physics_process(delta):
-	if speed == 0:
-		speed = 80
 
+	
 	velocity.x = speed * direction
-
+	velocity.y += GRAVITY
+	velocity = move_and_slide(velocity, FLOOR)
+	
+	if canmove:
+		$AnimatedSprite.play("walk")
+	
+	
 	if direction == 1:
 		$AnimatedSprite.flip_h = false
+		$Area2D.set_scale(Vector2(1, 1))
 	else:
 		$AnimatedSprite.flip_h= true
+		$Area2D.set_scale(Vector2(-1, 1))
 	
-	if can_shoot && $AnimatedSprite.flip_h == false:
-		$AnimatedSprite.play("shot")
-		var rigthball = RIGTHBALL.instance()
-		get_parent().add_child(rigthball)
-		rigthball.position = $Position2D.global_position
-		can_shoot=false
-		timer.start()
-		
-	elif can_shoot && $AnimatedSprite.flip_h == true:
-		$AnimatedSprite.play("shot")
-		var leftball = LEFTBALL.instance()
-		get_parent().add_child(leftball)
-		leftball.position = $Position2D.global_position
-		can_shoot=false
-		timer.start()
-		
-	else:
-		$AnimatedSprite.play("walk")
-
-	velocity.y += GRAVITY
-
-	velocity = move_and_slide(velocity, FLOOR)
-
+	
+	
+	
 	if is_on_wall():
 		direction= direction * -1
 		$RayCast2D.position.x *= -1
-
+		
 	if $RayCast2D.is_colliding() == false:
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
 	
+	if can_shoot:
+		canmove=false
+		if $AnimatedSprite.flip_h == false:
+			$AnimatedSprite.play("shot")
+			var arrow = ARROW.instance()
+			get_parent().add_child(arrow)
+			arrow.position = $Position2D.global_position
+		else:
+			$AnimatedSprite.play("shot")
+			var leftball = LEFTBALL.instance()
+			get_parent().add_child(leftball)
+			leftball.position = $Position2D.global_position
+		
+		can_shoot=false
+		canmove=true
+		timer.start()
+
 	
-	
-
-	var bodies = $Area2D.get_overlapping_bodies()
-		##print(bodies)
-
-	for body in bodies:
-
-		if body.is_in_group("character"):
-			print(body)
-			body.take_damage(damage)
-
-func take_damage(count):
+		
+func take_damage(count): 
 	health -= count
+	print("enemy hit")
 	if health < 0:
 		$AnimatedSprite.play("die")
 		print ("npc dead")
 		health = 0
 		queue_free()
-	##	_change_state(DEAD)
-#		emit_signal("died")
 		return
+		
+	
+	
 
+func _on_Area2D_body_entered(body):
+	canmove = false
+	
+	var bodies = $Area2D.get_overlapping_bodies()
+	
+	for body in bodies:
+	
+		if body.is_in_group("character"):
+			$AnimatedSprite.play("attack")
+			body.take_damage(damage)
+	
+	
+	
 
+func _on_Area2D_body_exited(body):
+	if body.is_in_group("character"):
+		canmove = true

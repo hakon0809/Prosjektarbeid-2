@@ -2,10 +2,10 @@
 
 [ext_resource path="res://ui/interface/Interface.gd" type="Script" id=1]
 [ext_resource path="res://ui/interface/label_hp_bg.tres" type="StyleBox" id=2]
-[ext_resource path="res://ui/interface/label_HP.png" type="Texture" id=3]
+[ext_resource path="res://ui/interface/label_HP_half.png" type="Texture" id=3]
 [ext_resource path="res://ui/interface/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://ui/interface/lifebar_bg.png" type="Texture" id=5]
-[ext_resource path="res://ui/interface/lifebar_fill.png" type="Texture" id=6]
+[ext_resource path="res://ui/interface/lifebar_bg_half.png" type="Texture" id=5]
+[ext_resource path="res://ui/interface/lifebar_fill_half.png" type="Texture" id=6]
 [ext_resource path="res://ui/buttons/shadedDark24.png" type="Texture" id=7]
 [ext_resource path="res://ui/buttons/flatDark23.png" type="Texture" id=8]
 [ext_resource path="res://ui/buttons/shadedDark25.png" type="Texture" id=9]
@@ -19,14 +19,14 @@
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 24
+size = 12
 use_mipmaps = false
 use_filter = false
 extra_spacing_bottom = 2
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Interface" type="CanvasLayer" index="0"]
+[node name="Interface" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -61,8 +61,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 534.0
-margin_bottom = 296.0
+margin_right = 1014.0
+margin_bottom = 590.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -72,15 +72,12 @@ size_flags_vertical = 1
 
 [node name="HPContainer" type="HBoxContainer" parent="Control/HUD" index="0"]
 
-editor/display_folded = true
-anchor_left = 1.0
+anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = -234.0
-margin_right = 238.0
-margin_bottom = 53.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_bottom = 27.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -88,7 +85,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 8
 size_flags_vertical = 1
 alignment = 2
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -99,14 +96,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 72.0
-margin_bottom = 53.0
+margin_left = 764.0
+margin_right = 802.0
+margin_bottom = 27.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_styles/panel = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "Size Flags", "custom_styles" ]
 
@@ -116,18 +114,18 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 72.0
-margin_bottom = 53.0
+margin_right = 38.0
+margin_bottom = 27.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
 _sections_unfolded = [ "custom_constants" ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HUD/HPContainer/Background/MarginContainer" index="0"]
@@ -136,10 +134,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 67.0
-margin_bottom = 48.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 36.0
+margin_bottom = 25.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -155,9 +153,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 9.0
-margin_right = 35.0
-margin_bottom = 33.0
+margin_top = 5.0
+margin_right = 18.0
+margin_bottom = 17.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -174,10 +172,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 39.0
-margin_top = 6.0
-margin_right = 62.0
-margin_bottom = 36.0
+margin_left = 22.0
+margin_top = 3.0
+margin_right = 34.0
+margin_bottom = 19.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -199,9 +197,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 76.0
-margin_right = 472.0
-margin_bottom = 53.0
+margin_left = 806.0
+margin_right = 1004.0
+margin_bottom = 27.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -221,10 +220,11 @@ texture_progress = ExtResource( 6 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
-_sections_unfolded = [ "Radial Fill", "Rect", "Size Flags", "Textures" ]
+_sections_unfolded = [ "Grow Direction", "Radial Fill", "Rect", "Size Flags", "Textures" ]
 
 [node name="ActionContainer" type="HBoxContainer" parent="Control/HUD" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -310,9 +310,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 419.0
+margin_left = 899.0
 margin_top = 26.0
-margin_right = 469.0
+margin_right = 949.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -343,8 +343,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 474.0
-margin_right = 524.0
+margin_left = 954.0
+margin_right = 1004.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -407,16 +407,16 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 534.0
-margin_bottom = 296.0
+margin_right = 1014.0
+margin_bottom = 590.0
 _sections_unfolded = [ "Pause", "custom_constants" ]
 
 [node name="PanelContainer" parent="Control/PauseMenu" index="0"]
 
-margin_left = 198.0
-margin_top = 85.0
-margin_right = 325.0
-margin_bottom = 201.0
+margin_left = 438.0
+margin_top = 232.0
+margin_right = 565.0
+margin_bottom = 348.0
 
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_PauseButton_pressed"]
 

@@ -1,5 +1,13 @@
 extends Node
 
+var main_menu_song = load("res://levels/common/assets/sounds/Fantastic A.ogg")
+var city_song =  load("res://levels/common/assets/sounds/The Walrus and the Carpenter.ogg")
+var sound_player = AudioStreamPlayer.new()
+
+func _ready():
+	self.add_child(sound_player)
+	play_song(main_menu_song)
+
 var upgrade_1 = false
 var upgrade_2 = false
 var upgrade_3 = false
@@ -16,8 +24,15 @@ var settings_activity_3 = []
 var settings_activities = [settings_activity_1, settings_activity_2, settings_activity_3]
 var activities = [upgrade_activities, settings_activities]
 
+func play_song(song, volume = 0):
+	sound_player.stream = song
+	sound_player.volume_db = volume
+	sound_player.play()
+	
+
 func set_upgrade(upgrade, value):
 	upgrades[upgrade] = value
+	get_tree().get_root().get_node("Node/Player/KinematicBody2D").upgrade_changed(upgrade)
 	
 func get_upgrade(upgrade):
 	return upgrades[upgrade]
