@@ -16,11 +16,18 @@ func new_round():
 	$MarginContainer/HBoxContainer/ScoreLabel.text = str(score)
 	$BalloonSprite.scale = Vector2(0, 0)
 	
+func finish():
+	var aggregate = total_score / rounds_won
+	get_tree().get_root().get_node("Globals").set_bart_score(aggregate)
+	#TODO switch scene
+	
 func _on_PumpButton_pressed():
 	if explode(max_pumps+1):
 		rounds -= 1
 		if rounds > 0:
 			new_round()
+		else:
+			finish()
 	else:
 		$BalloonSprite.scale += Vector2(0.2, 0.2)
 		score += 1
@@ -35,7 +42,7 @@ func _on_CollectButton_pressed():
 	if rounds > 0:
 		new_round()
 	else:
-		pass
+		finish()
 	
 func explode(number):
 	return number == randi()%number+1

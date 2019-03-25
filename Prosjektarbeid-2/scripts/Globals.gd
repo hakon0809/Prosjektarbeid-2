@@ -24,6 +24,8 @@ var settings_activity_3 = []
 var settings_activities = [settings_activity_1, settings_activity_2, settings_activity_3]
 var activities = [upgrade_activities, settings_activities]
 
+var bart_score
+
 func play_song(song, volume = 0):
 	sound_player.stream = song
 	sound_player.volume_db = volume
@@ -42,6 +44,9 @@ func get_all_upgrades():
 	
 func set_activity(activity, level, string):
 	activities[activity][level].append(string)
+	
+func set_bart_score(score):
+	bart_score = score
 	
 func send_email():
 	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="
