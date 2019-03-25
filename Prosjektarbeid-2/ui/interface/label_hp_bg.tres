@@ -1,0 +1,32 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+
+flags = 0
+load_path = ""
+
+[sub_resource type="StreamTexture" id=2]
+
+flags = 4
+load_path = "res://.import/label_HP_bg.png-657bd474b01366c94fba15f998740c4c.stex"
+
+[resource]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = SubResource( 2 )
+normal_map = SubResource( 1 )
+region_rect = Rect2( 0, 0, 120, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
