@@ -3,7 +3,7 @@
 [ext_resource path="res://levels/BART/BART.gd" type="Script" id=1]
 [ext_resource path="res://levels/BART/balloon_red.png" type="Texture" id=2]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -283,7 +283,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Pump"
+text = "PUMP"
 flat = false
 align = 1
 _sections_unfolded = [ "Size Flags" ]
@@ -308,7 +308,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Collect points"
+text = "COLLECT"
 flat = false
 align = 1
 _sections_unfolded = [ "Size Flags" ]
@@ -456,7 +456,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Continue"
+text = "CONTINUE"
 flat = false
 align = 1
 
