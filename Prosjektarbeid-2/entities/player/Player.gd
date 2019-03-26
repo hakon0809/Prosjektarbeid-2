@@ -223,5 +223,10 @@ func set_sword_upgrade():
 		#TODO unequip sword
 
 func set_bow_upgrade():
-	if get_tree().get_root().get_node("Globals").get_upgrade
+	if get_tree().get_root().get_node("Globals").get_upgrade(3):
+		pass
+		#TODO equip bow
+	else:
+		pass
+		#TODO unequip bow
 
