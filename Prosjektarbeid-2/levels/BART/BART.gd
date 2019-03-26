@@ -17,7 +17,6 @@ func _ready():
 func new_round():
 	$PanelContainer/MarginContainer/Popup.hide()
 	$PanelContainer/MarginContainer/HBoxContainer2.show()
-	$PanelContainer/BalloonSprite.texture = load("res://levels/BART/balloon_red.png")
 	pumps_left = max_pumps
 	score = 0
 	current_round += 1
@@ -39,7 +38,7 @@ func finish():
 	
 func _on_PumpButton_pressed():
 	if explode(pumps_left+1):
-		$PanelContainer/BalloonSprite.texture = null
+		$PanelContainer/BalloonSprite.scale = Vector2(0, 0)
 		$PanelContainer/MarginContainer/Popup.show()
 		$PanelContainer/MarginContainer/HBoxContainer2.hide()
 	else:
