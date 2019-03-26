@@ -9,7 +9,6 @@ var motion = Vector2()
 var friction = false
 
 var sword_sound = load("res://entities/player/sounds/sword-gesture1.ogg")
-var jump_sound = load("res://entities/player/sounds/jump.wav")
 onready var sound_player = $"../AudioStreamPlayer"
 
 
@@ -41,8 +40,9 @@ func _ready():
 	current_state = JUMP
 	emit_signal("health_changed", health)
 	
-func play_sound(sound):
+func play_sound(sound, volume = 0):
 	sound_player.stream = sound
+	sound_player.volume_db = volume
 	sound_player.play()
 
 #returns true if state change is possible 
@@ -94,7 +94,6 @@ func _change_state(new_state):
 		JUMP:
 			if is_on_floor():
 				if Input.is_action_just_pressed("ui_up"):
-					play_sound(jump_sound)
 					motion.y = JUMP_HEIGHT
 				if friction == true:
 					motion.x = lerp(motion.x, 0, 0.2)
@@ -123,7 +122,7 @@ func _change_state(new_state):
 		ATTACK:
 			attack_is_over = false
 			$Sprite.play("Melee2")
-			play_sound(sword_sound)
+			play_sound(sword_sound, -10)
 			if $Sprite.get_frame() == 3:
 				var bodies = $Area2D.get_overlapping_bodies()
 				##print(bodies)
