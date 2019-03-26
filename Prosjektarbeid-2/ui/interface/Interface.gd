@@ -23,11 +23,15 @@ func music_setup():
 	else:
 		mute_music_button.pressed = !Globals.muted[0]
 		mute_sound_button.pressed = !Globals.muted[1]
-		
+	
+	# Music muted in option screen
+	if Globals.muted[0]:
+		mute_music_button.pressed = false
 	# The sound player is not in the singleton and needs to be set explicitly
 	# on each scene change
 	if Globals.muted[1]:
 		character_sound_player.set_volume_db(-80)
+		mute_sound_button.pressed = false
 
 func _on_KinematicBody2D_health_changed(player_health):
 	bar.value = player_health
