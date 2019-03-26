@@ -8,6 +8,7 @@ var rounds_won = 0
 
 func _ready():
 	randomize()
+	$PanelContainer/MarginContainer/VBoxContainer.hide()
 	new_round()
 	get_tree().get_root().get_node("Globals").sound_player.stop()
 		
@@ -25,8 +26,13 @@ func new_round():
 func finish():
 	if rounds_won > 0:
 		var aggregate = total_score / rounds_won
-		get_tree().get_root().get_node("Globals").set_bart_score(aggregate)
-	get_tree().quit()
+		get_tree().get_root().get_node("Globals").set_bart_score(total_score, aggregate)
+	$PanelContainer/BalloonSprite.texture = null
+	$PanelContainer/MarginContainer/Popup.hide()
+	$PanelContainer/MarginContainer/HBoxContainer.hide()
+	$PanelContainer/MarginContainer/HBoxContainer2.hide()
+	$PanelContainer/MarginContainer/VBoxContainer/ScoreLabel.text = str(total_score)
+	$PanelContainer/MarginContainer/VBoxContainer.show()
 	
 func _on_PumpButton_pressed():
 	if explode(max_pumps+1):
@@ -56,6 +62,10 @@ func _on_OKButton_pressed():
 	else:
 		finish()
 
+func _on_NextButton_pressed():
+	pass # replace with function body
+
+
 func explode(number):
 	return number == randi()%number+1
 
@@ -64,5 +74,3 @@ func rotate_balloon():
 		$PanelContainer/BalloonSprite.rotation_degrees = randi()%6+1
 	else:
 		$PanelContainer/BalloonSprite.rotation_degrees = -(randi()%6+1)
-		
-
