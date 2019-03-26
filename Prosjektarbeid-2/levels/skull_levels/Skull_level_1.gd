@@ -1,5 +1,5 @@
 extends Node2D
 
 func _ready():
-	$Skull.level = 1
+	$Skull.level = 2
 	

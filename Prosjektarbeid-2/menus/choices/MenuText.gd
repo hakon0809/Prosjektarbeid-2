@@ -46,3 +46,9 @@ const INFO_2 = [INFO_HEAD_2, INFO_TXT_2]
 const INFO_3 = [INFO_HEAD_3, INFO_TXT_3]
 
 const INFO = [INFO_1, INFO_2, INFO_3]
+
+const SETTING_1 = "Share your geolocation"
+const SETTING_2 = "Share your contacts"
+const SETTING_3 = "Share YOUR data"
+
+const SETTING = [SETTING_1, SETTING_2, SETTING_3]

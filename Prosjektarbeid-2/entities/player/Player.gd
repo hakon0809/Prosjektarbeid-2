@@ -200,6 +200,12 @@ func take_damage(count):
 func upgrade_changed(upgrade):
 	if upgrade == 1:
 		set_max_health()
+	if upgrade == 2:
+		pass
+		#TODO code to set player to equip sword
+	if upgrade == 3:
+		pass
+		#TODO code to set player to equip bow
 
 func set_max_health():
 	if get_tree().get_root().get_node("Globals").get_upgrade(1):
