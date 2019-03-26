@@ -1,7 +1,9 @@
 extends Node
 
-var rounds = 10
-var max_pumps
+var current_round = 0
+var pumps_left
+const max_rounds = 10
+const max_pumps = 32
 var score = 0
 var total_score = 0
 var rounds_won = 0
@@ -16,10 +18,11 @@ func new_round():
 	$PanelContainer/MarginContainer/Popup.hide()
 	$PanelContainer/MarginContainer/HBoxContainer2.show()
 	$PanelContainer/BalloonSprite.texture = load("res://levels/BART/balloon_red.png")
-	max_pumps = 32
+	pumps_left = max_pumps
 	score = 0
-	rounds -= 1
-	$PanelContainer/MarginContainer/HBoxContainer/ScoreLabel.text = str(score)
+	current_round += 1
+	$PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RoundLabel.text = str(current_round)
+	$PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScoreLabel.text = str(score)
 	$PanelContainer/BalloonSprite.scale = Vector2(0.5, 0.5)
 	$PanelContainer/BalloonSprite.rotation_degrees = 0
 	
@@ -35,7 +38,7 @@ func finish():
 	$PanelContainer/MarginContainer/VBoxContainer.show()
 	
 func _on_PumpButton_pressed():
-	if explode(max_pumps+1):
+	if explode(pumps_left+1):
 		$PanelContainer/BalloonSprite.texture = null
 		$PanelContainer/MarginContainer/Popup.show()
 		$PanelContainer/MarginContainer/HBoxContainer2.hide()
@@ -43,21 +46,21 @@ func _on_PumpButton_pressed():
 		$PanelContainer/BalloonSprite.scale += Vector2(0.02, 0.02)
 		rotate_balloon()
 		score += 1
-		$PanelContainer/MarginContainer/HBoxContainer/ScoreLabel.text = str(score)
-		max_pumps -= 1
+		$PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScoreLabel.text = str(score)
+		pumps_left -= 1
 
 func _on_CollectButton_pressed():
 	if score > 0:
 		total_score += score
 		$PanelContainer/MarginContainer/HBoxContainer/TotalScoreLabel.text = str(total_score)
 		rounds_won += 1
-		if rounds > 0:
+		if current_round < max_rounds:
 			new_round()
 		else:
 			finish()
 	
 func _on_OKButton_pressed():
-	if rounds > 0:
+	if current_round < max_rounds:
 		new_round()
 	else:
 		finish()
