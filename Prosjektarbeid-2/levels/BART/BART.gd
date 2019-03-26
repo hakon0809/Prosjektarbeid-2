@@ -65,7 +65,7 @@ func _on_OKButton_pressed():
 		finish()
 
 func _on_NextButton_pressed():
-	pass # replace with function body
+	pass # TODO change scene
 
 
 func explode(number):
