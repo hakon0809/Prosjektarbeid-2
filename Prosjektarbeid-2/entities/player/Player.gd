@@ -34,6 +34,8 @@ var max_depth = null
 
 func _ready():
 	set_max_health()
+	set_sword_upgrade()
+	set_bow_upgrade()
 	health = max_health
 	if get_tree().get_current_scene().get("max_depth"):
 		max_depth = get_tree().get_current_scene().get("max_depth")
@@ -200,6 +202,10 @@ func take_damage(count):
 func upgrade_changed(upgrade):
 	if upgrade == 1:
 		set_max_health()
+	if upgrade == 2:
+		set_sword_upgrade()
+	if upgrade == 3:
+		set_bow_upgrade()
 
 func set_max_health():
 	if get_tree().get_root().get_node("Globals").get_upgrade(1):
@@ -207,4 +213,20 @@ func set_max_health():
 	else:
 		max_health = 10
 	get_parent().get_node("Interface").set_health_bar(max_health)
+
+func set_sword_upgrade():
+	if get_tree().get_root().get_node("Globals").get_upgrade(2):
+		pass
+		#TODO equip sword
+	else:
+		pass
+		#TODO unequip sword
+
+func set_bow_upgrade():
+	if get_tree().get_root().get_node("Globals").get_upgrade(3):
+		pass
+		#TODO equip bow
+	else:
+		pass
+		#TODO unequip bow
 
