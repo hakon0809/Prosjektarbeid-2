@@ -2,14 +2,32 @@ extends CanvasLayer
 
 onready var number = $Control/HUD/HPContainer/Background/MarginContainer/HBoxContainer/Number
 onready var bar = $Control/HUD/HPContainer/TextureProgress
-
+onready var mute_music_button = $Control/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/MuteMusic
+onready var mute_sound_button = $Control/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/MuteSound
 onready var pause_menu = $Control/PauseMenu
+onready var character_sound_player = get_node("../AudioStreamPlayer")
 var paused
 
 
 func _ready():
 	pause_menu.hide()
 	paused = false
+	music_setup()
+
+func music_setup():
+	# If the interface has loaded before, the singleton already has
+	# a reference to the mute buttons and should instead update them.
+	if !Globals.music_button && !Globals.sound_button:
+		Globals.music_button = mute_music_button
+		Globals.sound_button = mute_sound_button
+	else:
+		mute_music_button.pressed = !Globals.muted[0]
+		mute_sound_button.pressed = !Globals.muted[1]
+		
+	# The sound player is not in the singleton and needs to be set explicitly
+	# on each scene change
+	if Globals.muted[1]:
+		character_sound_player.set_volume_db(-80)
 
 func _on_KinematicBody2D_health_changed(player_health):
 	bar.value = player_health
@@ -43,3 +61,20 @@ func _on_ResumeButton_pressed():
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+
+func _on_MuteMusic_pressed():
+	# Lets the singleton update the mute music button state, and play/pause
+	Globals.muted[0] = !Globals.muted[0]
+	Globals.music_player._set_playing(!Globals.music_player.is_playing())
+
+
+func _on_MuteSound_pressed():
+	# Update singleton state
+	Globals.muted[1] = !Globals.muted[1]
+	# Since the sound player doesn't play continously its volume has to be set
+	# instead of stopped.
+	if character_sound_player.get_volume_db() == 0:
+		character_sound_player.set_volume_db(-80)
+	else:
+		character_sound_player.set_volume_db(0)
