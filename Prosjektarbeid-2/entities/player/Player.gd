@@ -111,8 +111,7 @@ func _change_state(new_state):
 			$Sprite.play("Get Up")
 			friction = false
 			motion.x = 0
-			if $Sprite.get_frame() == 6:
-				_change_state(IDLE)
+			if $Sprite.get_frame() == 5:
 				damage_immunity = false
 				
 		
@@ -188,6 +187,14 @@ func _change_state(new_state):
 
 func _physics_process(delta):
 	motion.y += GRAVITY
+	
+	if current_state == KNOCKDOWN:
+		if Engine.get_frames_drawn() % 2 != 0:
+			self.modulate.a = 0.5
+		else:
+			self.modulate.a = 1
+	else:
+		self.modulate.a = 1
 
 	if max_depth and position.y > max_depth:
 		restart_level()
@@ -210,7 +217,7 @@ func _physics_process(delta):
 	else :
 		if health <= max_health && health >= 5:
 			_change_state(IDLE)
-		elif health < 5 && health > 1:
+		elif health < 5 && health > 0:
 			_change_state(HURT)
 
 	motion = move_and_slide(motion, UP)
@@ -224,10 +231,10 @@ func restart_level():
 func take_damage(count):
 	if not damage_immunity:
 		health -= count
-		emit_signal("health_changed", health)
 		if health <= 0:
 			health = 0
-	_change_state(KNOCKDOWN)
+		emit_signal("health_changed", health)
+		_change_state(KNOCKDOWN)
 		
 func upgrade_changed(upgrade):
 	if upgrade == 1:
