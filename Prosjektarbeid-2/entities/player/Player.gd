@@ -76,7 +76,9 @@ func is_change_state_possible():
 
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
-			
+		
+		elif not is_on_floor() && next_state == KNOCKDOWN:
+			return true
 			
 		elif not is_on_floor():
 			return false
@@ -190,7 +192,7 @@ func _physics_process(delta):
 	
 	if current_state == KNOCKDOWN:
 		if Engine.get_frames_drawn() % 2 != 0:
-			self.modulate.a = 0.5
+			self.modulate.a = 0.2
 		else:
 			self.modulate.a = 1
 	else:
