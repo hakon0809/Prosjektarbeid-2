@@ -11,9 +11,14 @@ var friction = false
 var sword_sound = load("res://entities/player/sounds/sword-gesture1.ogg")
 onready var sound_player = $"../AudioStreamPlayer"
 
+enum Weapons { FISTS, SWORD } 
+
+const ARROW = preload("res://entities/enemies/arrow.tscn")
+var timer = null
+
 
 #Different possible states, have not implemented STAGGER
-enum STATES { IDLE, GETUP, KNOCKDOWN, RUNLEFT, RUNRIGHT, JUMP, ATTACK, HURT, DIE, STAGGER}
+enum STATES { IDLE, GETUP, KNOCKDOWN, RUNLEFT, RUNRIGHT, JUMP, ATTACK, HURT, DIE, STAGGER, BOW}
 
 signal health_changed
 signal died
@@ -21,6 +26,17 @@ signal died
 var current_state = null
 var previous_state = null
 var next_state = null
+
+var current_weapon = FISTS
+var previous_weapon = null
+var next_weapon = null
+
+var attack_animation = null
+var attack_frame = null
+var attack_over_frame = null
+
+var can_shoot = false
+var has_bow = null
 
 #var to check if attack is over
 var attack_is_over = true
@@ -37,6 +53,13 @@ func _ready():
 	set_sword_upgrade()
 	set_bow_upgrade()
 	health = max_health
+	
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(0.3)
+	timer.connect("timeout", self, "on_timeout")
+	add_child(timer)
+	
 	if get_tree().get_current_scene().get("max_depth"):
 		max_depth = get_tree().get_current_scene().get("max_depth")
 	current_state = JUMP
@@ -70,7 +93,16 @@ func is_change_state_possible():
 			return false
 		elif previous_state == GETUP:
 			return false
-		elif attack_is_over == false:
+			
+		elif current_state == BOW && $Sprite.get_frame() == 8:
+			return true
+			
+		elif current_state == BOW:
+			return false
+		elif previous_state == BOW:
+			return false
+	
+		elif not attack_is_over:
 			return false
 
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
@@ -82,8 +114,48 @@ func is_change_state_possible():
 		else:
 			return true
 		
+		
+func change_weapon(new_weapon):
+	previous_weapon = current_weapon
+	next_weapon = new_weapon
+	current_weapon = new_weapon
+	
+	match current_weapon:
+		FISTS:
+			attack_animation = "Punch"
+			attack_frame = 1
+			attack_over_frame = 3
+			damage = 1
+			
+		SWORD:
+			attack_animation = "Melee2"
+			attack_frame = 3
+			attack_over_frame = 5
+			damage = 2
+			
+			
+
+func on_timeout():
+	can_shoot=true
+	
+
+func fire_arrow():
+	$Sprite.play("Ranged")
+	if $Sprite.get_frame() == 8:
+		var arrow = ARROW.instance()
+		get_parent().add_child(arrow)
+		if $Sprite.flip_h == false:
+			arrow.position = $Position2D.global_position
+		else:
+			
+			arrow.speed= -arrow.speed
+			arrow.position = $Position2D.global_position
+		
+		can_shoot = false
+		change_state(IDLE)
+
 #Changes player state
-func _change_state(new_state):
+func change_state(new_state):
 	previous_state = current_state
 	next_state = new_state
 	
@@ -144,7 +216,10 @@ func _change_state(new_state):
 					$Area2D.set_scale(Vector2(1, 1))
 					
 				elif Input.is_action_just_pressed("ui_attack"):
-					_change_state(ATTACK)
+					if can_shoot:
+						change_state(BOW)
+					else:
+						change_state(ATTACK)
 					
 				if motion.y < 0:
 					$Sprite.play("Jump")
@@ -156,9 +231,9 @@ func _change_state(new_state):
 		
 		ATTACK:
 			attack_is_over = false
-			$Sprite.play("Melee2")
+			$Sprite.play(attack_animation)
 			play_sound(sword_sound, -10)
-			if $Sprite.get_frame() == 3:
+			if $Sprite.get_frame() == attack_frame:
 				var bodies = $Area2D.get_overlapping_bodies()
 				##print(bodies)
 				for body in bodies:
@@ -167,10 +242,26 @@ func _change_state(new_state):
 						body.hitstun = 10
 						body.knockdir = global_transform.origin - body.global_transform.origin
 						body.take_damage(damage)
-			if $Sprite.get_frame() == 5:
+			if $Sprite.get_frame() == attack_over_frame:
 				attack_is_over = true
 				if not is_on_floor():
-					_change_state(JUMP)
+					change_state(JUMP)
+
+		BOW:
+			$Sprite.play("Ranged")
+			if $Sprite.get_frame() == 7:
+				var arrow = ARROW.instance()
+				#Sliter med å finne riktig sted å adde arrow TODO
+					#get_tree().get_current_scene().get_node("Player").add_child(arrow)
+					#get_parent().add_child(arrow)
+				if $Sprite.flip_h == false:
+					arrow.position = $Position2D.global_position
+				else:
+					
+					arrow.speed= -arrow.speed
+					arrow.position = $Position2D.global_position
+				
+				can_shoot = false
 #			
 
 		HURT:
@@ -190,25 +281,35 @@ func _physics_process(delta):
 		restart_level()
 		
 	elif health < 1:
-		_change_state(DIE)
+		change_state(DIE)
 
 	elif Input.is_action_just_pressed("ui_up"):
-		_change_state(JUMP)
+		change_state(JUMP)
+		
 		
 	elif Input.is_action_just_pressed("ui_attack"):
-		_change_state(ATTACK)
+		timer.start()
+		
+	
+	elif Input.is_action_just_released("ui_attack"):
+		if can_shoot && has_bow:
+			change_state(BOW)
+			timer.stop()
+		else:
+			change_state(ATTACK)
+			timer.stop()
 
 	elif Input.is_action_pressed("ui_right"):
-		_change_state(RUNRIGHT)
+		change_state(RUNRIGHT)
 
 	elif Input.is_action_pressed("ui_left"):
-		_change_state(RUNLEFT)
+		change_state(RUNLEFT)
 
 	else :
 		if health <= max_health && health >= 5:
-			_change_state(IDLE)
+			change_state(IDLE)
 		elif health < 5 && health > 1:
-			_change_state(HURT)
+			change_state(HURT)
 
 	motion = move_and_slide(motion, UP)
 
@@ -245,18 +346,16 @@ func set_max_health():
 	get_parent().get_node("Interface").set_health_bar(max_health)
 
 func set_sword_upgrade():
-	if get_tree().get_root().get_node("Globals").get_upgrade(2):
-		pass
+	if get_tree().get_root().get_node("Globals").get_upgrade(2) || true:
+		change_weapon(SWORD)
 		#TODO equip sword
 	else:
 		pass
-		#TODO unequip sword
+		change_weapon(FISTS)
 
 func set_bow_upgrade():
 	if get_tree().get_root().get_node("Globals").get_upgrade(3):
-		pass
-		#TODO equip bow
+		has_bow = true
 	else:
-		pass
-		#TODO unequip bow
+		has_bow = false
 
