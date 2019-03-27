@@ -12,7 +12,7 @@ func _ready():
 	randomize()
 	$PanelContainer/MarginContainer/VBoxContainer.hide()
 	new_round()
-	get_tree().get_root().get_node("Globals").sound_player.stop()
+	get_tree().get_root().get_node("Globals").music_player.stop()
 		
 func new_round():
 	$PanelContainer/MarginContainer/Popup.hide()
@@ -37,7 +37,7 @@ func finish():
 	$PanelContainer/MarginContainer/VBoxContainer.show()
 	
 func _on_PumpButton_pressed():
-	if explode(pumps_left+1):
+	if explode(pumps_left+1) && pumps_left != max_pumps:
 		$PanelContainer/BalloonSprite.scale = Vector2(0, 0)
 		$PanelContainer/MarginContainer/Popup.show()
 		$PanelContainer/MarginContainer/HBoxContainer2.hide()
