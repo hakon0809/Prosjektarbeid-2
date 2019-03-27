@@ -2,11 +2,15 @@ extends Node
 
 var main_menu_song = load("res://levels/common/assets/sounds/Fantastic A.ogg")
 var city_song =  load("res://levels/common/assets/sounds/The Walrus and the Carpenter.ogg")
-var sound_player = AudioStreamPlayer.new()
+var music_player = AudioStreamPlayer.new()
+var muted = [false, false]
+# A reference to the music/sound buttons are needed to remember their state
+# across scene changes.
+var music_button
+var sound_button
 
 func _ready():
-	self.add_child(sound_player)
-	play_song(main_menu_song)
+	self.add_child(music_player)
 
 var upgrade_1 = false
 var upgrade_2 = false
@@ -24,11 +28,15 @@ var settings_activity_3 = []
 var settings_activities = [settings_activity_1, settings_activity_2, settings_activity_3]
 var activities = [upgrade_activities, settings_activities]
 
+var bart_score
+var bart_aggregate
+
 func play_song(song, volume = 0):
-	sound_player.stream = song
-	sound_player.volume_db = volume
-	sound_player.play()
-	
+	# Updates the song and volume, and if not muted starts the song
+	music_player.stream = song
+	music_player.volume_db = volume
+	if !muted[0]:
+		music_player.play()
 
 func set_upgrade(upgrade, value):
 	upgrades[upgrade] = value
@@ -42,6 +50,10 @@ func get_all_upgrades():
 	
 func set_activity(activity, level, string):
 	activities[activity][level].append(string)
+	
+func set_bart_score(score, aggregate):
+	bart_score = score
+	bart_aggregate = aggregate
 	
 func send_email():
 	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="

@@ -61,15 +61,16 @@
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-get-up-05.png" type="Texture" id=59]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-get-up-06.png" type="Texture" id=60]
 
+
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 10.0
+"speed": 6.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ],
 "loop": true,
 "name": "Run",
 "speed": 10.0
@@ -86,7 +87,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": true,
-"name": "Melee",
+"name": "Ranged",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
@@ -114,11 +115,6 @@ animations = [ {
 "name": "Fall",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "Ranged",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ) ],
 "loop": true,
 "name": "Get Up",
@@ -131,43 +127,13 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 extents = Vector2( 7.67985, 11.8218 )
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
 [node name="Interface" parent="." index="0" instance=ExtResource( 1 )]
 
 editor/display_folded = true
-
-[node name="HUD" parent="Interface/Control" index="0"]
-
-margin_right = 534.0
-margin_bottom = 296.0
-
-[node name="Background" parent="Interface/Control/HUD/HPContainer" index="0"]
-
-margin_left = 284.0
-margin_right = 322.0
-
-[node name="TextureProgress" parent="Interface/Control/HUD/HPContainer" index="1"]
-
-margin_left = 326.0
-margin_right = 524.0
-
-[node name="BContainer" parent="Interface/Control/HUD/ActionContainer" index="2"]
-
-margin_left = 419.0
-margin_right = 469.0
-
-[node name="AContainer" parent="Interface/Control/HUD/ActionContainer" index="3"]
-
-margin_left = 474.0
-margin_right = 524.0
-
-[node name="PauseMenu" parent="Interface/Control" index="2"]
-
-margin_right = 534.0
-margin_bottom = 296.0
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="1" groups=[
 "character",

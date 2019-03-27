@@ -9,7 +9,6 @@ var motion = Vector2()
 var friction = false
 
 var sword_sound = load("res://entities/player/sounds/sword-gesture1.ogg")
-var jump_sound = load("res://entities/player/sounds/jump.wav")
 onready var sound_player = $"../AudioStreamPlayer"
 
 
@@ -35,14 +34,17 @@ var max_depth = null
 
 func _ready():
 	set_max_health()
+	set_sword_upgrade()
+	set_bow_upgrade()
 	health = max_health
 	if get_tree().get_current_scene().get("max_depth"):
 		max_depth = get_tree().get_current_scene().get("max_depth")
 	current_state = JUMP
 	emit_signal("health_changed", health)
 	
-func play_sound(sound):
+func play_sound(sound, volume = 0):
 	sound_player.stream = sound
+	sound_player.volume_db = volume
 	sound_player.play()
 
 #returns true if state change is possible 
@@ -127,7 +129,6 @@ func _change_state(new_state):
 		JUMP:
 			if is_on_floor():
 				if Input.is_action_just_pressed("ui_up"):
-					play_sound(jump_sound)
 					motion.y = JUMP_HEIGHT
 				if friction == true:
 					motion.x = lerp(motion.x, 0, 0.2)
@@ -156,7 +157,7 @@ func _change_state(new_state):
 		ATTACK:
 			attack_is_over = false
 			$Sprite.play("Melee2")
-			play_sound(sword_sound)
+			play_sound(sword_sound, -10)
 			if $Sprite.get_frame() == 3:
 				var bodies = $Area2D.get_overlapping_bodies()
 				##print(bodies)
@@ -231,6 +232,10 @@ func take_damage(count):
 func upgrade_changed(upgrade):
 	if upgrade == 1:
 		set_max_health()
+	if upgrade == 2:
+		set_sword_upgrade()
+	if upgrade == 3:
+		set_bow_upgrade()
 
 func set_max_health():
 	if get_tree().get_root().get_node("Globals").get_upgrade(1):
@@ -238,4 +243,20 @@ func set_max_health():
 	else:
 		max_health = 10
 	get_parent().get_node("Interface").set_health_bar(max_health)
+
+func set_sword_upgrade():
+	if get_tree().get_root().get_node("Globals").get_upgrade(2):
+		pass
+		#TODO equip sword
+	else:
+		pass
+		#TODO unequip sword
+
+func set_bow_upgrade():
+	if get_tree().get_root().get_node("Globals").get_upgrade(3):
+		pass
+		#TODO equip bow
+	else:
+		pass
+		#TODO unequip bow
 
