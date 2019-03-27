@@ -13,7 +13,7 @@ onready var sound_player = $"../AudioStreamPlayer"
 
 
 #Different possible states, have not implemented STAGGER
-enum STATES { IDLE, RUNLEFT, RUNRIGHT, JUMP, ATTACK, HURT, DIE, STAGGER}
+enum STATES { IDLE, GETUP, KNOCKDOWN, RUNLEFT, RUNRIGHT, JUMP, ATTACK, HURT, DIE, STAGGER}
 
 signal health_changed
 signal died
@@ -54,11 +54,28 @@ func is_change_state_possible():
 			return false
 		elif previous_state == DIE:
 			return false
+			
+		elif previous_state == KNOCKDOWN && next_state == GETUP:
+			return true
+			
+		elif current_state == KNOCKDOWN:
+			return false
+		elif previous_state == KNOCKDOWN:
+			return false
+			
+		elif current_state == GETUP && $Sprite.get_frame() == 6:
+			return true
+			
+		elif current_state == GETUP:
+			return false
+		elif previous_state == GETUP:
+			return false
 		elif attack_is_over == false:
 			return false
-		#Air attack doesnt work as intended yet TODO
+
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
+			
 			
 		elif not is_on_floor():
 			return false
@@ -79,6 +96,22 @@ func _change_state(new_state):
 			$Sprite.play("Idle")
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
+			
+		KNOCKDOWN:
+			$Sprite.play("Knockdown")
+			friction = true
+			motion.x = lerp(motion.x, 0, 0.2)
+			if $Sprite.get_frame() == 6 && is_on_floor():
+				_change_state(GETUP)
+			
+			
+		GETUP:
+			$Sprite.play("Get Up")
+			friction = false
+			motion.x = 0
+			if $Sprite.get_frame() == 6:
+				_change_state(IDLE)
+				
 		
 		RUNLEFT:
 				
@@ -165,9 +198,6 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("ui_attack"):
 		_change_state(ATTACK)
 
-	elif Input.is_action_just_pressed("ui_up"):
-		_change_state(JUMP)
-
 	elif Input.is_action_pressed("ui_right"):
 		_change_state(RUNRIGHT)
 
@@ -175,9 +205,9 @@ func _physics_process(delta):
 		_change_state(RUNLEFT)
 
 	else :
-		if health == max_health:
+		if health <= max_health && health >= 5:
 			_change_state(IDLE)
-		elif health < max_health && health > 1:
+		elif health < 5 && health > 1:
 			_change_state(HURT)
 
 	motion = move_and_slide(motion, UP)
@@ -197,7 +227,7 @@ func take_damage(count):
 
 		emit_signal("health_changed", health)
 		print("Character died")
-		return
+	_change_state(KNOCKDOWN)
 		
 func upgrade_changed(upgrade):
 	if upgrade == 1:
