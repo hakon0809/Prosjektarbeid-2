@@ -24,6 +24,7 @@ var next_state = null
 
 #var to check if attack is over
 var attack_is_over = true
+var damage_immunity = false
 
 export var max_health = 10
 var health
@@ -98,6 +99,7 @@ func _change_state(new_state):
 			motion.x = lerp(motion.x, 0, 0.2)
 			
 		KNOCKDOWN:
+			damage_immunity = true
 			$Sprite.play("Knockdown")
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
@@ -111,6 +113,7 @@ func _change_state(new_state):
 			motion.x = 0
 			if $Sprite.get_frame() == 6:
 				_change_state(IDLE)
+				damage_immunity = false
 				
 		
 		RUNLEFT:
@@ -219,14 +222,11 @@ func restart_level():
 	
 #helper func so that the player can take damage
 func take_damage(count):
-
-	health -= count
-	emit_signal("health_changed", health)
-	if health <= 0:
-		health = 0
-
+	if not damage_immunity:
+		health -= count
 		emit_signal("health_changed", health)
-		print("Character died")
+		if health <= 0:
+			health = 0
 	_change_state(KNOCKDOWN)
 		
 func upgrade_changed(upgrade):
