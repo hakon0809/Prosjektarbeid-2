@@ -24,6 +24,7 @@ var next_state = null
 
 #var to check if attack is over
 var attack_is_over = true
+var damage_immunity = false
 
 export var max_health = 10
 var health
@@ -75,7 +76,9 @@ func is_change_state_possible():
 
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
-			
+		
+		elif not is_on_floor() && next_state == KNOCKDOWN:
+			return true
 			
 		elif not is_on_floor():
 			return false
@@ -98,6 +101,7 @@ func _change_state(new_state):
 			motion.x = lerp(motion.x, 0, 0.2)
 			
 		KNOCKDOWN:
+			damage_immunity = true
 			$Sprite.play("Knockdown")
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
@@ -109,8 +113,8 @@ func _change_state(new_state):
 			$Sprite.play("Get Up")
 			friction = false
 			motion.x = 0
-			if $Sprite.get_frame() == 6:
-				_change_state(IDLE)
+			if $Sprite.get_frame() == 5:
+				damage_immunity = false
 				
 		
 		RUNLEFT:
@@ -185,6 +189,14 @@ func _change_state(new_state):
 
 func _physics_process(delta):
 	motion.y += GRAVITY
+	
+	if current_state == KNOCKDOWN:
+		if Engine.get_frames_drawn() % 2 != 0:
+			self.modulate.a = 0.2
+		else:
+			self.modulate.a = 1
+	else:
+		self.modulate.a = 1
 
 	if max_depth and position.y > max_depth:
 		restart_level()
@@ -207,7 +219,7 @@ func _physics_process(delta):
 	else :
 		if health <= max_health && health >= 5:
 			_change_state(IDLE)
-		elif health < 5 && health > 1:
+		elif health < 5 && health > 0:
 			_change_state(HURT)
 
 	motion = move_and_slide(motion, UP)
@@ -219,15 +231,12 @@ func restart_level():
 	
 #helper func so that the player can take damage
 func take_damage(count):
-
-	health -= count
-	emit_signal("health_changed", health)
-	if health <= 0:
-		health = 0
-
+	if not damage_immunity:
+		health -= count
+		if health <= 0:
+			health = 0
 		emit_signal("health_changed", health)
-		print("Character died")
-	_change_state(KNOCKDOWN)
+		_change_state(KNOCKDOWN)
 		
 func upgrade_changed(upgrade):
 	if upgrade == 1:
