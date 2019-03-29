@@ -241,6 +241,8 @@ func take_damage(count):
 func upgrade_changed(upgrade):
 	if upgrade == 1:
 		set_max_health()
+		health = max_health
+		emit_signal("health_changed", health)
 	if upgrade == 2:
 		set_sword_upgrade()
 	if upgrade == 3:
