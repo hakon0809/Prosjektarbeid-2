@@ -13,7 +13,7 @@ onready var sound_player = $"../AudioStreamPlayer"
 
 enum Weapons { FISTS, SWORD } 
 
-const ARROW = preload("res://entities/enemies/arrow.tscn")
+const ARROW = preload("res://entities/player/player_arrow.tscn")
 var timer = null
 
 
@@ -107,6 +107,8 @@ func is_change_state_possible():
 
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
+#		elif not is_on_floor() && has_bow && next_state == BOW:
+#			return false
 			
 			
 		elif not is_on_floor():
@@ -139,20 +141,6 @@ func on_timeout():
 	can_shoot=true
 	
 
-func fire_arrow():
-	$Sprite.play("Ranged")
-	if $Sprite.get_frame() == 8:
-		var arrow = ARROW.instance()
-		get_parent().add_child(arrow)
-		if $Sprite.flip_h == false:
-			arrow.position = $Position2D.global_position
-		else:
-			
-			arrow.speed= -arrow.speed
-			arrow.position = $Position2D.global_position
-		
-		can_shoot = false
-		change_state(IDLE)
 
 #Changes player state
 func change_state(new_state):
@@ -161,6 +149,7 @@ func change_state(new_state):
 	
 	if is_change_state_possible():
 		current_state = new_state
+		print(current_state)
 
 	
 	match current_state:
@@ -174,7 +163,7 @@ func change_state(new_state):
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
 			if $Sprite.get_frame() == 6 && is_on_floor():
-				_change_state(GETUP)
+				change_state(GETUP)
 			
 			
 		GETUP:
@@ -182,7 +171,7 @@ func change_state(new_state):
 			friction = false
 			motion.x = 0
 			if $Sprite.get_frame() == 6:
-				_change_state(IDLE)
+				change_state(IDLE)
 				
 		
 		RUNLEFT:
@@ -216,9 +205,6 @@ func change_state(new_state):
 					$Area2D.set_scale(Vector2(1, 1))
 					
 				elif Input.is_action_just_pressed("ui_attack"):
-					if can_shoot:
-						change_state(BOW)
-					else:
 						change_state(ATTACK)
 					
 				if motion.y < 0:
@@ -249,17 +235,19 @@ func change_state(new_state):
 
 		BOW:
 			$Sprite.play("Ranged")
+			friction = true
+			motion.x = lerp(motion.x, 0, 0.2)
+			
 			if $Sprite.get_frame() == 7:
-				var arrow = ARROW.instance()
-				#Sliter med å finne riktig sted å adde arrow TODO
-					#get_tree().get_current_scene().get_node("Player").add_child(arrow)
-					#get_parent().add_child(arrow)
+				var player_arrow = ARROW.instance()
+				get_tree().get_current_scene().add_child(player_arrow)
+				
 				if $Sprite.flip_h == false:
-					arrow.position = $Position2D.global_position
+					player_arrow.speed= player_arrow.speed
+					player_arrow.position = $Position2D.global_position
 				else:
-					
-					arrow.speed= -arrow.speed
-					arrow.position = $Position2D.global_position
+					player_arrow.speed= -player_arrow.speed
+					player_arrow.position = $Position2D.global_position -Vector2(70,0)
 				
 				can_shoot = false
 #			
@@ -328,7 +316,7 @@ func take_damage(count):
 
 		emit_signal("health_changed", health)
 		print("Character died")
-	_change_state(KNOCKDOWN)
+	change_state(KNOCKDOWN)
 		
 func upgrade_changed(upgrade):
 	if upgrade == 1:
@@ -339,22 +327,21 @@ func upgrade_changed(upgrade):
 		set_bow_upgrade()
 
 func set_max_health():
-	if get_tree().get_root().get_node("Globals").get_upgrade(1):
+	if Globals.get_upgrade(1):
 		max_health = 15
 	else:
 		max_health = 10
 	get_parent().get_node("Interface").set_health_bar(max_health)
 
 func set_sword_upgrade():
-	if get_tree().get_root().get_node("Globals").get_upgrade(2) || true:
+	if Globals.get_upgrade(2):
 		change_weapon(SWORD)
-		#TODO equip sword
 	else:
 		pass
 		change_weapon(FISTS)
 
 func set_bow_upgrade():
-	if get_tree().get_root().get_node("Globals").get_upgrade(3):
+	if Globals.get_upgrade(3) || true:
 		has_bow = true
 	else:
 		has_bow = false
