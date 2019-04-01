@@ -1,9 +1,7 @@
-extends Node
+extends Area2D
 
-func _ready():
-	print("fuck")
+var damage = 1
 
-func _on_Area2D_body_entered(body):
-	print("omgwtfbbq")
+func _on_SpikeArea2D_body_entered(body):
 	if body.is_in_group("character"):
-		body.take_damage(1)
+		body.take_damage(damage)
