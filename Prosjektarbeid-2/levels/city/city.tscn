@@ -21,7 +21,6 @@
 [ext_resource path="res://entities/npc/PirateMan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://entities/npc/OldMan.tscn" type="PackedScene" id=20]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=21]
-[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=22]
 
 [sub_resource type="GDScript" id=1]
 
@@ -51,17 +50,35 @@ func _on_Area2D_body_exited(body):
 	pass # replace with function body
 "
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="GDScript" id=2]
+
+resource_local_to_scene = true
+script/source = "extends Area2D
+
+func _ready():
+	# Called when the node is added to the scene for the first time.
+	# Initialization here
+	pass
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group(\"character\"):
+		print(\"put on some gobber m8\")
+		#Globals.play_song() *insert song, optionally volume in db*
+		get_tree().change_scene(\"res://levels/skull_levels/Skull_level_1.tscn\")
+		Globals.play_song(Globals.main_menu_song)"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 64 )
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
 editor/display_folded = true
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Material" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -182,6 +199,9 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="trees" type="Node2D" parent="Background" index="3"]
 
+editor/display_folded = true
+visible = false
+
 [node name="trees-1" type="Sprite" parent="Background/trees" index="0"]
 
 position = Vector2( -336, 118 )
@@ -234,6 +254,8 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="houses" type="Node2D" parent="Background" index="4"]
 
+editor/display_folded = true
+
 [node name="houses_1" type="Sprite" parent="Background/houses" index="0"]
 
 position = Vector2( 232, 96 )
@@ -278,7 +300,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="Platforms" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
-position = Vector2( 0.495605, -1.79207 )
+position = Vector2( 0.495605, -1.79208 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -474,14 +496,10 @@ visible = false
 
 [node name="Player" parent="." index="3" instance=ExtResource( 21 )]
 
+editor/display_folded = true
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
 position = Vector2( -477.484, 154.566 )
 script = SubResource( 1 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="Sprite" parent="Player/KinematicBody2D" index="0"]
-
-frame = 0
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
@@ -500,7 +518,6 @@ limit_bottom = 270
 
 [node name="NextLevelArea" type="Area2D" parent="." index="4"]
 
-editor/display_folded = true
 position = Vector2( 1568, 96 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -509,22 +526,22 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 22 )
+script = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelArea" index="0"]
 
-shape = SubResource( 2 )
-
-[connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_entered"]
+shape = SubResource( 3 )
 
 [connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_entered"]
 
-[connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_entered"]
 
 [connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_exited"]
+
+[connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_exited"]
 
 [connection signal="body_entered" from="NextLevelArea" to="NextLevelArea" method="_on_Area2D_body_entered"]
 
