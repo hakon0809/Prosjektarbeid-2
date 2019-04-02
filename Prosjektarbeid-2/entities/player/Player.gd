@@ -27,6 +27,7 @@ var current_state = null
 var previous_state = null
 var next_state = null
 
+var idle_animation = "Idle"
 var current_weapon = FISTS
 var previous_weapon = null
 var next_weapon = null
@@ -130,12 +131,14 @@ func change_weapon(new_weapon):
 	
 	match current_weapon:
 		FISTS:
+			idle_animation = "Idle"
 			attack_animation = "Punch"
 			attack_frame = 1
 			attack_over_frame = 3
 			damage = 1
 			
 		SWORD:
+			idle_animation = "Idle Sword"
 			attack_animation = "Melee2"
 			attack_frame = 3
 			attack_over_frame = 5
@@ -160,7 +163,7 @@ func change_state(new_state):
 	
 	match current_state:
 		IDLE:
-			$Sprite.play("Idle")
+			$Sprite.play(idle_animation)
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
 			
