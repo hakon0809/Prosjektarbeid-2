@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levels/levelA/levelA.gd" type="Script" id=1]
 [ext_resource path="res://levels/levelA/MovingPlatform.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://entities/enemies/goblin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/enemies/barbarian.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/levelA/Area2D.gd" type="Script" id=12]
+[ext_resource path="res://levels/levelA/Spike.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -243,6 +244,10 @@ position = Vector2( -10.5109, 0 )
 scale = Vector2( 1.31851, 1 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Spike" parent="." index="7" instance=ExtResource( 13 )]
+
+position = Vector2( -1070, 750 )
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
 
