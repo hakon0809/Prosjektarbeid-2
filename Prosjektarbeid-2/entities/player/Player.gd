@@ -37,6 +37,7 @@ var attack_over_frame = null
 
 var can_shoot = false
 var has_bow = null
+var not_shot = true
 
 #var to check if attack is over
 var attack_is_over = true
@@ -239,17 +240,18 @@ func change_state(new_state):
 			motion.x = lerp(motion.x, 0, 0.2)
 			
 			if $Sprite.get_frame() == 7:
-				var player_arrow = ARROW.instance()
-				get_tree().get_current_scene().add_child(player_arrow)
-				
-				if $Sprite.flip_h == false:
-					player_arrow.speed= player_arrow.speed
-					player_arrow.position = $Position2D.global_position
-				else:
-					player_arrow.speed= -player_arrow.speed
-					player_arrow.position = $Position2D.global_position -Vector2(70,0)
-				
-				can_shoot = false
+				if not_shot:
+					var player_arrow = ARROW.instance()
+					get_tree().get_current_scene().add_child(player_arrow)
+					
+					if $Sprite.flip_h == false:
+						player_arrow.speed= player_arrow.speed
+						player_arrow.position = $Position2D.global_position
+					else:
+						player_arrow.speed= -player_arrow.speed
+						player_arrow.position = $Position2D.global_position -Vector2(70,0)
+					not_shot = false
+					can_shoot = false
 #			
 
 		HURT:
@@ -281,6 +283,7 @@ func _physics_process(delta):
 	
 	elif Input.is_action_just_released("ui_attack"):
 		if can_shoot && has_bow:
+			not_shot = true
 			change_state(BOW)
 			timer.stop()
 		else:
@@ -341,7 +344,7 @@ func set_sword_upgrade():
 		change_weapon(FISTS)
 
 func set_bow_upgrade():
-	if Globals.get_upgrade(3) || true:
+	if Globals.get_upgrade(3):
 		has_bow = true
 	else:
 		has_bow = false
