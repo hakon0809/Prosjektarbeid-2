@@ -99,6 +99,7 @@ animations = [ {
 "name": "Punch",
 "speed": 30.0
 }, {
+
 "frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "Knockdown",
@@ -106,8 +107,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
 "loop": false,
-"name": "Death",
-"speed": 5.0
+"name": "Knockdown",
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ) ],
 "loop": false,
@@ -128,6 +129,7 @@ extents = Vector2( 7.67985, 11.8218 )
 
 [node name="Player" type="Node2D"]
 
+scale = Vector2( 0.8, 0.8 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Interface" parent="." index="0" instance=ExtResource( 1 )]
@@ -143,7 +145,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
 "_edit_group_": true
 }

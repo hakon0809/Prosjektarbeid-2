@@ -41,6 +41,7 @@ var not_shot = true
 
 #var to check if attack is over
 var attack_is_over = true
+var damage_immunity = false
 
 export var max_health = 10
 var health
@@ -108,6 +109,10 @@ func is_change_state_possible():
 
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
+		
+		elif not is_on_floor() && next_state == KNOCKDOWN:
+			return true
+    
 #		elif not is_on_floor() && has_bow && next_state == BOW:
 #			return false
 			
@@ -160,6 +165,7 @@ func change_state(new_state):
 			motion.x = lerp(motion.x, 0, 0.2)
 			
 		KNOCKDOWN:
+			damage_immunity = true
 			$Sprite.play("Knockdown")
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
@@ -171,7 +177,9 @@ func change_state(new_state):
 			$Sprite.play("Get Up")
 			friction = false
 			motion.x = 0
-			if $Sprite.get_frame() == 6:
+      
+			if $Sprite.get_frame() == 5:
+				damage_immunity = false
 				change_state(IDLE)
 				
 		
@@ -252,7 +260,6 @@ func change_state(new_state):
 						player_arrow.position = $Position2D.global_position -Vector2(70,0)
 					not_shot = false
 					can_shoot = false
-#			
 
 		HURT:
 			$Sprite.play("Hurt")
@@ -266,6 +273,14 @@ func change_state(new_state):
 
 func _physics_process(delta):
 	motion.y += GRAVITY
+	
+	if current_state == KNOCKDOWN:
+		if Engine.get_frames_drawn() % 2 != 0:
+			self.modulate.a = 0.2
+		else:
+			self.modulate.a = 1
+	else:
+		self.modulate.a = 1
 
 	if max_depth and position.y > max_depth:
 		restart_level()
@@ -299,7 +314,7 @@ func _physics_process(delta):
 	else :
 		if health <= max_health && health >= 5:
 			change_state(IDLE)
-		elif health < 5 && health > 1:
+		elif health < 5 && health > 0:
 			change_state(HURT)
 
 	motion = move_and_slide(motion, UP)
@@ -311,19 +326,19 @@ func restart_level():
 	
 #helper func so that the player can take damage
 func take_damage(count):
-
-	health -= count
-	emit_signal("health_changed", health)
-	if health <= 0:
-		health = 0
-
+	if not damage_immunity:
+		health -= count
+		if health <= 0:
+			health = 0
 		emit_signal("health_changed", health)
-		print("Character died")
-	change_state(KNOCKDOWN)
+		change_state(KNOCKDOWN)
+
 		
 func upgrade_changed(upgrade):
 	if upgrade == 1:
 		set_max_health()
+		health = max_health
+		emit_signal("health_changed", health)
 	if upgrade == 2:
 		set_sword_upgrade()
 	if upgrade == 3:
