@@ -22,37 +22,37 @@
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-knock-dwn-04.png" type="Texture" id=20]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-knock-dwn-05.png" type="Texture" id=21]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-knock-dwn-06.png" type="Texture" id=22]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-09.png" type="Texture" id=23]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-10.png" type="Texture" id=24]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-11.png" type="Texture" id=25]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-12.png" type="Texture" id=26]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-fall-00.png" type="Texture" id=27]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-fall-01.png" type="Texture" id=28]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-00.png" type="Texture" id=29]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-01.png" type="Texture" id=30]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-02.png" type="Texture" id=31]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-03.png" type="Texture" id=32]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-04.png" type="Texture" id=33]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-05.png" type="Texture" id=34]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-06.png" type="Texture" id=35]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-00.png" type="Texture" id=36]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-01.png" type="Texture" id=37]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-02.png" type="Texture" id=38]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-03.png" type="Texture" id=39]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-04.png" type="Texture" id=40]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-05.png" type="Texture" id=41]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-06.png" type="Texture" id=42]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-07.png" type="Texture" id=43]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-08.png" type="Texture" id=44]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-jump-00.png" type="Texture" id=45]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-jump-01.png" type="Texture" id=46]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-jump-02.png" type="Texture" id=47]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-00.png" type="Texture" id=48]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-01.png" type="Texture" id=49]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-02.png" type="Texture" id=50]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-03.png" type="Texture" id=51]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-04.png" type="Texture" id=52]
-[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-05.png" type="Texture" id=53]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-00.png" type="Texture" id=23]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-01.png" type="Texture" id=24]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-02.png" type="Texture" id=25]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-03.png" type="Texture" id=26]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-04.png" type="Texture" id=27]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-05.png" type="Texture" id=28]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-06.png" type="Texture" id=29]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-07.png" type="Texture" id=30]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-bow-08.png" type="Texture" id=31]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-fall-00.png" type="Texture" id=32]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-fall-01.png" type="Texture" id=33]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-09.png" type="Texture" id=34]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-10.png" type="Texture" id=35]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-11.png" type="Texture" id=36]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-punch-12.png" type="Texture" id=37]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-00.png" type="Texture" id=38]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-01.png" type="Texture" id=39]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-02.png" type="Texture" id=40]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-03.png" type="Texture" id=41]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-04.png" type="Texture" id=42]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-attack2-05.png" type="Texture" id=43]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-jump-00.png" type="Texture" id=44]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-jump-01.png" type="Texture" id=45]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-jump-02.png" type="Texture" id=46]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-00.png" type="Texture" id=47]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-01.png" type="Texture" id=48]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-02.png" type="Texture" id=49]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-03.png" type="Texture" id=50]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-04.png" type="Texture" id=51]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-05.png" type="Texture" id=52]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-06.png" type="Texture" id=53]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -77,40 +77,40 @@ animations = [ {
 "name": "Knockdown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": false,
-"name": "Punch",
-"speed": 30.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
-"loop": false,
-"name": "Death",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "Melee",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
+"frames": [ ExtResource( 32 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": false,
+"name": "Punch",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ) ],
+"loop": false,
+"name": "Melee2",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
 "loop": false,
 "name": "Jump",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "Ranged",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
+"frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
 "loop": false,
-"name": "Melee2",
-"speed": 30.0
+"name": "Death",
+"speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
 
@@ -119,7 +119,7 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 extents = Vector2( 7.67985, 11.8218 )
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -161,6 +161,7 @@ margin_bottom = 296.0
 "character",
 ]]
 
+scale = Vector2( 0.8, 0.8 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
