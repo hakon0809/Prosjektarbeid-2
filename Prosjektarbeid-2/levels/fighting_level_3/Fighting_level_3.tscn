@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://levels/fighting_level_3/Fighting_level_3.gd" type="Script" id=1]
+[ext_resource path="res://levels/levelA/CliffTileSet.tres" type="TileSet" id=2]
+[ext_resource path="res://levels/common/assets/grass_and_stone/light_green/light_green.tres" type="TileSet" id=3]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/levelA/MovingPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/levelA/Spike.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/enemies/goblin.tscn" type="PackedScene" id=7]
+
+[node name="Fighting_level_3" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Tilesets" type="Node2D" parent="." index="0"]
+
+[node name="CliffPaddingTiles" type="TileMap" parent="Tilesets" index="0"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = true
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 108, 4, 0, 109, 4, 0, 110, 4, 0, 111, 536870916, 0, 112, 536870916, 0, 113, 4, 0, 114, 536870916, 0, 115, 536870916, 0, 116, 4, 0, 117, 536870916, 0, 118, 4, 0, 119, 536870916, 0, 65573, 6, 0, 262272, 536870916, 0, 262273, 536870916, 0, 262274, 536870916, 0, 262275, 4, 0, 262276, 4, 0, 262277, 536870916, 0, 262278, 4, 0, 262279, 536870916, 0, 262280, 536870916, 0, 262281, 4, 0, 262282, 536870916, 0, 262283, 4, 0, 262284, 536870916, 0, 262285, 536870916, 0, 262286, 4, 0, 262287, 4, 0, 327722, 536870918, 0, 524356, 536870916, 0, 524357, 4, 0, 524358, 4, 0, 524359, 536870916, 0, 524360, 4, 0, 524361, 536870916, 0, 524362, 4, 0, 524363, 536870916, 0, 524364, 4, 0, 524365, 4, 0, 524366, 536870916, 0, 524367, 4, 0, 524368, 4, 0, 524369, 4, 0, 524370, 4, 0, 524371, 536870916, 0, 524372, 536870916, 0, 524373, 4, 0, 524374, 4, 0, 524375, 536870916, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="DirtTiles" type="TileMap" parent="Tilesets" index="1"]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+_sections_unfolded = [ "Cell" ]
+
+[node name="CliffTiles" type="TileMap" parent="Tilesets" index="2"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 26, 3, 0, 30, 5, 0, 65567, 3, 0, 65572, 5, 0, 196607, 0, 0, 131072, 0, 0, 131081, 3, 0, 131082, 5, 0, 131084, 2, 0, 131085, 3, 0, 131086, 5, 0, 131088, 3, 0, 131094, 5, 0, 196619, 2, 0, 196623, 1, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 1568, 96 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="MovingPlatforms" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+
+[node name="VerticallyMovingPlatform" parent="MovingPlatforms" index="0" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 192, 160 )
+_sections_unfolded = [ "Transform" ]
+motion = Vector2( -60, 0 )
+cycle = 8.0
+
+[node name="VerticallyMovingPlatform2" parent="MovingPlatforms" index="1" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 448, 160 )
+_sections_unfolded = [ "Transform" ]
+motion = Vector2( 60, 0 )
+cycle = 8.0
+
+[node name="VerticallyMovingPlatform3" parent="MovingPlatforms" index="2" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1568, 160 )
+_sections_unfolded = [ "Transform" ]
+motion = Vector2( 0, 100 )
+cycle = 8.0
+
+[node name="Spikes" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+
+[node name="Spike" parent="Spikes" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 608, 128 )
+
+[node name="Spike2" parent="Spikes" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( 1696, 0 )
+
+[node name="Enemies" type="Node2D" parent="." index="4"]
+
+[node name="goblin" parent="Enemies" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( 1216, 96 )
+
+[node name="goblin2" parent="Enemies" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 1792, -32 )
+
+[node name="goblin3" parent="Enemies" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 1856, -32 )
+
+
