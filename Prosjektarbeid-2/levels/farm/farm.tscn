@@ -399,7 +399,7 @@ __meta__ = {
 [node name="Player" parent="." index="6" instance=ExtResource( 11 )]
 
 editor/display_folded = true
-position = Vector2( 580.362, 773.443 )
+position = Vector2( 48, 768 )
 
 [node name="Camera2D" parent="Player/KinematicBody2D" index="3"]
 
