@@ -110,12 +110,17 @@ func is_change_state_possible():
 
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
+			
+		elif not is_on_floor() && next_state == JUMP  && current_state == RUNLEFT\
+		|| not is_on_floor() && next_state == JUMP && current_state == RUNRIGHT:
+			return true
+			
+		elif not is_on_floor() && next_state == JUMP  && current_state == IDLE:
+			return true
 		
 		elif not is_on_floor() && next_state == KNOCKDOWN:
 			return true
-    
-#		elif not is_on_floor() && has_bow && next_state == BOW:
-#			return false
+		
 			
 			
 		elif not is_on_floor():
@@ -158,7 +163,6 @@ func change_state(new_state):
 	
 	if is_change_state_possible():
 		current_state = new_state
-		print(current_state)
 
 	
 	match current_state:
@@ -203,7 +207,7 @@ func change_state(new_state):
 				if Input.is_action_just_pressed("ui_up"):
 					motion.y = JUMP_HEIGHT
 				if friction == true:
-					motion.x = lerp(motion.x, 0, 0.2)
+					motion.x = lerp(motion.x, 0, 0.05)
 			else:
 				if Input.is_action_pressed("ui_left"):
 					motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
@@ -305,13 +309,19 @@ func _physics_process(delta):
 			timer.stop()
 		else:
 			change_state(ATTACK)
-			timer.stop()
-
+			timer.stop() 
+			
+	elif not is_on_floor():
+		change_state(JUMP)
+	
 	elif Input.is_action_pressed("ui_right"):
 		change_state(RUNRIGHT)
 
 	elif Input.is_action_pressed("ui_left"):
 		change_state(RUNLEFT)
+		
+			
+		
 
 	else :
 		if health <= max_health && health >= 5:
