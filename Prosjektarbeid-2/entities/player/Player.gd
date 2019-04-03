@@ -89,7 +89,7 @@ func is_change_state_possible():
 		elif previous_state == KNOCKDOWN:
 			return false
 			
-		elif current_state == GETUP && $Sprite.get_frame() == 6:
+		elif current_state == GETUP && $Sprite.get_frame() == 5:
 			return true
 			
 		elif current_state == GETUP:
