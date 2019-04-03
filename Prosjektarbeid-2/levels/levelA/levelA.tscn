@@ -1,18 +1,20 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://levels/levelA/levelA.gd" type="Script" id=1]
 [ext_resource path="res://levels/levelA/MovingPlatform.tscn" type="PackedScene" id=2]
-[ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=3]
-[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-back-trees.png" type="Texture" id=5]
-[ext_resource path="res://levels/levelA/Sprite.gd" type="Script" id=6]
-[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-middle-trees.png" type="Texture" id=7]
-[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-lights.png" type="Texture" id=8]
-[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-front-trees.png" type="Texture" id=9]
-[ext_resource path="res://entities/enemies/goblin.tscn" type="PackedScene" id=10]
-[ext_resource path="res://entities/enemies/barbarian.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/levelA/Area2D.gd" type="Script" id=12]
-[ext_resource path="res://levels/levelA/Spike.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/levelA/CliffTileSet.tres" type="TileSet" id=3]
+[ext_resource path="res://levels/common/assets/grass_and_stone/green_grey/green_grey.tres" type="TileSet" id=4]
+[ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=5]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/levelA/Spike.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-back-trees.png" type="Texture" id=8]
+[ext_resource path="res://levels/levelA/Sprite.gd" type="Script" id=9]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-middle-trees.png" type="Texture" id=10]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-lights.png" type="Texture" id=11]
+[ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-front-trees.png" type="Texture" id=12]
+[ext_resource path="res://entities/enemies/goblin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://entities/enemies/barbarian.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/levelA/Area2D.gd" type="Script" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -25,15 +27,63 @@ script = ExtResource( 1 )
 
 [node name="VerticallyMovingPlatform2" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 200, 440 )
+position = Vector2( -490, 1030 )
 motion = Vector2( 0, 200 )
 cycle = 8.0
 
-[node name="UpperlayerGrass" type="TileMap" parent="." index="1"]
+[node name="CliffMap" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 65526, 2, 0, 65529, 0, 0, 65532, 1, 0, 131061, 1, 0, 196597, 1, 0, 262133, 1, 0, 327669, 0, 0, 327674, 2, 0, 393208, 0, 0, 327707, 1, 0, 458743, 1, 0, 393242, 2, 0, 524281, 1, 0, 458778, 0, 0, 589816, 0, 0, 524315, 1, 0, 655346, 3, 0, 655347, 5, 0, 589853, 1, 0, 720880, 1, 0, 655387, 1, 0, 786415, 2, 0, 786438, 2, 0, 786444, 1, 0, 786448, 2, 0, 786454, 3, 0, 786455, 5, 0, 851972, 0, 0, 851980, 1, 0, 851983, 2, 0, 851988, 1, 0, 917507, 1, 0, 917516, 1, 0, 917523, 0, 0, 983045, 1, 0, 983052, 1, 0, 1048588, 1, 0, 1114124, 1, 0, 1179660, 1, 0, 1245196, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RockMap" type="TileMap" parent="." index="2"]
 
 position = Vector2( -132, 0 )
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -65405, 38, 0, -65401, 28, 0, 8, 10, 0, 131, 38, 0, 135, 28, 0, 65544, 10, 0, 65667, 38, 0, 65671, 28, 0, 131080, 10, 0, 131203, 38, 0, 131207, 28, 0, 196616, 10, 0, 196739, 38, 0, 196743, 28, 0, 262152, 10, 0, 262275, 38, 0, 262279, 28, 0, 327688, 10, 0, 327811, 38, 0, 327815, 28, 0, 393224, 10, 0, 393347, 38, 0, 393351, 28, 0, 458760, 10, 0, 458883, 38, 0, 458887, 28, 0, 524296, 10, 0, 524419, 38, 0, 524423, 28, 0, 589832, 10, 0, 589955, 38, 0, 589959, 28, 0, 655368, 10, 0, 655491, 38, 0, 655495, 28, 0, 720904, 10, 0, 721027, 38, 0, 721031, 28, 0, 786440, 10, 0, 786563, 38, 0, 786567, 28, 0, 851976, 10, 0, 852099, 38, 0, 852103, 28, 0, 917512, 10, 0, 917635, 38, 0, 917639, 28, 0, 983048, 10, 0, 983171, 38, 0, 983175, 28, 0, 1048584, 10, 0, 1048707, 38, 0, 1048711, 28, 0, 1114120, 10, 0, 1114243, 38, 0, 1114247, 28, 0, 1179656, 10, 0, 1179779, 38, 0, 1179783, 28, 0, 1245192, 10, 0, 1245315, 38, 0, 1245319, 28, 0, 1310728, 10, 0, 1310851, 38, 0, 1310855, 28, 0, 1376264, 10, 0, 1376387, 38, 0, 1376391, 28, 0, 1441800, 10, 0, 1441923, 38, 0, 1441927, 28, 0, 1507336, 10, 0, 1507459, 38, 0, 1507460, 13, 0, 1507461, 13, 0, 1507462, 13, 0, 1507463, 28, 0, 1638397, 37, 0, 1638398, 37, 0, 1638399, 37, 0, 1572864, 37, 0, 1572865, 28, 0, 1572872, 10, 0, 1703932, 38, 0, 1638401, 28, 0, 1638408, 10, 0, 1769468, 38, 0, 1703937, 28, 0, 1703944, 10, 0, 1835004, 38, 0, 1769473, 28, 0, 1769480, 10, 0, 1769603, 37, 0, 1769604, 37, 0, 1769605, 37, 0, 1769606, 37, 0, 1769607, 37, 0, 1769608, 37, 0, 1769609, 37, 0, 1769610, 37, 0, 1769611, 37, 0, 1769612, 37, 0, 1769613, 37, 0, 1769614, 37, 0, 1769615, 37, 0, 1769616, 37, 0, 1769617, 37, 0, 1769618, 37, 0, 1769619, 37, 0, 1769620, 37, 0, 1769621, 37, 0, 1769622, 37, 0, 1769623, 37, 0, 1769624, 37, 0, 1769625, 37, 0, 1769626, 37, 0, 1769627, 37, 0, 1769628, 37, 0, 1769629, 37, 0, 1769630, 37, 0, 1769631, 37, 0, 1769632, 37, 0, 1900540, 38, 0, 1835009, 28, 0, 1835016, 10, 0, 1835139, 38, 0, 1966076, 38, 0, 1900545, 28, 0, 1900552, 10, 0, 1900675, 38, 0, 2031612, 38, 0, 1966081, 28, 0, 1966088, 10, 0, 1966211, 38, 0, 2097148, 38, 0, 2031617, 28, 0, 2031624, 10, 0, 2031747, 38, 0, 2162684, 38, 0, 2097153, 28, 0, 2097160, 10, 0, 2097283, 38, 0, 2228220, 38, 0, 2162689, 28, 0, 2162696, 10, 0, 2162819, 38, 0, 2293756, 38, 0, 2228225, 28, 0, 2228232, 10, 0, 2228355, 38, 0, 2359292, 38, 0, 2293761, 28, 0, 2293768, 10, 0, 2293891, 38, 0, 2424828, 38, 0, 2359297, 28, 0, 2359304, 10, 0, 2359427, 38, 0, 2490364, 38, 0, 2424833, 28, 0, 2424840, 10, 0, 2424963, 38, 0, 2555866, 39, 0, 2555867, 39, 0, 2555868, 39, 0, 2555869, 39, 0, 2555870, 39, 0, 2555871, 39, 0, 2555872, 39, 0, 2555873, 39, 0, 2555874, 39, 0, 2555875, 39, 0, 2555876, 39, 0, 2555877, 39, 0, 2555878, 39, 0, 2555879, 39, 0, 2555880, 39, 0, 2555881, 39, 0, 2555882, 39, 0, 2555883, 39, 0, 2555884, 39, 0, 2555885, 39, 0, 2555886, 39, 0, 2555887, 39, 0, 2555888, 39, 0, 2555889, 39, 0, 2555890, 39, 0, 2555891, 39, 0, 2555892, 39, 0, 2555893, 39, 0, 2555894, 39, 0, 2555895, 39, 0, 2555896, 39, 0, 2555897, 39, 0, 2555898, 39, 0, 2555899, 39, 0, 2490369, 28, 0, 2490376, 10, 0, 2490499, 38, 0, 2621401, 38, 0, 2555905, 28, 0, 2555912, 10, 0, 2556035, 38, 0, 2686937, 38, 0, 2621441, 28, 0, 2621448, 10, 0, 2621571, 38, 0, 2752473, 38, 0, 2686977, 28, 0, 2686984, 10, 0, 2687107, 38, 0, 2818009, 38, 0, 2752513, 28, 0, 2752520, 10, 0, 2752643, 38, 0, 2883545, 38, 0, 2818049, 28, 0, 2818056, 10, 0, 2818179, 38, 0, 2949081, 38, 0, 2883585, 28, 0, 2883592, 10, 0, 2883715, 38, 0, 3014617, 38, 0, 2949121, 28, 0, 2949128, 10, 0, 2949251, 38, 0, 3080153, 38, 0, 3014657, 28, 0, 3014664, 10, 0, 3014787, 38, 0, 3145689, 38, 0, 3080193, 28, 0, 3080200, 10, 0, 3080236, 34, 0, 3080237, 34, 0, 3080238, 34, 0, 3080239, 34, 0, 3080240, 34, 0, 3080241, 34, 0, 3080242, 34, 0, 3080243, 34, 0, 3080244, 34, 0, 3080245, 34, 0, 3080246, 34, 0, 3080247, 40, 0, 3080299, 38, 0, 3080300, 34, 0, 3080301, 34, 0, 3080302, 34, 0, 3080303, 34, 0, 3080304, 34, 0, 3080305, 34, 0, 3080306, 34, 0, 3080307, 34, 0, 3080308, 34, 0, 3080309, 34, 0, 3080310, 34, 0, 3080311, 34, 0, 3080312, 34, 0, 3080313, 34, 0, 3080314, 34, 0, 3080315, 34, 0, 3080316, 34, 0, 3080317, 34, 0, 3080318, 34, 0, 3080319, 34, 0, 3080320, 34, 0, 3080321, 34, 0, 3080322, 34, 0, 3080323, 34, 0, 3211225, 38, 0, 3145729, 28, 0, 3145736, 10, 0, 3145772, 38, 0, 3145783, 40, 0, 3145835, 38, 0, 3276761, 38, 0, 3211265, 28, 0, 3211272, 10, 0, 3211308, 38, 0, 3211319, 40, 0, 3211371, 38, 0, 3342297, 38, 0, 3276801, 28, 0, 3276808, 10, 0, 3276844, 38, 0, 3276855, 40, 0, 3276907, 38, 0, 3407794, 39, 0, 3407795, 39, 0, 3407796, 39, 0, 3407797, 39, 0, 3407798, 39, 0, 3407799, 39, 0, 3407800, 39, 0, 3407801, 39, 0, 3407802, 39, 0, 3407803, 39, 0, 3407804, 39, 0, 3407805, 34, 0, 3407806, 34, 0, 3407807, 34, 0, 3407808, 34, 0, 3407809, 34, 0, 3407810, 34, 0, 3407811, 34, 0, 3407812, 34, 0, 3407813, 34, 0, 3407814, 34, 0, 3407815, 34, 0, 3407816, 34, 0, 3407817, 34, 0, 3407818, 34, 0, 3407819, 34, 0, 3407820, 34, 0, 3407821, 34, 0, 3407822, 34, 0, 3407823, 34, 0, 3407824, 34, 0, 3407825, 34, 0, 3407826, 34, 0, 3407827, 34, 0, 3407828, 34, 0, 3407829, 34, 0, 3407830, 39, 0, 3407831, 39, 0, 3407832, 39, 0, 3342337, 28, 0, 3342344, 10, 0, 3342380, 38, 0, 3342391, 40, 0, 3342443, 38, 0, 3407873, 28, 0, 3407880, 10, 0, 3407916, 38, 0, 3407927, 40, 0, 3407979, 38, 0, 3473409, 28, 0, 3473416, 10, 0, 3473452, 38, 0, 3473463, 40, 0, 3473515, 38, 0, 3538945, 28, 0, 3538952, 10, 0, 3538988, 38, 0, 3538999, 40, 0, 3539051, 38, 0, 3604481, 28, 0, 3604488, 10, 0, 3604524, 38, 0, 3604535, 40, 0, 3604587, 38, 0, 3670017, 28, 0, 3670024, 10, 0, 3670060, 38, 0, 3670071, 40, 0, 3670123, 38, 0, 3735553, 28, 0, 3735560, 10, 0, 3735596, 38, 0, 3735607, 40, 0, 3735659, 38, 0, 3801089, 28, 0, 3801096, 10, 0, 3801132, 38, 0, 3801143, 40, 0, 3801195, 38, 0, 3866625, 28, 0, 3866632, 10, 0, 3866668, 38, 0, 3866679, 40, 0, 3866731, 38, 0, 3932161, 28, 0, 3932204, 38, 0, 3932215, 40, 0, 3932267, 38, 0, 3997697, 28, 0, 3997740, 38, 0, 3997751, 40, 0, 3997803, 38, 0, 4063233, 28, 0, 4063276, 38, 0, 4063287, 40, 0, 4063339, 38, 0, 4128769, 28, 0, 4128812, 38, 0, 4128823, 40, 0, 4128875, 38, 0, 4194305, 28, 0, 4194348, 38, 0, 4194359, 40, 0, 4194411, 38, 0, 4259841, 28, 0, 4259884, 38, 0, 4259895, 40, 0, 4259947, 38, 0, 4325377, 28, 0, 4325378, 39, 0, 4325379, 39, 0, 4325380, 39, 0, 4325381, 39, 0, 4325382, 39, 0, 4325383, 39, 0, 4325384, 39, 0, 4325385, 39, 0, 4325386, 39, 0, 4325387, 39, 0, 4325388, 39, 0, 4325389, 39, 0, 4325390, 39, 0, 4325391, 39, 0, 4325392, 39, 0, 4325393, 39, 0, 4325394, 39, 0, 4325395, 39, 0, 4325396, 39, 0, 4325397, 39, 0, 4325398, 39, 0, 4325399, 39, 0, 4325400, 39, 0, 4325401, 39, 0, 4325402, 39, 0, 4325403, 39, 0, 4325404, 39, 0, 4325405, 39, 0, 4325406, 39, 0, 4325407, 39, 0, 4325408, 39, 0, 4325409, 39, 0, 4325410, 39, 0, 4325411, 39, 0, 4325412, 39, 0, 4325413, 34, 0, 4325414, 34, 0, 4325415, 34, 0, 4325416, 34, 0, 4325417, 34, 0, 4325418, 34, 0, 4325419, 34, 0, 4325420, 34, 0, 4325431, 40, 0, 4325483, 38, 0, 4390967, 40, 0, 4391019, 38, 0, 4456503, 40, 0, 4456555, 38, 0, 4522039, 40, 0, 4522091, 38, 0, 4587575, 40, 0, 4587627, 38, 0, 4653111, 40, 0, 4653163, 38, 0, 4718647, 40, 0, 4718699, 38, 0, 4784183, 40, 0, 4784235, 38, 0, 4849719, 40, 0, 4849771, 38, 0, 4915255, 40, 0, 4915307, 38, 0, 4980791, 40, 0, 4980843, 38, 0, 5046327, 40, 0, 5046379, 38, 0, 5111863, 40, 0, 5111915, 38, 0, 5177399, 40, 0, 5177451, 38, 0, 5242935, 40, 0, 5242936, 37, 0, 5242937, 37, 0, 5242938, 37, 0, 5242939, 37, 0, 5242940, 37, 0, 5242941, 37, 0, 5242942, 37, 0, 5242943, 37, 0, 5242944, 37, 0, 5242945, 37, 0, 5242946, 37, 0, 5242947, 37, 0, 5242948, 37, 0, 5242949, 37, 0, 5242950, 37, 0, 5242951, 37, 0, 5242952, 37, 0, 5242953, 37, 0, 5242954, 37, 0, 5242955, 37, 0, 5242956, 37, 0, 5242957, 37, 0, 5242958, 37, 0, 5242959, 37, 0, 5242960, 37, 0, 5242961, 37, 0, 5242962, 37, 0, 5242963, 37, 0, 5242964, 37, 0, 5242965, 37, 0, 5242966, 37, 0, 5242967, 37, 0, 5242968, 37, 0, 5242969, 37, 0, 5242970, 37, 0, 5242971, 37, 0, 5242972, 37, 0, 5242973, 37, 0, 5242974, 37, 0, 5242975, 37, 0, 5242976, 37, 0, 5242977, 37, 0, 5242978, 37, 0, 5242979, 37, 0, 5242980, 37, 0, 5242981, 37, 0, 5242982, 37, 0, 5242983, 37, 0, 5242984, 37, 0, 5242985, 37, 0, 5242986, 37, 0, 5242987, 37, 0 )
+_sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="UpperlayerGrass" type="TileMap" parent="." index="3"]
+
+position = Vector2( -132, 0 )
+mode = 0
+tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 8 )
 cell_quadrant_size = 32
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -54,11 +104,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="GrassMap" type="TileMap" parent="." index="2"]
+[node name="GrassMap" type="TileMap" parent="." index="4"]
 
 position = Vector2( -132, 0 )
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 32
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -79,16 +129,80 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="5" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-position = Vector2( -1164.86, 699.833 )
+position = Vector2( -1340, 740 )
 
 [node name="Sprite" parent="Player/KinematicBody2D" index="0"]
 
 frame = 2
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
+[node name="SpikesGoHere" type="Node" parent="." index="6"]
+
+editor/display_folded = true
+
+[node name="Spike" parent="SpikesGoHere" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( -170, 370 )
+
+[node name="Spike2" parent="SpikesGoHere" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( -140, 370 )
+
+[node name="Spike3" parent="SpikesGoHere" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 830, 1270 )
+
+[node name="Spike4" parent="SpikesGoHere" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 890, 1270 )
+
+[node name="Spike5" parent="SpikesGoHere" index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 960, 1270 )
+
+[node name="Spike6" parent="SpikesGoHere" index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 1010, 1270 )
+
+[node name="Spike7" parent="SpikesGoHere" index="6" instance=ExtResource( 7 )]
+
+position = Vector2( 1040, 1270 )
+
+[node name="Spike8" parent="SpikesGoHere" index="7" instance=ExtResource( 7 )]
+
+position = Vector2( 1100, 1270 )
+
+[node name="Spike9" parent="SpikesGoHere" index="8" instance=ExtResource( 7 )]
+
+position = Vector2( 1160, 1270 )
+
+[node name="Spike10" parent="SpikesGoHere" index="9" instance=ExtResource( 7 )]
+
+position = Vector2( 1190, 1270 )
+
+[node name="Spike11" parent="SpikesGoHere" index="10" instance=ExtResource( 7 )]
+
+position = Vector2( 1270, 1270 )
+
+[node name="Spike12" parent="SpikesGoHere" index="11" instance=ExtResource( 7 )]
+
+position = Vector2( 1370, 1270 )
+
+[node name="Spike13" parent="SpikesGoHere" index="12" instance=ExtResource( 7 )]
+
+position = Vector2( 1450, 1270 )
+
+[node name="Spike14" parent="SpikesGoHere" index="13" instance=ExtResource( 7 )]
+
+position = Vector2( 1490, 1270 )
+
+[node name="Spike15" parent="SpikesGoHere" index="14" instance=ExtResource( 7 )]
+
+position = Vector2( 1550, 1270 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="7"]
 
 editor/display_folded = true
 layer = -1
@@ -118,11 +232,11 @@ __meta__ = {
 
 position = Vector2( -1000, 0 )
 scale = Vector2( 1.4614, 2.27827 )
-texture = ExtResource( 5 )
+texture = ExtResource( 8 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 __meta__ = {
 "_edit_lock_": true
@@ -142,11 +256,11 @@ __meta__ = {
 
 position = Vector2( -1200, 0 )
 scale = Vector2( 1.4614, 2.27135 )
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 __meta__ = {
 "_edit_lock_": true
@@ -166,11 +280,11 @@ __meta__ = {
 
 position = Vector2( -850, 0 )
 scale = Vector2( 1.4614, 2.26442 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 __meta__ = {
 "_edit_lock_": true
@@ -190,35 +304,46 @@ __meta__ = {
 
 position = Vector2( -1610, 0 )
 scale = Vector2( 1.4614, 2.27827 )
-texture = ExtResource( 9 )
+texture = ExtResource( 12 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 7680, 160 )
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="EnemiesGoHere" type="Node" parent="." index="5"]
+[node name="EnemiesGoHere" type="Node" parent="." index="8"]
 
-[node name="g1" parent="EnemiesGoHere" index="0" instance=ExtResource( 10 )]
+[node name="g1" parent="EnemiesGoHere" index="0" instance=ExtResource( 13 )]
 
-position = Vector2( 120, 430 )
+position = Vector2( -840, 540 )
 
-[node name="b1" parent="EnemiesGoHere" index="1" instance=ExtResource( 11 )]
+[node name="g3" parent="EnemiesGoHere" index="1" instance=ExtResource( 13 )]
 
-position = Vector2( 50, 420 )
+position = Vector2( 1460, 730 )
+
+[node name="g2" parent="EnemiesGoHere" index="2" instance=ExtResource( 13 )]
+
+position = Vector2( 400, 760 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index", "collision" ]
+
+[node name="b1" parent="EnemiesGoHere" index="3" instance=ExtResource( 14 )]
+
+position = Vector2( -520, 950 )
 scale = Vector2( 0.756143, 0.728344 )
 
-[node name="b2" parent="EnemiesGoHere" index="2" instance=ExtResource( 11 )]
+[node name="b2" parent="EnemiesGoHere" index="4" instance=ExtResource( 14 )]
 
-position = Vector2( 0, 410 )
+position = Vector2( -520, 970 )
 scale = Vector2( 0.756143, 0.728344 )
 
-[node name="Area2D" type="Area2D" parent="." index="6"]
+[node name="Area2D" type="Area2D" parent="." index="9"]
 
-position = Vector2( 2042.69, 487.628 )
+editor/display_folded = true
+position = Vector2( 2400, 390 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -226,7 +351,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -237,10 +362,6 @@ position = Vector2( -10.5109, 0 )
 scale = Vector2( 1.31851, 1 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="Spike" parent="." index="7" instance=ExtResource( 13 )]
-
-position = Vector2( -60, 440 )
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
 
