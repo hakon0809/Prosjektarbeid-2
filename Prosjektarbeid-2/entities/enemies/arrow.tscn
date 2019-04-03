@@ -8,16 +8,17 @@
 custom_solver_bias = 0.0
 extents = Vector2( 11.6212, 3.21705 )
 
-[node name="rigthball" type="KinematicBody2D" groups=[
+[node name="arrow" type="KinematicBody2D" groups=[
 "Projectile",
 ]]
 
+scale = Vector2( 0.6, 0.6 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

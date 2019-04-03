@@ -44,7 +44,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func fire_arrow():
 	if can_shoot:
-		canmove = false
+		
 		$AnimatedSprite.play("shot")
 		var arrow = ARROW.instance()
 		get_parent().add_child(arrow)
@@ -57,4 +57,4 @@ func fire_arrow():
 		
 		can_shoot = false
 		timer.start()
-		canmove = true
+		
