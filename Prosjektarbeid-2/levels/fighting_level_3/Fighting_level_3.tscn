@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/fighting_level_3/Fighting_level_3.gd" type="Script" id=1]
 [ext_resource path="res://levels/levelA/CliffTileSet.tres" type="TileSet" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://levels/levelA/MovingPlatform.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/levelA/Spike.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/enemies/goblin.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 256 )
 
 [node name="Fighting_level_3" type="Node2D" index="0"]
 
@@ -79,7 +84,7 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 4 )]
 
-position = Vector2( 1568, 96 )
+position = Vector2( 2048, 32 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="MovingPlatforms" type="Node2D" parent="." index="2"]
@@ -124,6 +129,8 @@ position = Vector2( 1696, 0 )
 
 [node name="Enemies" type="Node2D" parent="." index="4"]
 
+editor/display_folded = true
+
 [node name="goblin" parent="Enemies" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 1216, 96 )
@@ -132,8 +139,21 @@ position = Vector2( 1216, 96 )
 
 position = Vector2( 1792, -32 )
 
-[node name="goblin3" parent="Enemies" index="2" instance=ExtResource( 7 )]
+[node name="Area2D" type="Area2D" parent="." index="5"]
 
-position = Vector2( 1856, -32 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( 2240, -128 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 
