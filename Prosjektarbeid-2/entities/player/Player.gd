@@ -89,7 +89,7 @@ func is_change_state_possible():
 		elif previous_state == KNOCKDOWN:
 			return false
 			
-		elif current_state == GETUP && $Sprite.get_frame() == 5:
+		elif current_state == GETUP && $Sprite.get_frame() == 6:
 			return true
 			
 		elif current_state == GETUP:
@@ -183,7 +183,6 @@ func change_state(new_state):
       
 			if $Sprite.get_frame() == 5:
 				damage_immunity = false
-				change_state(IDLE)
 				
 		
 		RUNLEFT:
