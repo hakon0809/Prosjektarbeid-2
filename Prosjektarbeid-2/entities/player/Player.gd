@@ -51,6 +51,8 @@ var damage = 1
 
 var max_depth = null
 
+var is_on_moving_platform = false
+
 func _ready():
 	set_max_health()
 	set_sword_upgrade()
@@ -224,7 +226,7 @@ func change_state(new_state):
 					
 				if motion.y < 0:
 					$Sprite.play("Jump")
-				elif motion.y > 0:
+				elif motion.y > 0 and !is_on_moving_platform:
 					$Sprite.play("Fall")
 					if friction == true:
 						motion.x = lerp(motion.x, 0, 0.05)
@@ -328,7 +330,12 @@ func _physics_process(delta):
 			change_state(IDLE)
 		elif health < 5 && health > 0:
 			change_state(HURT)
-
+	
+	#
+	if is_on_moving_platform && get_floor_velocity().y > 0:
+		motion.y += get_floor_velocity().y
+	elif is_on_moving_platform && get_floor_velocity().y < 0:
+		motion.y -= get_floor_velocity().y
 	motion = move_and_slide(motion, UP)
 
 
