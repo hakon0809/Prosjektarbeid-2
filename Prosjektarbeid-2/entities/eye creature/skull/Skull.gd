@@ -18,15 +18,15 @@ onready var dialog = $PopupDialog/PopupDialog
 
 func _ready():
 	dialog_text.set_text(text[index])
-	interface = get_tree().get_root().get_node("Node/Player/Interface/Control")
+	interface = get_tree().get_root().get_node("Skull_level_1/Player/Interface/Control")
 	dialog.hide()
 	
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
 		if not encountered:
+			modulate = Color(1, 1, 1)
 			dialog.show()
 			interface.hide()
-			encountered = true
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
@@ -58,9 +58,10 @@ func save_choice(active):
 	button.hide()
 	if active:
 		dialog_text.set_text("Good job, go get em")
+		emit_signal("health_changed", 15)
 	else:
 		dialog_text.set_text("Wrong choice kiddo")
 	dialog.show()
 	interface.show()
-	get_tree().change_scene("res://levels/levelA/levelA.tscn")
+	encountered = true
 	

@@ -1,5 +1,9 @@
 extends Control
 
+func _ready():
+	if !Globals.music_player.is_playing():
+		Globals.play_song(Globals.main_menu_song)
+
 func _on_Continue_pressed():
 	get_tree().change_scene('res://menus/Continue.tscn')
 
