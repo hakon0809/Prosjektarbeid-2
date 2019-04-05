@@ -44,8 +44,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func fire_arrow():
 	if can_shoot:
-		
-		$AnimatedSprite.play("shot")
+		speed = 0
+		_change_state(IDLE)
+		_change_state(SHOT)
 		var arrow = ARROW.instance()
 		get_parent().add_child(arrow)
 		if $AnimatedSprite.flip_h == false:
@@ -56,5 +57,6 @@ func fire_arrow():
 			arrow.position = $Position2D.global_position
 		
 		can_shoot = false
+		speed = max_speed
 		timer.start()
 		
