@@ -14,5 +14,3 @@ func setDialogueSource(source):
 	
 func getDiDialogueSource():
 	return dialogueSource
-
-
