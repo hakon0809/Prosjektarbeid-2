@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://levels/city/assets/village04-512-x-256_010.png" type="Texture" id=1]
 [ext_resource path="res://levels/city/assets/village04-512-x-256_007.png" type="Texture" id=2]
@@ -13,16 +13,18 @@
 [ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks_extras_2.tres" type="TileSet" id=11]
 [ext_resource path="res://entities/npc/Father.tscn" type="PackedScene" id=12]
 [ext_resource path="res://entities/npc/Mother.tscn" type="PackedScene" id=13]
-[ext_resource path="res://entities/npc/LanternMan.tscn" type="PackedScene" id=14]
-[ext_resource path="res://entities/npc/LanternMan.gd" type="Script" id=15]
-[ext_resource path="res://levels/common/assets/wigflip-ds.png" type="Texture" id=16]
-[ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=17]
+[ext_resource path="res://entities/npc/Mother.gd" type="Script" id=14]
+[ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=15]
+[ext_resource path="res://entities/npc/LanternMan.tscn" type="PackedScene" id=16]
+[ext_resource path="res://entities/npc/LanternMan.gd" type="Script" id=17]
 [ext_resource path="res://entities/npc/guard.tscn" type="PackedScene" id=18]
 [ext_resource path="res://entities/npc/PotionSeller.tscn" type="PackedScene" id=19]
-[ext_resource path="res://entities/npc/PirateMan.tscn" type="PackedScene" id=20]
-[ext_resource path="res://entities/npc/OldMan.tscn" type="PackedScene" id=21]
-[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=22]
-[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=23]
+[ext_resource path="res://entities/npc/PotionSeller.gd" type="Script" id=20]
+[ext_resource path="res://levels/common/assets/wigflip-ds.png" type="Texture" id=21]
+[ext_resource path="res://entities/npc/PirateMan.tscn" type="PackedScene" id=22]
+[ext_resource path="res://entities/npc/OldMan.tscn" type="PackedScene" id=23]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=24]
+[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=25]
 
 [sub_resource type="GDScript" id=1]
 
@@ -331,7 +333,7 @@ __meta__ = {
 [node name="Father" parent="npcs" index="0" instance=ExtResource( 12 )]
 
 editor/display_folded = true
-position = Vector2( 1088, 143 )
+position = Vector2( 1182, 142 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D" parent="npcs/Father" index="0"]
@@ -353,8 +355,8 @@ visible = false
 
 [node name="Mother" parent="npcs" index="1" instance=ExtResource( 13 )]
 
-editor/display_folded = true
-position = Vector2( 1012, 143 )
+position = Vector2( 1151.73, 142 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D" parent="npcs/Mother" index="0"]
@@ -366,31 +368,56 @@ _sections_unfolded = [ "Transform" ]
 modulate = Color( 0.835938, 0.835938, 0.835938, 1 )
 _sections_unfolded = [ "Region", "Visibility" ]
 
-[node name="Area2D" parent="npcs/Mother/StaticBody2D" index="1"]
+[node name="CollisionShape2D" parent="npcs/Mother/StaticBody2D/Area2D" index="0"]
 
-visible = false
+position = Vector2( -61, -8.99342 )
 
-[node name="CollisionShape2D" parent="npcs/Mother/StaticBody2D" index="2"]
+[node name="PopupDialog" parent="npcs/Mother" index="1" instance=ExtResource( 15 )]
 
-visible = false
+editor/display_folded = true
 
-[node name="LanternMan" parent="npcs" index="2" instance=ExtResource( 14 )]
+[node name="PanelContainer" parent="npcs/Mother/PopupDialog/PopupDialog" index="0"]
+
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer" index="0"]
+
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 281.0
+margin_bottom = 85.0
+
+[node name="HBoxContainer" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
+
+margin_right = 275.0
+margin_bottom = 79.0
+
+[node name="RichTextLabel" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+
+margin_right = 247.0
+margin_bottom = 74.0
+
+[node name="NextButton" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+
+margin_left = 251.0
+margin_top = 60.0
+margin_right = 270.0
+margin_bottom = 74.0
+
+[node name="LanternMan" parent="npcs" index="2" instance=ExtResource( 16 )]
 
 editor/display_folded = true
 modulate = Color( 0.804688, 0.804688, 0.804688, 1 )
 position = Vector2( -57, 175 )
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="speech_bubble" type="Sprite" parent="npcs/LanternMan" index="0"]
+[node name="PopupDialog" parent="npcs/LanternMan" index="0" instance=ExtResource( 15 )]
 
-position = Vector2( 12.028, -27.4792 )
-scale = Vector2( 0.416487, 0.409605 )
-z_as_relative = false
-texture = ExtResource( 16 )
-_sections_unfolded = [ "Pause", "Region", "Visibility", "Z Index" ]
-
-[node name="PopupDialog" parent="npcs/LanternMan" index="1" instance=ExtResource( 17 )]
+editor/display_folded = true
 
 [node name="PanelContainer" parent="npcs/LanternMan/PopupDialog/PopupDialog" index="0"]
 
@@ -423,13 +450,13 @@ margin_top = 60.0
 margin_right = 270.0
 margin_bottom = 74.0
 
-[node name="StaticBody2D" parent="npcs/LanternMan" index="2"]
+[node name="StaticBody2D" parent="npcs/LanternMan" index="1"]
 
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="CollisionShape2D" parent="npcs/LanternMan/StaticBody2D/Area2D" index="0"]
 
-position = Vector2( -49.8608, -9.68291 )
+position = Vector2( -120.861, -9.68291 )
 
 [node name="Guard" parent="npcs" index="3" instance=ExtResource( 18 )]
 
@@ -459,17 +486,59 @@ visible = false
 editor/display_folded = true
 modulate = Color( 0.832031, 0.832031, 0.832031, 1 )
 position = Vector2( 560, 175 )
+script = ExtResource( 20 )
 _sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="speech_bubble" type="Sprite" parent="npcs/PotionSeller" index="0"]
+
+position = Vector2( 3.85801, -27.3404 )
+scale = Vector2( 0.446082, 0.376802 )
+texture = ExtResource( 21 )
 
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D/Area2D" index="0"]
 
-visible = false
+position = Vector2( -50.2111, -9.30897 )
 
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D" index="2"]
 
 visible = false
 
-[node name="PirateMan" parent="npcs" index="5" instance=ExtResource( 20 )]
+[node name="PopupDialog" parent="npcs/PotionSeller" index="2" instance=ExtResource( 15 )]
+
+editor/display_folded = true
+
+[node name="PanelContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog" index="0"]
+
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer" index="0"]
+
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 281.0
+margin_bottom = 85.0
+
+[node name="HBoxContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
+
+margin_right = 275.0
+margin_bottom = 79.0
+
+[node name="RichTextLabel" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+
+margin_right = 247.0
+margin_bottom = 74.0
+
+[node name="NextButton" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+
+margin_left = 251.0
+margin_top = 60.0
+margin_right = 270.0
+margin_bottom = 74.0
+
+[node name="PirateMan" parent="npcs" index="5" instance=ExtResource( 22 )]
 
 editor/display_folded = true
 modulate = Color( 0.863281, 0.863281, 0.863281, 1 )
@@ -488,7 +557,7 @@ visible = false
 
 visible = false
 
-[node name="OldMan" parent="npcs" index="6" instance=ExtResource( 21 )]
+[node name="OldMan" parent="npcs" index="6" instance=ExtResource( 23 )]
 
 editor/display_folded = true
 modulate = Color( 0.761719, 0.761719, 0.761719, 1 )
@@ -509,12 +578,29 @@ visible = false
 
 visible = false
 
-[node name="Player" parent="." index="3" instance=ExtResource( 22 )]
+[node name="Player" parent="." index="3" instance=ExtResource( 24 )]
 
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
-position = Vector2( -477.484, 154.566 )
+position = Vector2( -352.049, 157.01 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Interface" parent="Player" index="0"]
+
+editor/display_folded = false
+layer = 0
+
+[node name="HUD" parent="Player/Interface/Control" index="0"]
+
+editor/display_folded = false
+
+[node name="PauseMenu" parent="Player/Interface/Control" index="2"]
+
+editor/display_folded = true
+
+[node name="VBoxContainer" parent="Player/Interface/Control/PauseMenu/PanelContainer/MarginContainer" index="0"]
+
+editor/display_folded = true
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 
@@ -542,7 +628,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 23 )
+script = ExtResource( 25 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -551,6 +637,12 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelArea" index="0"]
 
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="npcs/Mother/StaticBody2D/Area2D" to="npcs/Mother" method="_on_Area2D_body_entered"]
+
+[connection signal="body_exited" from="npcs/Mother/StaticBody2D/Area2D" to="npcs/Mother" method="_on_Area2D_body_exited"]
+
+[connection signal="pressed" from="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/Mother" method="_on_NextButton_pressed"]
 
 [connection signal="pressed" from="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/LanternMan" method="_on_NextButton_pressed"]
 
@@ -562,15 +654,25 @@ shape = SubResource( 2 )
 
 [connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_exited"]
 
+[connection signal="body_entered" from="npcs/PotionSeller/StaticBody2D/Area2D" to="npcs/PotionSeller" method="_on_Area2D_body_entered"]
+
+[connection signal="body_exited" from="npcs/PotionSeller/StaticBody2D/Area2D" to="npcs/PotionSeller" method="_on_Area2D_body_exited"]
+
+[connection signal="pressed" from="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/PotionSeller" method="_on_NextButton_pressed"]
+
 [connection signal="body_entered" from="NextLevelArea" to="NextLevelArea" method="_on_Area2D_body_entered"]
 
 
 [editable path="npcs/Father"]
 [editable path="npcs/Mother"]
+[editable path="npcs/Mother/PopupDialog"]
 [editable path="npcs/LanternMan"]
 [editable path="npcs/LanternMan/PopupDialog"]
 [editable path="npcs/Guard"]
 [editable path="npcs/PotionSeller"]
+[editable path="npcs/PotionSeller/PopupDialog"]
 [editable path="npcs/PirateMan"]
 [editable path="npcs/OldMan"]
 [editable path="Player"]
+[editable path="Player/Interface"]
+[editable path="Player/Interface/Control/PauseMenu"]
