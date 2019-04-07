@@ -33,7 +33,7 @@ func is_change_state_possible():
 		elif previous_state == DIE:
 			return false
 		elif not can_move:
-			return false
+ 			return false
 		elif not attack_is_over:
 			return false
 		else:
@@ -71,20 +71,21 @@ func _change_state(new_state):
 			var bodies = $Area2D.get_overlapping_bodies()
 			for body in bodies:
 			
-				if body.is_in_group("character"):
+				if body.is_in_group("character") && body.attack_is_over:
 					
 					$AnimatedSprite.play("attack")
 					
 					if $AnimatedSprite.get_frame() >0:
 						body.take_damage(damage)
+						print("player health: " + str(body.health))
+						print("enemy health: " + str(health))
 						
 						can_move = true
 						print(damage)
 			if $AnimatedSprite.get_frame() == 2:
-	
 				can_move = true
 				
-						
+
 		HURT:
 			can_move = false
 			$AnimatedSprite.play("hurt")
@@ -145,12 +146,14 @@ func _physics_process(delta):
 		
 func take_damage(count): 
 	health -= count
+	print("take damage health: " + str(health))
 	if health <= 0:
+		print("die")
 		_change_state(DIE)
 	else:
-		_change_state(HURT)	
+		_change_state(HURT)
+
 func movment():
-	
 	if speed == 0 && hitstun == 0:
 		
 		_change_state(IDLE)
