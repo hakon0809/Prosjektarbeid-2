@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://entities/player/PlayerInteraction.gd" type="Script" id=1]
@@ -60,6 +61,13 @@
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-knock-dwn-04.png" type="Texture" id=55]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-knock-dwn-05.png" type="Texture" id=56]
 [ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-knock-dwn-06.png" type="Texture" id=57]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-00.png" type="Texture" id=58]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-01.png" type="Texture" id=59]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-02.png" type="Texture" id=60]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-03.png" type="Texture" id=61]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-04.png" type="Texture" id=62]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-05.png" type="Texture" id=63]
+[ext_resource path="res://entities/player/Sprites/Individual Sprites/adventurer-die-06.png" type="Texture" id=64]
 
 
 [sub_resource type="SpriteFrames" id=1]
@@ -119,12 +127,14 @@ animations = [ {
 "name": "Fall",
 "speed": 10.0
 }, {
-
 "frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ) ],
 "loop": true,
 "name": "Knockdown",
 "speed": 5.0
-
+}, {"frames": [ ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
 
