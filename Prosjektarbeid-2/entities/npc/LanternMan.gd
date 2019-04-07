@@ -1,22 +1,46 @@
 extends Node2D
 
+var player
+var dialog_text
+var button
+var dialog
+var interface
 
+var dialogArray = [
+	"Who goes there?",
+	"....ah, it's you.",
+	"Your familiy is looking for you."
+	]
+var dialogIndex
 
 func _ready():
-	$speech_bubble.hide()
-	pass
+	player = get_node("../../Player")
+	dialog_text = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/RichTextLabel
+	dialog = $PopupDialog/PopupDialog
+	button = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton
+	interface = get_node("../../Player/Interface/Control")
 	
+	dialog.hide()
 	
+	dialogIndex = 0
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
-		$speech_bubble.show()
-		
-	pass
+		dialog.show()
+		interface.hide()
+		dialog_text.set_text(dialogArray[dialogIndex])
 	
 
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
-		$speech_bubble.hide()
-	pass
+		player.setDialogueSource(null)
+
+func _on_NextButton_pressed():
+	dialogIndex += 1
+	if dialogIndex >= dialogArray.size():
+		dialog.hide()
+		interface.show()
+	else:
+		dialog_text.set_text(dialogArray[dialogIndex])
+	
