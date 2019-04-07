@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/skull_levels/Skull_level_2.gd" type="Script" id=1]
 [ext_resource path="res://entities/eye creature/skull/Skull.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green_grey/green_grey.tres" type="TileSet" id=3]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/skull_levels/Blue.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -70,6 +71,13 @@ audio_bus_name = "Master"
 
 position = Vector2( 640, -64 )
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="4"]
+
+position = Vector2( 320, -32 )
+z_index = -1
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Z Index" ]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
