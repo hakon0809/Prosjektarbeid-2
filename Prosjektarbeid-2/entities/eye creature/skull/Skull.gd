@@ -18,7 +18,8 @@ onready var dialog = $PopupDialog/PopupDialog
 
 func _ready():
 	dialog_text.set_text(text[index])
-	interface = get_tree().get_root().get_node("Skull_level_1/Player/Interface/Control")
+	#var interface_path = "Skull_level_" + str(level) + "/Player/Interface/Control"
+	interface = $"../Player/Interface/Control"
 	dialog.hide()
 	
 func _on_Area2D_body_entered(body):
