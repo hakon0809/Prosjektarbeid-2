@@ -4,9 +4,9 @@ onready var character = get_node("Player/KinematicBody2D")
 onready var camera = get_node("Player/KinematicBody2D/Camera2D")
 
 var visibility = 0
+var level = 1
 
 func _ready():
-	$Skull.level = 1
 	$Skull.hide()
 	camera.limit_left = 0
 	camera.limit_right = 1100
