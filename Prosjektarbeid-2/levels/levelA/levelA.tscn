@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://levels/levelA/levelA.gd" type="Script" id=1]
 [ext_resource path="res://levels/levelA/CliffTileSet.tres" type="TileSet" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-lights.png" type="Texture" id=10]
 [ext_resource path="res://levels/levelA/parallax-layers/parallax-forest-front-trees.png" type="Texture" id=11]
 [ext_resource path="res://entities/enemies/goblin.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/levelA/Area2D.gd" type="Script" id=13]
+[ext_resource path="res://entities/enemies/soldier.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/levelA/Area2D.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -123,13 +124,14 @@ __meta__ = {
 
 [node name="Player" parent="." index="4" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 position = Vector2( -1550, 780 )
 
 [node name="Sprite" parent="Player/KinematicBody2D" index="0"]
 
 frame = 2
 
-[node name="Camera2D" parent="Player/KinematicBody2D" index="3"]
+[node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
 
 limit_left = -1586
 limit_right = 2443
@@ -310,17 +312,23 @@ __meta__ = {
 
 [node name="g1" parent="EnemiesGoHere" index="0" instance=ExtResource( 12 )]
 
-position = Vector2( -840, 540 )
-
-[node name="g3" parent="EnemiesGoHere" index="1" instance=ExtResource( 12 )]
-
 position = Vector2( 1460, 730 )
 
-[node name="g2" parent="EnemiesGoHere" index="2" instance=ExtResource( 12 )]
+[node name="s1" parent="EnemiesGoHere" index="1" instance=ExtResource( 13 )]
 
-position = Vector2( 400, 760 )
-scale = Vector2( 0.5, 0.5 )
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index", "collision" ]
+position = Vector2( -850, 540 )
+max_speed = 80
+knockback = 4
+damage = 1
+health = 2
+
+[node name="s2" parent="EnemiesGoHere" index="2" instance=ExtResource( 13 )]
+
+position = Vector2( 400, 730 )
+max_speed = 80
+knockback = 4
+damage = 1
+health = 2
 
 [node name="Area2D" type="Area2D" parent="." index="8"]
 
@@ -333,7 +341,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
 }
