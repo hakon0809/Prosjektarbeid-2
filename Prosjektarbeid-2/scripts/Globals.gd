@@ -40,7 +40,7 @@ func play_song(song, volume = 0):
 
 func set_upgrade(upgrade, value):
 	upgrades[upgrade] = value
-	get_tree().get_root().get_node("Skull_level_1/Player/KinematicBody2D").upgrade_changed(upgrade)
+	get_tree().get_root().get_node("Skull_level_" + str(upgrade) + "/Player/KinematicBody2D").upgrade_changed(upgrade)
 	
 func get_upgrade(upgrade):
 	return upgrades[upgrade]
