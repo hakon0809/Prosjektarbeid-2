@@ -305,7 +305,10 @@ func _physics_process(delta):
 		
 	
 	elif Input.is_action_just_released("ui_attack"):
-		if can_shoot && has_bow:
+		#Check for NPC conversation
+		if get_parent().getDiDialogueSource() != null:
+			get_node(get_parent().getDiDialogueSource()).converse()
+		elif can_shoot && has_bow:
 			not_shot = true
 			change_state(BOW)
 			timer.stop()
