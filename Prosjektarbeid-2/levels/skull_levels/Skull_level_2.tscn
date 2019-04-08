@@ -43,14 +43,11 @@ _sections_unfolded = [ "Cell", "Collision" ]
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
 editor/display_folded = true
-
-[node name="Interface" parent="Player" index="0"]
-
-editor/display_folded = false
+z_index = 1
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Control" parent="Player/Interface" index="0"]
 
-visible = false
 _sections_unfolded = [ "Pause", "Visibility", "custom_constants" ]
 
 [node name="KinematicBody2D" parent="Player" index="1"]

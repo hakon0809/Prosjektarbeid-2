@@ -13,3 +13,13 @@ func _physics_process(delta):
 	var xf = Transform2D()
 	xf[2]= motion * d 
 	$platform.transform = xf
+
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("character"):
+		body.is_on_moving_platform = true
+
+
+func _on_Area2D_body_exited(body):
+	if body.is_in_group("character"):
+		body.is_on_moving_platform = false

@@ -161,4 +161,13 @@ shape = SubResource( 5 )
 one_way_collision = true
 _sections_unfolded = [ "Transform" ]
 
+[node name="6" type="Sprite" parent="." index="5"]
+
+position = Vector2( 416, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 32, 128, 128 )
+_sections_unfolded = [ "Offset", "Region" ]
+
 

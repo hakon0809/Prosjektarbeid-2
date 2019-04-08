@@ -9,6 +9,8 @@ var motion = Vector2()
 var friction = false
 
 var sword_sound = load("res://entities/player/sounds/sword-gesture1.ogg")
+var punch_sound = load("res://entities/player/sounds/punchsound.ogg")
+var bow_sound = load("res://entities/player/sounds/Arrowswosh.ogg")
 onready var sound_player = $"../AudioStreamPlayer"
 
 enum Weapons { FISTS, SWORD } 
@@ -31,6 +33,7 @@ var idle_animation = "Idle"
 var current_weapon = FISTS
 var previous_weapon = null
 var next_weapon = null
+var attack_sound = null
 
 var attack_animation = null
 var attack_frame = null
@@ -50,6 +53,8 @@ var health
 var damage = 1
 
 var max_depth = null
+
+var is_on_moving_platform = false
 
 func _ready():
 	set_max_health()
@@ -138,6 +143,7 @@ func change_weapon(new_weapon):
 		FISTS:
 			idle_animation = "Idle"
 			attack_animation = "Punch"
+			attack_sound = punch_sound
 			attack_frame = 1
 			attack_over_frame = 3
 			damage = 1
@@ -145,6 +151,7 @@ func change_weapon(new_weapon):
 		SWORD:
 			idle_animation = "Idle Sword"
 			attack_animation = "Melee2"
+			attack_sound = sword_sound
 			attack_frame = 3
 			attack_over_frame = 5
 			damage = 2
@@ -224,7 +231,7 @@ func change_state(new_state):
 					
 				if motion.y < 0:
 					$Sprite.play("Jump")
-				elif motion.y > 0:
+				elif motion.y > 0 and !is_on_moving_platform:
 					$Sprite.play("Fall")
 					if friction == true:
 						motion.x = lerp(motion.x, 0, 0.05)
@@ -233,7 +240,7 @@ func change_state(new_state):
 		ATTACK:
 			attack_is_over = false
 			$Sprite.play(attack_animation)
-			play_sound(sword_sound, -10)
+			play_sound(attack_sound, -10)
 			if $Sprite.get_frame() == attack_frame:
 				var bodies = $Area2D.get_overlapping_bodies()
 				##print(bodies)
@@ -255,6 +262,7 @@ func change_state(new_state):
 			
 			if $Sprite.get_frame() == 7:
 				if not_shot:
+					play_sound(bow_sound, -10)
 					var player_arrow = ARROW.instance()
 					get_tree().get_current_scene().add_child(player_arrow)
 					
@@ -331,7 +339,12 @@ func _physics_process(delta):
 			change_state(IDLE)
 		elif health < 5 && health > 0:
 			change_state(HURT)
-
+	
+	#
+	if is_on_moving_platform && get_floor_velocity().y > 0:
+		motion.y += get_floor_velocity().y
+	elif is_on_moving_platform && get_floor_velocity().y < 0:
+		motion.y -= get_floor_velocity().y
 	motion = move_and_slide(motion, UP)
 
 
