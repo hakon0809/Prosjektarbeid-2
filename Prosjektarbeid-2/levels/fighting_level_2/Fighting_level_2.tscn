@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://levels/fighting_level_2/Fighting_level_2.gd" type="Script" id=1]
+[ext_resource path="res://levels/fighting_level_2/parallax_layers/parallax-mountain-bg.png" type="Texture" id=2]
+[ext_resource path="res://levels/fighting_level_2/parallax_layers/parallax-mountain-montain-far.png" type="Texture" id=3]
+[ext_resource path="res://levels/fighting_level_2/parallax_layers/parallax-mountain-mountains.png" type="Texture" id=4]
+[ext_resource path="res://levels/fighting_level_2/parallax_layers/parallax-mountain-trees.png" type="Texture" id=5]
+[ext_resource path="res://levels/fighting_level_2/parallax_layers/parallax-mountain-foreground-trees.png" type="Texture" id=6]
+[ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=7]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=8]
+
+[node name="Node" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 364 )
+scroll_ignore_camera_zoom = false
+_sections_unfolded = [ "Scroll" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+position = Vector2( -272, 32 )
+motion_scale = Vector2( 0, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 2 )
+centered = false
+region_rect = Rect2( 0, 0, 200, 200 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+
+motion_scale = Vector2( 0.2, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 598, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
+
+position = Vector2( 0, 32 )
+motion_scale = Vector2( 0.4, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1196, 0 )
+_sections_unfolded = [ "Motion", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3" index="0"]
+
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 4 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
+
+position = Vector2( 0, 32 )
+motion_scale = Vector2( 0.6, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1196, 0 )
+_sections_unfolded = [ "Motion", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4" index="0"]
+
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" index="4"]
+
+position = Vector2( 0, 32 )
+motion_scale = Vector2( 0.8, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1196, 0 )
+_sections_unfolded = [ "Motion", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5" index="0"]
+
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="CliffMap" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = null
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+
+[node name="RockMap" type="TileMap" parent="." index="2"]
+
+self_modulate = Color( 0.371094, 0.341762, 0.320358, 1 )
+position = Vector2( 1, 0 )
+mode = 0
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 1310724, 45, 0, 1310725, 45, 0, 1310726, 45, 0, 1310727, 45, 0, 1376264, 45, 0, 1376265, 45, 0, 1376266, 45, 0, 1441803, 45, 0, 1441804, 45, 0, 1441805, 45, 0, 1441806, 45, 0, 1441807, 45, 0, 1441808, 45, 0, 1441809, 45, 0, 1507346, 45, 0, 1507347, 45, 0, 1507348, 45, 0, 1507349, 45, 0, 1507350, 45, 0, 1507351, 45, 0, 1507352, 45, 0, 1507353, 45, 0, 1507354, 45, 0, 1507355, 45, 0 )
+_sections_unfolded = [ "Cell", "Collision", "Material", "Visibility" ]
+
+[node name="SpikesGoHere" type="Node" parent="." index="3"]
+
+[node name="EnemiesGoHere" type="Node" parent="." index="4"]
+
+[node name="Player" parent="." index="5" instance=ExtResource( 8 )]
+
+position = Vector2( -230, 540 )
+
+
