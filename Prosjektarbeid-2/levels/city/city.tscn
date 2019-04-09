@@ -52,7 +52,7 @@ func getDiDialogueSource():
 custom_solver_bias = 0.0
 extents = Vector2( 10, 118.188 )
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
