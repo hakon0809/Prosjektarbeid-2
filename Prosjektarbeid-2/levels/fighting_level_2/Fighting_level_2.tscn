@@ -254,15 +254,7 @@ knockback = 4
 damage = 1
 health = 2
 
-[node name="soldier2" parent="EnemiesGoHere" index="1" instance=ExtResource( 10 )]
-
-position = Vector2( 1000, 240 )
-max_speed = 80
-knockback = 4
-damage = 1
-health = 2
-
-[node name="soldier3" parent="EnemiesGoHere" index="2" instance=ExtResource( 10 )]
+[node name="soldier3" parent="EnemiesGoHere" index="1" instance=ExtResource( 10 )]
 
 position = Vector2( 2080, 760 )
 max_speed = 80
@@ -270,7 +262,7 @@ knockback = 4
 damage = 1
 health = 2
 
-[node name="soldier7" parent="EnemiesGoHere" index="3" instance=ExtResource( 10 )]
+[node name="soldier7" parent="EnemiesGoHere" index="2" instance=ExtResource( 10 )]
 
 position = Vector2( 2270, 760 )
 max_speed = 80
@@ -278,15 +270,7 @@ knockback = 4
 damage = 1
 health = 2
 
-[node name="soldier4" parent="EnemiesGoHere" index="4" instance=ExtResource( 10 )]
-
-position = Vector2( 2180, 760 )
-max_speed = 80
-knockback = 4
-damage = 1
-health = 2
-
-[node name="soldier5" parent="EnemiesGoHere" index="5" instance=ExtResource( 10 )]
+[node name="soldier5" parent="EnemiesGoHere" index="3" instance=ExtResource( 10 )]
 
 position = Vector2( 2380, 760 )
 max_speed = 80
@@ -294,7 +278,7 @@ knockback = 4
 damage = 1
 health = 2
 
-[node name="soldier6" parent="EnemiesGoHere" index="6" instance=ExtResource( 10 )]
+[node name="soldier6" parent="EnemiesGoHere" index="4" instance=ExtResource( 10 )]
 
 position = Vector2( 2680, 760 )
 max_speed = 80
@@ -302,31 +286,7 @@ knockback = 4
 damage = 1
 health = 2
 
-[node name="soldier8" parent="EnemiesGoHere" index="7" instance=ExtResource( 10 )]
-
-position = Vector2( 2470, 760 )
-max_speed = 80
-knockback = 4
-damage = 1
-health = 2
-
-[node name="soldier9" parent="EnemiesGoHere" index="8" instance=ExtResource( 10 )]
-
-position = Vector2( 3270, 760 )
-max_speed = 80
-knockback = 4
-damage = 1
-health = 2
-
-[node name="soldier10" parent="EnemiesGoHere" index="9" instance=ExtResource( 10 )]
-
-position = Vector2( 3450, 760 )
-max_speed = 80
-knockback = 4
-damage = 1
-health = 2
-
-[node name="soldier11" parent="EnemiesGoHere" index="10" instance=ExtResource( 10 )]
+[node name="soldier11" parent="EnemiesGoHere" index="5" instance=ExtResource( 10 )]
 
 position = Vector2( 3370, 760 )
 max_speed = 80
@@ -334,31 +294,27 @@ knockback = 4
 damage = 1
 health = 2
 
-[node name="goblin" parent="EnemiesGoHere" index="11" instance=ExtResource( 11 )]
+[node name="goblin" parent="EnemiesGoHere" index="6" instance=ExtResource( 11 )]
 
 position = Vector2( 1110, 240 )
 
-[node name="goblin2" parent="EnemiesGoHere" index="12" instance=ExtResource( 11 )]
+[node name="goblin2" parent="EnemiesGoHere" index="7" instance=ExtResource( 11 )]
 
 position = Vector2( 1510, 410 )
 
-[node name="goblin3" parent="EnemiesGoHere" index="13" instance=ExtResource( 11 )]
+[node name="goblin3" parent="EnemiesGoHere" index="8" instance=ExtResource( 11 )]
 
 position = Vector2( 2630, 600 )
 
-[node name="goblin4" parent="EnemiesGoHere" index="14" instance=ExtResource( 11 )]
+[node name="goblin4" parent="EnemiesGoHere" index="9" instance=ExtResource( 11 )]
 
 position = Vector2( 2550, 760 )
 
-[node name="goblin5" parent="EnemiesGoHere" index="15" instance=ExtResource( 11 )]
-
-position = Vector2( 2620, 760 )
-
-[node name="goblin6" parent="EnemiesGoHere" index="16" instance=ExtResource( 11 )]
+[node name="goblin6" parent="EnemiesGoHere" index="10" instance=ExtResource( 11 )]
 
 position = Vector2( 2970, 760 )
 
-[node name="goblin7" parent="EnemiesGoHere" index="17" instance=ExtResource( 11 )]
+[node name="goblin7" parent="EnemiesGoHere" index="11" instance=ExtResource( 11 )]
 
 position = Vector2( 3190, 760 )
 
