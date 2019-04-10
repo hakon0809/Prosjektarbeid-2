@@ -20,12 +20,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 30, 20 )
 
-[node name="LevelNode" type="Node"]
+[node name="LevelNode" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
 [node name="CliffMap" type="TileMap" parent="." index="0"]
-
 
 mode = 0
 tile_set = ExtResource( 2 )
@@ -47,7 +46,6 @@ tile_data = PoolIntArray( 65526, 2, 0, 65529, 0, 0, 65532, 1, 0, 131061, 1, 0, 1
 __meta__ = {
 "_edit_lock_": true
 }
-
 
 [node name="RockMap" type="TileMap" parent="." index="1"]
 
