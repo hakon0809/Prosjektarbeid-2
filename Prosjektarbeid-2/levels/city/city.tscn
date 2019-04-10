@@ -52,7 +52,7 @@ func getDiDialogueSource():
 custom_solver_bias = 0.0
 extents = Vector2( 10, 118.188 )
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -180,7 +180,6 @@ _sections_unfolded = [ "Z Index" ]
 [node name="trees" type="Node2D" parent="Background" index="3"]
 
 editor/display_folded = true
-visible = false
 
 [node name="trees-1" type="Sprite" parent="Background/trees" index="0"]
 
@@ -379,29 +378,81 @@ position = Vector2( -61, -8.99342 )
 
 [node name="PopupDialog" parent="npcs/Mother" index="1" instance=ExtResource( 15 )]
 
+editor/display_folded = true
+
+[node name="PanelContainer" parent="npcs/Mother/PopupDialog/PopupDialog" index="0"]
+
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer" index="0"]
+
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 281.0
+margin_bottom = 85.0
+
 [node name="HBoxContainer" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
 
-visible = false
+margin_right = 275.0
+margin_bottom = 79.0
 
 [node name="RichTextLabel" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
 
-visible = false
+margin_right = 247.0
+margin_bottom = 74.0
 
 [node name="NextButton" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
 
-visible = false
+margin_left = 251.0
+margin_top = 60.0
+margin_right = 270.0
+margin_bottom = 74.0
 
 [node name="LanternMan" parent="npcs" index="2" instance=ExtResource( 16 )]
 
 editor/display_folded = true
 modulate = Color( 0.804688, 0.804688, 0.804688, 1 )
-position = Vector2( -57, 176 )
+position = Vector2( -57, 175 )
 script = ExtResource( 17 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="PopupDialog" parent="npcs/LanternMan" index="0" instance=ExtResource( 15 )]
 
 editor/display_folded = true
+
+[node name="PanelContainer" parent="npcs/LanternMan/PopupDialog/PopupDialog" index="0"]
+
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer" index="0"]
+
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 281.0
+margin_bottom = 85.0
+
+[node name="HBoxContainer" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
+
+margin_right = 275.0
+margin_bottom = 79.0
+
+[node name="RichTextLabel" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+
+margin_right = 247.0
+margin_bottom = 74.0
+
+[node name="NextButton" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+
+margin_left = 251.0
+margin_top = 60.0
+margin_right = 270.0
+margin_bottom = 74.0
 
 [node name="StaticBody2D" parent="npcs/LanternMan" index="1"]
 
@@ -460,11 +511,42 @@ visible = false
 
 editor/display_folded = true
 
+[node name="PanelContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog" index="0"]
+
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer" index="0"]
+
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 281.0
+margin_bottom = 85.0
+
+[node name="HBoxContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
+
+margin_right = 275.0
+margin_bottom = 79.0
+
+[node name="RichTextLabel" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+
+margin_right = 247.0
+margin_bottom = 74.0
+
+[node name="NextButton" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+
+margin_left = 251.0
+margin_top = 60.0
+margin_right = 270.0
+margin_bottom = 74.0
+
 [node name="PirateMan" parent="npcs" index="5" instance=ExtResource( 22 )]
 
 editor/display_folded = true
 modulate = Color( 0.863281, 0.863281, 0.863281, 1 )
-position = Vector2( 720, 111 )
+position = Vector2( 785, 111 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="StaticBody2D" parent="npcs/PirateMan" index="0"]
@@ -481,7 +563,6 @@ visible = false
 
 [node name="Player" parent="." index="3" instance=ExtResource( 23 )]
 
-visible = false
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
 position = Vector2( -352.049, 157.01 )
 script = SubResource( 1 )
@@ -492,80 +573,19 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 editor/display_folded = false
 layer = 0
 
-[node name="Control" parent="Player/Interface" index="0"]
-
-visible = false
-
 [node name="HUD" parent="Player/Interface/Control" index="0"]
 
 editor/display_folded = false
-visible = false
-
-[node name="HPContainer" parent="Player/Interface/Control/HUD" index="0"]
-
-visible = false
-
-[node name="Background" parent="Player/Interface/Control/HUD/HPContainer" index="0"]
-
-visible = false
-
-[node name="MarginContainer" parent="Player/Interface/Control/HUD/HPContainer/Background" index="0"]
-
-visible = false
-
-[node name="HBoxContainer" parent="Player/Interface/Control/HUD/HPContainer/Background/MarginContainer" index="0"]
-
-visible = false
-
-[node name="Title" parent="Player/Interface/Control/HUD/HPContainer/Background/MarginContainer/HBoxContainer" index="0"]
-
-visible = false
-
-[node name="Number" parent="Player/Interface/Control/HUD/HPContainer/Background/MarginContainer/HBoxContainer" index="1"]
-
-visible = false
-
-[node name="TextureProgress" parent="Player/Interface/Control/HUD/HPContainer" index="1"]
-
-visible = false
-
-[node name="ActionContainer" parent="Player/Interface/Control/HUD" index="1"]
-
-visible = false
-
-[node name="PauseButton" parent="Player/Interface/Control" index="1"]
-
-visible = false
 
 [node name="PauseMenu" parent="Player/Interface/Control" index="2"]
 
 editor/display_folded = true
-visible = false
-
-[node name="PanelContainer" parent="Player/Interface/Control/PauseMenu" index="0"]
-
-margin_left = 255.0
-margin_top = 136.0
-margin_right = 269.0
-margin_bottom = 150.0
 
 [node name="VBoxContainer" parent="Player/Interface/Control/PauseMenu/PanelContainer/MarginContainer" index="0"]
 
 editor/display_folded = true
 
-[node name="KinematicBody2D" parent="Player" index="1"]
-
-visible = false
-
-[node name="Sprite" parent="Player/KinematicBody2D" index="0"]
-
-visible = false
-
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
-
-visible = false
-
-[node name="Position2D" parent="Player/KinematicBody2D" index="2"]
 
 visible = false
 
@@ -573,13 +593,8 @@ visible = false
 
 visible = false
 
-[node name="Sword" parent="Player/KinematicBody2D/Area2D" index="0"]
-
-visible = false
-
 [node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
 
-visible = false
 limit_left = -560
 limit_top = -135
 limit_right = 1536
@@ -587,7 +602,6 @@ limit_bottom = 270
 
 [node name="NextLevelArea" type="Area2D" parent="." index="4"]
 
-visible = false
 position = Vector2( 1568, 96 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -604,7 +618,6 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelArea" index="0"]
 
-visible = false
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="npcs/Mother/StaticBody2D/Area2D" to="npcs/Mother" method="_on_Area2D_body_entered"]
