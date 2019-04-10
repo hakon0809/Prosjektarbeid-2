@@ -8,3 +8,5 @@ func _ready():
 
 func _on_ExitButton_pressed():
 	popup.show()
+	
+
