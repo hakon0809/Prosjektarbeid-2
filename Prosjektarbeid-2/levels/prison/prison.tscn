@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://levels/prison/prison.gd" type="Script" id=1]
 [ext_resource path="res://levels/prison/da1d5e18b0e709b.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://levels/common/assets/explosion/explotion.tscn" type="PackedScene" id=15]
 [ext_resource path="res://levels/common/assets/explosion/explotion.gd" type="Script" id=16]
 [ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=17]
+[ext_resource path="res://entities/enemies/soldier.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -294,7 +295,7 @@ layer = 0
 
 frame = 2
 
-[node name="Camera2D" parent="Player/KinematicBody2D" index="3"]
+[node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
 
 limit_right = 1600
 
@@ -395,21 +396,45 @@ margin_top = 60.0
 margin_right = 270.0
 margin_bottom = 74.0
 
-[connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_NextLevel_body_entered"]
+[node name="Enemies" type="Node2D" parent="." index="6"]
 
-[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion" method="_on_ExplosionStart_timeout"]
+[node name="soldier" parent="Enemies" index="0" instance=ExtResource( 18 )]
+
+modulate = Color( 0.539063, 0.539063, 0.539063, 1 )
+position = Vector2( 801.638, 211.159 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "collision" ]
+max_speed = 80
+knockback = 4
+damage = 1
+health = 2
+
+[node name="soldier2" parent="Enemies" index="1" instance=ExtResource( 18 )]
+
+modulate = Color( 0.535156, 0.535156, 0.535156, 1 )
+position = Vector2( 1116.77, 146.46 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
+max_speed = 80
+knockback = 4
+damage = 1
+health = 2
+
+[connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_NextLevel_body_entered"]
 
 [connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion3" method="_on_ExplosionStart_timeout"]
 
 [connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion2" method="_on_ExplosionStart_timeout"]
 
-[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion" method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion" method="_on_ExplosionStart_timeout"]
 
 [connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion3" method="_on_ExplosionEnd_timeout"]
 
+[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion2" method="_on_ExplosionEnd_timeout"]
+
 [connection signal="timeout" from="Effects/ExplosionEnd" to="." method="_on_ExplosionEnd_timeout"]
 
-[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion2" method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion" method="_on_ExplosionEnd_timeout"]
 
 [connection signal="pressed" from="IntroText/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 

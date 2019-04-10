@@ -1,10 +1,23 @@
 extends Node2D
 
-export var text = [
-		"tekst1",
-		"tekst2",
-		"tekst3",
-	]
+var text = {
+	1: [
+		"Welcome to my first world, kiddo.",
+		"Here you will have to make a choice.",
+		"Do you want this piece of armor, or take your chances?",
+	],
+	2: [
+		"Welcome to my second world, kiddo.",
+		"Here you will have to make a choice.",
+		"Do you want this shiny new sword, or take your chances?",
+	],
+	3: [
+		"Welcome to my third world, kiddo.",
+		"Here you will have to make a choice.",
+		"Do you want this new bow, or take your chances?",
+	],
+}
+
 var index = 0
 
 export var level = 0
@@ -17,8 +30,9 @@ onready var button = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBo
 onready var dialog = $PopupDialog/PopupDialog
 
 func _ready():
-	dialog_text.set_text(text[index])
-	interface = get_tree().get_root().get_node("Skull_level_1/Player/Interface/Control")
+	level = get_parent().level
+	dialog_text.set_text(text[level][index])
+	interface = $"../Player/Interface/Control"
 	dialog.hide()
 	
 func _on_Area2D_body_entered(body):
@@ -39,7 +53,7 @@ func _on_NextButton_pressed():
 		index += 1
 		if index == text.size() - 1:
 			button.text = "Lemme see"
-		dialog_text.set_text(text[index])
+		dialog_text.set_text(text[level][index])
 			
 func open_choice_menu():
 	dialog.hide()
