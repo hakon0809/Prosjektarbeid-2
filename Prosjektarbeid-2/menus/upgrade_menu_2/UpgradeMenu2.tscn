@@ -5,7 +5,7 @@
 [ext_resource path="res://ui/flowchart_menus/BG_red.tres" type="StyleBox" id=3]
 [ext_resource path="res://ui/flowchart_menus/icons8-delete-36.png" type="Texture" id=4]
 
-[node name="Node" type="Container"]
+[node name="Node" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
