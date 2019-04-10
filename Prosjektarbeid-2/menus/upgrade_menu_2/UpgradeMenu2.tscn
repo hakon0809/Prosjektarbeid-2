@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/flowchart_menus/flowchart_theme.tres" type="Theme" id=1]
 [ext_resource path="res://menus/upgrade_menu_2/UpgradeMenu2.gd" type="Script" id=2]
 [ext_resource path="res://ui/flowchart_menus/BG_red.tres" type="StyleBox" id=3]
 [ext_resource path="res://ui/flowchart_menus/icons8-delete-36.png" type="Texture" id=4]
+[ext_resource path="res://menus/upgrade_menu_2/Scene1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menus/upgrade_menu_2/Scene2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=7]
+[ext_resource path="res://menus/upgrade_menu_2/Scene3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://menus/upgrade_menu_2/AllSettings.tscn" type="PackedScene" id=9]
+[ext_resource path="res://menus/upgrade_menu_2/Setting.tscn" type="PackedScene" id=10]
+[ext_resource path="res://menus/upgrade_menu_2/Popup.tscn" type="PackedScene" id=11]
 
-[node name="Node" type="Container"]
+[node name="Node" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -140,7 +147,7 @@ texture_disabled = ExtResource( 4 )
 texture_focused = ExtResource( 4 )
 _sections_unfolded = [ "Textures", "Visibility" ]
 
-[node name="SceneContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer" index="1"]
+[node name="ContentContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -161,4 +168,171 @@ custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 
+[node name="Scene1" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="0" instance=ExtResource( 5 )]
 
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 454.0
+margin_bottom = 216.0
+
+[node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1" index="0"]
+
+margin_right = 444.0
+margin_bottom = 174.0
+
+[node name="Scene1Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1" index="1"]
+
+margin_top = 178.0
+margin_right = 444.0
+margin_bottom = 206.0
+
+[node name="Scene2" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="1" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 454.0
+margin_bottom = 216.0
+
+[node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="0"]
+
+margin_right = 444.0
+margin_bottom = 28.0
+
+[node name="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="1"]
+
+margin_top = 32.0
+margin_right = 444.0
+margin_bottom = 141.0
+
+[node name="ManageButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="2"]
+
+margin_top = 145.0
+margin_right = 444.0
+margin_bottom = 174.0
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.546875, 0.546875, 0.546875, 1 )
+custom_colors/font_color = Color( 0.546875, 0.546875, 0.546875, 1 )
+custom_colors/font_color_hover = Color( 0.546875, 0.546875, 0.546875, 1 )
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_styles" ]
+
+[node name="AgreeButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="3"]
+
+margin_top = 178.0
+margin_right = 444.0
+margin_bottom = 206.0
+
+[node name="Scene3" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="2" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 454.0
+margin_bottom = 216.0
+
+[node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="0"]
+
+margin_right = 444.0
+margin_bottom = 28.0
+
+[node name="ReturnButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="1"]
+
+margin_top = 178.0
+margin_right = 444.0
+margin_bottom = 206.0
+
+[node name="AllSettings" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="3" instance=ExtResource( 9 )]
+
+editor/display_folded = true
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 454.0
+margin_bottom = 216.0
+
+[node name="LinkButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="0"]
+
+margin_right = 444.0
+margin_bottom = 23.0
+
+[node name="LinkButton2" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="1"]
+
+margin_top = 27.0
+margin_right = 444.0
+margin_bottom = 50.0
+
+[node name="LinkButton3" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="2"]
+
+margin_top = 54.0
+margin_right = 444.0
+margin_bottom = 77.0
+
+[node name="SaveButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="3"]
+
+margin_top = 178.0
+margin_right = 444.0
+margin_bottom = 206.0
+
+[node name="Setting" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="4" instance=ExtResource( 10 )]
+
+editor/display_folded = true
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 454.0
+margin_bottom = 216.0
+
+[node name="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer" index="1"]
+
+pressed = false
+
+[node name="Popup" parent="MarginContainer/PanelContainer" index="1" instance=ExtResource( 11 )]
+
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 464.0
+margin_bottom = 266.0
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button" to="." method="_on_Scene1Button_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2/ManageButton" to="." method="_on_ManageButton_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2/AgreeButton" to="." method="_on_AgreeButton_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3/ReturnButton" to="." method="_on_ReturnButton_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/LinkButton" to="." method="_on_LinkButton_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/LinkButton2" to="." method="_on_LinkButton2_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/LinkButton3" to="." method="_on_LinkButton3_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/SaveButton" to="." method="_on_SaveButton_pressed"]
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/Button" to="." method="_on_Button_pressed"]
+
+
+[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1"]
+[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2"]
+[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3"]
+[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings"]
+[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting"]
