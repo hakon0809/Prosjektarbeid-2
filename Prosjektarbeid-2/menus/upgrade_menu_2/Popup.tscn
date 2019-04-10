@@ -3,7 +3,7 @@
 [ext_resource path="res://menus/upgrade_menu_2/Popup.gd" type="Script" id=1]
 [ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=2]
 
-[node name="Popup" type="MarginContainer" index="0"]
+[node name="Popup" type="MarginContainer"]
 
 anchor_left = 0.0
 anchor_top = 0.0
