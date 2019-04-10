@@ -16,7 +16,7 @@ onready var sound_player = $"../AudioStreamPlayer"
 enum Weapons { FISTS, SWORD } 
 
 const ARROW = preload("res://entities/player/player_arrow.tscn")
-var timer = null
+var bow_timer = null
 
 
 #Different possible states, have not implemented STAGGER
@@ -46,6 +46,7 @@ var not_shot = true
 #var to check if attack is over
 var attack_is_over = true
 var damage_immunity = false
+var immunity_timer = null
 
 export var max_health = 10
 var health
@@ -62,11 +63,17 @@ func _ready():
 	set_bow_upgrade()
 	health = max_health
 	
-	timer = Timer.new()
-	timer.set_one_shot(true)
-	timer.set_wait_time(0.3)
-	timer.connect("timeout", self, "on_timeout")
-	add_child(timer)
+	bow_timer = Timer.new()
+	bow_timer.set_one_shot(true)
+	bow_timer.set_wait_time(0.3)
+	bow_timer.connect("timeout", self, "on_bow_timeout")
+	add_child(bow_timer)
+	
+	immunity_timer = Timer.new()
+	immunity_timer.set_one_shot(true)
+	immunity_timer.set_wait_time(1.5)
+	immunity_timer.connect("timeout", self, "on_immunity_timeout")
+	add_child(immunity_timer)
 	
 	if get_tree().get_current_scene().get("max_depth"):
 		max_depth = get_tree().get_current_scene().get("max_depth")
@@ -158,8 +165,14 @@ func change_weapon(new_weapon):
 			
 			
 
-func on_timeout():
-	can_shoot=true
+func on_bow_timeout():
+	can_shoot = true
+	
+	
+func on_immunity_timeout():
+	damage_immunity = false
+	immunity_timer.stop()
+	
 	
 
 
@@ -179,6 +192,7 @@ func change_state(new_state):
 			motion.x = lerp(motion.x, 0, 0.2)
 			
 		KNOCKDOWN:
+			immunity_timer.start()
 			damage_immunity = true
 			$Sprite.play("Knockdown")
 			friction = true
@@ -191,9 +205,8 @@ func change_state(new_state):
 			$Sprite.play("Get Up")
 			friction = false
 			motion.x = 0
-      
-			if $Sprite.get_frame() == 5:
-				damage_immunity = false
+				
+			
 				
 		
 		RUNLEFT:
@@ -288,8 +301,8 @@ func change_state(new_state):
 func _physics_process(delta):
 	motion.y += GRAVITY
 	
-	if current_state == KNOCKDOWN:
-		if Engine.get_frames_drawn() % 2 != 0:
+	if damage_immunity:
+		if Engine.get_frames_drawn() % 15 == 0:
 			self.modulate.a = 0.2
 		else:
 			self.modulate.a = 1
@@ -307,7 +320,7 @@ func _physics_process(delta):
 		
 		
 	elif Input.is_action_just_pressed("ui_attack"):
-		timer.start()
+		bow_timer.start()
 		
 	
 	elif Input.is_action_just_released("ui_attack"):
@@ -317,10 +330,10 @@ func _physics_process(delta):
 		elif can_shoot && has_bow:
 			not_shot = true
 			change_state(BOW)
-			timer.stop()
+			bow_timer.stop()
 		else:
 			change_state(ATTACK)
-			timer.stop() 
+			bow_timer.stop() 
 			
 	elif not is_on_floor():
 		change_state(JUMP)
@@ -358,6 +371,7 @@ func take_damage(count):
 		health -= count
 		if health <= 0:
 			health = 0
+			change_state(DIE)
 		emit_signal("health_changed", health)
 		change_state(KNOCKDOWN)
 
