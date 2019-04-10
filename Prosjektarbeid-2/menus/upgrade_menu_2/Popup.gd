@@ -19,4 +19,5 @@ func _on_ConfirmButton_pressed():
 		text.text = "Absolutely sure?"
 		confirm.text = "YES"
 	else:
-		scene.save_changes(false)
+		scene.choices = [false, false, false]
+		scene.save_changes()
