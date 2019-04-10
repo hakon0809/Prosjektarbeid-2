@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks.tres" type="TileSet" id=1]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="Background" type="Node2D" parent="." index="0"]
+
+[node name="Platforms" type="Node2D" parent="." index="1"]
+
+[node name="TileMap" type="TileMap" parent="Platforms" index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 851979, 1, 0, 851980, 3, 0, 851981, 3, 0, 851982, 3, 0, 851983, 3, 0, 851984, 3, 0, 851985, 3, 0, 851986, 3, 0, 851987, 3, 0, 851988, 3, 0, 851989, 3, 0, 851990, 3, 0, 851991, 3, 0, 851992, 8, 0, 917515, -1073741821, 0, 917516, 4, 0, 917517, 4, 0, 917518, 4, 0, 917519, 4, 0, 917520, 4, 0, 917521, 4, 0, 917522, 4, 0, 917523, 4, 0, 917524, 4, 0, 917525, 4, 0, 917526, 4, 0, 917527, 4, 0, 917528, -1610612733, 0, 983051, -1073741821, 0, 983052, 1073741828, 0, 983053, 4, 0, 983054, 4, 0, 983055, 4, 0, 983056, 4, 0, 983057, 4, 0, 983058, 4, 0, 983059, 4, 0, 983060, 4, 0, 983061, 4, 0, 983062, 4, 0, 983063, 4, 0, 983064, -1610612733, 0, 1048587, -1073741824, 0, 1048588, 1073741827, 0, 1048589, 1073741827, 0, 1048590, 1073741827, 0, 1048591, 1073741827, 0, 1048592, 1073741827, 0, 1048593, 1073741827, 0, 1048594, 1073741827, 0, 1048595, 1073741827, 0, 1048596, 1073741827, 0, 1048597, 1073741827, 0, 1048598, 1073741827, 0, 1048599, 1073741827, 0, 1048600, 1610612736, 0 )
+_sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." index="2" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( 268.088, 162.868 )
+
+[node name="Control" parent="Player/Interface" index="0"]
+
+visible = false
+
+[node name="KinematicBody2D" parent="Player" index="1"]
+
+editor/display_folded = true
+
+
+[editable path="Player"]
+[editable path="Player/Interface"]
