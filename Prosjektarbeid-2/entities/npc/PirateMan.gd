@@ -7,9 +7,9 @@ var dialog
 var interface
 
 var dialogArray = [
-	"Halt! Who goes there?",
-	"....Ah, it's you!",
-	"Your familiy is looking for you."
+	"Talk of the town is this skeleton figure that goes around buying and selling information.",
+	"Now, me personally, I don’t partake. No one’s getting at my secret treasures, hehe...",
+	"Hear there’s some good secrets to be gotten off of him if ye pay the price, though!"
 	]
 var dialogIndex
 
@@ -20,21 +20,30 @@ func _ready():
 	button = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton
 	interface = get_node("../../Player/Interface/Control")
 	
+	$speech_bubble.hide()
 	dialog.hide()
 	
 	dialogIndex = 0
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character") && dialogIndex == 0:
-		dialog.show()
-		interface.hide()
-		dialog_text.set_text(dialogArray[dialogIndex])
+		$speech_bubble.show()
+		player.setDialogueSource(self.get_path())
 	
 
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
+		$speech_bubble.hide()
 		player.setDialogueSource(null)
+
+
+func converse():
+	dialog.show()
+	interface.hide()
+	$speech_bubble.hide()
+	if dialogIndex == 0:
+		dialog_text.set_text(dialogArray[dialogIndex])
 
 func _on_NextButton_pressed():
 	dialogIndex += 1
@@ -43,4 +52,3 @@ func _on_NextButton_pressed():
 		interface.show()
 	else:
 		dialog_text.set_text(dialogArray[dialogIndex])
-	

@@ -418,19 +418,19 @@ health = 2
 
 [connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_NextLevel_body_entered"]
 
-[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion" method="_on_ExplosionStart_timeout"]
+[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion2" method="_on_ExplosionStart_timeout"]
 
 [connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion3" method="_on_ExplosionStart_timeout"]
 
-[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion2" method="_on_ExplosionStart_timeout"]
+[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion" method="_on_ExplosionStart_timeout"]
 
-[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion" method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion2" method="_on_ExplosionEnd_timeout"]
 
 [connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion3" method="_on_ExplosionEnd_timeout"]
 
-[connection signal="timeout" from="Effects/ExplosionEnd" to="." method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion" method="_on_ExplosionEnd_timeout"]
 
-[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion2" method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionEnd" to="." method="_on_ExplosionEnd_timeout"]
 
 [connection signal="pressed" from="IntroText/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 

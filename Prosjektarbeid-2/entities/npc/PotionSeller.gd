@@ -7,9 +7,9 @@ var dialog
 var interface
 
 var dialogArray = [
-	"Something somehing",
-	"hei hopp",
-	"____________________________"
+	"There has been a lot of activity at the border river lately.",
+	"Not surprising, given the new bridge that has been built.",
+	"If you plan on crossing, that might be the best place."
 	]
 var dialogIndex
 
@@ -42,9 +42,7 @@ func converse():
 	dialog.show()
 	interface.hide()
 	$speech_bubble.hide()
-	if dialogIndex >= dialogArray.size():
-		dialog_text.set_text("Get out of my face, scum.")
-	else:
+	if dialogIndex == 0:
 		dialog_text.set_text(dialogArray[dialogIndex])
 
 func _on_NextButton_pressed():

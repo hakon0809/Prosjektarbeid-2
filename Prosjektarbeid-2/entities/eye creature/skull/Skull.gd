@@ -2,19 +2,19 @@ extends Node2D
 
 var text = {
 	1: [
-		"Welcome to my first world, kiddo.",
-		"Here you will have to make a choice.",
-		"Do you want this piece of armor, or take your chances?",
+		"Hello stranger, I have an offer for you. I am sure you will find it interesting.",
+		"In exchange for a little information about you, I might be able to help you proceed.",
+		"This life saving armour can be yours if you sign this contract...",
 	],
 	2: [
-		"Welcome to my second world, kiddo.",
-		"Here you will have to make a choice.",
-		"Do you want this shiny new sword, or take your chances?",
+		"Hello again, friend. I have another interesting offer for you.",
+		"In exchange for some information about your… acquaintances, I can offer you this excellent sword.",
+		"Simply sign this contract…",
 	],
 	3: [
-		"Welcome to my third world, kiddo.",
-		"Here you will have to make a choice.",
-		"Do you want this new bow, or take your chances?",
+		"Ah, old friend. We meet again. I have yet another interesting offer for you.",
+		"This time, I will need some more specific information about… you.",
+		"In exchange, I have this excellent bow. Just sign this contract…",
 	],
 }
 
@@ -52,7 +52,7 @@ func _on_NextButton_pressed():
 	if index < text.size() - 1:
 		index += 1
 		if index == text.size() - 1:
-			button.text = "Lemme see"
+			button.text = "Let's see"
 		dialog_text.set_text(text[level][index])
 			
 func open_choice_menu():
@@ -71,10 +71,10 @@ func open_choice_menu():
 func save_choice(active):
 	button.hide()
 	if active:
-		dialog_text.set_text("Good job, go get em")
+		dialog_text.set_text("Excellent.")
 		emit_signal("health_changed", 15)
 	else:
-		dialog_text.set_text("Wrong choice kiddo")
+		dialog_text.set_text("Disapointing.")
 	dialog.show()
 	interface.show()
 	encountered = true
