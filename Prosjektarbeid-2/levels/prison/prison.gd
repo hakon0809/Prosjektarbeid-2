@@ -6,9 +6,10 @@ var dialog
 var interface
 
 var dialogArray = [
-	"The prison wall exploded?",
-	"Maybe I can escape and get over the border",
-	"If I can get to the city my parents may be able to help me"
+	"!!",
+	"Did the prison wall explode?",
+	"Maybe I can escape by getting across the border…",
+	"Better get to my parents in the city - they should be able to help me."
 	]
 var dialogIndex = 0
 

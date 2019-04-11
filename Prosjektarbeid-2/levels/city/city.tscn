@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://levels/city/assets/village04-512-x-256_010.png" type="Texture" id=1]
 [ext_resource path="res://levels/city/assets/village04-512-x-256_007.png" type="Texture" id=2]
@@ -22,8 +22,14 @@
 [ext_resource path="res://entities/npc/PotionSeller.gd" type="Script" id=20]
 [ext_resource path="res://levels/common/assets/wigflip-ds.png" type="Texture" id=21]
 [ext_resource path="res://entities/npc/PirateMan.tscn" type="PackedScene" id=22]
-[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=23]
-[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=24]
+[ext_resource path="res://entities/npc/PirateMan.gd" type="Script" id=23]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=24]
+[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=25]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 76.251, 37.1252 )
 
 [sub_resource type="GDScript" id=1]
 
@@ -329,10 +335,6 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="npcs" type="Node2D" parent="." index="2"]
 
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Father" parent="npcs" index="0" instance=ExtResource( 12 )]
 
 editor/display_folded = true
@@ -358,7 +360,6 @@ visible = false
 
 [node name="Mother" parent="npcs" index="1" instance=ExtResource( 13 )]
 
-editor/display_folded = true
 position = Vector2( 1151.73, 142 )
 script = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
@@ -374,7 +375,8 @@ _sections_unfolded = [ "Region", "Visibility" ]
 
 [node name="CollisionShape2D" parent="npcs/Mother/StaticBody2D/Area2D" index="0"]
 
-position = Vector2( -61, -8.99342 )
+position = Vector2( -86.1071, -8.99342 )
+scale = Vector2( 1.31923, 1 )
 
 [node name="PopupDialog" parent="npcs/Mother" index="1" instance=ExtResource( 15 )]
 
@@ -487,7 +489,6 @@ visible = false
 
 [node name="PotionSeller" parent="npcs" index="4" instance=ExtResource( 19 )]
 
-editor/display_folded = true
 modulate = Color( 0.832031, 0.832031, 0.832031, 1 )
 position = Vector2( 560, 175 )
 script = ExtResource( 20 )
@@ -501,7 +502,8 @@ texture = ExtResource( 21 )
 
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D/Area2D" index="0"]
 
-position = Vector2( -50.2111, -9.30897 )
+position = Vector2( -86.7745, -9.30897 )
+scale = Vector2( 1.41575, 1 )
 
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D" index="2"]
 
@@ -544,27 +546,76 @@ margin_bottom = 74.0
 
 [node name="PirateMan" parent="npcs" index="5" instance=ExtResource( 22 )]
 
-editor/display_folded = true
 modulate = Color( 0.863281, 0.863281, 0.863281, 1 )
-position = Vector2( 785, 111 )
+position = Vector2( 780, 111 )
+script = ExtResource( 23 )
 _sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="StaticBody2D" parent="npcs/PirateMan" index="0"]
-
-editor/display_folded = true
-
-[node name="Area2D" parent="npcs/PirateMan/StaticBody2D" index="1"]
-
-visible = false
 
 [node name="CollisionShape2D" parent="npcs/PirateMan/StaticBody2D" index="2"]
 
 visible = false
 
-[node name="Player" parent="." index="3" instance=ExtResource( 23 )]
+[node name="speech_bubble" type="Sprite" parent="npcs/PirateMan" index="1"]
+
+position = Vector2( 5.84814, -27.6435 )
+scale = Vector2( 0.446082, 0.376802 )
+texture = ExtResource( 21 )
+
+[node name="PopupDialog" parent="npcs/PirateMan" index="2" instance=ExtResource( 15 )]
+
+editor/display_folded = true
+
+[node name="PanelContainer" parent="npcs/PirateMan/PopupDialog/PopupDialog" index="0"]
+
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer" index="0"]
+
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 281.0
+margin_bottom = 85.0
+
+[node name="HBoxContainer" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
+
+margin_right = 275.0
+margin_bottom = 79.0
+
+[node name="RichTextLabel" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+
+margin_right = 247.0
+margin_bottom = 74.0
+
+[node name="NextButton" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+
+margin_left = 251.0
+margin_top = 60.0
+margin_right = 270.0
+margin_bottom = 74.0
+
+[node name="Area2D" type="Area2D" parent="npcs/PirateMan" index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npcs/PirateMan/Area2D" index="0"]
+
+position = Vector2( -94.0431, -20.2849 )
+scale = Vector2( 1.30338, 1.2314 )
+shape = SubResource( 3 )
+
+[node name="Player" parent="." index="3" instance=ExtResource( 24 )]
 
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
-position = Vector2( -352.049, 157.01 )
+position = Vector2( -504.972, 168.358 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -610,7 +661,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -640,6 +691,12 @@ shape = SubResource( 2 )
 
 [connection signal="pressed" from="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/PotionSeller" method="_on_NextButton_pressed"]
 
+[connection signal="pressed" from="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/PirateMan" method="_on_NextButton_pressed"]
+
+[connection signal="body_entered" from="npcs/PirateMan/Area2D" to="npcs/PirateMan" method="_on_Area2D_body_entered"]
+
+[connection signal="body_exited" from="npcs/PirateMan/Area2D" to="npcs/PirateMan" method="_on_Area2D_body_exited"]
+
 [connection signal="body_entered" from="NextLevelArea" to="NextLevelArea" method="_on_Area2D_body_entered"]
 
 
@@ -652,6 +709,7 @@ shape = SubResource( 2 )
 [editable path="npcs/PotionSeller"]
 [editable path="npcs/PotionSeller/PopupDialog"]
 [editable path="npcs/PirateMan"]
+[editable path="npcs/PirateMan/PopupDialog"]
 [editable path="Player"]
 [editable path="Player/Interface"]
 [editable path="Player/Interface/Control/PauseMenu"]

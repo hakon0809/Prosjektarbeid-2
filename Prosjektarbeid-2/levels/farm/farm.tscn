@@ -26,6 +26,7 @@ extents = Vector2( 10, 10 )
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
 position = Vector2( 7.28613, 406.499 )
 __meta__ = {
 "_edit_lock_": true
@@ -100,6 +101,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Trees" type="Node2D" parent="Background" index="4"]
 
+editor/display_folded = true
 position = Vector2( 528.119, 231.32 )
 
 [node name="tree1" type="Sprite" parent="Background/Trees" index="0"]
@@ -116,6 +118,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Plattforms" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 8.28613, 406.499 )
 __meta__ = {
 "_edit_lock_": true
@@ -190,7 +193,6 @@ limit_right = 1720
 
 [node name="OldMan" parent="." index="3" instance=ExtResource( 8 )]
 
-editor/display_folded = true
 modulate = Color( 0.589844, 0.589844, 0.589844, 1 )
 position = Vector2( 1147.97, 786.324 )
 script = ExtResource( 9 )
@@ -219,6 +221,8 @@ __meta__ = {
 }
 
 [node name="PopupDialog" parent="OldMan" index="2" instance=ExtResource( 10 )]
+
+editor/display_folded = true
 
 [node name="PanelContainer" parent="OldMan/PopupDialog/PopupDialog" index="0"]
 
