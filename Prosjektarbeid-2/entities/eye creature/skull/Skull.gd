@@ -21,7 +21,6 @@ var text = {
 var index = 0
 
 export var level = 0
-onready var ChoiceMenu = preload("res://menus/choices/ChoiceMenu.tscn")
 var encountered = false
 var interface
 
@@ -58,15 +57,17 @@ func _on_NextButton_pressed():
 func open_choice_menu():
 	dialog.hide()
 	interface.hide()
-	var c = ChoiceMenu.instance()
+	var c
+	if level == 1:
+		c = load("res://menus/upgrade_menu_1/UpgradeMenu1.tscn").instance()
+	elif level == 2:
+		c = load("res://menus/upgrade_menu_2/UpgradeMenu2.tscn").instance()
+	else:
+		c = load("res://menus/upgrade_menu_3/UpgradeMenu3.tscn").instance()
 	var node = get_tree().get_root()
 	var cl = CanvasLayer.new()
 	node.add_child(cl)
 	cl.add_child(c)
-	c.level = level
-	c.end_level = false
-	c.open_choice_menu(self)
-	
 
 func save_choice(active):
 	button.hide()

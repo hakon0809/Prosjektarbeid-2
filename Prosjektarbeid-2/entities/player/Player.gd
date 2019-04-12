@@ -373,21 +373,20 @@ func upgrade_changed(upgrade):
 		set_bow_upgrade()
 
 func set_max_health():
-	if Globals.get_upgrade(1):
+	if Globals.get_upgrade(1)[0]:
 		max_health = 15
 	else:
 		max_health = 10
 	get_parent().get_node("Interface").set_health_bar(max_health)
 
 func set_sword_upgrade():
-	if Globals.get_upgrade(2):
+	if Globals.get_upgrade(2)[0]:
 		change_weapon(SWORD)
 	else:
-		pass
 		change_weapon(FISTS)
 
 func set_bow_upgrade():
-	if Globals.get_upgrade(3):
+	if Globals.get_upgrade(3)[0]:
 		has_bow = true
 	else:
 		has_bow = false
