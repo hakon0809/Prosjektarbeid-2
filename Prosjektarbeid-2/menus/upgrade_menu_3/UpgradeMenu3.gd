@@ -75,4 +75,5 @@ func _on_SaveButton_pressed():
 
 
 func _on_FinishButton_pressed():
+	save_changes()
 	self.queue_free()
