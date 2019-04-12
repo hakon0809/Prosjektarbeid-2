@@ -13,6 +13,21 @@ var punch_sound = load("res://entities/player/sounds/punchsound.ogg")
 var bow_sound = load("res://entities/player/sounds/Arrowswosh.ogg")
 onready var sound_player = $"../AudioStreamPlayer"
 
+const FISTS = 0
+const SWORD = 1
+
+const IDLE = 0
+const GETUP = 1
+const KNOCKDOWN = 2
+const RUNLEFT = 3
+const RUNRIGHT = 4
+const JUMP = 5
+const ATTACK = 6
+const HURT = 7
+const DIE = 8
+const STAGGER = 9
+const BOW = 10
+
 enum Weapons { FISTS, SWORD } 
 
 const ARROW = preload("res://entities/player/player_arrow.tscn")

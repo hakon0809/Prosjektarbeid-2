@@ -9,9 +9,6 @@ var muted = [false, false]
 var music_button
 var sound_button
 
-func _ready():
-	self.add_child(music_player)
-
 var upgrade_1 = false
 var upgrade_2 = false
 var upgrade_3 = false
@@ -30,6 +27,17 @@ var activities = [upgrade_activities, settings_activities]
 
 var bart_score
 var bart_aggregate
+
+#Variable that holds a reference to a permission handler singleton
+var permissions = null
+
+func _ready():
+	self.add_child(music_player)
+	
+	# If game is deployed on android, sets ut singleton that handles permissions
+	if Engine.has_singleton("AndroidPermissions"):
+		permissions = Engine.get_singleton("AndroidPermissions")
+		permissions.init(get_instance_id(), true)
 
 func play_song(song, volume = 0):
 	# Updates the song and volume, and if not muted starts the song
