@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/ending_levels/boss_level.gd" type="Script" id=1]
 [ext_resource path="res://levels/ending_levels/ParallaxBackground.tscn" type="PackedScene" id=2]
@@ -6,13 +6,18 @@
 [ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=4]
 [ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks_extras.tres" type="TileSet" id=5]
 [ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks_extras_wohitbox.tres" type="TileSet" id=6]
-[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=7]
-
+[ext_resource path="res://levels/common/assets/grass_and_stone/green_grey/green_grey.tres" type="TileSet" id=7]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 39.2327, 45.9044 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 164.932, 76.1343 )
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -31,7 +36,6 @@ scroll_limit_begin = Vector2( 0, 30 )
 
 [node name="Platforms" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -119,7 +123,7 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 196642, 536870922, 0, 196644, 536870922, 0, 262178, 536870922, 0, 262179, 536870922, 0, 262180, 536870922, 0, 262181, 536870922, 0, 262182, 536870912, 0, 262183, 536870912, 0, 327714, 536870922, 0, 327715, 536870922, 0, 327716, 536870922, 0, 327717, 536870922, 0, 327718, 536870912, 0, 327719, 536870912, 0, 393250, 536870922, 0, 393251, 536870922, 0, 393252, 536870922, 0, 393253, 536870922, 0, 393254, 536870912, 0, 393255, 536870912, 0, 458786, 536870922, 0, 458787, 536870922, 0, 458788, 536870922, 0, 458789, 536870922, 0, 458790, 536870912, 0, 458791, 536870912, 0, 524322, 536870922, 0, 524323, 536870922, 0, 524324, 536870922, 0, 524325, 536870922, 0, 524326, 536870912, 0, 524327, 536870912, 0, 589858, 536870922, 0, 589859, 536870922, 0, 589862, 536870912, 0, 589863, 536870912, 0, 655394, 536870922, 0, 655395, 536870922, 0, 655398, 536870912, 0, 655399, 536870912, 0, 720930, 536870922, 0, 720931, 536870922, 0, 720934, 536870912, 0, 720935, 536870912, 0, 786466, 536870922, 0, 786467, 536870922, 0, 786470, 536870912, 0, 786471, 536870912, 0 )
-_sections_unfolded = [ "Cell", "Z Index" ]
+_sections_unfolded = [ "Cell", "Collision", "Z Index" ]
 
 [node name="Castle wohitbox infront" type="TileMap" parent="Platforms" index="4"]
 
@@ -166,7 +170,51 @@ format = 1
 tile_data = PoolIntArray( 589860, 536870912, 0, 589861, 536870912, 0, 655396, 536870912, 0, 655397, 536870912, 0, 720932, 536870912, 0, 720933, 536870912, 0, 786468, 536870912, 0, 786469, 536870912, 0 )
 _sections_unfolded = [ "Cell", "Visibility", "Z Index" ]
 
-[node name="Player" parent="." index="2" instance=ExtResource( 7 )]
+[node name="Restrict" type="TileMap" parent="Platforms" index="6"]
+
+z_index = -1
+mode = 0
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 917508, 46, 0, 983044, 46, 0, 1048580, 46, 0, 1114116, 46, 0, 1179652, 46, 0, 1245188, 46, 0, 1310724, 46, 0, 1376260, 46, 0, 1441796, 46, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Allow" type="TileMap" parent="Platforms" index="7"]
+
+z_index = -1
+mode = 0
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 524326, 46, 0, 589862, 46, 0, 655398, 46, 0, 720934, 46, 0, 786470, 46, 0, 852006, 46, 0, 917542, 46, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( -416.479, 186.087 )
@@ -179,7 +227,7 @@ visible = false
 
 limit_left = -430
 
-[node name="Area2D" type="Area2D" parent="." index="3"]
+[node name="NextArea" type="Area2D" parent="." index="3"]
 
 editor/display_folded = true
 position = Vector2( 648.156, 174.852 )
@@ -191,12 +239,30 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextArea" index="0"]
 
 position = Vector2( 32.5077, -7.96104 )
 shape = SubResource( 1 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[node name="EnterBoss" type="Area2D" parent="." index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterBoss" index="0"]
+
+position = Vector2( 452.024, 131.362 )
+scale = Vector2( 0.333612, 1 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="NextArea" to="." method="_on_NextArea_body_entered"]
+
+[connection signal="body_entered" from="EnterBoss" to="." method="_on_EnterBoss_body_entered"]
 
 
 [editable path="Player"]
