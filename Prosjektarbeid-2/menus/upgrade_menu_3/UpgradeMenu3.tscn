@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/flowchart_menus/flowchart_theme.tres" type="Theme" id=1]
-[ext_resource path="res://menus/upgrade_menu_2/UpgradeMenu2.gd" type="Script" id=2]
+[ext_resource path="res://menus/upgrade_menu_3/UpgradeMenu3.gd" type="Script" id=2]
 [ext_resource path="res://ui/flowchart_menus/BG_red.tres" type="StyleBox" id=3]
 [ext_resource path="res://ui/flowchart_menus/icons8-delete-36.png" type="Texture" id=4]
-[ext_resource path="res://menus/upgrade_menu_2/Scene1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://menus/upgrade_menu_2/Scene2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=7]
-[ext_resource path="res://menus/upgrade_menu_2/Scene3.tscn" type="PackedScene" id=8]
-[ext_resource path="res://menus/upgrade_menu_2/AllSettings.tscn" type="PackedScene" id=9]
-[ext_resource path="res://menus/upgrade_menu_2/Setting.tscn" type="PackedScene" id=10]
-[ext_resource path="res://menus/upgrade_menu_2/Popup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://menus/upgrade_menu_3/Scene1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menus/upgrade_menu_3/Scene2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://menus/upgrade_menu_3/Scene3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://menus/upgrade_menu_3/Scene4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://menus/upgrade_menu_3/Scene5.tscn" type="PackedScene" id=9]
+[ext_resource path="res://menus/upgrade_menu_3/Popup.tscn" type="PackedScene" id=10]
 
 [node name="Node" type="Container" index="0"]
 
@@ -26,7 +25,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Anchor", "Margin", "custom_constants" ]
+_sections_unfolded = [ "custom_constants" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="0"]
 
@@ -94,7 +93,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = ExtResource( 3 )
-_sections_unfolded = [ "Hint", "Rect", "custom_styles" ]
+_sections_unfolded = [ "Rect", "custom_styles" ]
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer" index="0"]
 
@@ -181,9 +180,9 @@ margin_bottom = 216.0
 [node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1" index="0"]
 
 margin_right = 444.0
-margin_bottom = 174.0
+margin_bottom = 59.0
 
-[node name="Scene1Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1" index="1"]
+[node name="Scene1Continue" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1" index="1"]
 
 margin_top = 178.0
 margin_right = 444.0
@@ -192,7 +191,6 @@ margin_bottom = 206.0
 [node name="Scene2" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="1" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
@@ -211,19 +209,11 @@ margin_top = 32.0
 margin_right = 444.0
 margin_bottom = 141.0
 
-[node name="ManageButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="2"]
+[node name="InfoButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="2"]
 
 margin_top = 145.0
 margin_right = 444.0
 margin_bottom = 174.0
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/normal = ExtResource( 7 )
-custom_colors/font_color_disabled = Color( 0.546875, 0.546875, 0.546875, 1 )
-custom_colors/font_color = Color( 0.546875, 0.546875, 0.546875, 1 )
-custom_colors/font_color_hover = Color( 0.546875, 0.546875, 0.546875, 1 )
-_sections_unfolded = [ "Visibility", "custom_colors", "custom_styles" ]
 
 [node name="AgreeButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="3"]
 
@@ -231,10 +221,9 @@ margin_top = 178.0
 margin_right = 444.0
 margin_bottom = 206.0
 
-[node name="Scene3" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="2" instance=ExtResource( 8 )]
+[node name="Scene3" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="2" instance=ExtResource( 7 )]
 
 editor/display_folded = true
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
@@ -247,16 +236,27 @@ margin_bottom = 216.0
 margin_right = 444.0
 margin_bottom = 28.0
 
-[node name="ReturnButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="1"]
+[node name="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="1"]
+
+margin_top = 32.0
+margin_right = 444.0
+margin_bottom = 141.0
+
+[node name="ManageButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="2"]
+
+margin_top = 145.0
+margin_right = 444.0
+margin_bottom = 174.0
+
+[node name="BackButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="3"]
 
 margin_top = 178.0
 margin_right = 444.0
 margin_bottom = 206.0
 
-[node name="AllSettings" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="3" instance=ExtResource( 9 )]
+[node name="Scene4" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="3" instance=ExtResource( 8 )]
 
 editor/display_folded = true
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
@@ -264,33 +264,30 @@ margin_top = 10.0
 margin_right = 454.0
 margin_bottom = 216.0
 
-[node name="LinkButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="0"]
+[node name="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4" index="0"]
 
 margin_right = 444.0
-margin_bottom = 23.0
+margin_bottom = 174.0
 
-[node name="LinkButton2" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="1"]
+[node name="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4/HBoxContainer" index="0"]
 
-margin_top = 27.0
+margin_right = 400.0
+margin_bottom = 174.0
+
+[node name="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4/HBoxContainer" index="1"]
+
+margin_left = 404.0
 margin_right = 444.0
-margin_bottom = 50.0
+margin_bottom = 174.0
 
-[node name="LinkButton3" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="2"]
-
-margin_top = 54.0
-margin_right = 444.0
-margin_bottom = 77.0
-
-[node name="SaveButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings" index="3"]
+[node name="SaveButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4" index="1"]
 
 margin_top = 178.0
 margin_right = 444.0
 margin_bottom = 206.0
 
-[node name="Setting" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="4" instance=ExtResource( 10 )]
+[node name="Scene5" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="4" instance=ExtResource( 9 )]
 
-editor/display_folded = true
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
@@ -298,11 +295,18 @@ margin_top = 10.0
 margin_right = 454.0
 margin_bottom = 216.0
 
-[node name="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer" index="1"]
+[node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5" index="0"]
 
-pressed = false
+margin_right = 444.0
+margin_bottom = 28.0
 
-[node name="Popup" parent="MarginContainer/PanelContainer" index="1" instance=ExtResource( 11 )]
+[node name="FinishButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5" index="1"]
+
+margin_top = 178.0
+margin_right = 444.0
+margin_bottom = 206.0
+
+[node name="Popup" parent="MarginContainer/PanelContainer" index="1" instance=ExtResource( 10 )]
 
 visible = false
 anchor_right = 0.0
@@ -312,27 +316,23 @@ margin_bottom = 266.0
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button" to="." method="_on_Scene1Button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1/Scene1Continue" to="." method="_on_Scene1Continue_pressed"]
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2/ManageButton" to="." method="_on_ManageButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2/InfoButton" to="." method="_on_InfoButton_pressed"]
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2/AgreeButton" to="." method="_on_AgreeButton_pressed"]
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3/ReturnButton" to="." method="_on_ReturnButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3/ManageButton" to="." method="_on_ManageButton_pressed"]
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/LinkButton" to="." method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3/BackButton" to="." method="_on_BackButton_pressed"]
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/LinkButton2" to="." method="_on_LinkButton2_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4/SaveButton" to="." method="_on_SaveButton_pressed"]
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/LinkButton3" to="." method="_on_LinkButton3_pressed"]
-
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings/SaveButton" to="." method="_on_SaveButton_pressed"]
-
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5/FinishButton" to="." method="_on_FinishButton_pressed"]
 
 
 [editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1"]
 [editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2"]
 [editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3"]
-[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/AllSettings"]
-[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting"]
+[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4"]
+[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://menus/upgrade_menu_2/Popup.gd" type="Script" id=1]
+[ext_resource path="res://menus/upgrade_menu_3/Popup.gd" type="Script" id=1]
 [ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=2]
 
 [node name="Popup" type="MarginContainer"]
@@ -178,9 +178,5 @@ text = "BACK"
 flat = false
 align = 1
 _sections_unfolded = [ "Size Flags" ]
-
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
-
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 
 
