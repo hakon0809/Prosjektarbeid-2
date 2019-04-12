@@ -1,12 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://levels/ending_level/boss_level.gd" type="Script" id=1]
-[ext_resource path="res://levels/ending_level/ParallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/ending_levels/boss_level.gd" type="Script" id=1]
+[ext_resource path="res://levels/ending_levels/ParallaxBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks.tres" type="TileSet" id=3]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=4]
 [ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks_extras.tres" type="TileSet" id=5]
 [ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks_extras_wohitbox.tres" type="TileSet" id=6]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -167,6 +168,7 @@ _sections_unfolded = [ "Cell", "Visibility", "Z Index" ]
 
 [node name="Player" parent="." index="2" instance=ExtResource( 7 )]
 
+editor/display_folded = true
 position = Vector2( -416.479, 186.087 )
 
 [node name="Control" parent="Player/Interface" index="0"]
