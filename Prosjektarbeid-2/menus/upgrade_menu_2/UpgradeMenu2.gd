@@ -23,7 +23,7 @@ func _on_ExitButton_pressed():
 	popup.show()
 	
 func save_changes():
-	#save changes
+	Globals.set_upgrade(2, choices)
 	self.queue_free()
 
 #SCENE1____________________________________________________________________
