@@ -40,7 +40,6 @@ func _on_Area2D_body_entered(body):
 			modulate = Color(1, 1, 1)
 			dialog.show()
 			interface.hide()
-			encountered = true
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
