@@ -29,6 +29,8 @@ func play_song(song, volume = 0):
 		music_player.play()
 
 func set_upgrade(upgrade, value):
+	for u in upgrade:
+			upgrades[upgrade][u] = value
 	for i in value.size():
 		upgrades[upgrade][i] = value[i]
 	get_tree().get_root().get_node("Skull_level_" + str(upgrade) + "/Player/KinematicBody2D").upgrade_changed(upgrade)
