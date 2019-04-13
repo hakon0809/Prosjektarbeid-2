@@ -12,6 +12,8 @@ var current_setting
 
 onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
 
+var activity = ""
+
 func _ready():
 	popup.hide()
 	scene_2.hide()
@@ -19,24 +21,29 @@ func _ready():
 	all_settings.hide()
 
 func _on_ExitButton_pressed():
+	activity += "| exit |"
 	popup.scene = self
 	popup.show()
 	
 func save_changes():
 	Globals.set_upgrade(2, choices)
+	Globals.set_activity(1, activity)
 	self.queue_free()
 
 #SCENE1____________________________________________________________________
 func _on_Scene1Button_pressed():
+	activity += "| continue |"
 	scene_1.hide()
 	scene_2.show()
 
 #SCENE2____________________________________________________________________
 func _on_ManageButton_pressed():
+	activity += "| manage |"
 	scene_2.hide()
 	all_settings.show()
 
 func _on_AgreeButton_pressed():
+	activity += "| agree |"
 	#open android prompt
 	#PLACEHOLDER
 	scene_2.hide()
@@ -44,10 +51,12 @@ func _on_AgreeButton_pressed():
 
 #ALLSETTINGS____________________________________________________________
 func _on_SaveButton_pressed():
+	activity += "| save |"
 	all_settings.hide()
 	scene_3.show()
 
 func _on_LinkButton_pressed():
+	activity += "| edit1 |"
 	all_settings.hide()
 	current_setting = 0
 	toggle.pressed = true
@@ -56,6 +65,7 @@ func _on_LinkButton_pressed():
 	setting.show()
 
 func _on_LinkButton2_pressed():
+	activity += "| edit2 |"
 	all_settings.hide()
 	current_setting = 1
 	if choices[1]:
@@ -66,6 +76,7 @@ func _on_LinkButton2_pressed():
 	setting.show()
 
 func _on_LinkButton3_pressed():
+	activity += "| edit3 |"
 	all_settings.hide()
 	current_setting = 2
 	if choices[2]:
@@ -83,8 +94,10 @@ func _on_ReturnButton_pressed():
 #SETTING_________________________________________________________________
 func _on_Button_pressed():
 	if toggle.is_pressed():
+		activity += "| toggle on |"
 		choices[current_setting] = true
 	else:
+		activity += "| toggle off |"
 		choices[current_setting] = false
 	if toggle.disabled:
 		toggle.disabled = false

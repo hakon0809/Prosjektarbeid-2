@@ -12,7 +12,7 @@
 [ext_resource path="res://menus/upgrade_menu_2/Setting.tscn" type="PackedScene" id=10]
 [ext_resource path="res://menus/upgrade_menu_2/Popup.tscn" type="PackedScene" id=11]
 
-[node name="Node" type="Container" index="0"]
+[node name="Node" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -26,7 +26,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Anchor", "Margin", "custom_constants" ]
+_sections_unfolded = [ "custom_constants" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="0"]
 
@@ -94,7 +94,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = ExtResource( 3 )
-_sections_unfolded = [ "Hint", "Rect", "custom_styles" ]
+_sections_unfolded = [ "Rect", "custom_styles" ]
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer" index="0"]
 

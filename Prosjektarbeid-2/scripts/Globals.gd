@@ -16,7 +16,7 @@ var upgrades = {1: [false, false, false],
 		2: [false, false, false],
 		3: [false, false, false]}
 
-var upgrade_activity = {}
+var upgrade_activity = ["", "", ""]
 
 var bart_score
 var bart_aggregate
@@ -29,8 +29,6 @@ func play_song(song, volume = 0):
 		music_player.play()
 
 func set_upgrade(upgrade, value):
-	for u in upgrade:
-			upgrades[upgrade][u] = value
 	for i in value.size():
 		upgrades[upgrade][i] = value[i]
 	get_tree().get_root().get_node("Skull_level_" + str(upgrade) + "/Player/KinematicBody2D").upgrade_changed(upgrade)
@@ -41,8 +39,8 @@ func get_upgrade(upgrade):
 func get_all_upgrades():
 	return upgrades
 	
-func set_activity(activity, level, string):
-	pass
+func set_activity(activity, string):
+	upgrade_activity[activity] = string
 	
 func set_bart_score(score, aggregate):
 	bart_score = score

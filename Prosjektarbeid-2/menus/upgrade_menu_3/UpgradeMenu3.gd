@@ -10,6 +10,8 @@ onready var scene5 = $MarginContainer/PanelContainer/VBoxContainer/ContentContai
 var choices = [true, true, true]
 var current_setting = 0
 
+var activity = ""
+
 onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
 
 func _ready():
@@ -20,19 +22,23 @@ func _ready():
 	scene5.hide()
 
 func _on_ExitButton_pressed():
+	activity += "| exit |"
 	popup.scene = self
 	popup.show()
 	
 func save_changes():
 	Globals.set_upgrade(3, choices)
+	Globals.set_activity(2, activity)
 	self.queue_free()
 
 func _on_Scene1Continue_pressed():
+	activity += "| continue |"
 	scene1.hide()
 	scene2.set_text(current_setting)
 	scene2.show()
 
 func _on_AgreeButton_pressed():
+	activity += "| agree |"
 	if current_setting < 2:
 		current_setting += 1
 		scene2.set_text(current_setting)
@@ -42,22 +48,26 @@ func _on_AgreeButton_pressed():
 		scene5.show()
 
 func _on_InfoButton_pressed():
+	activity += "| more info |"
 	scene2.hide()
 	scene3.set_text(current_setting)
 	scene3.show()
 
 func _on_BackButton_pressed():
+	activity += "| back |"
 	scene3.hide()
 	scene2.show()
 
 
 func _on_ManageButton_pressed():
+	activity += "| manage |"
 	scene3.hide()
 	scene4.set_text(current_setting, choices[current_setting])
 	scene4.show()
 
 
 func _on_SaveButton_pressed():
+	activity += "| save |"
 	if $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4/HBoxContainer/TextureButton.pressed:
 		choices[current_setting] = true
 	else:
