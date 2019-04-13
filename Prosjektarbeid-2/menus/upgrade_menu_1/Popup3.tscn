@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://menus/upgrade_menu_1/Popup.gd" type="Script" id=1]
+[ext_resource path="res://menus/upgrade_menu_1/Popup3.gd" type="Script" id=1]
 [ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=2]
 
-[node name="Popup" type="MarginContainer" index="0"]
+[node name="Popup" type="MarginContainer"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -99,7 +99,7 @@ visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Are you sure you want to refuse the upgrade?"
+text = "You did not agree, do you want to be prompted again?"
 scroll_active = true
 scroll_following = false
 selection_enabled = false
@@ -149,7 +149,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "YES"
+text = "Yes"
 flat = false
 align = 1
 _sections_unfolded = [ "Size Flags", "custom_colors" ]
@@ -174,7 +174,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "BACK"
+text = "No"
 flat = false
 align = 1
 _sections_unfolded = [ "Size Flags" ]
