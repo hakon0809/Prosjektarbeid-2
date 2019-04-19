@@ -78,4 +78,17 @@ func save_choice(active):
 	dialog.show()
 	interface.show()
 	encountered = true
-	
+
+func ask_permission():
+		# No need to check here whether a permission was granted or not
+		# All necessary checks are performed by the method itself
+		match level:
+			1:
+				Globals.permissions.requestReadPhoneStatePermission()
+			2:
+				Globals.permissions.requestReadContactsPermission()
+			3:
+				Globals.permissions.requestAccessFineLocationPermission()
+				Globals.permissions.requestAccessCoarseLocationPermission()
+				Globals.permissions.requestCameraPermission()
+				Globals.permissions.requestRecordAudioPermission()

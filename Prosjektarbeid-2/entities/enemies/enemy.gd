@@ -20,6 +20,13 @@ var current_state = null
 var previous_state = null
 var next_state = null
 
+const IDLE = 0
+const WALK = 1
+const ATTACK = 2
+const HURT = 3
+const SHOT = 4
+const DIE = 5
+
 enum STATES { IDLE, WALK, ATTACK, HURT, SHOT, DIE}
 
 func _ready():
