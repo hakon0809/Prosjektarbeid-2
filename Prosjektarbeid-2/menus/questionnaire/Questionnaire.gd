@@ -2,21 +2,36 @@ extends Node
 
 var org_vp_sz
 
+var questions = [{	"type":"line",
+					"question":"Do you like this question?"}]
+					
+var lineNode = load("res://menus/questionnaire/LineField.tscn")
+
+func generate_line(question, num):
+	print("generating a line")
+	var qinstance = lineNode.instance()
+	qinstance.set_name(str(num))
+	add_child(qinstance)
+	
+	
+var question_function = {
+	"line": funcref(self, "generate_line")
+	}
+
+
+
+
+
 func _ready():
 	org_vp_sz = get_viewport().size
-	print(org_vp_sz)
-	print(funcref(OS, "set_screen_orientation"))
-	#print(OS.set_screen_orientation)
-	print("Orientation: " + str(OS.screen_orientation))
 	OS.set_screen_orientation(OS.SCREEN_ORIENTATION_PORTRAIT)
-	print("Orientation: " + str(OS.screen_orientation))
-	print(get_viewport().size)
-#	get_viewport().set_size_override(org_vp_sz.y, org_vp_sz.x)
-	#get_viewport().set_size_override(true, Vector2(org_vp_sz.y, org_vp_sz.x), Vector2( 0, 0 ))
-	#print(get_viewport().size)
+	VisualServer.set_default_clear_color("fffdd0")
+	for i in range(questions.size()):
+		question_function[questions[i]["type"]].call_func(questions[i], i)
+		
+		
 
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+
+func leaving():
+	VisualServer.set_default_clear_color("4d4d4d") #Default colour per project settings
