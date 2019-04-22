@@ -61,7 +61,7 @@ func _ready():
 	set_max_health()
 	set_sword_upgrade()
 	set_bow_upgrade()
-	health = max_health
+	health = max_health - Globals.health_penalty
 	
 	bow_timer = Timer.new()
 	bow_timer.set_one_shot(true)

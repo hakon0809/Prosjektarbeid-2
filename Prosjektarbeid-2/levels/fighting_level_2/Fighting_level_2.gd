@@ -4,12 +4,9 @@ var max_depth = 2000
 var tunnel = false
 
 func _ready():
-	var status = Globals.get_upgrade(3)
-	if not status[0]:
+	if not Globals.get_upgrade(3)[0]:
 		tunnel = true
 		$Player.position += Vector2(100, 310)
-	elif status[1] or status[2]:
-		$Player/KinematicBody2D.health -= 4
 
 func _process(delta):
 	if tunnel:

@@ -46,6 +46,7 @@ func _ready():
 		currentDialogArray = dialogArrayHappy
 	elif status[1] or status[2]:
 		currentDialogArray = dialogArrayPissed
+		Globals.health_penalty -= 4
 	else:
 		currentDialogArray = dialogArrayMedium
 	

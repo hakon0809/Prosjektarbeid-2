@@ -15,6 +15,8 @@ func _ready():
 var upgrades = {1: [false, false, false],
 		2: [false, false, false],
 		3: [false, false, false]}
+		
+var health_penalty = 0
 
 var upgrade_activity = ["", "", ""]
 

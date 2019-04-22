@@ -60,7 +60,8 @@ func open_choice_menu():
 	interface.hide()
 	var c
 	if level == 1:
-		c = load("res://menus/upgrade_menu_1/UpgradeMenu1.tscn").instance()
+		pass
+		#c = load("res://menus/upgrade_menu_1/UpgradeMenu1.tscn").instance()
 	elif level == 2:
 		c = load("res://menus/upgrade_menu_2/UpgradeMenu2.tscn").instance()
 	else:
