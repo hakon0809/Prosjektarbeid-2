@@ -1,4 +1,4 @@
-extends Node
+extends VBoxContainer
 
 var org_vp_sz #tracker for original viewport size, might not be needed
 
@@ -29,7 +29,7 @@ func generate_line(question, num):
 	for c in qinstance.get_children():
 		qdict[c.get_class()] = c
 	
-	set_question_position(qinstance, num)
+	#set_question_position(qinstance, num)
 	
 	qdict.Label.text = question["question"]
 	
