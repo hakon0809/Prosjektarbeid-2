@@ -6,12 +6,29 @@ var button
 var dialog
 var interface
 
-var dialogArray = [
-	"Hei, kjære spiller :-)",
-	"Her kan du slappe av og restituere en liten stund før du skal kjempe videre..",
-	"Lykke til! :-)"
+var dialogArrayHappy = [
+	"Hello, stranger! Enjoying the countryside, eh?",
+	"What - you need a place to spend the night?",
+	"Well, I don’t got a lot of room, but I’ll spread some rags on the floor for you.",
+	"I’ll meet you inside, just gotta finish up out here."
+	]
+var dialogArrayMedium = [
+	"So, you want a place to sleep, eh?",
+	"Well, I know who you are. You just escaped from prison.",
+	"How I know that?",
+	"I got the information off that skeleton guy. Good to keep an eye out, y’know?",
+	"Anyway, you seem okay. Tell you what, you can sleep in the barn - just don’t mess with my animals!",
+	"Now, go hide before anyone sees you."
+	]
+var dialogArrayPissed = [
+	"You want a place to sleep?",
+	"No way! I’ve been told who you are. You just escaped prison! You’ll get me in trouble, you will.",
+	"How I know that?",
+	"I got the information off that skeleton guy. Good to keep an eye on folks lurking on my land, y’know?",
+	"Now, get moving."
 	]
 var dialogIndex
+var currentDialogArray
 
 func _ready():
 	player = get_node("../Player")
@@ -21,38 +38,36 @@ func _ready():
 	interface = get_node("../Player/Interface/Control")
 	
 	dialog.hide()
-	print("test hide dialogboks")
 	
 	dialogIndex = 0
+	
+	#CONDITIONAL ON EARLER CHOICES
+	currentDialogArray = dialogArrayHappy
+	
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("character") && dialogIndex < dialogArray.size():
-		player.setDialogueSource(self.get_path())
-		print("body_entered")
+	if body.is_in_group("character"):
+		dialog.show()
+		interface.hide()
+		print(dialogIndex)
+		if dialogIndex == 0:
+			dialog_text.set_text(currentDialogArray[dialogIndex])
+			print("hey")
+	
 
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
 		player.setDialogueSource(null)
-		print("body_exited")
+
 
 func converse():
-	print("converse")
-	dialog.show()
-	interface.hide()
-	if dialogIndex >= dialogArray.size():
-		dialog_text.set_text("Get out of my face, scum.")
-	else:
-		dialog_text.set_text(dialogArray[dialogIndex])
+	pass
 
 func _on_NextButton_pressed():
-	print("_on_NextButton_pressed2")
 	dialogIndex += 1
-	print("_on_NextButton_pressed")
-	if dialogIndex >= dialogArray.size():
+	if dialogIndex >= currentDialogArray.size():
 		dialog.hide()
 		interface.show()
-		print("_on_NextButton_pressed2")
 	else:
-		dialog_text.set_text(dialogArray[dialogIndex])
-		print("ikke _on_NextButton_pressed")
+		dialog_text.set_text(currentDialogArray[dialogIndex])
