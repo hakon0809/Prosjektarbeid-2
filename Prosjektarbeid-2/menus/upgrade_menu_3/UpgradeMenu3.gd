@@ -12,6 +12,8 @@ var current_setting = 0
 
 var activity = ""
 
+var skull
+
 onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
 
 func _ready():
@@ -29,6 +31,7 @@ func _on_ExitButton_pressed():
 func save_changes():
 	Globals.set_upgrade(3, choices)
 	Globals.set_activity(2, activity)
+	skull.save_choice(choices[0])
 	self.queue_free()
 
 func _on_Scene1Continue_pressed():

@@ -30,6 +30,8 @@ var dialogArrayPissed = [
 var dialogIndex
 var currentDialogArray
 
+var status
+
 func _ready():
 	player = get_node("../Player")
 	dialog_text = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/RichTextLabel
@@ -41,19 +43,20 @@ func _ready():
 	
 	dialogIndex = 0
 	
-	var status = Globals.get_upgrade(1)
-	if not status[0]:
-		currentDialogArray = dialogArrayHappy
-	elif status[1] or status[2]:
-		currentDialogArray = dialogArrayPissed
-		Globals.health_penalty += 4
-	else:
-		currentDialogArray = dialogArrayMedium
-		Globals.health_penalty += 2
+	status = Globals.get_upgrade(1)
 	
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
+		if not status[0]:
+			currentDialogArray = dialogArrayHappy
+		elif status[1] or status[2]:
+			currentDialogArray = dialogArrayPissed
+			Globals.health_penalty += 4
+		else:
+			currentDialogArray = dialogArrayMedium
+			Globals.health_penalty += 2
+
 		dialog.show()
 		interface.hide()
 		print(dialogIndex)

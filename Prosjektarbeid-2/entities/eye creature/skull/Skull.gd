@@ -70,12 +70,12 @@ func open_choice_menu():
 	var cl = CanvasLayer.new()
 	node.add_child(cl)
 	cl.add_child(c)
+	c.skull = self
 
 func save_choice(active):
 	button.hide()
 	if active:
 		dialog_text.set_text("Excellent.")
-		emit_signal("health_changed", 15)
 	else:
 		dialog_text.set_text("Disapointing.")
 	dialog.show()

@@ -14,6 +14,8 @@ onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContai
 
 var activity = ""
 
+var skull
+
 func _ready():
 	popup.hide()
 	scene_2.hide()
@@ -28,6 +30,7 @@ func _on_ExitButton_pressed():
 func save_changes():
 	Globals.set_upgrade(2, choices)
 	Globals.set_activity(1, activity)
+	skull.save_choice(choices[0])
 	self.queue_free()
 
 #SCENE1____________________________________________________________________
