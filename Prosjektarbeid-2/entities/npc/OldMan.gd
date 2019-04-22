@@ -41,8 +41,13 @@ func _ready():
 	
 	dialogIndex = 0
 	
-	#CONDITIONAL ON EARLER CHOICES
-	currentDialogArray = dialogArrayHappy
+	var status = Globals.get_upgrade(1)
+	if not status[0]:
+		currentDialogArray = dialogArrayHappy
+	elif status[1] or status[2]:
+		currentDialogArray = dialogArrayPissed
+	else:
+		currentDialogArray = dialogArrayMedium
 	
 
 func _on_Area2D_body_entered(body):
