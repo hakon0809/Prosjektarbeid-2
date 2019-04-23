@@ -30,6 +30,7 @@ var previous_state = null
 var next_state = null
 
 var idle_animation = "Idle"
+var hurt_animation = "HurtNoSword"
 var current_weapon = FISTS
 var previous_weapon = null
 var next_weapon = null
@@ -158,6 +159,7 @@ func change_weapon(new_weapon):
 		SWORD:
 			idle_animation = "Idle Sword"
 			attack_animation = "Melee2"
+			hurt_animation = "Hurt"
 			attack_sound = sword_sound
 			attack_frame = 3
 			attack_over_frame = 5
@@ -289,7 +291,7 @@ func change_state(new_state):
 					can_shoot = false
 
 		HURT:
-			$Sprite.play("Hurt")
+			$Sprite.play(hurt_animation)
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
 		
