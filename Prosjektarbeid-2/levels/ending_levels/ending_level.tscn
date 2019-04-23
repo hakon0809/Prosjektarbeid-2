@@ -46,7 +46,7 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 1100, -34.0094 )
+position = Vector2( 50, -34.0094 )
 
 [node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
 
