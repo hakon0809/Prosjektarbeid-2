@@ -9,10 +9,10 @@ export var knockback = 10
 export var circle_attack_damage = 2
 export var overhead_attack_damage = 3
 export var touch_damage = 1
-export var health = 1
+export var health = 10
 var velocity = Vector2()
 var direction = 1
-var speed = max_speed
+var speed = 0
 var knockdir = Vector2(1, 0)
 var hitstun = 0
 var can_move = true
@@ -222,3 +222,7 @@ func _on_touch_body_entered(body):
 		_change_state(TAUNT)
 		speed = max_speed
 		print(touch_damage)
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	speed = max_speed
