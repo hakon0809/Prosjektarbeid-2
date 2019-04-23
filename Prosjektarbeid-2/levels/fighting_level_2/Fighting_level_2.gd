@@ -17,6 +17,4 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
-		print("wiiiii")
-		#change scene
-		pass
+		get_tree().change_scene('res://levels/ending_levels/boss_level.tscn')

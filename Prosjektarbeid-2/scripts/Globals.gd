@@ -9,6 +9,9 @@ var muted = [false, false]
 var music_button
 var sound_button
 
+var data_sharing_mode = null
+var player_id = null
+
 func _ready():
 	self.add_child(music_player)
 
@@ -22,6 +25,9 @@ var upgrade_activity = ["", "", ""]
 
 var bart_score
 var bart_aggregate
+
+var pre_questionnaire = []
+var post_questionnaire = []
 
 func play_song(song, volume = 0):
 	# Updates the song and volume, and if not muted starts the song

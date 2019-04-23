@@ -65,7 +65,7 @@ func _on_OKButton_pressed():
 		finish()
 
 func _on_NextButton_pressed():
-	pass # TODO change scene
+	get_tree().change_scene('res://levels/prison/prison.tscn')
 
 
 func explode(number):
