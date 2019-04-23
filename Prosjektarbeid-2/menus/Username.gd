@@ -8,7 +8,7 @@ func _on_OkButton_pressed():
 			var id = str(OS.get_unique_id(), username)
 			id =shah256_string(id)
 		
-		get_tree().change_scene('res://levels/BART/BARTIntro.tscn')
+		get_tree().change_scene('res://menus/questionnaire/PreQuestionnaire.tscn')
 
 
 func _on_username_field_text_changed(new_text):

@@ -7,7 +7,7 @@ func _on_MyPhone_pressed():
 	if Engine.has_singleton("AndroidPermissions"):
 		var  id = shah256_string(OS.get_unique_ID())
 		Globals.player_id = id
-	get_tree().change_scene('res://levels/BART/BARTIntro.tscn')
+	get_tree().change_scene('res://menus/questionnaire/PreQuestionnaire.tscn')
 
 func _on_Borrow_pressed():
 	get_tree().change_scene('res://menus/Username.tscn')

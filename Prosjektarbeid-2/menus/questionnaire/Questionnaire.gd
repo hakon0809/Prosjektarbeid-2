@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-class_name Questionnaire
+#class_name Questionnaire
 
 enum {LINE, RADIO, SUBMIT}
 
