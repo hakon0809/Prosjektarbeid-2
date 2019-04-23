@@ -4,7 +4,7 @@ const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 
 export var max_speed = 80
-export var knockback = 4
+export var knockback = 6
 export var damage = 1
 export var health = 2
 var velocity = Vector2()
@@ -13,14 +13,14 @@ var speed = max_speed
 var knockdir = Vector2(1, 0)
 var hitstun = 0
 var can_move = true
-var attack_is_over = true
+var damage_immunity = false
 
 
 var current_state = null
 var previous_state = null
 var next_state = null
 
-enum STATES { IDLE, WALK, ATTACK, HURT, SHOT, DIE}
+enum STATES {DIE, HURT, IDLE, WALK, ATTACK, SHOT}
 
 func _ready():
 	
@@ -32,10 +32,10 @@ func is_change_state_possible():
 			return false
 		elif previous_state == DIE:
 			return false
+		elif next_state == DIE || next_state == HURT:
+			return true	
 		elif not can_move:
  			return false
-		elif not attack_is_over:
-			return false
 		else:
 			return true
 			
@@ -50,6 +50,30 @@ func _change_state(new_state):
 	
 	match current_state:
 		
+		
+		DIE:
+			damage_immunity = true
+			can_move = false
+			$AnimatedSprite.play("die")
+			speed = 0
+			if $AnimatedSprite.get_frame() == 4:
+				queue_free()
+		
+				
+		HURT:
+			damage_immunity = true
+			can_move = false
+			$AnimatedSprite.play("hurt")
+			self.modulate.a = 0.1
+			if $AnimatedSprite.get_frame() == 1:
+				self.modulate.a = 1
+				can_move=true
+				damage_immunity = false
+				print("test hurt")
+						
+				
+				
+				
 		IDLE:
 			$AnimatedSprite.play("idle")
 			velocity.x = speed * direction
@@ -86,15 +110,7 @@ func _change_state(new_state):
 				can_move = true
 				
 
-		HURT:
-			can_move = false
-			$AnimatedSprite.play("hurt")
-			self.modulate.a = 0.2
-			if $AnimatedSprite.get_frame() == 1:
-				self.modulate.a = 1
-				can_move=true
-				print("test hurt")
-				
+	
 		SHOT:
 			can_move = false
 			
@@ -106,12 +122,7 @@ func _change_state(new_state):
 				
 			
 		
-		DIE:
-			can_move = false
-			$AnimatedSprite.play("die")
-			speed = 0
-			if $AnimatedSprite.get_frame() == 4:
-				queue_free()
+		
 			
 		
 	
@@ -145,13 +156,14 @@ func _physics_process(delta):
 	
 		
 func take_damage(count): 
-	health -= count
-	print("take damage health: " + str(health))
-	if health <= 0:
-		print("die")
-		_change_state(DIE)
-	else:
-		_change_state(HURT)
+	if not damage_immunity:
+		health -= count
+		print("take damage health: " + str(health))
+		if health <= 0:
+			print("die")
+			_change_state(DIE)
+		else:
+			_change_state(HURT)
 
 func movment():
 	if speed == 0 && hitstun == 0:

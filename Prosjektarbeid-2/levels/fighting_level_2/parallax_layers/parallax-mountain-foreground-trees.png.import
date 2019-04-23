@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sky1.png-72b881b05667b5e3080ab8cea7d2997a.stex"
+path="res://.import/parallax-mountain-foreground-trees.png-7da4870aa04ec6a5f14da8e14a20608a.stex"
 
 [deps]
 
-source_file="res://levels/common/assets/sky/sky1.png"
-dest_files=[ "res://.import/sky1.png-72b881b05667b5e3080ab8cea7d2997a.stex" ]
+source_file="res://levels/fighting_level_2/parallax_layers/parallax-mountain-foreground-trees.png"
+dest_files=[ "res://.import/parallax-mountain-foreground-trees.png-7da4870aa04ec6a5f14da8e14a20608a.stex" ]
 
 [params]
 

@@ -293,18 +293,10 @@ position = Vector2( 1460, 730 )
 [node name="s1" parent="EnemiesGoHere" index="1" instance=ExtResource( 13 )]
 
 position = Vector2( -850, 540 )
-max_speed = 80
-knockback = 4
-damage = 1
-health = 2
 
 [node name="s2" parent="EnemiesGoHere" index="2" instance=ExtResource( 13 )]
 
 position = Vector2( 400, 730 )
-max_speed = 80
-knockback = 4
-damage = 1
-health = 2
 
 [node name="Area2D" type="Area2D" parent="." index="8"]
 
