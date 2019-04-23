@@ -1,19 +1,8 @@
 extends VBoxContainer
 
-enum {LINE, RADIO, SUBMIT}
+class_name Questionnaire
 
-var questions = [	
-{	"type": LINE,
-	"question": "Do you like this question?"},
-{	"type": LINE,
-	"question": "Will this show up well?"},
-{	"type": RADIO,
-	"question": "An example radio from integer.",
-	"radios": 7},
-{	"type": RADIO,
-	"question": "An example radio from a list.",
-	"radios": ["Donkey Kong", "Monkey Mong", "Bonkey Long", "Cronkey Gong"]}
-]
+enum {LINE, RADIO, SUBMIT}
 
 var qnodes = [] #For easy enumerated access to question nodes
 
@@ -42,7 +31,7 @@ func invalid_answer(qnode):
 	print(qnode)
 	return null
 
-func _ready():
+func init(questions):
 	OS.set_screen_orientation(OS.SCREEN_ORIENTATION_PORTRAIT)
 	
 	VisualServer.set_default_clear_color("fffdd0")
@@ -53,7 +42,7 @@ func _ready():
 
 func _on_SubmitButton_pressed():
 	var answers = []
-	print("Yeehaw my yoodle.")
+	#print("Yeehaw my yoodle.")
 	for q in qnodes: #build the answers list or exit if invalid answer
 		var answer = q.get_answer()
 		answers.append(answer)
@@ -61,8 +50,15 @@ func _on_SubmitButton_pressed():
 			return invalid_answer(q)
 	finish_questionnaire(answers)
 
+func write_to_Globals(answers):
+	pass
+
+func goto_next():
+	pass
+
 func finish_questionnaire(answers):
-	#TODO: Save answers in data gathering system
-	print(answers)
+	write_to_Globals(answers)
 	VisualServer.set_default_clear_color("4d4d4d") #Default colour per project settings
 	OS.set_screen_orientation(OS.SCREEN_ORIENTATION_LANDSCAPE)
+	goto_next()
+	

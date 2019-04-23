@@ -25,6 +25,9 @@ var settings_activity_3 = []
 var settings_activities = [settings_activity_1, settings_activity_2, settings_activity_3]
 var activities = [upgrade_activities, settings_activities]
 
+var pre_questionnaire = []
+var post_questionnaire = []
+
 var bart_score
 var bart_aggregate
 
