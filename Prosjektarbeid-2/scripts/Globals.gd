@@ -31,6 +31,7 @@ var post_questionnaire = []
 var bart_score
 var bart_aggregate
 
+
 #Variable that holds a reference to a permission handler singleton
 var permissions = null
 
@@ -41,6 +42,10 @@ func _ready():
 	if Engine.has_singleton("AndroidPermissions"):
 		permissions = Engine.get_singleton("AndroidPermissions")
 		permissions.init(get_instance_id(), true)
+
+var data_sharing_mode = null
+var player_id = null
+
 
 func play_song(song, volume = 0):
 	# Updates the song and volume, and if not muted starts the song
