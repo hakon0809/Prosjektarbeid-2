@@ -24,6 +24,14 @@ var current_state = null
 var previous_state = null
 var next_state = null
 
+const IDLE = 0
+const WALK = 1
+const CIRCLE_ATTACK = 2
+const OVERHEAD_ATTACK = 3
+const HURT = 4
+const DIE = 5
+const TAUNT = 6
+
 enum STATES { IDLE, WALK, CIRCLE_ATTACK, OVERHEAD_ATTACK, HURT, DIE, TAUNT}
 
 

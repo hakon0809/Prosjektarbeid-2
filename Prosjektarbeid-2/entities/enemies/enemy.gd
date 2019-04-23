@@ -20,37 +20,44 @@ var current_state = null
 var previous_state = null
 var next_state = null
 
+const IDLE = 0
+const WALK = 1
+const ATTACK = 2
+const HURT = 3
+const SHOT = 4
+const DIE = 5
+
 enum STATES {DIE, HURT, IDLE, WALK, ATTACK, SHOT}
 
 func _ready():
-	
+
 	pass
-	
+
 func is_change_state_possible():
-	
+
 		if current_state == DIE:
 			return false
 		elif previous_state == DIE:
 			return false
 		elif next_state == DIE || next_state == HURT:
-			return true	
+			return true
 		elif not can_move:
  			return false
 		else:
 			return true
-			
-			
+
+
 func _change_state(new_state):
 	previous_state = current_state
 	next_state = new_state
-	
-	
+
+
 	if is_change_state_possible():
 		current_state = new_state
-	
+
 	match current_state:
-		
-		
+
+
 		DIE:
 			damage_immunity = true
 			can_move = false
@@ -58,8 +65,8 @@ func _change_state(new_state):
 			speed = 0
 			if $AnimatedSprite.get_frame() == 4:
 				queue_free()
-		
-				
+
+
 		HURT:
 			damage_immunity = true
 			can_move = false
@@ -70,92 +77,92 @@ func _change_state(new_state):
 				can_move=true
 				damage_immunity = false
 				print("test hurt")
-						
-				
-				
-				
+
+
+
+
 		IDLE:
 			$AnimatedSprite.play("idle")
 			velocity.x = speed * direction
 			velocity.y += GRAVITY
-			
+
 		WALK:
-		
+
 			$AnimatedSprite.play("walk")
 			velocity.x = speed * direction
 			velocity.y += GRAVITY
-			
-		
+
+
 		ATTACK:
-			
-			
-			
+
+
+
 			can_move = false
-			
+
 			var bodies = $Area2D.get_overlapping_bodies()
 			for body in bodies:
-			
+
 				if body.is_in_group("character") && body.attack_is_over:
-					
+
 					$AnimatedSprite.play("attack")
-					
+
 					if $AnimatedSprite.get_frame() >0:
 						body.take_damage(damage)
 						print("player health: " + str(body.health))
 						print("enemy health: " + str(health))
-						
+
 						can_move = true
 						print(damage)
 			if $AnimatedSprite.get_frame() == 2:
 				can_move = true
-				
 
-	
+
+
 		SHOT:
 			can_move = false
-			
+
 			$AnimatedSprite.play("shot")
-			
-			
+
+
 			if $AnimatedSprite.get_frame()	== 2:
 				can_move = true
-				
-			
-		
-		
-			
-		
-	
+
+
+
+
+
+
+
 
 func _physics_process(delta):
-	
-	
+
+
 	movment()
-	
-	
+
+
 	if direction == 1:
-		
+
 		$AnimatedSprite.flip_h = false
 		$Area2D.set_scale(Vector2(1, 1))
 	else:
 		$AnimatedSprite.flip_h= true
 		$Area2D.set_scale(Vector2(-1, 1))
-	
-	
-	
-	
+
+
+
+
 	if is_on_wall():
 		direction= direction * -1
 		$RayCast2D.position.x *= -1
-		
+
 	if $RayCast2D.is_colliding() == false:
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
-	
 
-	
-		
-func take_damage(count): 
+
+
+
+func take_damage(count):
 	if not damage_immunity:
 		health -= count
 		print("take damage health: " + str(health))
@@ -167,12 +174,12 @@ func take_damage(count):
 
 func movment():
 	if speed == 0 && hitstun == 0:
-		
+
 		_change_state(IDLE)
-		
+
 	elif hitstun == 0:
 		_change_state(WALK)
-	
+
 	else:
 		velocity.x = knockdir.x * knockback * direction
 		hitstun -= 1
@@ -183,8 +190,4 @@ func _on_Area2D_body_entered(body):
 		speed = 0
 		_change_state(IDLE)
 		_change_state(ATTACK)
-		speed = max_speed 
-		
-	
-
-
+		speed = max_speed

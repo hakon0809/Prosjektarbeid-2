@@ -13,7 +13,22 @@ var punch_sound = load("res://entities/player/sounds/punchsound.ogg")
 var bow_sound = load("res://entities/player/sounds/Arrowswosh.ogg")
 onready var sound_player = $"../AudioStreamPlayer"
 
-enum Weapons { FISTS, SWORD } 
+const FISTS = 0
+const SWORD = 1
+
+const IDLE = 0
+const GETUP = 1
+const KNOCKDOWN = 2
+const RUNLEFT = 3
+const RUNRIGHT = 4
+const JUMP = 5
+const ATTACK = 6
+const HURT = 7
+const DIE = 8
+const STAGGER = 9
+const BOW = 10
+
+enum Weapons { FISTS, SWORD }
 
 const ARROW = preload("res://entities/player/player_arrow.tscn")
 var bow_timer = null
@@ -63,90 +78,90 @@ func _ready():
 	set_sword_upgrade()
 	set_bow_upgrade()
 	health = max_health - Globals.health_penalty
-	
+
 	bow_timer = Timer.new()
 	bow_timer.set_one_shot(true)
 	bow_timer.set_wait_time(0.3)
 	bow_timer.connect("timeout", self, "on_bow_timeout")
 	add_child(bow_timer)
-	
+
 	immunity_timer = Timer.new()
 	immunity_timer.set_one_shot(true)
 	immunity_timer.set_wait_time(1.5)
 	immunity_timer.connect("timeout", self, "on_immunity_timeout")
 	add_child(immunity_timer)
-	
+
 	if get_tree().get_current_scene().get("max_depth"):
 		max_depth = get_tree().get_current_scene().get("max_depth")
 	current_state = JUMP
 	emit_signal("health_changed", health)
-	
+
 func play_sound(sound, volume = 0):
 	sound_player.stream = sound
 	sound_player.volume_db = volume
 	sound_player.play()
 
-#returns true if state change is possible 
+#returns true if state change is possible
 func is_change_state_possible():
-	
+
 		if current_state == DIE:
 			return false
 		elif previous_state == DIE:
 			return false
-			
+
 		elif previous_state == KNOCKDOWN && next_state == GETUP:
 			return true
-			
+
 		elif current_state == KNOCKDOWN:
 			return false
 		elif previous_state == KNOCKDOWN:
 			return false
-			
+
 		elif current_state == GETUP && $Sprite.get_frame() == 6:
 			return true
-			
+
 		elif current_state == GETUP:
 			return false
 		elif previous_state == GETUP:
 			return false
-			
+
 		elif current_state == BOW && $Sprite.get_frame() == 8:
 			return true
-			
+
 		elif current_state == BOW:
 			return false
 		elif previous_state == BOW:
 			return false
-	
+
 		elif not attack_is_over:
 			return false
 
 		elif not is_on_floor() && next_state == ATTACK || not is_on_floor() && previous_state == ATTACK :
 			return true
-			
+
 		elif not is_on_floor() && next_state == JUMP  && current_state == RUNLEFT\
 		|| not is_on_floor() && next_state == JUMP && current_state == RUNRIGHT:
 			return true
-			
+
 		elif not is_on_floor() && next_state == JUMP  && current_state == IDLE:
 			return true
-		
+
 		elif not is_on_floor() && next_state == KNOCKDOWN:
 			return true
-		
-			
-			
+
+
+
 		elif not is_on_floor():
 			return false
 		else:
 			return true
-		
-		
+
+
 func change_weapon(new_weapon):
 	previous_weapon = current_weapon
 	next_weapon = new_weapon
 	current_weapon = new_weapon
-	
+
 	match current_weapon:
 		FISTS:
 			idle_animation = "Idle"
@@ -155,7 +170,7 @@ func change_weapon(new_weapon):
 			attack_frame = 1
 			attack_over_frame = 3
 			damage = 1
-			
+
 		SWORD:
 			idle_animation = "Idle Sword"
 			attack_animation = "Melee2"
@@ -164,35 +179,35 @@ func change_weapon(new_weapon):
 			attack_frame = 3
 			attack_over_frame = 5
 			damage = 2
-			
-			
+
+
 
 func on_bow_timeout():
 	can_shoot = true
-	
-	
+
+
 func on_immunity_timeout():
 	damage_immunity = false
 	immunity_timer.stop()
-	
-	
+
+
 
 
 #Changes player state
 func change_state(new_state):
 	previous_state = current_state
 	next_state = new_state
-	
+
 	if is_change_state_possible():
 		current_state = new_state
 
-	
+
 	match current_state:
 		IDLE:
 			$Sprite.play(idle_animation)
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
-			
+
 		KNOCKDOWN:
 			immunity_timer.start()
 			damage_immunity = true
@@ -201,29 +216,29 @@ func change_state(new_state):
 			motion.x = lerp(motion.x, 0, 0.2)
 			if $Sprite.get_frame() == 6 && is_on_floor():
 				change_state(GETUP)
-			
-			
+
+
 		GETUP:
 			$Sprite.play("Get Up")
 			friction = false
 			motion.x = 0
-				
-			
-				
-		
+
+
+
+
 		RUNLEFT:
-				
+
 			motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 			$Sprite.flip_h = true
 			$Area2D.set_scale(Vector2(-1, 1))
 			$Sprite.play("Run")
-		
+
 		RUNRIGHT:
 			motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 			$Sprite.flip_h = false
 			$Area2D.set_scale(Vector2(1, 1))
 			$Sprite.play("Run")
-		
+
 		JUMP:
 			if is_on_floor():
 				if Input.is_action_just_pressed("ui_up"):
@@ -235,23 +250,23 @@ func change_state(new_state):
 					motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 					$Sprite.flip_h = true
 					$Area2D.set_scale(Vector2(-1, 1))
-					
+
 				elif Input.is_action_pressed("ui_right"):
 					motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 					$Sprite.flip_h = false
 					$Area2D.set_scale(Vector2(1, 1))
-					
+
 				elif Input.is_action_just_pressed("ui_attack"):
 						change_state(ATTACK)
-					
+
 				if motion.y < 0:
 					$Sprite.play("Jump")
 				elif motion.y > 0 and !is_on_moving_platform:
 					$Sprite.play("Fall")
 					if friction == true:
 						motion.x = lerp(motion.x, 0, 0.05)
-					
-		
+
+
 		ATTACK:
 			attack_is_over = false
 			$Sprite.play(attack_animation)
@@ -274,13 +289,13 @@ func change_state(new_state):
 			$Sprite.play("Ranged")
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
-			
+
 			if $Sprite.get_frame() == 7:
 				if not_shot:
 					play_sound(bow_sound, -10)
 					var player_arrow = ARROW.instance()
 					get_tree().get_current_scene().add_child(player_arrow)
-					
+
 					if $Sprite.flip_h == false:
 						player_arrow.speed= player_arrow.speed
 						player_arrow.position = $Position2D.global_position
@@ -294,7 +309,7 @@ func change_state(new_state):
 			$Sprite.play(hurt_animation)
 			friction = true
 			motion.x = lerp(motion.x, 0, 0.2)
-		
+
 		DIE:
 			$Sprite.play("Death")
 			if $Sprite.get_frame() == 6:
@@ -302,7 +317,7 @@ func change_state(new_state):
 
 func _physics_process(delta):
 	motion.y += GRAVITY
-	
+
 	if damage_immunity:
 		if Engine.get_frames_drawn() % 15 == 0:
 			self.modulate.a = 0.2
@@ -313,18 +328,18 @@ func _physics_process(delta):
 
 	if max_depth and position.y > max_depth:
 		restart_level()
-		
+
 	elif health < 1:
 		change_state(DIE)
 
 	elif Input.is_action_just_pressed("ui_up"):
 		change_state(JUMP)
-		
-		
+
+
 	elif Input.is_action_just_pressed("ui_attack"):
 		bow_timer.start()
-		
-	
+
+
 	elif Input.is_action_just_released("ui_attack"):
 		#Check for NPC conversation
 		if get_parent().getDiDialogueSource() != null:
@@ -335,26 +350,26 @@ func _physics_process(delta):
 			bow_timer.stop()
 		else:
 			change_state(ATTACK)
-			bow_timer.stop() 
-			
+			bow_timer.stop()
+
 	elif not is_on_floor():
 		change_state(JUMP)
-	
+
 	elif Input.is_action_pressed("ui_right"):
 		change_state(RUNRIGHT)
 
 	elif Input.is_action_pressed("ui_left"):
 		change_state(RUNLEFT)
-		
-			
-		
+
+
+
 
 	else :
 		if health <= max_health && health >= 5:
 			change_state(IDLE)
 		elif health < 5 && health > 0:
 			change_state(HURT)
-	
+
 	#
 	if is_on_moving_platform && get_floor_velocity().y > 0:
 		motion.y += get_floor_velocity().y
@@ -365,8 +380,8 @@ func _physics_process(delta):
 
 func restart_level():
 	get_tree().reload_current_scene()
-	
-	
+
+
 #helper func so that the player can take damage
 func take_damage(count):
 	if not damage_immunity:
@@ -377,7 +392,7 @@ func take_damage(count):
 		emit_signal("health_changed", health)
 		change_state(KNOCKDOWN)
 
-		
+
 func upgrade_changed(upgrade):
 	if upgrade == 1:
 		set_max_health()
@@ -406,4 +421,3 @@ func set_bow_upgrade():
 		has_bow = true
 	else:
 		has_bow = false
-
