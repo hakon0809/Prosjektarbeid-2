@@ -70,7 +70,8 @@ func open_choice_menu():
 	var cl = CanvasLayer.new()
 	node.add_child(cl)
 	cl.add_child(c)
-	c.skull = self
+	if level != 1: #TEMP
+		c.skull = self
 
 func save_choice(active):
 	button.hide()

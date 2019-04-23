@@ -9,4 +9,4 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
-		#Change scene
+		get_tree().change_scene("res://levels/city/city.tscn")
