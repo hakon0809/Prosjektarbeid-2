@@ -81,6 +81,7 @@ alignment = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -170,7 +171,6 @@ _sections_unfolded = [ "Size Flags", "custom_constants" ]
 
 [node name="Scene1" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="0" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
@@ -191,14 +191,13 @@ margin_bottom = 206.0
 
 [node name="Scene2" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" index="1" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 454.0
 margin_bottom = 216.0
+_sections_unfolded = [ "Material" ]
 
 [node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2" index="0"]
 
