@@ -24,7 +24,7 @@ var current_state = null
 var previous_state = null
 var next_state = null
 
-enum STATES { IDLE, WALK, CIRCLE_ATTACK, OVERHEAD_ATTACK, HURT, DIE}
+enum STATES { IDLE, WALK, CIRCLE_ATTACK, OVERHEAD_ATTACK, HURT, DIE, TAUNT}
 
 
 func _ready():
@@ -78,45 +78,15 @@ func _change_state(new_state):
 			#move_and_slide(velocity, FLOOR)
 		
 		CIRCLE_ATTACK:
-			can_move = false
 			
-			var bodies = $overhead.get_overlapping_bodies()
-			for body in bodies:
+			attack(circle_attack_damage, "ground_circle_attack")
 			
-				if body.is_in_group("character"):
-					
-					if $Sprite/AnimationPlayer.current_animation != "ground_circle_attack":
-						$Sprite/AnimationPlayer.play("ground_circle_attack")
-						
-					if $Sprite/AnimationPlayer.current_animation_position > 0.3:
-						
-						body.take_damage(circle_attack_damage)
-						print(circle_attack_damage)
-						can_move = true
-					
-			if attack_is_over:
-				can_move = true
 		
 		
 		OVERHEAD_ATTACK:
-			can_move = false
 			
-			var bodies = $overhead.get_overlapping_bodies()
-			for body in bodies:
+			attack(overhead_attack_damage, "oveahead_attack")
 			
-				if body.is_in_group("character"):
-					
-					if $Sprite/AnimationPlayer.current_animation != "oveahead_attack":
-						$Sprite/AnimationPlayer.play("oveahead_attack")
-						
-					if $Sprite/AnimationPlayer.current_animation_position > 0.3:
-						
-						body.take_damage(overhead_attack_damage)
-						print(overhead_attack_damage)
-						can_move = true
-					
-			if attack_is_over:
-				can_move = true
 				
 		HURT:
 			damage_immunity = true
@@ -129,7 +99,12 @@ func _change_state(new_state):
 				can_move=true
 				damage_immunity = false
 			
-			
+		TAUNT:
+			can_move = false
+			if $Sprite/AnimationPlayer.current_animation != "taunt":
+				$Sprite/AnimationPlayer.play("taunt")
+			if $Sprite/AnimationPlayer.current_animation_position > 0.4:
+				can_move = true	
 		
 		
 		
@@ -177,7 +152,28 @@ func movment():
 		velocity.x = knockdir.x * knockback * direction
 		hitstun -= 1
 	move_and_slide(velocity, FLOOR)
-
+	
+	
+func attack(attack_damage, attack_anim):
+	can_move = false
+			
+	var bodies = $overhead.get_overlapping_bodies()
+	for body in bodies:
+			
+		if body.is_in_group("character"):
+					
+			if $Sprite/AnimationPlayer.current_animation != attack_anim:
+					$Sprite/AnimationPlayer.play(attack_anim)
+						
+			if $Sprite/AnimationPlayer.current_animation_position > 0.3:
+						
+				body.take_damage(attack_damage)
+				print(attack_damage)
+				can_move = true
+					
+	if attack_is_over:
+		can_move = true
+			
 func take_damage(count):
 	if not damage_immunity: 
 		health -= count
@@ -203,19 +199,20 @@ func _on_circle_sweep_body_entered(body):
 		_change_state(IDLE)
 		_change_state(CIRCLE_ATTACK)
 		speed = max_speed 
-
-
-func _on_touch_area_shape_entered(area_id, area, area_shape, self_shape):
-	var bodies = $overhead.get_overlapping_bodies()
-	for body in bodies:
-	
-		if body.is_in_group("character"):
-			body.take_damage(touch_damage)
-			print(touch_damage)
-			can_move = true
+			
 			
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "oveahead_attack" || anim_name == "ground_circle_attack":
 		attack_is_over = true 
 	else:
 		attack_is_over = false			
+
+func _on_touch_body_entered(body):
+	
+	if body.is_in_group("character"):
+		body.take_damage(touch_damage)
+		speed = 0
+		_change_state(IDLE)
+		_change_state(TAUNT)
+		speed = max_speed
+		print(touch_damage)
