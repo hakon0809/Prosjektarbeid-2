@@ -18,7 +18,7 @@ func write_to_Globals(answers):
 	Globals.pre_questionnaire = answers
 
 func goto_next():
-	get_tree().change_scene('res://levels/prison/prison.tscn')
+	get_tree().change_scene('res://levels/BART/BARTIntro.tscn')
 
 
 func _ready():
