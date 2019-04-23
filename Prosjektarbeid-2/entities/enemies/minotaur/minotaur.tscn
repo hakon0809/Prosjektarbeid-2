@@ -193,11 +193,10 @@ extents = Vector2( 15, 20 )
 [sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
-extents = Vector2( 18, 22 )
+extents = Vector2( 16.8098, 21.6316 )
 
 [node name="minotaur" type="Node2D"]
 
-editor/display_folded = true
 scale = Vector2( 2, 2 )
 _sections_unfolded = [ "Transform" ]
 
@@ -210,18 +209,20 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-max_speed = 40
+_sections_unfolded = [ "Transform" ]
+max_speed = 100
 knockback = 3
-circle_attack_damage = 3
-overhead_attack_damage = 2
-health = 10
+circle_attack_damage = 2
+overhead_attack_damage = 3
+touch_damage = 1
+health = 1
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D" index="0"]
 
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 9
-frame = 74
+frame = 4
 _sections_unfolded = [ "Animation" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D/Sprite" index="0"]
@@ -251,7 +252,6 @@ shape = SubResource( 11 )
 
 [node name="overhead" type="Area2D" parent="KinematicBody2D" index="2"]
 
-visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -264,7 +264,7 @@ audio_bus_name = "Master"
 
 position = Vector2( -0.527039, 1.40544 )
 build_mode = 0
-polygon = PoolVector2Array( 22.5692, 23.8907, 37.9618, -2.94498, 39.4345, -29.5162, 29.1778, -42.6926, -1.78586, -43.1318, -16.7187, -34.3478, -16.7187, -33.9086, 6, -35, 20, -28, 9, 15, 15, 21 )
+polygon = PoolVector2Array( 22.5692, 23.8907, 37.9618, -2.94498, 39.4345, -29.5162, 29.1778, -42.6926, 7.47268, -43.1118, -0.301178, -39.686, -13.3454, -31.5169, 6.55035, -33.6251, 20, -28, 9, 15, 15, 21 )
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="stab" type="Area2D" parent="KinematicBody2D" index="3"]
@@ -280,6 +280,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D/stab" index="0"]
 
+visible = false
 build_mode = 0
 polygon = PoolVector2Array( 14, -2, 40, -2, 44, 3, 36, 9, 20, 4, 12, 6 )
 
@@ -292,15 +293,17 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D/circle_sweep" index="0"]
 
+visible = false
 build_mode = 0
-polygon = PoolVector2Array( 40, 16, 43, 12, 36, 6, 12, 3, -36, 1, -50, 7, -51, 15, -37, 17 )
+polygon = PoolVector2Array( -17.2451, 15.9787, -16.7574, 10.1266, -17.9766, 5.00602, -22.6095, 5.00602, -34.3137, 4.76219, -42.8481, 5.00602, -51.523, 15.563, -29.6808, 15.491 )
+disabled = true
 
 [node name="touch" type="Area2D" parent="KinematicBody2D" index="5"]
 
-visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -311,15 +314,17 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/touch" index="0"]
 
-position = Vector2( -2, -4 )
+position = Vector2( -1.96342, -4.26352 )
+scale = Vector2( 0.937584, 1 )
 shape = SubResource( 12 )
+disabled = true
 
 [connection signal="animation_finished" from="KinematicBody2D/Sprite/AnimationPlayer" to="KinematicBody2D" method="_on_AnimationPlayer_animation_finished"]
-
-[connection signal="animation_started" from="KinematicBody2D/Sprite/AnimationPlayer" to="KinematicBody2D" method="_on_AnimationPlayer_animation_started"]
 
 [connection signal="body_entered" from="KinematicBody2D/overhead" to="KinematicBody2D" method="_on_overhead_body_entered"]
 
 [connection signal="body_entered" from="KinematicBody2D/circle_sweep" to="KinematicBody2D" method="_on_circle_sweep_body_entered"]
+
+[connection signal="body_entered" from="KinematicBody2D/touch" to="KinematicBody2D" method="_on_touch_body_entered"]
 
 

@@ -1,14 +1,15 @@
 extends KinematicBody2D
 
-
+const BOSSLEVEL = preload("res://levels/ending_levels/boss_level.gd")
 const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 
 export var max_speed = 100
 export var knockback = 10
-export var circle_attack_damage = 3
-export var overhead_attack_damage = 2
-export var health = 10
+export var circle_attack_damage = 2
+export var overhead_attack_damage = 3
+export var touch_damage = 1
+export var health = 1
 var velocity = Vector2()
 var direction = 1
 var speed = max_speed
@@ -16,13 +17,14 @@ var knockdir = Vector2(1, 0)
 var hitstun = 0
 var can_move = true
 var attack_is_over = false
+var damage_immunity = false
 
 
 var current_state = null
 var previous_state = null
 var next_state = null
 
-enum STATES { IDLE, WALK, CIRCLE_ATTACK, OVERHEAD_ATTACK, HURT, DIE}
+enum STATES { IDLE, WALK, CIRCLE_ATTACK, OVERHEAD_ATTACK, HURT, DIE, TAUNT}
 
 
 func _ready():
@@ -32,13 +34,15 @@ func _ready():
 
 func is_change_state_possible():
 	
+	
 		if current_state == DIE:
 			return false
 		elif previous_state == DIE:
 			return false
+		elif next_state == DIE || next_state == HURT:
+			return true	
 		elif not can_move:
-			return false
-		
+ 			return false
 		else:
 			return true
 			
@@ -56,8 +60,14 @@ func _change_state(new_state):
 	match current_state:
 		
 		DIE:
-			
-			queue_free()
+			if $Sprite/AnimationPlayer.current_animation != "die":
+				$Sprite/AnimationPlayer.play("die")
+			if $Sprite/AnimationPlayer.current_animation_position > 0.8:
+#				var bosslevel = BOSSLEVEL.instance()
+				get_tree().get_current_scene().get_child(1).get_child(7).set_position(Vector2(0,100))
+				
+				queue_free()
+				
 		
 		IDLE:
 			if $Sprite/AnimationPlayer.current_animation != "idle":
@@ -74,50 +84,33 @@ func _change_state(new_state):
 			#move_and_slide(velocity, FLOOR)
 		
 		CIRCLE_ATTACK:
-			can_move = false
 			
-			var bodies = $overhead.get_overlapping_bodies()
-			for body in bodies:
+			attack(circle_attack_damage, "ground_circle_attack")
 			
-				if body.is_in_group("character"):
-					
-					if $Sprite/AnimationPlayer.current_animation != "ground_circle_attack":
-						$Sprite/AnimationPlayer.play("ground_circle_attack")
-						
-					if $Sprite/AnimationPlayer.current_animation_position > 0.3:
-						
-						body.take_damage(circle_attack_damage)
-						print(circle_attack_damage)
-						can_move = true
-					
-			if attack_is_over:
-				can_move = true
 		
 		
 		OVERHEAD_ATTACK:
-			can_move = false
 			
-			var bodies = $overhead.get_overlapping_bodies()
-			for body in bodies:
+			attack(overhead_attack_damage, "oveahead_attack")
 			
-				if body.is_in_group("character"):
-					
-					if $Sprite/AnimationPlayer.current_animation != "oveahead_attack":
-						$Sprite/AnimationPlayer.play("oveahead_attack")
-						
-					if $Sprite/AnimationPlayer.current_animation_position > 0.3:
-						
-						body.take_damage(overhead_attack_damage)
-						print(overhead_attack_damage)
-						can_move = true
-					
-			if attack_is_over:
-				can_move = true
 				
 		HURT:
-			pass
+			damage_immunity = true
+			can_move = false
+			if $Sprite/AnimationPlayer.current_animation != "blink":
+				$Sprite/AnimationPlayer.play("blink")
+			self.modulate.a = 0.4
+			if $Sprite/AnimationPlayer.current_animation_position > 0.8:
+				self.modulate.a = 1
+				can_move=true
+				damage_immunity = false
 			
-			
+		TAUNT:
+			can_move = false
+			if $Sprite/AnimationPlayer.current_animation != "taunt":
+				$Sprite/AnimationPlayer.play("taunt")
+			if $Sprite/AnimationPlayer.current_animation_position > 0.4:
+				can_move = true	
 		
 		
 		
@@ -165,13 +158,38 @@ func movment():
 		velocity.x = knockdir.x * knockback * direction
 		hitstun -= 1
 	move_and_slide(velocity, FLOOR)
-
-func take_damage(count): 
-	health -= count
 	
-	print(health)
-	if health <= 0:
-		_change_state(DIE)
+	
+func attack(attack_damage, attack_anim):
+	can_move = false
+			
+	var bodies = $overhead.get_overlapping_bodies()
+	for body in bodies:
+			
+		if body.is_in_group("character"):
+					
+			if $Sprite/AnimationPlayer.current_animation != attack_anim:
+					$Sprite/AnimationPlayer.play(attack_anim)
+						
+			if $Sprite/AnimationPlayer.current_animation_position > 0.3:
+						
+				body.take_damage(attack_damage)
+				print(attack_damage)
+				can_move = true
+					
+	if attack_is_over:
+		can_move = true
+			
+func take_damage(count):
+	if not damage_immunity: 
+		health -= count
+		
+		print(health)
+		if health <= 0:
+			_change_state(DIE)
+		else:
+			_change_state(HURT)
+
 
 func _on_overhead_body_entered(body):
 	if body.is_in_group("character"):
@@ -181,21 +199,26 @@ func _on_overhead_body_entered(body):
 		speed = max_speed 
 
 
-
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "oveahead_attack" || anim_name == "ground_circle_attack":
-		attack_is_over = true 
-	else:
-		attack_is_over = false
-	
-func _on_AnimationPlayer_animation_started(anim_name):
-	pass # replace with function body
-
-
 func _on_circle_sweep_body_entered(body):
 	if body.is_in_group("character"):
 		speed = 0
 		_change_state(IDLE)
 		_change_state(CIRCLE_ATTACK)
 		speed = max_speed 
+			
+			
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "oveahead_attack" || anim_name == "ground_circle_attack":
+		attack_is_over = true 
+	else:
+		attack_is_over = false			
+
+func _on_touch_body_entered(body):
+	
+	if body.is_in_group("character"):
+		body.take_damage(touch_damage)
+		speed = 0
+		_change_state(IDLE)
+		_change_state(TAUNT)
+		speed = max_speed
+		print(touch_damage)
