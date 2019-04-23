@@ -42,7 +42,8 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 65526, 2, 0, 65529, 0, 0, 65532, 1, 0, 131061, 1, 0, 196597, 1, 0, 262133, 1, 0, 327669, 0, 0, 327674, 2, 0, 393208, 0, 0, 327707, 1, 0, 458743, 1, 0, 393242, 0, 0, 524281, 1, 0, 458778, 0, 0, 589816, 0, 0, 524315, 1, 0, 655346, 3, 0, 655347, 5, 0, 589853, 1, 0, 720880, 1, 0, 655387, 1, 0, 786415, 2, 0, 786438, 2, 0, 786444, 1, 0, 786448, 2, 0, 786454, 3, 0, 786455, 5, 0, 851972, 0, 0, 851980, 1, 0, 851983, 2, 0, 851988, 1, 0, 917507, 1, 0, 917516, 1, 0, 917523, 0, 0, 983045, 1, 0, 983052, 1, 0, 1048588, 1, 0, 1114124, 1, 0, 1179660, 1, 0, 1245196, 1, 0 )
+tile_data = PoolIntArray( 65526, 2, 0, 65529, 0, 0, 65532, 1, 0, 131061, 1, 0, 196597, 1, 0, 262133, 1, 0, 327669, 0, 0, 327674, 2, 0, 393208, 0, 0, 327708, 1, 0, 458743, 1, 0, 458746, 536870914, 0, 458748, 536870914, 0, 393242, 2, 0, 524281, 1, 0, 458778, 0, 0, 589816, 0, 0, 524315, 1, 0, 655346, 3, 0, 655347, 5, 0, 589853, 1, 0, 720880, 1, 0, 720881, 536870914, 0, 655387, 1, 0, 786415, 2, 0, 786438, 2, 0, 786440, 536870914, 0, 786444, 1, 0, 786447, 2, 0, 786454, 3, 0, 786455, 5, 0, 851972, 0, 0, 851980, 1, 0, 851982, 2, 0, 851986, 2, 0, 851988, 1, 0, 983033, 536870914, 0, 917507, 1, 0, 917516, 1, 0, 917521, 1, 0, 917523, 0, 0, 983045, 1, 0, 983052, 1, 0, 1048588, 1, 0, 1114124, 1, 0, 1179660, 1, 0, 1245196, 1, 0 )
+_sections_unfolded = [ "Cell", "Collision", "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -145,54 +146,32 @@ editor/display_folded = true
 position = Vector2( -180, 374 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Spike2" parent="SpikesGoHere" index="1" instance=ExtResource( 6 )]
-
-position = Vector2( -150, 374 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Spike6" parent="SpikesGoHere" index="2" instance=ExtResource( 6 )]
-
-position = Vector2( -120, 374 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Spike3" parent="SpikesGoHere" index="3" instance=ExtResource( 6 )]
+[node name="Spike3" parent="SpikesGoHere" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( -1460, 806 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Spike4" parent="SpikesGoHere" index="4" instance=ExtResource( 6 )]
+[node name="Spike4" parent="SpikesGoHere" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 890, 1270 )
 
-[node name="Spike5" parent="SpikesGoHere" index="5" instance=ExtResource( 6 )]
+[node name="Spike5" parent="SpikesGoHere" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 960, 1270 )
 
-[node name="Spike7" parent="SpikesGoHere" index="6" instance=ExtResource( 6 )]
-
-position = Vector2( 1070, 1270 )
-
-[node name="Spike8" parent="SpikesGoHere" index="7" instance=ExtResource( 6 )]
+[node name="Spike8" parent="SpikesGoHere" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 1100, 1270 )
 
-[node name="Spike9" parent="SpikesGoHere" index="8" instance=ExtResource( 6 )]
-
-position = Vector2( 1170, 1270 )
-
-[node name="Spike11" parent="SpikesGoHere" index="9" instance=ExtResource( 6 )]
+[node name="Spike11" parent="SpikesGoHere" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 1270, 1270 )
 
-[node name="Spike12" parent="SpikesGoHere" index="10" instance=ExtResource( 6 )]
+[node name="Spike12" parent="SpikesGoHere" index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 1370, 1270 )
 
-[node name="Spike14" parent="SpikesGoHere" index="11" instance=ExtResource( 6 )]
-
-position = Vector2( 1490, 1270 )
-
-[node name="Spike15" parent="SpikesGoHere" index="12" instance=ExtResource( 6 )]
+[node name="Spike15" parent="SpikesGoHere" index="7" instance=ExtResource( 6 )]
 
 position = Vector2( 1550, 1270 )
 
@@ -309,6 +288,8 @@ __meta__ = {
 }
 
 [node name="EnemiesGoHere" type="Node" parent="." index="7"]
+
+editor/display_folded = true
 
 [node name="g1" parent="EnemiesGoHere" index="0" instance=ExtResource( 12 )]
 
