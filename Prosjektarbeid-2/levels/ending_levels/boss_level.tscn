@@ -36,6 +36,7 @@ scroll_limit_begin = Vector2( 0, 30 )
 
 [node name="Platforms" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -229,7 +230,6 @@ limit_left = -430
 
 [node name="NextArea" type="Area2D" parent="." index="3"]
 
-editor/display_folded = true
 position = Vector2( 648.156, 174.852 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
