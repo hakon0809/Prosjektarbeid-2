@@ -1,8 +1,11 @@
 extends VBoxContainer
 
+func init(question):
+	find_node("Label").text = question["question"]
+
 func get_answer():
-	var question = self.find_node("Label").text
-	var answer = self.find_node("LineEdit").text
+	var question = find_node("Label").text
+	var answer = find_node("LineEdit").text
 	if not answer:
 		return null
 	return [question, answer]
