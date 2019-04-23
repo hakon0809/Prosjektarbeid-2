@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+const BOSSLEVEL = preload("res://levels/ending_levels/boss_level.gd")
 const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 
@@ -9,7 +9,7 @@ export var knockback = 10
 export var circle_attack_damage = 2
 export var overhead_attack_damage = 3
 export var touch_damage = 1
-export var health = 10
+export var health = 1
 var velocity = Vector2()
 var direction = 1
 var speed = max_speed
@@ -60,8 +60,14 @@ func _change_state(new_state):
 	match current_state:
 		
 		DIE:
-			
-			queue_free()
+			if $Sprite/AnimationPlayer.current_animation != "die":
+				$Sprite/AnimationPlayer.play("die")
+			if $Sprite/AnimationPlayer.current_animation_position > 0.8:
+#				var bosslevel = BOSSLEVEL.instance()
+				get_tree().get_current_scene().get_child(1).get_child(7).set_position(Vector2(0,100))
+				
+				queue_free()
+				
 		
 		IDLE:
 			if $Sprite/AnimationPlayer.current_animation != "idle":
@@ -93,7 +99,7 @@ func _change_state(new_state):
 			can_move = false
 			if $Sprite/AnimationPlayer.current_animation != "blink":
 				$Sprite/AnimationPlayer.play("blink")
-			self.modulate.a = 0.1
+			self.modulate.a = 0.4
 			if $Sprite/AnimationPlayer.current_animation_position > 0.8:
 				self.modulate.a = 1
 				can_move=true
