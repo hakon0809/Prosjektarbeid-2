@@ -9,4 +9,4 @@ func _on_StartArea_body_entered(body):
 
 func _on_EndArea_body_entered(body):
 	if body.is_in_group("character"):
-		print("Fædi kom og tørk")
+		get_tree().change_scene("res://menus/TitleScreen.tscn")

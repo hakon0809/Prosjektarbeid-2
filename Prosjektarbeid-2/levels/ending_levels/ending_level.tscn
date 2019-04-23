@@ -46,13 +46,13 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
-editor/display_folded = true
-position = Vector2( 30, -34.0094 )
+position = Vector2( 1100, -34.0094 )
 
 [node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
 
+position = Vector2( 2.5, 0 )
 limit_left = 10
-limit_right = 1500
+limit_right = 1280
 
 [node name="Background" type="Node2D" parent="." index="2"]
 
@@ -91,7 +91,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea" index="0"]
 
-position = Vector2( 1026, -50 )
+position = Vector2( 1200, -50 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
