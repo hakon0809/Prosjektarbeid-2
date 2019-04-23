@@ -1,4 +1,8 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://menus/Mode.gd" type="Script" id=1]
+[ext_resource path="res://menus/elianto_48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://menus/elianto_32.tres" type="DynamicFont" id=3]
 
 [node name="Mode" type="Control" index="0"]
 
@@ -12,6 +16,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
 
@@ -30,7 +35,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Margin" ]
 
 [node name="Label" type="Label" parent="VBoxContainer" index="0"]
 
@@ -39,18 +43,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 464.0
-margin_bottom = 14.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
 text = "I am:"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" index="1"]
 
@@ -58,9 +64,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 18.0
+margin_top = 52.0
 margin_right = 464.0
-margin_bottom = 62.0
+margin_bottom = 132.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -69,14 +75,14 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer" index="0"]
+[node name="fun" type="Button" parent="VBoxContainer/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 464.0
-margin_bottom = 20.0
+margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -84,23 +90,25 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
 text = "Playing for fun"
-flat = false
+flat = true
 align = 0
+_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Button2" type="Button" parent="VBoxContainer/VBoxContainer" index="1"]
+[node name="data" type="Button" parent="VBoxContainer/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 24.0
+margin_top = 42.0
 margin_right = 464.0
-margin_bottom = 44.0
+margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -108,12 +116,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
 text = "Willing to share data"
-flat = false
+flat = true
 align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/fun" to="." method="_on_fun_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/data" to="." method="_on_data_pressed"]
 
 
