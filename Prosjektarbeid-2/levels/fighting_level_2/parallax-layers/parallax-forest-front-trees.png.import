@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/parallax-mountain-bg.png-25fdfe4831a1eab8db7543960d9069a8.stex"
+path="res://.import/parallax-forest-front-trees.png-dad94186aa614724023e54c82c29bde6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/fighting_level_2/parallax_layers/parallax-mountain-bg.png"
-dest_files=[ "res://.import/parallax-mountain-bg.png-25fdfe4831a1eab8db7543960d9069a8.stex" ]
+source_file="res://levels/fighting_level_2/parallax-layers/parallax-forest-front-trees.png"
+dest_files=[ "res://.import/parallax-forest-front-trees.png-dad94186aa614724023e54c82c29bde6.stex" ]
 
 [params]
 
