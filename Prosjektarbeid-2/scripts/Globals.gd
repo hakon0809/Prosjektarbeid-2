@@ -12,8 +12,16 @@ var sound_button
 var data_sharing_mode = null
 var player_id = null
 
+#Variable that holds a reference to a permission handler singleton
+var permissions = null
+
 func _ready():
 	self.add_child(music_player)
+	
+	# If game is deployed on android, sets ut singleton that handles permissions
+	if Engine.has_singleton("AndroidPermissions"):
+		permissions = Engine.get_singleton("AndroidPermissions")
+		permissions.init(get_instance_id(), true)
 
 var upgrades = {1: [false, false, false],
 		2: [false, false, false],

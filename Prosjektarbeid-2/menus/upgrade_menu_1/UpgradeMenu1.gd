@@ -9,7 +9,8 @@ onready var scene_3 = $MarginContainer/PanelContainer/VBoxContainer/ContentConta
 onready var scene_4 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4
 onready var scene_5 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5
 
-onready var Scene1Button = $PanelContainer/MarginContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button
+#onready var Scene1Button = $PanelContainer/MarginContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button
+onready var Scene1Button = $Scene1Button
 
 var choices = [true, true, true]
 
