@@ -17,7 +17,7 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
 		if $Skull.encountered:
-			get_tree().change_scene("res://levels/levelA/levelA.tscn")
+			get_tree().change_scene("res://levels/fighting_level_1/Fighting_Level_1.tscn")
 		else:
 			$Skull.position.y = 128
 			$Skull.modulate = Color(0, 0, 0)
