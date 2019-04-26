@@ -25,6 +25,10 @@ var text = {
 func _ready():
 	Globals.play_song(Globals.boss_song)
 	dialog.hide()
+	$Enemies/soldier.set_physics_process(false)
+	$Enemies/soldier2.set_physics_process(false)
+	
+	Globals.upgrades[3][0] = true
 
 func _on_EnterBoss_body_entered(body):
 	if body.is_in_group("character"):
@@ -57,4 +61,13 @@ func _on_NextButton_pressed():
 	else:
 		dialog.hide()
 		interface.show()
-		$Boss/minotaur/KinematicBody2D.speed = $Boss/minotaur/KinematicBody2D.max_speed
+		start_fight()
+
+func start_fight():
+	$Boss/minotaur/KinematicBody2D.speed = $Boss/minotaur/KinematicBody2D.max_speed
+	if d_seq == 1:
+		$Enemies/soldier.visible = true
+		$Enemies/soldier2.visible = true
+		$Enemies/soldier.set_physics_process(true)
+		$Enemies/soldier2.set_physics_process(true)
+		
