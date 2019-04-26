@@ -112,7 +112,7 @@ shape = SubResource( 2 )
 
 [node name="minotaur" parent="Boss" instance=ExtResource( 9 )]
 position = Vector2( 542.014, 174.48 )
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 1.4, 1.4 )
 
 [connection signal="body_entered" from="NextArea" to="." method="_on_NextArea_body_entered"]
 [connection signal="body_entered" from="EnterBoss" to="." method="_on_EnterBoss_body_entered"]
