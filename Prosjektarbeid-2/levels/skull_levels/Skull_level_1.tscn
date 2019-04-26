@@ -13,6 +13,7 @@ extents = Vector2( 48, 96 )
 extents = Vector2( 32, 160 )
 
 [node name="Skull_level_1" type="Node2D"]
+modulate = Color( 0.611765, 0.611765, 0.611765, 1 )
 position = Vector2( 0, 240 )
 script = ExtResource( 1 )
 

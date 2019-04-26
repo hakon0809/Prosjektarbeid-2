@@ -86,6 +86,7 @@ format = 1
 tile_data = PoolIntArray( 524326, 46, 0, 589862, 46, 0, 655398, 46, 0, 720934, 46, 0, 786470, 46, 0, 852006, 46, 0, 917542, 46, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
+modulate = Color( 0.866667, 0.866667, 0.866667, 1 )
 position = Vector2( -416.479, 186.087 )
 
 [node name="Interface" parent="Player" index="0"]

@@ -215,6 +215,7 @@ position = Vector2( 2970, 760 )
 position = Vector2( 3190, 760 )
 
 [node name="Player" parent="." instance=ExtResource( 14 )]
+modulate = Color( 0.862745, 0.862745, 0.862745, 1 )
 position = Vector2( -230, 540 )
 
 [node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
