@@ -6,7 +6,7 @@
 [ext_resource path="res://levels/ending_levels/sunset.jpg" type="Texture" id=4]
 [ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 34.4126, 139.145 )
 
 [node name="Node2D" type="Node2D"]
@@ -40,11 +40,10 @@ z_index = -1
 texture = ExtResource( 4 )
 
 [node name="EndArea" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
-position = Vector2( 1200, -50 )
-shape = SubResource( 2 )
+position = Vector2( 1292, -89 )
+shape = SubResource( 1 )
 
 [node name="PopupDialog" parent="." instance=ExtResource( 5 )]
 
