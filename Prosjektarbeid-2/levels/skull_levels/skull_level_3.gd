@@ -3,4 +3,4 @@ extends Node
 var level = 3
 
 func _ready():
-	pass
+	Globals.play_song(Globals.skull_song)

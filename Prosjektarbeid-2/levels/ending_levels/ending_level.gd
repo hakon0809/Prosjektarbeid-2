@@ -14,12 +14,10 @@ func _ready():
 	interface.hide()
 	dialog.show()
 	dialog_text.set_text("Phew, I actually managed it!")
-	
-
-
 
 func _on_EndArea_body_entered(body):
 	if body.is_in_group("character"):
+		Globals.music_player.stop()
 		if Globals.data_sharing_mode == "data":
 			get_tree().change_scene('res://menus/questionnaire/PostQuestionnaire.tscn')
 		else:

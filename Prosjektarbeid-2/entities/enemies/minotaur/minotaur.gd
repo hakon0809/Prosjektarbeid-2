@@ -74,6 +74,9 @@ func _change_state(new_state):
 				$Sprite/AnimationPlayer.play("die")
 			if $Sprite/AnimationPlayer.current_animation_position > 0.8:
 				get_tree().get_current_scene().get_child(1).get_child(7).set_position(Vector2(0,100))
+				Globals.music_player.stop()
+				Globals.play_song(Globals.ending_song)
+				Globals.play_song(Globals.boss_dead_song)
 				
 				queue_free()
 				
