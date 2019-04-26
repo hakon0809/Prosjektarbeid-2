@@ -2,6 +2,9 @@ extends Node2D
 
 
 
+
+func _ready():
+	Globals.play_song(Globals.boss_song)
 func _on_EnterBoss_body_entered(body):
 	if body.is_in_group("character"):
 		print("wii")

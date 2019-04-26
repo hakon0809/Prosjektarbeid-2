@@ -7,6 +7,7 @@ func _ready():
 	if not Globals.get_upgrade(3)[0]:
 		tunnel = true
 		$Player.position += Vector2(100, 310)
+	Globals.play_song(Globals.fighting_song)
 
 func _process(delta):
 	if tunnel:
