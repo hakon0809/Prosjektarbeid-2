@@ -9,6 +9,7 @@ onready var setting = $MarginContainer/PanelContainer/VBoxContainer/ContentConta
 
 var choices = [true, true, true]
 var current_setting
+var cont = false
 
 onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
 
@@ -21,6 +22,20 @@ func _ready():
 	scene_2.hide()
 	scene_3.hide()
 	all_settings.hide()
+	print("ready")
+	
+func request_callback(request_code, permissions, granted):
+	if scene_2.visible and granted:
+		scene_2.hide()
+		scene_3.show()
+	elif all_settings.visible and granted:
+		all_settings.hide()
+		scene_3.show()
+	elif setting.visible and granted:
+		setting.hide()
+		all_settings.show()
+	else:
+		Globals.permissions.requestReadContactsPermission()
 
 func _on_ExitButton_pressed():
 	activity += "| exit |"
@@ -47,16 +62,16 @@ func _on_ManageButton_pressed():
 
 func _on_AgreeButton_pressed():
 	activity += "| agree |"
-	#open android prompt
-	#PLACEHOLDER
-	scene_2.hide()
-	scene_3.show()
+	Globals.permissions.requestReadContactsPermission()
 
 #ALLSETTINGS____________________________________________________________
 func _on_SaveButton_pressed():
 	activity += "| save |"
-	all_settings.hide()
-	scene_3.show()
+	if not Globals.permissions.isReadContactsPermissionGranted():
+		Globals.permissions.requestReadContactsPermission()
+	else:
+		all_settings.hide()
+		scene_3.show()
 
 func _on_LinkButton_pressed():
 	activity += "| edit1 |"
@@ -96,13 +111,19 @@ func _on_ReturnButton_pressed():
 
 #SETTING_________________________________________________________________
 func _on_Button_pressed():
+	#Når man trykker save inne på en setting
 	if toggle.is_pressed():
 		activity += "| toggle on |"
 		choices[current_setting] = true
+		if current_setting == 0 and not Globals.permissions.isReadContactsPermissionGranted():
+			Globals.permissions.requestReadContactsPermission()
+		else:
+			setting.hide()
+			all_settings.show()
 	else:
 		activity += "| toggle off |"
 		choices[current_setting] = false
+		setting.hide()
+		all_settings.show()
 	if toggle.disabled:
 		toggle.disabled = false
-	setting.hide()
-	all_settings.show()

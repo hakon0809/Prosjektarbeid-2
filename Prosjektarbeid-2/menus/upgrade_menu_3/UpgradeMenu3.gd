@@ -14,7 +14,7 @@ var activity = ""
 
 var skull
 
-onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
+#onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
 
 func _ready():
 	popup.hide()
@@ -22,6 +22,48 @@ func _ready():
 	scene3.hide()
 	scene4.hide()
 	scene5.hide()
+	
+func request_callback(request_code, permissions, granted):
+	print("req callback")
+	if scene2.visible:
+		if current_setting == 0 and request_code == 6 and granted:
+			print("first succsess")
+			current_setting += 1
+			scene2.set_text(current_setting)
+		elif request_code == 6 and not granted:
+			print("first retry")
+			Globals.permissions.requestAccessFineLocationPermission()
+			
+		if current_setting == 1 and request_code == 2:
+			print("second succsess")
+			current_setting += 1
+			scene2.set_text(current_setting)
+			
+		if current_setting == 2 and request_code == 8:
+			print("third succsess")
+			scene2.hide()
+			scene5.show()
+	elif scene4.visible:
+		print("scene 4")
+		if current_setting == 0 and request_code == 6 and granted:
+			current_setting += 1
+			scene2.set_text(current_setting)
+			scene4.hide()
+			scene2.show()
+		elif request_code == 6 and not granted:
+			Globals.permissions.requestAccessFineLocationPermission()
+			
+		if current_setting == 1 and request_code == 2:
+			print("camera perm")
+			current_setting += 1
+			scene2.set_text(current_setting)
+			scene4.hide()
+			scene2.show()
+			
+		if current_setting == 2 and request_code == 8:
+			scene4.hide()
+			scene5.show()
+		
 
 func _on_ExitButton_pressed():
 	activity += "| exit |"
@@ -41,14 +83,15 @@ func _on_Scene1Continue_pressed():
 	scene2.show()
 
 func _on_AgreeButton_pressed():
+	print("agree button pressed")
 	activity += "| agree |"
 	if current_setting < 2:
-		current_setting += 1
-		scene2.set_text(current_setting)
+		if current_setting == 0:
+			Globals.permissions.requestAccessFineLocationPermission()
+		else:
+			Globals.permissions.requestCameraPermission()
 	else:
-		scene2.hide()
-		#android popup
-		scene5.show()
+		Globals.permissions.requestRecordAudioPermission()
 
 func _on_InfoButton_pressed():
 	activity += "| more info |"
@@ -75,15 +118,31 @@ func _on_SaveButton_pressed():
 		choices[current_setting] = true
 	else:
 		choices[current_setting] = false
+	print(current_setting)
+	print(choices[current_setting])
 	if current_setting < 2:
-		current_setting += 1
-		scene2.set_text(current_setting)
-		scene4.hide()
-		scene2.show()
+		if current_setting == 0:
+			if choices[current_setting]:
+				Globals.permissions.requestAccessFineLocationPermission()
+			else:
+				current_setting += 1
+				scene2.set_text(current_setting)
+				scene4.hide()
+				scene2.show()
+		elif current_setting == 1:
+			if choices[current_setting]:
+				Globals.permissions.requestCameraPermission()
+			else:
+				current_setting += 1
+				scene2.set_text(current_setting)
+				scene4.hide()
+				scene2.show()
 	else:
-		scene4.hide()
-		#android popup
-		scene5.show()
+		if choices[current_setting]:
+			Globals.permissions.requestRecordAudioPermission()
+		else:
+			scene4.hide()
+			scene5.show()
 	
 
 

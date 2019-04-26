@@ -15,6 +15,8 @@ var player_id = null
 #Variable that holds a reference to a permission handler singleton
 var permissions = null
 
+onready var upgrade2 = get_tree().get_root().get_node("Node")
+
 func _ready():
 	self.add_child(music_player)
 	
@@ -22,6 +24,10 @@ func _ready():
 	if Engine.has_singleton("AndroidPermissions"):
 		permissions = Engine.get_singleton("AndroidPermissions")
 		permissions.init(get_instance_id(), true)
+		
+
+func _on_request_permission_result(request_code, permissions, granted):
+	upgrade2.request_callback(request_code, permissions, granted)
 
 var upgrades = {1: [false, false, false],
 		2: [false, false, false],
