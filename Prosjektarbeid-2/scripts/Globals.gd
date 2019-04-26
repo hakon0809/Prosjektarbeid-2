@@ -1,7 +1,13 @@
 extends Node
 
 var main_menu_song = load("res://levels/common/assets/sounds/Fantastic A.ogg")
-var city_song =  load("res://levels/common/assets/sounds/The Walrus and the Carpenter.ogg")
+var city_song = load("res://levels/common/assets/sounds/The Walrus and the Carpenter.ogg")
+var skull_song = load("res://levels/common/assets/sounds/bensound-ofeliasdream.ogg")
+var fighting_song = load("res://levels/common/assets/sounds/bensound-instinct.ogg")
+var boss_song = load("res://levels/common/assets/sounds/bensound-epic.ogg")
+var ending_song = load("res://levels/common/assets/sounds/bensound-betterdays.ogg")
+var credit_song = load("res://levels/common/assets/sounds/bensound-love.ogg")
+var boss_dead_song = load("res://levels/common/assets/sounds/bensound-birthofahero.ogg")
 var music_player = AudioStreamPlayer.new()
 var muted = [false, false]
 # A reference to the music/sound buttons are needed to remember their state

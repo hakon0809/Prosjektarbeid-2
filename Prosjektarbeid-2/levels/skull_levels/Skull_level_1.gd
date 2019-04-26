@@ -10,6 +10,7 @@ func _ready():
 	$Skull.hide()
 	camera.limit_left = 0
 	camera.limit_right = 1100
+	Globals.play_song(Globals.skull_song)
 	
 
 
