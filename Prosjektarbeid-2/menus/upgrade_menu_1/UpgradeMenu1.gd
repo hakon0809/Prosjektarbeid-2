@@ -13,7 +13,12 @@ onready var scene_5 = $MarginContainer/PanelContainer/VBoxContainer/ContentConta
 onready var Scene1Button = $Scene1Button
 
 var choices = [true, true, true]
+var skull
 
+func save_changes():
+	skull.save_choice(choices[0])
+	Globals.set_upgrade(1, choices)
+	self.queue_free()
 
 func _ready():
 	popup1.hide()
