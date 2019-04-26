@@ -27,8 +27,6 @@ func _ready():
 	dialog.hide()
 	$Enemies/soldier.set_physics_process(false)
 	$Enemies/soldier2.set_physics_process(false)
-	
-	Globals.upgrades[3][0] = true
 
 func _on_EnterBoss_body_entered(body):
 	if body.is_in_group("character"):
