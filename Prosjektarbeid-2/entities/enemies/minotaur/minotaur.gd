@@ -1,11 +1,10 @@
 extends KinematicBody2D
 
-const BOSSLEVEL = preload("res://levels/ending_levels/boss_level.gd")
 const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 
 export var max_speed = 100
-export var knockback = 10
+export var knockback = 50
 export var circle_attack_damage = 2
 export var overhead_attack_damage = 3
 export var touch_damage = 1
@@ -18,6 +17,8 @@ var hitstun = 0
 var can_move = true
 var attack_is_over = false
 var damage_immunity = false
+var overhead = "overhead"
+var circle_sweep = "circle_sweep"
 
 
 var current_state = null
@@ -68,10 +69,10 @@ func _change_state(new_state):
 	match current_state:
 		
 		DIE:
+			damage_immunity = true
 			if $Sprite/AnimationPlayer.current_animation != "die":
 				$Sprite/AnimationPlayer.play("die")
 			if $Sprite/AnimationPlayer.current_animation_position > 0.8:
-#				var bosslevel = BOSSLEVEL.instance()
 				get_tree().get_current_scene().get_child(1).get_child(7).set_position(Vector2(0,100))
 				
 				queue_free()
@@ -93,13 +94,13 @@ func _change_state(new_state):
 		
 		CIRCLE_ATTACK:
 			
-			attack(circle_attack_damage, "ground_circle_attack")
+			attack(circle_attack_damage, "ground_circle_attack", circle_sweep)
 			
 		
 		
 		OVERHEAD_ATTACK:
 			
-			attack(overhead_attack_damage, "oveahead_attack")
+			attack(overhead_attack_damage, "oveahead_attack", overhead)
 			
 				
 		HURT:
@@ -108,7 +109,7 @@ func _change_state(new_state):
 			if $Sprite/AnimationPlayer.current_animation != "blink":
 				$Sprite/AnimationPlayer.play("blink")
 			self.modulate.a = 0.4
-			if $Sprite/AnimationPlayer.current_animation_position > 0.8:
+			if $Sprite/AnimationPlayer.current_animation_position > 0.5:
 				self.modulate.a = 1
 				can_move=true
 				damage_immunity = false
@@ -117,11 +118,12 @@ func _change_state(new_state):
 			can_move = false
 			if $Sprite/AnimationPlayer.current_animation != "taunt":
 				$Sprite/AnimationPlayer.play("taunt")
-			if $Sprite/AnimationPlayer.current_animation_position > 0.4:
+			if $Sprite/AnimationPlayer.current_animation_position > 0.3:
 				can_move = true	
 		
 		
 		
+#warning-ignore:unused_argument
 func _physics_process(delta):
 	
 	
@@ -148,11 +150,7 @@ func _physics_process(delta):
 	
 	if is_on_wall():
 		direction= direction * -1
-	#	$RayCast2D.position.x *= -1
-		
-	#if $RayCast2D.is_colliding() == false:
-	#	direction = direction * -1
-	#	$RayCast2D.position.x *= -1
+	
 func movment():
 	
 	if speed == 0 && hitstun == 0:
@@ -168,10 +166,16 @@ func movment():
 	move_and_slide(velocity, FLOOR)
 	
 	
-func attack(attack_damage, attack_anim):
+func attack(attack_damage, attack_anim, areaname):
 	can_move = false
-			
-	var bodies = $overhead.get_overlapping_bodies()
+	
+	var bodies = null
+	
+	if areaname == "overhead":		
+		bodies = $overhead.get_overlapping_bodies()
+	else:
+		bodies = $circle_sweep.get_overlapping_bodies()	
+	
 	for body in bodies:
 			
 		if body.is_in_group("character"):
@@ -182,14 +186,15 @@ func attack(attack_damage, attack_anim):
 			if $Sprite/AnimationPlayer.current_animation_position > 0.3:
 						
 				body.take_damage(attack_damage)
-				print(attack_damage)
 				can_move = true
 					
-	if attack_is_over:
-		can_move = true
+		if $Sprite/AnimationPlayer.current_animation_position > 0.8:
+			can_move = true
+			attack_delay()
 			
 func take_damage(count):
-	if not damage_immunity: 
+	if not damage_immunity:
+		 
 		health -= count
 		
 		print(health)
@@ -204,6 +209,7 @@ func _on_overhead_body_entered(body):
 		speed = 0
 		_change_state(IDLE)
 		_change_state(OVERHEAD_ATTACK)
+	
 		speed = max_speed 
 
 
@@ -212,6 +218,7 @@ func _on_circle_sweep_body_entered(body):
 		speed = 0
 		_change_state(IDLE)
 		_change_state(CIRCLE_ATTACK)
+
 		speed = max_speed 
 			
 			
@@ -229,8 +236,9 @@ func _on_touch_body_entered(body):
 		_change_state(IDLE)
 		_change_state(TAUNT)
 		speed = max_speed
-		print(touch_damage)
-
+		
+func attack_delay():
+	_change_state(TAUNT)	
 
 func _on_VisibilityNotifier2D_screen_entered():
 	speed = max_speed
