@@ -66,8 +66,10 @@ func _on_NextButton_pressed():
 func start_fight():
 	$Boss/minotaur/KinematicBody2D.speed = $Boss/minotaur/KinematicBody2D.max_speed
 	if d_seq == 1:
-		$Enemies/soldier.visible = true
-		$Enemies/soldier2.visible = true
+		$Enemies/soldier.position.y = 207
+		$Enemies/soldier2.position.y = 207
 		$Enemies/soldier.set_physics_process(true)
 		$Enemies/soldier2.set_physics_process(true)
+		$Enemies/soldier.visible = true
+		$Enemies/soldier2.visible = true
 		
