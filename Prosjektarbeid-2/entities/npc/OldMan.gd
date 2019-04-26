@@ -82,7 +82,7 @@ func _on_NextButton_pressed():
 			interface.show()
 		else:
 			var fade = load("res://levels/common/BlackScreen.tscn").instance()
-			fade.next = "res://levels/skull_levels/skull_level_2.tscn"
+			fade.next = "res://levels/skull_levels/Skull_level_2.tscn"
 			self.add_child(fade)
 			
 	else:
