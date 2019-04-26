@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends PanelContainer
 
 #class_name Questionnaire
 
@@ -17,13 +17,13 @@ var question_path = {
 
 func generate_question(question):
 	var qinstance = question_path[question["type"]].instance()
-	add_child(qinstance)
+	$MC/SC/VBC.add_child(qinstance)
 	qnodes.append(qinstance)
 	qinstance.init(question)
 
 func generate_submit():
 	var sbinstance = question_path[SUBMIT].instance()
-	add_child(sbinstance)
+	$MC/SC/VBC.add_child(sbinstance)
 	sbinstance.connect("pressed", self, "_on_SubmitButton_pressed")
 
 func invalid_answer(qnode):
