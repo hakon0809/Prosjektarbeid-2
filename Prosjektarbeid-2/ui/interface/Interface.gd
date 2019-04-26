@@ -7,6 +7,7 @@ onready var mute_sound_button = $Control/PauseMenu/PanelContainer/MarginContaine
 onready var pause_menu = $Control/PauseMenu
 onready var character_sound_player = get_node("../AudioStreamPlayer")
 var paused
+var current_scene
 
 
 func _ready():
@@ -82,3 +83,28 @@ func _on_MuteSound_pressed():
 		character_sound_player.set_volume_db(-80)
 	else:
 		character_sound_player.set_volume_db(0)
+
+
+func _on_SkipStage_pressed():
+	current_scene = get_tree().get_current_scene().get_name()
+	
+	match current_scene:
+		
+		"prison":
+			get_tree().change_scene("res://levels/skull_levels/Skull_level_1.tscn")
+		
+		"Fighting_level_1":
+			get_tree().change_scene("res://levels/farm/farm.tscn")
+		
+		"Fighting_level_2":
+			get_tree().change_scene("res://levels/city/city.tscn")
+			
+		"Fighting_level_3":
+			get_tree().change_scene("res://levels/ending_levels/boss_level.tscn")
+		
+		"Boss_level":
+			get_tree().change_scene("res://levels/ending_levels/ending_level.tscn")
+		
+	get_tree().paused = false
+	paused = false
+	pause_menu.hide()	
