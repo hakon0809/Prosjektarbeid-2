@@ -1,12 +1,20 @@
-extends Node2D
+extends Node
 
-var max_depth = 1200
+var max_depth = 2000
+var tunnel = false
 
 func _ready():
-	$Player/KinematicBody2D/Camera2D.limit_left = -80
-	$Player/KinematicBody2D/Camera2D.limit_right = 2200
+	if not Globals.get_upgrade(3)[0]:
+		tunnel = true
+		$Player.position += Vector2(100, 310)
 
+func _process(delta):
+	if tunnel:
+		if $Player/KinematicBody2D.position.x > 1900:
+			$Player/KinematicBody2D/Camera2D.limit_bottom = 810
+		else:
+			$Player/KinematicBody2D/Camera2D.limit_bottom = 920
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
-		get_tree().change_scene("res://levels/city/city.tscn")
+		get_tree().change_scene('res://levels/ending_levels/boss_level.tscn')

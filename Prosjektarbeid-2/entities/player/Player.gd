@@ -128,10 +128,13 @@ func is_change_state_possible():
 		elif current_state == BOW && $Sprite.get_frame() == 8:
 			return true
 
+		elif current_state == BOW && next_state == KNOCKDOWN:
+			return true
+			
 		elif current_state == BOW:
 			return false
-		elif previous_state == BOW:
-			return false
+#		elif previous_state == BOW:
+#			return false
 
 		elif not attack_is_over:
 			return false

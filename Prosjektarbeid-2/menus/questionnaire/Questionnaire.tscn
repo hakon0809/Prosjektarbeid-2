@@ -2,5 +2,6 @@
 
 [ext_resource path="res://menus/questionnaire/Questionnaire.gd" type="Script" id=1]
 
-[node name="Questionnaire" type="VBoxContainer"]
+[node name="Questionnaire" type="PanelContainer"]
 script = ExtResource( 1 )
+

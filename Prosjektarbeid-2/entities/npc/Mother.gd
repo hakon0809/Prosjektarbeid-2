@@ -74,7 +74,12 @@ func converse():
 func _on_NextButton_pressed():
 	dialogIndex += 1
 	if dialogIndex >= currentDialogArray.size():
-		dialog.hide()
-		interface.show()
+		if currentDialogArray == dialogArrayPissed:
+			dialog.hide()
+			interface.show()
+		else:
+			var fade = load("res://levels/common/BlackScreen.tscn").instance()
+			fade.next = "res://levels/skull_levels/skull_level_3.tscn"
+			self.add_child(fade)
 	else:
 		dialog_text.set_text(currentDialogArray[dialogIndex])

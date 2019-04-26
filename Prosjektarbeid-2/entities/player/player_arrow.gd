@@ -27,7 +27,7 @@ func _physics_process(delta):
 	
 	for body in bodies:
 		
-		if body.is_in_group("enemy"):
+		if body.is_in_group("Enemy"):
 			print(body)
 			body.take_damage(damage)
 			queue_free()

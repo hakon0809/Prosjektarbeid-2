@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spike.png-8e9fe39cab623676cde1de9949e81929.stex"
+path="res://.import/parallax-forest-back-trees.png-252773e66faeee34a2d2af548148a3ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/levelA/Spike.png"
-dest_files=[ "res://.import/Spike.png-8e9fe39cab623676cde1de9949e81929.stex" ]
+source_file="res://levels/fighting_level_2/parallax-layers/parallax-forest-back-trees.png"
+dest_files=[ "res://.import/parallax-forest-back-trees.png-252773e66faeee34a2d2af548148a3ef.stex" ]
 
 [params]
 
