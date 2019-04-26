@@ -1,4 +1,4 @@
 extends Node
 
 func _ready():
-	Globals.play_song(Globals.city_song, -17)
+	Globals.play_song(Globals.farm_song, -10)
