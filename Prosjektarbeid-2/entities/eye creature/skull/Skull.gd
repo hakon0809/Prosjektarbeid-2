@@ -61,9 +61,9 @@ func open_choice_menu():
 	var c
 	if level == 1:
 		#TEMP until upgrademenu1 is ready
-		save_choice(false)
-		encountered = true
-		#c = load("res://menus/upgrade_menu_1/UpgradeMenu1.tscn").instance()
+		#save_choice(false)
+		#encountered = true
+		c = load("res://menus/upgrade_menu_1/UpgradeMenu1.tscn").instance()
 	elif level == 2:
 		c = load("res://menus/upgrade_menu_2/UpgradeMenu2.tscn").instance()
 	else:
@@ -72,8 +72,8 @@ func open_choice_menu():
 	var cl = CanvasLayer.new()
 	node.add_child(cl)
 	cl.add_child(c)
-	if level != 1: #TEMP
-		c.skull = self
+	#if level != 1: #TEMP
+	c.skull = self
 
 func save_choice(active):
 	button.hide()
