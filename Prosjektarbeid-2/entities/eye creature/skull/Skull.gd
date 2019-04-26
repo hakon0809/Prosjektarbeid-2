@@ -78,7 +78,10 @@ func open_choice_menu():
 func save_choice(active):
 	button.hide()
 	if active:
-		dialog_text.set_text("Excellent.")
+		if get_tree().get_current_scene().get_name() == "Skull_level_3":
+			dialog_text.set_text("Excellent. \nTo use the bow press and hold B, it fires upon release.")
+		else:
+			dialog_text.set_text("Excellent.")
 	else:
 		dialog_text.set_text("Disapointing.")
 	dialog.show()
