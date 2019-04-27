@@ -17,10 +17,13 @@ script = ExtResource( 1 )
 position = Vector2( 512, 224 )
 
 [node name="AnimatedSprite" parent="Skull/KinematicBody2D" index="0"]
-frame = 7
+frame = 3
 
 [node name="Area2D" parent="Skull" index="1"]
 position = Vector2( 0, -27 )
+
+[node name="CollisionShape2D2" parent="Skull/Area2D" index="0"]
+position = Vector2( 0, 3 )
 
 [node name="Dirt" type="TileMap" parent="."]
 modulate = Color( 0.627451, 0.619608, 0.87451, 1 )
