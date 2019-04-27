@@ -34,8 +34,10 @@ func _on_ConfirmButton_pressed():
 	else:
 		if $PanelContainer/MarginContainer/VBoxContainer/Button/TextureButton.pressed:
 			scene.choices = [true, true]
+			scene.activity += "| save on |"
 		else:
 			scene.choices = [true, false]
+			scene.activity += "| save off |"
 		scene.scene_3.hide()
 		scene.scene_5.show()
 		self.hide()
