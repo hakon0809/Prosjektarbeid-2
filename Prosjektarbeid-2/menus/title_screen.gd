@@ -13,3 +13,7 @@ func _on_Options_pressed():
 	get_tree().change_scene('res://menus/Options.tscn')
 
 
+
+
+func _on_Credits_pressed():
+	get_tree().change_scene('res://menus/credits.tscn')
