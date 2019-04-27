@@ -36,7 +36,7 @@ func _ready():
 func _on_request_permission_result(request_code, permissions, granted):
 	upgrade2.request_callback(request_code, permissions, granted)
 
-var upgrades = {1: [false, false, false],
+var upgrades = {1: [false, false],
 		2: [false, false, false],
 		3: [false, false, false]}
 		

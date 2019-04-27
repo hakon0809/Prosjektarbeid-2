@@ -12,7 +12,7 @@ onready var scene_5 = $MarginContainer/PanelContainer/VBoxContainer/ContentConta
 #onready var Scene1Button = $PanelContainer/MarginContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button
 onready var Scene1Button = $Scene1Button
 
-var choices = [true, true, true]
+var choices = [true, true]
 var skull
 
 func save_changes():
@@ -26,7 +26,6 @@ func _ready():
 	popup3.hide()
 	scene_2.hide()
 	scene_3.hide()
-	scene_4.hide()
 	scene_5.hide()
 #	Scene1Button.text = "Get started"
 
@@ -49,7 +48,8 @@ func _on_Scene2Button_pressed():
 #SCENE3____________________________________________________________________
 func _on_Scene3Button_pressed():
 	scene_3.hide()
-	scene_4.show()
+	#ANDROID PERM
+	scene_5.show()
 
 func _on_Scene3Back_pressed():
 	scene_2.show()
@@ -57,10 +57,11 @@ func _on_Scene3Back_pressed():
 
 func _on_Scene3Manage_pressed():
 	popup2.show()
+	popup2.scene = self
 	
 func _on_Scene4Button_pressed():
 	scene_3.hide()
 	scene_5.show()	
 
-func _on_Agreed_pressed():
-	pass # replace with function body
+func _on_Button_pressed():
+	save_changes()
