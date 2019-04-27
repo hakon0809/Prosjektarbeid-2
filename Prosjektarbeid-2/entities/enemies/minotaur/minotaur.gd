@@ -17,6 +17,7 @@ var hitstun = 0
 var can_move = true
 var attack_is_over = false
 var damage_immunity = false
+var immunity_timer = null
 var overhead = "overhead"
 var circle_sweep = "circle_sweep"
 
@@ -37,9 +38,15 @@ enum STATES { IDLE, WALK, CIRCLE_ATTACK, OVERHEAD_ATTACK, HURT, DIE, TAUNT}
 
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
+	immunity_timer = Timer.new()
+	immunity_timer.set_one_shot(true)
+	immunity_timer.set_wait_time(1.5)
+	immunity_timer.connect("timeout", self, "on_immunity_timeout")
+	add_child(immunity_timer)
+
+func on_immunity_timeout():
+	damage_immunity = false
+	immunity_timer.stop()
 
 func is_change_state_possible():
 	
@@ -107,15 +114,16 @@ func _change_state(new_state):
 			
 				
 		HURT:
+			immunity_timer.start()
 			damage_immunity = true
 			can_move = false
 			if $Sprite/AnimationPlayer.current_animation != "blink":
 				$Sprite/AnimationPlayer.play("blink")
-			self.modulate.a = 0.4
+			
 			if $Sprite/AnimationPlayer.current_animation_position > 0.5:
-				self.modulate.a = 1
+			
 				can_move=true
-				damage_immunity = false
+				
 			
 		TAUNT:
 			can_move = false
@@ -129,6 +137,10 @@ func _change_state(new_state):
 #warning-ignore:unused_argument
 func _physics_process(delta):
 	
+	if damage_immunity:
+		self.modulate.a = 0.6
+	else:
+		self.modulate.a = 1
 	
 	movment()
 	
