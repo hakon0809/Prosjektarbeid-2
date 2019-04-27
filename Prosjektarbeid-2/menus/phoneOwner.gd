@@ -10,3 +10,6 @@ func _on_MyPhone_pressed():
 		
 func _on_Borrow_pressed():
 	get_tree().change_scene('res://menus/Username.tscn')
+
+func _on_Back_pressed():
+	get_tree().change_scene('res://menus/Mode.tscn')
