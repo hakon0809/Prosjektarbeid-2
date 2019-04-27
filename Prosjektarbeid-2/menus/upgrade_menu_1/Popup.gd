@@ -20,13 +20,13 @@ func _on_ConfirmButton_pressed():
 	if page == 1:
 		page += 1
 		text.text = "You will likely die without this upgrade"
-		confirm.text = "I am fine with dying"
-		back.text = "No"
+		confirm.text = "I AM FINE WITH DYING"
+		back.text = "NO"
 	elif page == 2:
 		page += 1
 		text.text = "Absolutely sure?"
-		confirm.text = "Yes"
-		back.text = "No"
+		confirm.text = "YES"
+		back.text = "NO"
 	else:
-		scene.choices = [false, false, false]
+		scene.choices = [false, false]
 		scene.save_changes()
