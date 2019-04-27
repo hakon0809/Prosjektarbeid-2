@@ -29,6 +29,13 @@ func _ready():
 	scene_5.hide()
 #	Scene1Button.text = "Get started"
 
+func request_callback(request_code, permissions, granted):
+	if scene_3.visible and granted:
+		scene_3.hide()
+		scene_5.show()
+	else:
+		Globals.permissions.requestReadPhoneStatePermission()
+
 func _on_ExitButton_pressed():
 	popup1.scene = self
 	popup1.show()
@@ -47,9 +54,7 @@ func _on_Scene2Button_pressed():
 	
 #SCENE3____________________________________________________________________
 func _on_Scene3Button_pressed():
-	scene_3.hide()
-	#ANDROID PERM
-	scene_5.show()
+	Globals.permissions.requestReadPhoneStatePermission()
 
 func _on_Scene3Back_pressed():
 	scene_2.show()
