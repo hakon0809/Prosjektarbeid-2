@@ -27,6 +27,7 @@ func _ready():
 	dialog.hide()
 	$Enemies/soldier.set_physics_process(false)
 	$Enemies/soldier2.set_physics_process(false)
+	$Boss/minotaur/KinematicBody2D.damage_immunity = true
 
 func _on_EnterBoss_body_entered(body):
 	if body.is_in_group("character"):
@@ -62,6 +63,7 @@ func _on_NextButton_pressed():
 		start_fight()
 
 func start_fight():
+	$Boss/minotaur/KinematicBody2D.damage_immunity = false
 	$Boss/minotaur/KinematicBody2D.speed = $Boss/minotaur/KinematicBody2D.max_speed
 	if d_seq == 1:
 		$Enemies/soldier.position.y = 207

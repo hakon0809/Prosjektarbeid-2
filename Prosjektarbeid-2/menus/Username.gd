@@ -13,3 +13,7 @@ func _on_OkButton_pressed():
 
 func _on_username_field_text_changed(new_text):
 	username = new_text
+
+
+func _on_Back_pressed():
+	get_tree().change_scene('res://menus/phoneOwner.tscn')

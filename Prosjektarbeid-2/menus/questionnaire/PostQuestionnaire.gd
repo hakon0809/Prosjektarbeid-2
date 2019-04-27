@@ -12,8 +12,7 @@ func write_to_Globals(answers):
 	Globals.post_questionnaire = answers
 
 func goto_next():
-	Globals.send_email()
-	get_tree().change_scene("res://menus/TitleScreen.tscn")
+	get_tree().change_scene("res://menus/Resendemail.tscn")
 
 func _ready():
 	.init(questions)
