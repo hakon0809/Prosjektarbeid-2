@@ -22,12 +22,10 @@ var player_id = null
 #Variable that holds a reference to a permission handler singleton
 var permissions = null
 
-#onready var upgrade_menu = get_tree().get_root().get_node("Node")
+#Updated on skull levels
 var upgrade_menu
 
 func _ready():
-	#print("upgradae menu:")
-	#print(upgrade_menu)
 	self.add_child(music_player)
 	
 	# If game is deployed on android, sets ut singleton that handles permissions
@@ -104,10 +102,8 @@ func set_bart_score(score, aggregate):
 
 # daretoshare.results
 func send_email():
-	var mailstring = "mailto:leif.ulvund@gmail.com?subject=Results&body="
-	#for activity in activities:
-		#for level in activity:
-		
+	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="
+
 	mailstring += "Player ID: " + str(player_id) + "\n\n"
 	mailstring += "Pre questionnaire\n"
 	for answer in pre_questionnaire:
