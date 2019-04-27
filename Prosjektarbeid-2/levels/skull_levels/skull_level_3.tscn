@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/skull_levels/skull_level_3.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=2]
@@ -6,8 +6,12 @@
 [ext_resource path="res://entities/eye creature/skull/Skull.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/skull_levels/Area2D.gd" type="Script" id=5]
 [ext_resource path="res://levels/skull_levels/midnight parallax/MidnightParallax.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 41.768, 167.37 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 2.96997, 39.5838 )
 
 [node name="Skull_level_3" type="Node"]
@@ -36,28 +40,39 @@ tile_data = PoolIntArray( -982989, 0, 0, -982988, 1, 0, -982987, 1, 0, -982986, 
 modulate = Color( 0.654902, 0.654902, 0.654902, 1 )
 position = Vector2( 19, 197 )
 
+[node name="Interface" parent="Player" index="0"]
+editor/display_folded = false
+
+[node name="Control" parent="Player/Interface" index="0"]
+visible = false
+
+[node name="KinematicBody2D" parent="Player" index="1"]
+editor/display_folded = true
+
 [node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
 limit_left = 0
 limit_right = 1312
 limit_bottom = 280
 
 [node name="Skull" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 638.232, 147.37 )
 
 [node name="KinematicBody2D" parent="Skull" index="0"]
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Skull/KinematicBody2D" index="0"]
-frame = 1
+frame = 12
 flip_h = true
+
+[node name="CollisionShape2D2" parent="Skull/Area2D" index="0"]
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1310.09, -106.441 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 editor/display_folded = false
@@ -73,10 +88,17 @@ motion_offset = Vector2( 0, -220 )
 [node name="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 offset = Vector2( 0, -110 )
 
+[node name="PopupDialog" parent="." instance=ExtResource( 7 )]
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="Player"]
+
+[editable path="Player/Interface"]
 
 [editable path="Skull"]
 
 [editable path="ParallaxBackground"]
+
+[editable path="PopupDialog"]

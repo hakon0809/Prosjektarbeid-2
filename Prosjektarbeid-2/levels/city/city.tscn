@@ -27,7 +27,7 @@
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 76.251, 37.1252 )
+extents = Vector2( 76.251, 55.2259 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 118.188 )
@@ -225,6 +225,7 @@ editor/display_folded = true
 editor/display_folded = true
 position = Vector2( 1182, 142 )
 
+
 [node name="AnimatedSprite" parent="npcs/Father/StaticBody2D" index="0"]
 frame = 0
 
@@ -240,7 +241,9 @@ position = Vector2( 1151.73, 142 )
 script = ExtResource( 14 )
 
 [node name="AnimatedSprite" parent="npcs/Mother/StaticBody2D" index="0"]
+
 frame = 3
+
 
 [node name="CollisionShape2D" parent="npcs/Mother/StaticBody2D/Area2D" index="0"]
 position = Vector2( -86.1071, -8.99342 )
@@ -269,8 +272,10 @@ editor/display_folded = true
 modulate = Color( 0.84375, 0.830566, 0.830566, 1 )
 position = Vector2( -16, 175 )
 
+
 [node name="AnimatedSprite" parent="npcs/Guard/StaticBody2D" index="0"]
 frame = 2
+
 
 [node name="Area2D" parent="npcs/Guard/StaticBody2D" index="1"]
 visible = false
@@ -279,24 +284,22 @@ visible = false
 visible = false
 
 [node name="PotionSeller" parent="npcs" instance=ExtResource( 19 )]
-editor/display_folded = true
 modulate = Color( 0.832031, 0.832031, 0.832031, 1 )
 position = Vector2( 560, 175 )
 script = ExtResource( 20 )
 
+
 [node name="AnimatedSprite" parent="npcs/PotionSeller/StaticBody2D" index="0"]
 frame = 0
 
+
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D/Area2D" index="0"]
-position = Vector2( -86.7745, -9.30897 )
+position = Vector2( -63.7745, -38.309 )
 scale = Vector2( 1.41575, 1 )
 
-[node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D" index="2"]
-visible = false
-
 [node name="speech_bubble" type="Sprite" parent="npcs/PotionSeller"]
-position = Vector2( 3.85801, -27.3404 )
-scale = Vector2( 0.446082, 0.376802 )
+position = Vector2( 16.2233, -31.7509 )
+scale = Vector2( 0.216553, 0.20528 )
 texture = ExtResource( 21 )
 
 [node name="PopupDialog" parent="npcs/PotionSeller" instance=ExtResource( 15 )]
@@ -311,15 +314,17 @@ script = ExtResource( 23 )
 [node name="StaticBody2D" parent="npcs/PirateMan" index="0"]
 editor/display_folded = true
 
+
 [node name="AnimatedSprite" parent="npcs/PirateMan/StaticBody2D" index="0"]
 frame = 0
+
 
 [node name="CollisionShape2D" parent="npcs/PirateMan/StaticBody2D" index="2"]
 visible = false
 
 [node name="speech_bubble" type="Sprite" parent="npcs/PirateMan"]
-position = Vector2( 5.84814, -27.6435 )
-scale = Vector2( 0.446082, 0.376802 )
+position = Vector2( 20.2976, -29.5741 )
+scale = Vector2( 0.214016, 0.209364 )
 texture = ExtResource( 21 )
 
 [node name="PopupDialog" parent="npcs/PirateMan" instance=ExtResource( 15 )]
@@ -328,11 +333,13 @@ editor/display_folded = true
 [node name="Area2D" type="Area2D" parent="npcs/PirateMan"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcs/PirateMan/Area2D"]
-position = Vector2( -94.0431, -20.2849 )
+position = Vector2( -43.3217, -45.278 )
 scale = Vector2( 1.30338, 1.2314 )
 shape = SubResource( 1 )
 
+
 [node name="NextLevelArea" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 1568, 96 )
 script = ExtResource( 24 )
 __meta__ = {

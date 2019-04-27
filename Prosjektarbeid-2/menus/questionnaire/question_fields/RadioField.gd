@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-var radio_button = load("res://menus/questionnaire/RadioButton.tscn")
+var radio_button = load("res://menus/questionnaire/question_fields/RadioButton.tscn")
 
 func generate_radio(identifier):
 	var label = str(identifier)

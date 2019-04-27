@@ -22,15 +22,25 @@ var player_id = null
 #Variable that holds a reference to a permission handler singleton
 var permissions = null
 
+#onready var upgrade_menu = get_tree().get_root().get_node("Node")
+var upgrade_menu
+
 func _ready():
+	#print("upgradae menu:")
+	#print(upgrade_menu)
 	self.add_child(music_player)
 	
 	# If game is deployed on android, sets ut singleton that handles permissions
 	if Engine.has_singleton("AndroidPermissions"):
 		permissions = Engine.get_singleton("AndroidPermissions")
 		permissions.init(get_instance_id(), true)
+		
 
-var upgrades = {1: [false, false, false],
+# Callback from permission prompt
+func _on_request_permission_result(request_code, permissions, granted):
+	upgrade_menu.request_callback(request_code, permissions, granted)
+
+var upgrades = {1: [false, false],
 		2: [false, false, false],
 		3: [false, false, false]}
 		
@@ -91,16 +101,55 @@ func set_activity(activity, string):
 func set_bart_score(score, aggregate):
 	bart_score = score
 	bart_aggregate = aggregate
-	
+
+# daretoshare.results
 func send_email():
-	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="
-#	for activity in activities:
-#		for level in activity:
-#			mailstring += format_data(level)+"%0A"
-#	OS.shell_open(mailstring)
+	var mailstring = "mailto:leif.ulvund@gmail.com?subject=Results&body="
+	#for activity in activities:
+		#for level in activity:
+		
+	mailstring += "Player ID: " + str(player_id) + "\n\n"
+	mailstring += "Pre questionnaire\n"
+	for answer in pre_questionnaire:
+		mailstring += format_data(answer) + "%0A"
+	mailstring += "\n"
+		
+	mailstring += "BART score: " + str(bart_score) + "\n"
+	mailstring += "BART aggregate: " + str(bart_aggregate) + "\n\n"
+	
+	mailstring = format_upgrades(mailstring)
+	
+	mailstring += "Upgrade activities:\n"
+	for activity in upgrade_activity:
+		mailstring += activity + "%0A"
+		mailstring += "\n"
+	mailstring += "\n"
+	
+	mailstring += "Post questionnaire:\n"
+	for answer in post_questionnaire:
+		mailstring += format_data(answer) + "%0A"
+	mailstring += "\n"
+	
+	OS.shell_open(mailstring)
 	
 func format_data(level):
 	var datastring = "| "
 	for data in level:
 		datastring += data+" | "
 	return datastring
+	
+func format_upgrades(mailstring):
+	mailstring += "Health upgrade:\n"
+	mailstring += "Read phone state (required for upgrade): " + str(upgrades[1][0]) + "\n"
+	mailstring += "Read calendar data: " + str(upgrades[1][1]) + "\n\n"
+	
+	mailstring += "Sword upgrade:\n"
+	mailstring += "Read contacts (required for upgrade): " + str(upgrades[2][0]) + "\n"
+	mailstring += "Read call log: " + str(upgrades[2][1]) + "\n"
+	mailstring += "Read SMS: " + str(upgrades[2][2]) + "\n\n"
+	
+	mailstring += "Sword upgrade:\n"
+	mailstring += "Location (required for upgrade): " + str(upgrades[3][0]) + "\n"
+	mailstring += "Camera: " + str(upgrades[3][1]) + "\n"
+	mailstring += "Record audio: " + str(upgrades[3][2]) + "\n\n"
+	return mailstring

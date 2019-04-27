@@ -37,26 +37,40 @@ alignment = 1
 
 [node name="MyPhone" type="Button" parent="VSplitContainer/Buttons"]
 margin_left = 148.0
-margin_top = 44.0
+margin_top = 14.0
 margin_right = 315.0
-margin_bottom = 82.0
+margin_bottom = 52.0
 focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 3 )
+action_mode = 0
 enabled_focus_mode = 0
 text = "My phone"
 flat = true
 
 [node name="Borrow" type="Button" parent="VSplitContainer/Buttons"]
-margin_top = 104.0
+margin_top = 74.0
 margin_right = 464.0
-margin_bottom = 142.0
+margin_bottom = 112.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
+action_mode = 0
 enabled_focus_mode = 0
 text = "A borrowed phone"
 flat = true
 
+[node name="Back" type="Button" parent="VSplitContainer/Buttons"]
+margin_left = 188.0
+margin_top = 134.0
+margin_right = 276.0
+margin_bottom = 172.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+action_mode = 0
+text = "Back"
+
 [connection signal="pressed" from="VSplitContainer/Buttons/MyPhone" to="." method="_on_MyPhone_pressed"]
 [connection signal="pressed" from="VSplitContainer/Buttons/Borrow" to="." method="_on_Borrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/Buttons/Back" to="." method="_on_Back_pressed"]

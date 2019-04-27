@@ -4,6 +4,7 @@ func set_text(setting, active):
 	if setting == 0:
 		$HBoxContainer/RichTextLabel.text = "Access location (this is required)"
 		$HBoxContainer/TextureButton.disabled = true
+		$HBoxContainer/TextureButton.pressed = active
 	elif setting == 1:
 		$HBoxContainer/RichTextLabel.text = "Access camera"
 		$HBoxContainer/TextureButton.disabled = false
