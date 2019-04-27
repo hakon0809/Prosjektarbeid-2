@@ -7,6 +7,6 @@ func _on_MyPhone_pressed():
 		var id = OS.get_unique_id().sha256_text()
 		Globals.player_id = id
 	get_tree().change_scene('res://menus/questionnaire/PreQuestionnaire.tscn')
-
+		
 func _on_Borrow_pressed():
 	get_tree().change_scene('res://menus/Username.tscn')

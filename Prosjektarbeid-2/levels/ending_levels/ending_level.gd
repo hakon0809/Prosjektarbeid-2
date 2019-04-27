@@ -18,10 +18,7 @@ func _ready():
 func _on_EndArea_body_entered(body):
 	if body.is_in_group("character"):
 		Globals.music_player.stop()
-		if Globals.data_sharing_mode == "data":
-			get_tree().change_scene('res://menus/questionnaire/PostQuestionnaire.tscn')
-		else:
-			get_tree().change_scene("res://menus/TitleScreen.tscn")
+		get_tree().change_scene("res://menus/EndingScreen.tscn")
 
 
 func _on_NextButton_pressed():
