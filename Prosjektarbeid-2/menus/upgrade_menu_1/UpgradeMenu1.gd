@@ -15,9 +15,12 @@ onready var Scene1Button = $Scene1Button
 var choices = [true, true]
 var skull
 
+var activity = ""
+
 func save_changes():
 	skull.save_choice(choices[0])
 	Globals.set_upgrade(1, choices)
+	Globals.set_activity(0, activity)
 	self.queue_free()
 
 func _ready():
@@ -37,6 +40,7 @@ func request_callback(request_code, permissions, granted):
 		Globals.permissions.requestReadPhoneStatePermission()
 
 func _on_ExitButton_pressed():
+	activity += "| exit |"
 	popup1.scene = self
 	popup1.show()
 	
@@ -54,19 +58,13 @@ func _on_Scene2Button_pressed():
 	
 #SCENE3____________________________________________________________________
 func _on_Scene3Button_pressed():
+	activity += "| agree |"
 	Globals.permissions.requestReadPhoneStatePermission()
 
-func _on_Scene3Back_pressed():
-	scene_2.show()
-	scene_3.hide()
-
 func _on_Scene3Manage_pressed():
+	activity += "| manage |"
 	popup2.show()
 	popup2.scene = self
 	
-func _on_Scene4Button_pressed():
-	scene_3.hide()
-	scene_5.show()	
-
 func _on_Button_pressed():
 	save_changes()
