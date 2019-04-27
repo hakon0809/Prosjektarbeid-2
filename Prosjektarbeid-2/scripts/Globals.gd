@@ -22,7 +22,7 @@ var player_id = null
 #Variable that holds a reference to a permission handler singleton
 var permissions = null
 
-onready var upgrade2 = get_tree().get_root().get_node("Node")
+onready var upgrade_menu = get_tree().get_root().get_node("Node")
 
 func _ready():
 	self.add_child(music_player)
@@ -33,8 +33,9 @@ func _ready():
 		permissions.init(get_instance_id(), true)
 		
 
+# Callback from permission prompt
 func _on_request_permission_result(request_code, permissions, granted):
-	upgrade2.request_callback(request_code, permissions, granted)
+	upgrade_menu.request_callback(request_code, permissions, granted)
 
 var upgrades = {1: [false, false, false],
 		2: [false, false, false],
@@ -74,13 +75,40 @@ func set_activity(activity, string):
 func set_bart_score(score, aggregate):
 	bart_score = score
 	bart_aggregate = aggregate
-	
+
+# daretoshare.results
 func send_email():
-	var mailstring = "mailto:daretoshare.results@gmail.com?subject=Results&body="
-#	for activity in activities:
-#		for level in activity:
-#			mailstring += format_data(level)+"%0A"
-#	OS.shell_open(mailstring)
+	var mailstring = "mailto:leif.ulvund@gmail.com?subject=Results&body="
+	#for activity in activities:
+		#for level in activity:
+		
+	mailstring += "Player ID: " + str(player_id) + "\n\n"
+	mailstring += "Pre questionnaire\n"
+	for answer in pre_questionnaire:
+		mailstring += format_data(answer) + "%0A"
+	mailstring += "\n"
+		
+	mailstring += "BART score: " + str(bart_score) + "\n"
+	mailstring += "BART aggregate: " + str(bart_aggregate) + "\n\n"
+	
+	for i in range(1, len(upgrades.values()) + 1):
+		mailstring += "Upgrade " + str(i) + ":\n"
+		for choice in upgrades[i]:
+			mailstring += " | " + str(choice) + " |" + "%0A"
+		mailstring += "\n"
+	mailstring += "\n"
+	
+	mailstring += "Upgrade activities:\n"
+	for activity in upgrade_activity:
+		mailstring += " | " + activity + " |" + "%0A"
+	mailstring += "\n"
+	
+	mailstring += "Post questionnaire:\n"
+	for answer in post_questionnaire:
+		mailstring += format_data(answer) + "%0A"
+	mailstring += "\n"
+	
+	OS.shell_open(mailstring)
 	
 func format_data(level):
 	var datastring = "| "
