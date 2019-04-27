@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/ending_levels/boss_level.gd" type="Script" id=1]
 [ext_resource path="res://levels/ending_levels/ParallaxBackground.tscn" type="PackedScene" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://levels/common/assets/twilight/grey_bricks/twilight_grey_bricks_extras_wohitbox.tres" type="TileSet" id=6]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green_grey/green_grey.tres" type="TileSet" id=7]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://entities/enemies/minotaur/minotaur.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/enemies/soldier.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/enemies/minotaur/minotaur.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.2327, 45.9044 )
@@ -28,6 +30,7 @@ transform = Transform2D( 1.1, 0, 0, 1.1, 0, 0 )
 scroll_limit_begin = Vector2( 0, 30 )
 
 [node name="Platforms" type="Node2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_group_": true
 }
@@ -86,6 +89,7 @@ format = 1
 tile_data = PoolIntArray( 524326, 46, 0, 589862, 46, 0, 655398, 46, 0, 720934, 46, 0, 786470, 46, 0, 852006, 46, 0, 917542, 46, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
 modulate = Color( 0.866667, 0.866667, 0.866667, 1 )
 position = Vector2( -416.479, 186.087 )
 
@@ -109,15 +113,56 @@ position = Vector2( 452.024, 131.362 )
 scale = Vector2( 0.333612, 1 )
 shape = SubResource( 2 )
 
+[node name="Enemies" type="Node" parent="."]
+
+[node name="soldier" parent="Enemies" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 180, 33 )
+
+[node name="soldier2" parent="Enemies" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 560, 33 )
+
 [node name="Boss" type="Node2D" parent="."]
 
-[node name="minotaur" parent="Boss" instance=ExtResource( 9 )]
+[node name="minotaur" parent="Boss" instance=ExtResource( 10 )]
 position = Vector2( 542.014, 174.48 )
 scale = Vector2( 1.4, 1.4 )
 
+[node name="PopupDialog" parent="." instance=ExtResource( 11 )]
+
+[node name="PanelContainer" parent="PopupDialog/PopupDialog" index="0"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="MarginContainer" parent="PopupDialog/PopupDialog/PanelContainer" index="0"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 289.0
+margin_bottom = 85.0
+
+[node name="HBoxContainer" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
+margin_right = 283.0
+margin_bottom = 79.0
+
+[node name="RichTextLabel" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+margin_right = 255.0
+margin_bottom = 74.0
+
+[node name="NextButton" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+margin_left = 259.0
+margin_top = 60.0
+margin_right = 278.0
+margin_bottom = 74.0
+
 [connection signal="body_entered" from="NextArea" to="." method="_on_NextArea_body_entered"]
 [connection signal="body_entered" from="EnterBoss" to="." method="_on_EnterBoss_body_entered"]
+[connection signal="pressed" from="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="Player"]
 
 [editable path="Player/Interface"]
+
+[editable path="PopupDialog"]
