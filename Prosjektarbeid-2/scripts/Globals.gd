@@ -69,6 +69,29 @@ func get_upgrade(upgrade):
 func get_all_upgrades():
 	return upgrades
 	
+func get_shared_options():
+	var sum = 0
+	for opts in get_all_upgrades().values():
+		for opt in opts:
+			if opt:
+				sum += 1
+	return sum
+
+func get_total_sharing_options():
+	var sum = 0
+	for opts in get_all_upgrades().values():
+		sum += opts.size()
+	return sum
+
+func get_activated_upgrades():
+	var sum = 0
+	for opts in get_all_upgrades().values():
+		for opt in opts:
+			if opt:
+				sum += 1
+				break
+	return sum
+	
 func set_activity(activity, string):
 	upgrade_activity[activity] = string
 	

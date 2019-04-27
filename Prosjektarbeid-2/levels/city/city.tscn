@@ -245,8 +245,8 @@ tile_data = PoolIntArray( 524324, 5, 0, 589862, 1, 0, 589863, 2, 0, 655398, 8, 0
 editor/display_folded = true
 position = Vector2( 1182, 142 )
 
-[node name="Sprite" parent="npcs/Father/StaticBody2D" index="0"]
-modulate = Color( 0.816406, 0.816406, 0.816406, 1 )
+[node name="AnimatedSprite" parent="npcs/Father/StaticBody2D" index="0"]
+frame = 3
 
 [node name="Area2D" parent="npcs/Father/StaticBody2D" index="1"]
 visible = false
@@ -255,11 +255,9 @@ visible = false
 visible = false
 
 [node name="Mother" parent="npcs" instance=ExtResource( 13 )]
+editor/display_folded = true
 position = Vector2( 1151.73, 142 )
 script = ExtResource( 14 )
-
-[node name="Sprite" parent="npcs/Mother/StaticBody2D" index="0"]
-modulate = Color( 0.835938, 0.835938, 0.835938, 1 )
 
 [node name="CollisionShape2D" parent="npcs/Mother/StaticBody2D/Area2D" index="0"]
 position = Vector2( -86.1071, -8.99342 )
@@ -297,8 +295,11 @@ margin_bottom = 74.0
 [node name="LanternMan" parent="npcs" instance=ExtResource( 16 )]
 editor/display_folded = true
 modulate = Color( 0.804688, 0.804688, 0.804688, 1 )
-position = Vector2( -57, 175 )
+position = Vector2( -57, 171 )
 script = ExtResource( 17 )
+
+[node name="CollisionShape2D" parent="npcs/LanternMan/StaticBody2D/Area2D" index="0"]
+position = Vector2( -120.861, -9.68291 )
 
 [node name="PopupDialog" parent="npcs/LanternMan" instance=ExtResource( 15 )]
 editor/display_folded = true
@@ -329,13 +330,13 @@ margin_top = 60.0
 margin_right = 278.0
 margin_bottom = 74.0
 
-[node name="CollisionShape2D" parent="npcs/LanternMan/StaticBody2D/Area2D" index="0"]
-position = Vector2( -120.861, -9.68291 )
-
 [node name="Guard" parent="npcs" instance=ExtResource( 18 )]
 editor/display_folded = true
 modulate = Color( 0.84375, 0.830566, 0.830566, 1 )
 position = Vector2( -16, 175 )
+
+[node name="AnimatedSprite" parent="npcs/Guard/StaticBody2D" index="0"]
+frame = 1
 
 [node name="Area2D" parent="npcs/Guard/StaticBody2D" index="1"]
 visible = false
@@ -344,14 +345,13 @@ visible = false
 visible = false
 
 [node name="PotionSeller" parent="npcs" instance=ExtResource( 19 )]
+editor/display_folded = true
 modulate = Color( 0.832031, 0.832031, 0.832031, 1 )
 position = Vector2( 560, 175 )
 script = ExtResource( 20 )
 
-[node name="speech_bubble" type="Sprite" parent="npcs/PotionSeller"]
-position = Vector2( 15.0815, -32.621 )
-scale = Vector2( 0.287397, 0.201946 )
-texture = ExtResource( 21 )
+[node name="AnimatedSprite" parent="npcs/PotionSeller/StaticBody2D" index="0"]
+frame = 3
 
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D/Area2D" index="0"]
 position = Vector2( -86.7745, -9.30897 )
@@ -359,6 +359,11 @@ scale = Vector2( 1.41575, 1 )
 
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D" index="2"]
 visible = false
+
+[node name="speech_bubble" type="Sprite" parent="npcs/PotionSeller"]
+position = Vector2( 3.85801, -27.3404 )
+scale = Vector2( 0.446082, 0.376802 )
+texture = ExtResource( 21 )
 
 [node name="PopupDialog" parent="npcs/PotionSeller" instance=ExtResource( 15 )]
 editor/display_folded = true
@@ -394,15 +399,22 @@ modulate = Color( 0.863281, 0.863281, 0.863281, 1 )
 position = Vector2( 780, 111 )
 script = ExtResource( 23 )
 
+[node name="StaticBody2D" parent="npcs/PirateMan" index="0"]
+editor/display_folded = true
+
+[node name="AnimatedSprite" parent="npcs/PirateMan/StaticBody2D" index="0"]
+frame = 3
+
 [node name="CollisionShape2D" parent="npcs/PirateMan/StaticBody2D" index="2"]
 visible = false
 
 [node name="speech_bubble" type="Sprite" parent="npcs/PirateMan"]
-position = Vector2( 20.3269, -30.5143 )
-scale = Vector2( 0.287397, 0.201946 )
+position = Vector2( 5.84814, -27.6435 )
+scale = Vector2( 0.446082, 0.376802 )
 texture = ExtResource( 21 )
 
 [node name="PopupDialog" parent="npcs/PirateMan" instance=ExtResource( 15 )]
+editor/display_folded = true
 
 [node name="PanelContainer" parent="npcs/PirateMan/PopupDialog/PopupDialog" index="0"]
 margin_left = 0.0
@@ -438,6 +450,7 @@ scale = Vector2( 1.30338, 1.2314 )
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 24 )]
+editor/display_folded = true
 modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
 position = Vector2( -504.972, 168.358 )
 script = SubResource( 2 )
@@ -454,12 +467,6 @@ editor/display_folded = true
 
 [node name="VBoxContainer" parent="Player/Interface/Control/PauseMenu/PanelContainer/MarginContainer" index="0"]
 editor/display_folded = true
-
-[node name="MuteMusic" parent="Player/Interface/Control/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" index="3"]
-focus_mode = 0
-
-[node name="MuteSound" parent="Player/Interface/Control/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" index="4"]
-focus_mode = 0
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
 visible = false
@@ -487,10 +494,10 @@ shape = SubResource( 3 )
 [connection signal="body_entered" from="npcs/Mother/StaticBody2D/Area2D" to="npcs/Mother" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="npcs/Mother/StaticBody2D/Area2D" to="npcs/Mother" method="_on_Area2D_body_exited"]
 [connection signal="pressed" from="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/Mother" method="_on_NextButton_pressed"]
-[connection signal="pressed" from="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/LanternMan" method="_on_NextButton_pressed"]
 [connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_exited"]
+[connection signal="pressed" from="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/LanternMan" method="_on_NextButton_pressed"]
 [connection signal="body_entered" from="npcs/PotionSeller/StaticBody2D/Area2D" to="npcs/PotionSeller" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="npcs/PotionSeller/StaticBody2D/Area2D" to="npcs/PotionSeller" method="_on_Area2D_body_exited"]
 [connection signal="pressed" from="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/PotionSeller" method="_on_NextButton_pressed"]
