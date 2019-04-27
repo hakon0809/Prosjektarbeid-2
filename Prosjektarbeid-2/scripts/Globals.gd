@@ -31,7 +31,7 @@ func _ready():
 	# If game is deployed on android, sets ut singleton that handles permissions
 	if Engine.has_singleton("AndroidPermissions"):
 		permissions = Engine.get_singleton("AndroidPermissions")
-		permissions.init(get_instance_id(), true)
+		permissions.init(get_instance_id(), false)
 		
 
 # Callback from permission prompt
