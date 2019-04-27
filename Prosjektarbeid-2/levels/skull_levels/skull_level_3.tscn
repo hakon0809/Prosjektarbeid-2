@@ -50,7 +50,7 @@ position = Vector2( 638.232, 147.37 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Skull/KinematicBody2D" index="0"]
-frame = 1
+frame = 8
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -63,7 +63,8 @@ shape = SubResource( 1 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 editor/display_folded = false
 offset = Vector2( 0, 70 )
-transform = Transform2D( 1, 0, 0, 1, 0, 70 )
+scale = Vector2( 1.1, 1.1 )
+transform = Transform2D( 1.1, 0, 0, 1.1, 0, 70 )
 scroll_base_offset = Vector2( 0, -150 )
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
