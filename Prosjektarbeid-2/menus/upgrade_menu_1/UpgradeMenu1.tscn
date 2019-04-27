@@ -7,7 +7,7 @@
 [ext_resource path="res://menus/upgrade_menu_1/Scene1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menus/upgrade_menu_1/Scene2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://menus/upgrade_menu_1/Scene3.tscn" type="PackedScene" id=7]
-[ext_resource path="res://menus/upgrade_menu_1/Scene4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/flowchart_menus/BG_white_grey-border.tres" type="StyleBox" id=8]
 [ext_resource path="res://menus/upgrade_menu_1/Scene5.tscn" type="PackedScene" id=9]
 [ext_resource path="res://menus/upgrade_menu_1/Popup.tscn" type="PackedScene" id=10]
 [ext_resource path="res://menus/upgrade_menu_1/Popup2.tscn" type="PackedScene" id=11]
@@ -90,7 +90,6 @@ margin_bottom = 59.0
 margin_top = 178.0
 margin_right = 444.0
 margin_bottom = 206.0
-text = "Get started"
 
 [node name="Scene2" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" instance=ExtResource( 6 )]
 editor/display_folded = true
@@ -111,7 +110,6 @@ margin_right = 444.0
 margin_bottom = 206.0
 
 [node name="Scene3" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" instance=ExtResource( 7 )]
-editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
@@ -123,45 +121,28 @@ margin_bottom = 216.0
 margin_right = 444.0
 margin_bottom = 90.0
 
-[node name="Scene3Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="1"]
-margin_top = 114.0
-margin_right = 444.0
-margin_bottom = 142.0
-text = "Agreed"
-
-[node name="Scene3Back" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3"]
-margin_top = 146.0
+[node name="Scene3Manage" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="1"]
+margin_top = 145.0
 margin_right = 444.0
 margin_bottom = 174.0
-text = "Back"
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 8 )
+custom_colors/font_color_disabled = Color( 0.545098, 0.545098, 0.545098, 1 )
+custom_colors/font_color = Color( 0.545098, 0.545098, 0.545098, 1 )
+custom_colors/font_color_hover = Color( 0.545098, 0.545098, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 0.545098, 0.545098, 0.545098, 1 )
+text = "MANAGE"
 
-[node name="Scene3Manage" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3"]
+[node name="Scene3Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3" index="2"]
 margin_top = 178.0
 margin_right = 444.0
 margin_bottom = 206.0
-text = "Manage"
-
-[node name="Scene4" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" instance=ExtResource( 8 )]
-editor/display_folded = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 454.0
-margin_bottom = 216.0
-
-[node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4" index="0"]
-margin_right = 444.0
-margin_bottom = 59.0
-
-[node name="Scene4Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4" index="1"]
-margin_top = 178.0
-margin_right = 444.0
-margin_bottom = 206.0
-text = "\"They agree\""
+text = "AGREED"
 
 [node name="Scene5" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" instance=ExtResource( 9 )]
-editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
@@ -172,11 +153,13 @@ margin_bottom = 216.0
 [node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5" index="0"]
 margin_right = 444.0
 margin_bottom = 28.0
+text = "You are all set."
 
 [node name="Button" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5" index="1"]
 margin_top = 178.0
 margin_right = 444.0
 margin_bottom = 206.0
+text = "BACK TO GAME"
 
 [node name="Popup1" parent="MarginContainer/PanelContainer" instance=ExtResource( 10 )]
 editor/display_folded = true
@@ -200,16 +183,14 @@ margin_bottom = 266.0
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button" to="." method="_on_Scene1Button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2/Scene2Button" to="." method="_on_Scene2Button_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3/Scene3Back" to="." method="_on_Scene3Back_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3/Scene3Manage" to="." method="_on_Scene3Manage_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4/Scene4Button" to="." method="_on_Scene4Button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3/Scene3Button" to="." method="_on_Scene3Button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5/Button" to="." method="_on_Button_pressed"]
 
 [editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1"]
 
 [editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2"]
 
 [editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3"]
-
-[editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4"]
 
 [editable path="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5"]

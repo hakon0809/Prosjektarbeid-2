@@ -55,14 +55,14 @@ custom_styles/normal = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0.546875, 0.546875, 0.546875, 1 )
 custom_colors/font_color = Color( 0.546875, 0.546875, 0.546875, 1 )
 custom_colors/font_color_hover = Color( 0.546875, 0.546875, 0.546875, 1 )
-text = "Yes"
+text = "YES"
 
 [node name="BackButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 233.0
 margin_right = 463.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
-text = "No"
+text = "NO"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
