@@ -1,6 +1,17 @@
 extends PanelContainer
 
-#class_name Questionnaire
+class_name Questionnaire
+
+#To make a questionnaire, create another scene that extends Questionnaire.
+#That scene needs var questions, which is a list of dictionaries,
+#where each dictionary defines a question.
+#Under "type", put the question's type, i.e. line or radio.
+#Under "question", put the question text.
+#For radios, under "radios", put the labels of the radio buttons,
+#either by an integer (which then generates radio buttons for 1, ..., n,
+#or a list of strings, which are then used for the labels.
+
+
 
 enum {LINE, RADIO, SUBMIT}
 
@@ -9,6 +20,7 @@ var qnodes = [] #For easy enumerated access to question nodes
 func gen_path(s):
 	var rel = "res://menus/questionnaire/"
 	return load(rel + s + ".tscn")
+
 var question_path = {
 	LINE: 	gen_path("LineField"),
 	RADIO:	gen_path("RadioField"),

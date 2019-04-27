@@ -1,5 +1,4 @@
-#extends Questionnaire
-extends "res://menus/questionnaire/Questionnaire.gd"
+extends Questionnaire
 
 var questions = [
 {	"type": LINE,
