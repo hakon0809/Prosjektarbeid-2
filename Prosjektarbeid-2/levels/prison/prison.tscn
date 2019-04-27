@@ -156,7 +156,6 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
-editor/display_folded = true
 modulate = Color( 0.460938, 0.459137, 0.459137, 1 )
 position = Vector2( 56.1799, 134.471 )
 
@@ -167,7 +166,9 @@ layer = 0
 frame = 2
 
 [node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
+limit_top = -200
 limit_right = 1600
+limit_bottom = 250
 
 [node name="NextLevel" type="Area2D" parent="."]
 editor/display_folded = true
@@ -214,32 +215,6 @@ autostart = true
 
 [node name="PopupDialog" parent="IntroText" instance=ExtResource( 17 )]
 
-[node name="PanelContainer" parent="IntroText/PopupDialog/PopupDialog" index="0"]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 290.0
-margin_bottom = 86.0
-
-[node name="MarginContainer" parent="IntroText/PopupDialog/PopupDialog/PanelContainer" index="0"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 289.0
-margin_bottom = 85.0
-
-[node name="HBoxContainer" parent="IntroText/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
-margin_right = 283.0
-margin_bottom = 79.0
-
-[node name="RichTextLabel" parent="IntroText/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
-margin_right = 255.0
-margin_bottom = 74.0
-
-[node name="NextButton" parent="IntroText/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
-margin_left = 259.0
-margin_top = 60.0
-margin_right = 278.0
-margin_bottom = 74.0
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="soldier" parent="Enemies" instance=ExtResource( 18 )]
@@ -253,13 +228,13 @@ position = Vector2( 1116.77, 146.46 )
 scale = Vector2( 0.5, 0.5 )
 
 [connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_NextLevel_body_entered"]
-[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion" method="_on_ExplosionStart_timeout"]
-[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion3" method="_on_ExplosionStart_timeout"]
 [connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion2" method="_on_ExplosionStart_timeout"]
-[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion" method="_on_ExplosionEnd_timeout"]
-[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion3" method="_on_ExplosionEnd_timeout"]
-[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion2" method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion3" method="_on_ExplosionStart_timeout"]
+[connection signal="timeout" from="Effects/ExplosionStart" to="Effects/explotion" method="_on_ExplosionStart_timeout"]
 [connection signal="timeout" from="Effects/ExplosionEnd" to="." method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion2" method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion3" method="_on_ExplosionEnd_timeout"]
+[connection signal="timeout" from="Effects/ExplosionEnd" to="Effects/explotion" method="_on_ExplosionEnd_timeout"]
 [connection signal="pressed" from="IntroText/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="Player"]
