@@ -50,6 +50,9 @@ Music: « The Duel » from Bensound.com
 Music: « Love » from Bensound.com
 Music: « Ofelia’s Dream » from Bensound.com
 
+Background: « Parallax Forest » from Ansimuz (cc4)
+Background: « Magic Cliffs Environment » from Ansimuz (cc0)
+
  [/center] "
 text = "  
 Music: « Better Days » from Bensound.com
@@ -70,6 +73,8 @@ Music: « The Duel » from Bensound.com
 Music: « Love » from Bensound.com
 Music: « Ofelia’s Dream » from Bensound.com
 
+Background: « Parallax Forest » from Ansimuz (cc4)
+Background: « Magic Cliffs Environment » from Ansimuz (cc0)
   "
 
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Button_pressed"]
