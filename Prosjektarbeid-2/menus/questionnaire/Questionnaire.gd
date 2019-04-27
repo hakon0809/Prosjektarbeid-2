@@ -16,15 +16,17 @@ class_name Questionnaire
 enum {LINE, RADIO, SUBMIT}
 
 var qnodes = [] #For easy enumerated access to question nodes
-
 func gen_path(s):
-	var rel = "res://menus/questionnaire/"
+	var rel = "res://menus/questionnaire/question_fields/"
 	return load(rel + s + ".tscn")
 
 var question_path = {
-	LINE: 	gen_path("LineField"),
-	RADIO:	gen_path("RadioField"),
-	SUBMIT:	gen_path("SubmitButton")
+	LINE:
+		gen_path("LineField"),
+	RADIO:
+		gen_path("RadioField"),
+	SUBMIT:
+		gen_path("SubmitButton")
 }
 
 func generate_question(question):
