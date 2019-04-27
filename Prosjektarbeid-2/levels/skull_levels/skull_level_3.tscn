@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/skull_levels/skull_level_3.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://entities/eye creature/skull/Skull.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/skull_levels/Area2D.gd" type="Script" id=5]
 [ext_resource path="res://levels/skull_levels/midnight parallax/MidnightParallax.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.96997, 39.5838 )
@@ -33,14 +34,22 @@ format = 1
 tile_data = PoolIntArray( -982989, 0, 0, -982988, 1, 0, -982987, 1, 0, -982986, 1, 0, -982985, 1, 0, -982984, 1, 0, -982983, 1, 0, -982982, 1, 0, -982981, 1, 0, -982980, 1, 0, -982979, 1, 0, -982978, 1, 0, -982977, 1, 0, -982976, 1, 0, -982975, 1, 0, -982974, 2, 0, -589757, 0, 0, -589756, 1, 0, -589755, 1, 0, -589754, 1, 0, -589753, 1, 0, -589752, 1, 0, -589751, 1, 0, -589750, 1, 0, -589749, 1, 0, -589748, 1, 0, -589747, 1, 0, -589746, 1, 0, -589745, 1, 0, -589744, 1, 0, -589743, 3, 0, -458704, 0, 0, -458703, 1, 0, -458702, 2, 0, 196654, 0, 0, 196655, 1, 0, 720939, 0, 0, 720940, 1, 0, 720941, 2, 0, 1114136, 5, 0, 1114137, 6, 0, 1114138, 7, 0, 1245206, 5, 0, 1245207, 7, 0, 1376283, 5, 0, 1376284, 6, 0, 1376285, 6, 0, 1376286, 6, 0, 1376287, 6, 0, 1376288, 6, 0, 1376289, 6, 0, 1376290, 6, 0, 1376291, 6, 0, 1376292, 7, 0, 1376293, 5, 0, 1376294, 6, 0, 1376295, 6, 0, 1376296, 6, 0, 1376297, 6, 0, 1376298, 6, 0, 1638420, 5, 0, 1638421, 7, 0, 1769472, 0, 0, 1769473, 1, 0, 1769474, 2, 0, 1900547, 0, 0, 1900548, 1, 0, 1900549, 2, 0, 2031622, 0, 0, 2031623, 1, 0, 2031624, 1, 0, 2031625, 1, 0, 2031626, 1, 0, 2031627, 1, 0, 2031628, 1, 0, 2031629, 2, 0, 2031630, 1, 0, 2031631, 1, 0, 2031632, 1, 0, 2031633, 1, 0, 2031634, 1, 0, 2031635, 2, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 modulate = Color( 0.654902, 0.654902, 0.654902, 1 )
 position = Vector2( 19, 197 )
+
+[node name="Interface" parent="Player" index="0"]
+editor/display_folded = false
+
+[node name="Control" parent="Player/Interface" index="0"]
+visible = false
+
+[node name="KinematicBody2D" parent="Player" index="1"]
+editor/display_folded = true
 
 [node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
 limit_left = 0
 limit_right = 1312
-limit_bottom = 304
+limit_bottom = 280
 
 [node name="Skull" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
@@ -50,7 +59,7 @@ position = Vector2( 638.232, 147.37 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Skull/KinematicBody2D" index="0"]
-frame = 1
+frame = 9
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -63,7 +72,8 @@ shape = SubResource( 1 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 editor/display_folded = false
 offset = Vector2( 0, 70 )
-transform = Transform2D( 1, 0, 0, 1, 0, 70 )
+scale = Vector2( 1.1, 1.1 )
+transform = Transform2D( 1.1, 0, 0, 1.1, 0, 70 )
 scroll_base_offset = Vector2( 0, -150 )
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
@@ -73,10 +83,17 @@ motion_offset = Vector2( 0, -220 )
 [node name="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 offset = Vector2( 0, -110 )
 
+[node name="PopupDialog" parent="." instance=ExtResource( 7 )]
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="Player"]
+
+[editable path="Player/Interface"]
 
 [editable path="Skull"]
 
 [editable path="ParallaxBackground"]
+
+[editable path="PopupDialog"]

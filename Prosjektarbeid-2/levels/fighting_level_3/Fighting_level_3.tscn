@@ -28,6 +28,7 @@ scroll_limit_end = Vector2( 0, 364 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -300, 30 )
 motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 598, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2( 2.2, 2.2 )
