@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/skull_levels/skull_level_3.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 41.768, 167.37 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 2.96997, 39.5838 )
 
 [node name="Skull_level_3" type="Node"]
@@ -52,22 +55,28 @@ limit_right = 1312
 limit_bottom = 280
 
 [node name="Skull" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 638.232, 147.37 )
 
 [node name="KinematicBody2D" parent="Skull" index="0"]
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Skull/KinematicBody2D" index="0"]
-frame = 9
+frame = 7
 flip_h = true
+
+[node name="Area2D" parent="Skull" index="1"]
+editor/display_folded = false
+visible = true
+
+[node name="CollisionShape2D2" parent="Skull/Area2D" index="0"]
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1310.09, -106.441 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 editor/display_folded = false
