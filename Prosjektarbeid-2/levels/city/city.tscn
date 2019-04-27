@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://levels/city/assets/village04-512-x-256_010.png" type="Texture" id=1]
 [ext_resource path="res://levels/city/assets/village04-512-x-256_007.png" type="Texture" id=2]
@@ -23,32 +23,11 @@
 [ext_resource path="res://levels/common/assets/press_b.png" type="Texture" id=21]
 [ext_resource path="res://entities/npc/PirateMan.tscn" type="PackedScene" id=22]
 [ext_resource path="res://entities/npc/PirateMan.gd" type="Script" id=23]
-[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=24]
-[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=25]
+[ext_resource path="res://levels/city/Area2D.gd" type="Script" id=24]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 76.251, 37.1252 )
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Node2D
-
-var dialogueSource = null
-
-func _ready():
-	pass
-
-func _process(delta):
-	if dialogueSource != null:
-		pass
-		
-func setDialogueSource(source):
-	dialogueSource = source
-	
-func getDiDialogueSource():
-	return dialogueSource
-
-
-"
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 118.188 )
@@ -240,13 +219,14 @@ format = 1
 tile_data = PoolIntArray( 524324, 5, 0, 589862, 1, 0, 589863, 2, 0, 655398, 8, 0, 655399, 7, 0, 655406, 1, 0, 655407, 2, 0, 655417, 8, 0, 720937, 1, 0, 720938, 2, 0, 720942, 8, 0, 720943, 7, 0, 720948, 1, 0, 720949, 2, 0, 786468, 7, 0, 786473, 8, 0, 786474, 7, 0, 786484, 8, 0, 786485, 7, 0 )
 
 [node name="npcs" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Father" parent="npcs" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 1182, 142 )
 
 [node name="AnimatedSprite" parent="npcs/Father/StaticBody2D" index="0"]
-frame = 3
+frame = 0
 
 [node name="Area2D" parent="npcs/Father/StaticBody2D" index="1"]
 visible = false
@@ -259,6 +239,9 @@ editor/display_folded = true
 position = Vector2( 1151.73, 142 )
 script = ExtResource( 14 )
 
+[node name="AnimatedSprite" parent="npcs/Mother/StaticBody2D" index="0"]
+frame = 3
+
 [node name="CollisionShape2D" parent="npcs/Mother/StaticBody2D/Area2D" index="0"]
 position = Vector2( -86.1071, -8.99342 )
 scale = Vector2( 1.31923, 1 )
@@ -266,37 +249,14 @@ scale = Vector2( 1.31923, 1 )
 [node name="PopupDialog" parent="npcs/Mother" instance=ExtResource( 15 )]
 editor/display_folded = true
 
-[node name="PanelContainer" parent="npcs/Mother/PopupDialog/PopupDialog" index="0"]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 290.0
-margin_bottom = 86.0
-
-[node name="MarginContainer" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer" index="0"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 289.0
-margin_bottom = 85.0
-
-[node name="HBoxContainer" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
-margin_right = 283.0
-margin_bottom = 79.0
-
-[node name="RichTextLabel" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
-margin_right = 255.0
-margin_bottom = 74.0
-
-[node name="NextButton" parent="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
-margin_left = 259.0
-margin_top = 60.0
-margin_right = 278.0
-margin_bottom = 74.0
-
 [node name="LanternMan" parent="npcs" instance=ExtResource( 16 )]
 editor/display_folded = true
 modulate = Color( 0.804688, 0.804688, 0.804688, 1 )
 position = Vector2( -57, 171 )
 script = ExtResource( 17 )
+
+[node name="AnimatedSprite" parent="npcs/LanternMan/StaticBody2D" index="0"]
+frame = 5
 
 [node name="CollisionShape2D" parent="npcs/LanternMan/StaticBody2D/Area2D" index="0"]
 position = Vector2( -120.861, -9.68291 )
@@ -304,39 +264,13 @@ position = Vector2( -120.861, -9.68291 )
 [node name="PopupDialog" parent="npcs/LanternMan" instance=ExtResource( 15 )]
 editor/display_folded = true
 
-[node name="PanelContainer" parent="npcs/LanternMan/PopupDialog/PopupDialog" index="0"]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 290.0
-margin_bottom = 86.0
-
-[node name="MarginContainer" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer" index="0"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 289.0
-margin_bottom = 85.0
-
-[node name="HBoxContainer" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
-margin_right = 283.0
-margin_bottom = 79.0
-
-[node name="RichTextLabel" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
-margin_right = 255.0
-margin_bottom = 74.0
-
-[node name="NextButton" parent="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
-margin_left = 259.0
-margin_top = 60.0
-margin_right = 278.0
-margin_bottom = 74.0
-
 [node name="Guard" parent="npcs" instance=ExtResource( 18 )]
 editor/display_folded = true
 modulate = Color( 0.84375, 0.830566, 0.830566, 1 )
 position = Vector2( -16, 175 )
 
 [node name="AnimatedSprite" parent="npcs/Guard/StaticBody2D" index="0"]
-frame = 1
+frame = 2
 
 [node name="Area2D" parent="npcs/Guard/StaticBody2D" index="1"]
 visible = false
@@ -351,7 +285,7 @@ position = Vector2( 560, 175 )
 script = ExtResource( 20 )
 
 [node name="AnimatedSprite" parent="npcs/PotionSeller/StaticBody2D" index="0"]
-frame = 3
+frame = 0
 
 [node name="CollisionShape2D" parent="npcs/PotionSeller/StaticBody2D/Area2D" index="0"]
 position = Vector2( -86.7745, -9.30897 )
@@ -368,33 +302,8 @@ texture = ExtResource( 21 )
 [node name="PopupDialog" parent="npcs/PotionSeller" instance=ExtResource( 15 )]
 editor/display_folded = true
 
-[node name="PanelContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog" index="0"]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 290.0
-margin_bottom = 86.0
-
-[node name="MarginContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer" index="0"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 289.0
-margin_bottom = 85.0
-
-[node name="HBoxContainer" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
-margin_right = 283.0
-margin_bottom = 79.0
-
-[node name="RichTextLabel" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
-margin_right = 255.0
-margin_bottom = 74.0
-
-[node name="NextButton" parent="npcs/PotionSeller/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
-margin_left = 259.0
-margin_top = 60.0
-margin_right = 278.0
-margin_bottom = 74.0
-
 [node name="PirateMan" parent="npcs" instance=ExtResource( 22 )]
+editor/display_folded = true
 modulate = Color( 0.863281, 0.863281, 0.863281, 1 )
 position = Vector2( 780, 111 )
 script = ExtResource( 23 )
@@ -403,7 +312,7 @@ script = ExtResource( 23 )
 editor/display_folded = true
 
 [node name="AnimatedSprite" parent="npcs/PirateMan/StaticBody2D" index="0"]
-frame = 3
+frame = 0
 
 [node name="CollisionShape2D" parent="npcs/PirateMan/StaticBody2D" index="2"]
 visible = false
@@ -416,32 +325,6 @@ texture = ExtResource( 21 )
 [node name="PopupDialog" parent="npcs/PirateMan" instance=ExtResource( 15 )]
 editor/display_folded = true
 
-[node name="PanelContainer" parent="npcs/PirateMan/PopupDialog/PopupDialog" index="0"]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 290.0
-margin_bottom = 86.0
-
-[node name="MarginContainer" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer" index="0"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 289.0
-margin_bottom = 85.0
-
-[node name="HBoxContainer" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
-margin_right = 283.0
-margin_bottom = 79.0
-
-[node name="RichTextLabel" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
-margin_right = 255.0
-margin_bottom = 74.0
-
-[node name="NextButton" parent="npcs/PirateMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
-margin_left = 259.0
-margin_top = 60.0
-margin_right = 278.0
-margin_bottom = 74.0
-
 [node name="Area2D" type="Area2D" parent="npcs/PirateMan"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcs/PirateMan/Area2D"]
@@ -449,40 +332,9 @@ position = Vector2( -94.0431, -20.2849 )
 scale = Vector2( 1.30338, 1.2314 )
 shape = SubResource( 1 )
 
-[node name="Player" parent="." instance=ExtResource( 24 )]
-editor/display_folded = true
-modulate = Color( 0.726563, 0.726563, 0.726563, 1 )
-position = Vector2( -504.972, 168.358 )
-script = SubResource( 2 )
-
-[node name="Interface" parent="Player" index="0"]
-editor/display_folded = false
-layer = 0
-
-[node name="HUD" parent="Player/Interface/Control" index="0"]
-editor/display_folded = false
-
-[node name="PauseMenu" parent="Player/Interface/Control" index="2"]
-editor/display_folded = true
-
-[node name="VBoxContainer" parent="Player/Interface/Control/PauseMenu/PanelContainer/MarginContainer" index="0"]
-editor/display_folded = true
-
-[node name="CollisionShape2D" parent="Player/KinematicBody2D" index="1"]
-visible = false
-
-[node name="Area2D" parent="Player/KinematicBody2D" index="3"]
-visible = false
-
-[node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
-limit_left = -560
-limit_top = -135
-limit_right = 1536
-limit_bottom = 270
-
 [node name="NextLevelArea" type="Area2D" parent="."]
 position = Vector2( 1568, 96 )
-script = ExtResource( 25 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -491,12 +343,20 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelArea"]
 shape = SubResource( 3 )
 
+[node name="Player" parent="." instance=ExtResource( 25 )]
+
+[node name="KinematicBody2D" parent="Player" index="1"]
+modulate = Color( 0.8, 0.8, 0.8, 1 )
+position = Vector2( -513.003, 168.151 )
+
+[node name="Camera2D" parent="Player/KinematicBody2D" index="4"]
+limit_left = -560
+limit_bottom = 270
+
 [connection signal="body_entered" from="npcs/Mother/StaticBody2D/Area2D" to="npcs/Mother" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="npcs/Mother/StaticBody2D/Area2D" to="npcs/Mother" method="_on_Area2D_body_exited"]
 [connection signal="pressed" from="npcs/Mother/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/Mother" method="_on_NextButton_pressed"]
 [connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="npcs/LanternMan" method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="npcs/LanternMan/StaticBody2D/Area2D" to="Player" method="_on_Area2D_body_exited"]
 [connection signal="pressed" from="npcs/LanternMan/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="npcs/LanternMan" method="_on_NextButton_pressed"]
 [connection signal="body_entered" from="npcs/PotionSeller/StaticBody2D/Area2D" to="npcs/PotionSeller" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="npcs/PotionSeller/StaticBody2D/Area2D" to="npcs/PotionSeller" method="_on_Area2D_body_exited"]
