@@ -22,9 +22,12 @@ var player_id = null
 #Variable that holds a reference to a permission handler singleton
 var permissions = null
 
-onready var upgrade_menu = get_tree().get_root().get_node("Node")
+#onready var upgrade_menu = get_tree().get_root().get_node("Node")
+var upgrade_menu
 
 func _ready():
+	#print("upgradae menu:")
+	#print(upgrade_menu)
 	self.add_child(music_player)
 	
 	# If game is deployed on android, sets ut singleton that handles permissions

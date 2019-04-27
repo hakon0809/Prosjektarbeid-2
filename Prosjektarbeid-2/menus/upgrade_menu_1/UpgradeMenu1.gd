@@ -21,6 +21,7 @@ func save_changes():
 	self.queue_free()
 
 func _ready():
+	Globals.upgrade_menu = self
 	popup1.hide()
 	popup2.hide()
 	popup3.hide()

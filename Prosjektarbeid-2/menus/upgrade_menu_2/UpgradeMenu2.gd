@@ -18,6 +18,7 @@ var activity = ""
 var skull
 
 func _ready():
+	Globals.upgrade_menu = self
 	popup.hide()
 	scene_2.hide()
 	scene_3.hide()

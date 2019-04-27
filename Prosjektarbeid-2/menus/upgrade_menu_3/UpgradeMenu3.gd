@@ -17,6 +17,7 @@ var skull
 #onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
 
 func _ready():
+	Globals.upgrade_menu = self
 	popup.hide()
 	scene2.hide()
 	scene3.hide()
