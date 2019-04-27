@@ -117,16 +117,12 @@ func send_email():
 	mailstring += "BART score: " + str(bart_score) + "\n"
 	mailstring += "BART aggregate: " + str(bart_aggregate) + "\n\n"
 	
-	for i in range(1, len(upgrades.values()) + 1):
-		mailstring += "Upgrade " + str(i) + ":\n"
-		for choice in upgrades[i]:
-			mailstring += " | " + str(choice) + " |" + "%0A"
-		mailstring += "\n"
-	mailstring += "\n"
+	mailstring = format_upgrades(mailstring)
 	
 	mailstring += "Upgrade activities:\n"
 	for activity in upgrade_activity:
-		mailstring += " | " + activity + " |" + "%0A"
+		mailstring += activity + "%0A"
+		mailstring += "\n"
 	mailstring += "\n"
 	
 	mailstring += "Post questionnaire:\n"
@@ -141,3 +137,19 @@ func format_data(level):
 	for data in level:
 		datastring += data+" | "
 	return datastring
+	
+func format_upgrades(mailstring):
+	mailstring += "Health upgrade:\n"
+	mailstring += "Read phone state (required for upgrade): " + str(upgrades[1][0]) + "\n"
+	mailstring += "Read calendar data: " + str(upgrades[1][1]) + "\n\n"
+	
+	mailstring += "Sword upgrade:\n"
+	mailstring += "Read contacts (required for upgrade): " + str(upgrades[2][0]) + "\n"
+	mailstring += "Read call log: " + str(upgrades[2][1]) + "\n"
+	mailstring += "Read SMS: " + str(upgrades[2][2]) + "\n\n"
+	
+	mailstring += "Sword upgrade:\n"
+	mailstring += "Location (required for upgrade): " + str(upgrades[3][0]) + "\n"
+	mailstring += "Camera: " + str(upgrades[3][1]) + "\n"
+	mailstring += "Record audio: " + str(upgrades[3][2]) + "\n\n"
+	return mailstring
