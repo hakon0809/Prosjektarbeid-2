@@ -35,26 +35,28 @@ custom_constants/separation = 23
 alignment = 1
 
 [node name="fun" type="Button" parent="VSplitContainer/VBoxContainer"]
-margin_top = 22.0
+margin_top = 13.0
 margin_right = 464.0
-margin_bottom = 60.0
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 3 )
+action_mode = 0
 text = "Playing for fun"
 flat = true
 
 [node name="data" type="Button" parent="VSplitContainer/VBoxContainer"]
-margin_top = 83.0
+margin_top = 74.0
 margin_right = 464.0
-margin_bottom = 121.0
+margin_bottom = 112.0
 custom_fonts/font = ExtResource( 3 )
+action_mode = 0
 text = "Willing to share data"
 flat = true
 
 [node name="Back" type="Button" parent="VSplitContainer/VBoxContainer"]
-margin_left = 200.0
-margin_top = 144.0
-margin_right = 263.0
-margin_bottom = 164.0
+margin_left = 157.0
+margin_top = 135.0
+margin_right = 306.0
+margin_bottom = 173.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 3 )
