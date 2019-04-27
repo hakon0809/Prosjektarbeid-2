@@ -61,12 +61,8 @@ position = Vector2( 638.232, 147.37 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Skull/KinematicBody2D" index="0"]
-frame = 7
+frame = 12
 flip_h = true
-
-[node name="Area2D" parent="Skull" index="1"]
-editor/display_folded = false
-visible = true
 
 [node name="CollisionShape2D2" parent="Skull/Area2D" index="0"]
 shape = SubResource( 1 )
