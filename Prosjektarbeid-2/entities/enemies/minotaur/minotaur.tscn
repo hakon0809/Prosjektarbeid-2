@@ -194,7 +194,7 @@ shape = SubResource( 11 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D/overhead"]
 position = Vector2( 5.92921, -0.307443 )
-polygon = PoolVector2Array( 20.5819, 20.3533, 32.572, -3.49533, 32.3085, -28.398, 21.2407, -39.5977, 11.0951, -42.7599, -14.5981, -41.1788, -43.1901, -24.7087, -8.27365, -34.7225, 7.40583, -31.0332, 13.8621, -22.3371, 2.39895, 16.5322, 8.8552, 21.6709 )
+polygon = PoolVector2Array( 20.5819, 20.3533, 31.6584, -8.00738, 27.7045, -27.8897, 19.2319, -35.7975, 7.25981, -36.9624, -3.36166, -36.1364, -7.76741, -29.1324, 1.38299, -29.8102, 7.40583, -31.0332, 13.8621, -22.3371, 2.39895, 16.5322, 8.8552, 21.6709 )
 
 [node name="stab" type="Area2D" parent="KinematicBody2D"]
 visible = false
@@ -216,10 +216,7 @@ scale = Vector2( 0.937584, 1 )
 shape = SubResource( 12 )
 disabled = true
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-
 [connection signal="animation_finished" from="KinematicBody2D/Sprite/AnimationPlayer" to="KinematicBody2D" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="KinematicBody2D/overhead" to="KinematicBody2D" method="_on_overhead_body_entered"]
 [connection signal="body_entered" from="KinematicBody2D/circle_sweep" to="KinematicBody2D" method="_on_circle_sweep_body_entered"]
 [connection signal="body_entered" from="KinematicBody2D/touch" to="KinematicBody2D" method="_on_touch_body_entered"]
-[connection signal="screen_entered" from="VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_screen_entered"]

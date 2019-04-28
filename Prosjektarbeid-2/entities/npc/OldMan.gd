@@ -50,7 +50,7 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("character"):
 		if not status[0]:
 			currentDialogArray = dialogArrayHappy
-		elif status[1] or status[2]:
+		elif status[1]:
 			currentDialogArray = dialogArrayPissed
 			Globals.health_penalty += 4
 		else:

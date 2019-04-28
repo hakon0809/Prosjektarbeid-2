@@ -10,10 +10,14 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 40.0
 margin_top = 30.0
-margin_right = 504.0
-margin_bottom = 276.0
+margin_right = -40.0
+margin_bottom = -30.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="VSplitContainer"]
 margin_right = 464.0
@@ -31,20 +35,33 @@ custom_constants/separation = 23
 alignment = 1
 
 [node name="fun" type="Button" parent="VSplitContainer/VBoxContainer"]
-margin_top = 43.0
+margin_top = 13.0
 margin_right = 464.0
-margin_bottom = 81.0
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 3 )
+action_mode = 0
 text = "Playing for fun"
 flat = true
 
 [node name="data" type="Button" parent="VSplitContainer/VBoxContainer"]
-margin_top = 104.0
+margin_top = 74.0
 margin_right = 464.0
-margin_bottom = 142.0
+margin_bottom = 112.0
 custom_fonts/font = ExtResource( 3 )
+action_mode = 0
 text = "Willing to share data"
 flat = true
 
+[node name="Back" type="Button" parent="VSplitContainer/VBoxContainer"]
+margin_left = 157.0
+margin_top = 135.0
+margin_right = 306.0
+margin_bottom = 173.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Go back"
+
 [connection signal="pressed" from="VSplitContainer/VBoxContainer/fun" to="." method="_on_fun_pressed"]
 [connection signal="pressed" from="VSplitContainer/VBoxContainer/data" to="." method="_on_data_pressed"]
+[connection signal="pressed" from="VSplitContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

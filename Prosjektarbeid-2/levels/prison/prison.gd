@@ -21,8 +21,8 @@ func _ready():
 	interface = $Player/Interface/Control
 	
 	dialog.hide()
-	interface.hide()
 	button.text = "Next"
+	interface.hide()
 
 func _on_ExplosionEnd_timeout():
 	dialog.show()
