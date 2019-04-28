@@ -14,8 +14,8 @@ alignment = 1
 script = ExtResource( 1 )
 
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
-margin_left = 25.0
-margin_right = 560.0
+margin_left = 4.0
+margin_right = 539.0
 margin_bottom = 280.0
 
 [node name="Label" type="Label" parent="VSplitContainer"]
@@ -41,10 +41,14 @@ for the upgrades you wanted."
 script = ExtResource( 4 )
 
 [node name="Ok" type="Button" parent="VSplitContainer/VBoxContainer"]
-margin_top = 114.0
-margin_right = 535.0
-margin_bottom = 220.0
+margin_left = 217.0
+margin_top = 147.0
+margin_right = 317.0
+margin_bottom = 187.0
+rect_min_size = Vector2( 100, 40 )
 focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "ok"
