@@ -276,10 +276,8 @@ func change_state(new_state):
 			play_sound(attack_sound, -10)
 			if $Sprite.get_frame() == attack_frame:
 				var bodies = $Area2D.get_overlapping_bodies()
-				##print(bodies)
 				for body in bodies:
 					if body.is_in_group("Enemy"):
-						print(body)
 						body.hitstun = 10
 						body.knockdir = global_transform.origin - body.global_transform.origin
 						body.take_damage(damage)

@@ -59,10 +59,8 @@ func _on_Area2D_body_entered(body):
 
 		dialog.show()
 		interface.hide()
-		print(dialogIndex)
 		if dialogIndex == 0:
 			dialog_text.set_text(currentDialogArray[dialogIndex])
-			print("hey")
 	
 
 

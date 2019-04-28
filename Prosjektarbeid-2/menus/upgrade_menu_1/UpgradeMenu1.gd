@@ -50,7 +50,6 @@ func _on_ExitButton_pressed():
 func _on_Scene1Button_pressed():
 	scene_1.hide()
 	scene_2.show()
-	print("skrivesButton1")
 	
 #SCENE2____________________________________________________________________
 func _on_Scene2Button_pressed():

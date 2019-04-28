@@ -23,12 +23,10 @@ func _physics_process(delta):
 	
 	
 	var bodies = $Area2D.get_overlapping_bodies()
-		##print(bodies)
 	
 	for body in bodies:
 		
 		if body.is_in_group("Enemy"):
-			print(body)
 			body.take_damage(damage)
 			queue_free()
 	

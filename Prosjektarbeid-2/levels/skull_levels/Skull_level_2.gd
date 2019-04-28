@@ -22,8 +22,6 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character") && $Skull.encountered:
-		print("Dra meg baklengs gjennom spaken, Kronk")
-		print($Skull.encountered)
 		get_tree().change_scene("res://levels/fighting_level_2/Fighting_level_2.tscn")
 
 func _on_NextButton_pressed():

@@ -212,7 +212,6 @@ func take_damage(count):
 		 
 		health -= count
 		
-		print(health)
 		if health <= 0:
 			_change_state(DIE)
 		else:

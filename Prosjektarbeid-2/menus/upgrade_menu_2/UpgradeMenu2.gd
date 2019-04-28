@@ -23,7 +23,6 @@ func _ready():
 	scene_2.hide()
 	scene_3.hide()
 	all_settings.hide()
-	print("ready")
 	
 func request_callback(request_code, permissions, granted):
 	if scene_2.visible and granted:
