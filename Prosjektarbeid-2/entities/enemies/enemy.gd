@@ -76,7 +76,6 @@ func _change_state(new_state):
 				self.modulate.a = 1
 				can_move=true
 				damage_immunity = false
-				print("test hurt")
 
 
 
@@ -108,11 +107,8 @@ func _change_state(new_state):
 
 					if $AnimatedSprite.get_frame() >0:
 						body.take_damage(damage)
-						print("player health: " + str(body.health))
-						print("enemy health: " + str(health))
 
 						can_move = true
-						print(damage)
 			if $AnimatedSprite.get_frame() == 2:
 				can_move = true
 
@@ -165,9 +161,7 @@ func _physics_process(delta):
 func take_damage(count):
 	if not damage_immunity:
 		health -= count
-		print("take damage health: " + str(health))
 		if health <= 0:
-			print("die")
 			_change_state(DIE)
 		else:
 			_change_state(HURT)

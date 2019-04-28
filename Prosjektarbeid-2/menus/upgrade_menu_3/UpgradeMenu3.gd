@@ -25,27 +25,21 @@ func _ready():
 	scene5.hide()
 	
 func request_callback(request_code, permissions, granted):
-	print("req callback")
 	if scene2.visible:
 		if current_setting == 0 and request_code == 6 and granted:
-			print("first succsess")
 			current_setting += 1
 			scene2.set_text(current_setting)
 		elif request_code == 6 and not granted:
-			print("first retry")
 			Globals.permissions.requestAccessFineLocationPermission()
 			
 		if current_setting == 1 and request_code == 2:
-			print("second succsess")
 			current_setting += 1
 			scene2.set_text(current_setting)
 			
 		if current_setting == 2 and request_code == 8:
-			print("third succsess")
 			scene2.hide()
 			scene5.show()
 	elif scene4.visible:
-		print("scene 4")
 		if current_setting == 0 and request_code == 6 and granted:
 			current_setting += 1
 			scene2.set_text(current_setting)
@@ -55,7 +49,6 @@ func request_callback(request_code, permissions, granted):
 			Globals.permissions.requestAccessFineLocationPermission()
 			
 		if current_setting == 1 and request_code == 2:
-			print("camera perm")
 			current_setting += 1
 			scene2.set_text(current_setting)
 			scene4.hide()
@@ -84,7 +77,6 @@ func _on_Scene1Continue_pressed():
 	scene2.show()
 
 func _on_AgreeButton_pressed():
-	print("agree button pressed")
 	activity += "| agree |"
 	if current_setting < 2:
 		if current_setting == 0:
@@ -119,8 +111,6 @@ func _on_SaveButton_pressed():
 		choices[current_setting] = true
 	else:
 		choices[current_setting] = false
-	print(current_setting)
-	print(choices[current_setting])
 	if current_setting < 2:
 		if current_setting == 0:
 			if choices[current_setting]:

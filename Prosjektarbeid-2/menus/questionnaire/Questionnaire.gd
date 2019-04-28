@@ -42,7 +42,6 @@ func generate_submit():
 
 func invalid_answer(qnode):
 	"Extend to handle stuff like marking an unanswered question, showing a pop-up, wutevs."
-	print(qnode)
 	return null
 
 func init(questions):
@@ -56,7 +55,6 @@ func init(questions):
 
 func _on_SubmitButton_pressed():
 	var answers = []
-	#print("Yeehaw my yoodle.")
 	for q in qnodes: #build the answers list or exit if invalid answer
 		var answer = q.get_answer()
 		answers.append(answer)
