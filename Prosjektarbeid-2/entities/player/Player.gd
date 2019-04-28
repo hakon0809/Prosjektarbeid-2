@@ -390,8 +390,10 @@ func take_damage(count):
 		if health <= 0:
 			health = 0
 			change_state(DIE)
+		else:
+			change_state(KNOCKDOWN)
 		emit_signal("health_changed", health)
-		change_state(KNOCKDOWN)
+		
 
 
 func upgrade_changed(upgrade):
