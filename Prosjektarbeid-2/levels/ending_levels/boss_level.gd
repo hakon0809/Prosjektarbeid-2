@@ -63,6 +63,7 @@ func _on_NextButton_pressed():
 
 func start_fight():
 	$Boss/minotaur/KinematicBody2D.damage_immunity = false
+	$Boss/minotaur/KinematicBody2D.talked_yet = true
 	$Boss/minotaur/KinematicBody2D.speed = $Boss/minotaur/KinematicBody2D.max_speed
 	if d_seq == 1:
 		$Enemies/soldier.position.y = 207

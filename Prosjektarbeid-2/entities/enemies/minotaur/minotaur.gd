@@ -17,6 +17,7 @@ var hitstun = 0
 var can_move = true
 var attack_is_over = false
 var damage_immunity = false
+var talked_yet = false
 var immunity_timer = null
 var overhead = "overhead"
 var circle_sweep = "circle_sweep"
@@ -137,7 +138,7 @@ func _change_state(new_state):
 #warning-ignore:unused_argument
 func _physics_process(delta):
 	
-	if damage_immunity:
+	if damage_immunity and talked_yet:
 		self.modulate.a = 0.6
 	else:
 		self.modulate.a = 1
