@@ -21,5 +21,4 @@ func _on_Area2D_body_entered(body):
 			get_tree().change_scene("res://levels/fighting_level_1/Fighting_level_1.tscn")
 		else:
 			$Skull.position.y = 128
-			$Skull.modulate = Color(0, 0, 0)
 			$Skull.show()
