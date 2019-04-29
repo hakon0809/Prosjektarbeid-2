@@ -77,8 +77,7 @@ func _on_LinkButton_pressed():
 	activity += "| edit1 |"
 	all_settings.hide()
 	current_setting = 0
-	toggle.pressed = true
-	toggle.disabled = true
+	toggle.hide()
 	setting.set_text(1)
 	setting.show()
 
@@ -86,6 +85,7 @@ func _on_LinkButton2_pressed():
 	activity += "| edit2 |"
 	all_settings.hide()
 	current_setting = 1
+	toggle.show()
 	if choices[1]:
 		toggle.pressed = true
 	else:
@@ -97,6 +97,7 @@ func _on_LinkButton3_pressed():
 	activity += "| edit3 |"
 	all_settings.hide()
 	current_setting = 2
+	toggle.show()
 	if choices[2]:
 		toggle.pressed = true
 	else:
