@@ -33,5 +33,5 @@ texture_disabled = ExtResource( 3 )
 margin_top = 286.0
 margin_right = 544.0
 margin_bottom = 306.0
-text = "SAVE"
+text = "SAVE SETTING"
 

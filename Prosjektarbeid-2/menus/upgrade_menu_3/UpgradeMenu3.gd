@@ -7,14 +7,14 @@ onready var scene3 = $MarginContainer/PanelContainer/VBoxContainer/ContentContai
 onready var scene4 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4
 onready var scene5 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5
 
+onready var prev = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/PrevButton
+
 var choices = [true, true, true]
 var current_setting = 0
 
 var activity = ""
 
 var skull
-
-#onready var toggle = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer/TextureButton
 
 func _ready():
 	Globals.upgrade_menu = self
@@ -23,6 +23,7 @@ func _ready():
 	scene3.hide()
 	scene4.hide()
 	scene5.hide()
+	prev.hide()
 	
 func request_callback(request_code, permissions, granted):
 	if scene2.visible:
@@ -72,19 +73,28 @@ func save_changes():
 
 func _on_Scene1Continue_pressed():
 	activity += "| continue |"
+	prev.show()
 	scene1.hide()
 	scene2.set_text(current_setting)
 	scene2.show()
 
 func _on_AgreeButton_pressed():
 	activity += "| agree |"
+	#if current_setting < 2:
+	#	if current_setting == 0:
+	#		Globals.permissions.requestAccessFineLocationPermission()
+	#	else:
+	#		Globals.permissions.requestCameraPermission()
+	#else:
+	#	Globals.permissions.requestRecordAudioPermission()
+	#TEMP_______________________________________________________
 	if current_setting < 2:
-		if current_setting == 0:
-			Globals.permissions.requestAccessFineLocationPermission()
-		else:
-			Globals.permissions.requestCameraPermission()
+		current_setting += 1
+		scene2.set_text(current_setting)
 	else:
-		Globals.permissions.requestRecordAudioPermission()
+		scene2.hide()
+		scene5.show()
+
 
 func _on_InfoButton_pressed():
 	activity += "| more info |"
@@ -114,7 +124,8 @@ func _on_SaveButton_pressed():
 	if current_setting < 2:
 		if current_setting == 0:
 			if choices[current_setting]:
-				Globals.permissions.requestAccessFineLocationPermission()
+				#Globals.permissions.requestAccessFineLocationPermission()
+				pass
 			else:
 				current_setting += 1
 				scene2.set_text(current_setting)
@@ -122,7 +133,8 @@ func _on_SaveButton_pressed():
 				scene2.show()
 		elif current_setting == 1:
 			if choices[current_setting]:
-				Globals.permissions.requestCameraPermission()
+				#Globals.permissions.requestCameraPermission()
+				pass
 			else:
 				current_setting += 1
 				scene2.set_text(current_setting)
@@ -130,7 +142,8 @@ func _on_SaveButton_pressed():
 				scene2.show()
 	else:
 		if choices[current_setting]:
-			Globals.permissions.requestRecordAudioPermission()
+			pass
+			#Globals.permissions.requestRecordAudioPermission()
 		else:
 			scene4.hide()
 			scene5.show()
@@ -140,3 +153,26 @@ func _on_SaveButton_pressed():
 func _on_FinishButton_pressed():
 	save_changes()
 	self.queue_free()
+
+
+func _on_PrevButton_pressed():
+	if scene2.visible:
+		if current_setting == 0:
+			scene2.hide()
+			scene1.show()
+			prev.hide()
+		elif current_setting == 1:
+			current_setting -= 1
+			scene2.set_text(0)
+		else:
+			current_setting -= 1
+			scene2.set_text(1)
+	elif scene3.visible:
+		scene3.hide()
+		scene2.show()
+	elif scene4.visible:
+		scene4.hide()
+		scene3.show()
+	else:
+		scene5.hide()
+		scene2.show()
