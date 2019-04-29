@@ -99,7 +99,8 @@ func _ready():
 func play_sound(sound, volume = 0):
 	sound_player.stream = sound
 	sound_player.volume_db = volume
-	sound_player.play()
+	if !Globals.muted[1]:
+		sound_player.play()
 
 #returns true if state change is possible
 func is_change_state_possible():
