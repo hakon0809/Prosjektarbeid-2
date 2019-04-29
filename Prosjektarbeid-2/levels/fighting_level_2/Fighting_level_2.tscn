@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://levels/fighting_level_2/Fighting_Level_2.gd" type="Script" id=1]
+[ext_resource path="res://levels/fighting_level_2/Fighting_level_2.gd" type="Script" id=1]
 [ext_resource path="res://levels/fighting_level_2/CliffTileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green_grey/green_grey.tres" type="TileSet" id=3]
 [ext_resource path="res://levels/common/assets/grass_and_stone/green/green.tres" type="TileSet" id=4]
