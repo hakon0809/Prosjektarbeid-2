@@ -30,7 +30,7 @@ func _on_ConfirmButton_pressed():
 		text.text = "Read calendar data.\nAllows an application to read your calendar data."
 		$PanelContainer/MarginContainer/VBoxContainer/Button.show()
 		$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton.text = "SAVE"
-		Globals.permissions.requestReadPhoneStatePermission()
+		#Globals.permissions.requestReadPhoneStatePermission()
 	else:
 		if $PanelContainer/MarginContainer/VBoxContainer/Button/TextureButton.pressed:
 			scene.choices = [true, true]
