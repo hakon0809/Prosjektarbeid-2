@@ -38,10 +38,7 @@ func _ready():
 func _on_request_permission_result(request_code, permissions, granted):
 	upgrade_menu.request_callback(request_code, permissions, granted)
 
-var upgrades = {1: [false, false],
-		2: [false, false, false],
-		3: [false, false, false]}
-		
+var upgrades	
 var health_penalty = 0
 
 var upgrade_activity = ["", "", ""]
@@ -51,6 +48,17 @@ var bart_aggregate
 
 var pre_questionnaire = []
 var post_questionnaire = []
+
+func flush():
+	health_penalty = 0
+	upgrade_activity = ["", "", ""]
+	pre_questionnaire = []
+	post_questionnaire = []
+	upgrades =  {   1: [false, false],
+		            2: [false, false, false],
+		            3: [false, false, false]
+		         }
+	data_sharing_mode = null
 
 func play_song(song, volume = 0):
 	# Updates the song and volume, and if not muted starts the song
