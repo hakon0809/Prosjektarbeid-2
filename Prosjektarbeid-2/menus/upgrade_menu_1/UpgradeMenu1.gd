@@ -9,6 +9,8 @@ onready var scene_3 = $MarginContainer/PanelContainer/VBoxContainer/ContentConta
 onready var scene_4 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4
 onready var scene_5 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5
 
+onready var prev = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/PrevButton
+
 #onready var Scene1Button = $PanelContainer/MarginContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button
 onready var Scene1Button = $Scene1Button
 
@@ -31,6 +33,7 @@ func _ready():
 	scene_2.hide()
 	scene_3.hide()
 	scene_5.hide()
+	prev.hide()
 #	Scene1Button.text = "Get started"
 
 func request_callback(request_code, permissions, granted):
@@ -50,6 +53,7 @@ func _on_ExitButton_pressed():
 func _on_Scene1Button_pressed():
 	scene_1.hide()
 	scene_2.show()
+	prev.show()
 	
 #SCENE2____________________________________________________________________
 func _on_Scene2Button_pressed():
@@ -59,7 +63,10 @@ func _on_Scene2Button_pressed():
 #SCENE3____________________________________________________________________
 func _on_Scene3Button_pressed():
 	activity += "| agree |"
-	Globals.permissions.requestReadPhoneStatePermission()
+	#Globals.permissions.requestReadPhoneStatePermission()
+	#TEMP_____________________
+	scene_3.hide()
+	scene_5.show()
 
 func _on_Scene3Manage_pressed():
 	activity += "| manage |"
@@ -68,3 +75,16 @@ func _on_Scene3Manage_pressed():
 	
 func _on_Button_pressed():
 	save_changes()
+
+
+func _on_PrevButton_pressed():
+	if scene_2.visible:
+		scene_2.hide()
+		scene_1.show()
+		prev.hide()
+	if scene_3.visible:
+		scene_3.hide()
+		scene_2.show()
+	if scene_5.visible:
+		scene_5.hide()
+		scene_3.show()

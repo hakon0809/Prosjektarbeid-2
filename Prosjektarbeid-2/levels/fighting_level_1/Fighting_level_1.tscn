@@ -40,7 +40,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.6, 0.4 )
+motion_scale = Vector2( 0.3, 0.3 )
 motion_mirroring = Vector2( 768, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
