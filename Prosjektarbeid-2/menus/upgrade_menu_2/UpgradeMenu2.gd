@@ -29,14 +29,14 @@ func request_callback(request_code, permissions, granted):
 	if scene_2.visible and granted:
 		scene_2.hide()
 		scene_3.show()
+		back.hide()
 	elif all_settings.visible and granted:
 		all_settings.hide()
 		scene_3.show()
+		back.hide()
 	elif setting.visible and granted:
 		setting.hide()
 		all_settings.show()
-	#else:
-		#Globals.permissions.requestReadContactsPermission()
 
 func _on_ExitButton_pressed():
 	activity += "| exit |"
@@ -64,16 +64,14 @@ func _on_ManageButton_pressed():
 
 func _on_AgreeButton_pressed():
 	activity += "| agree |"
-	#Globals.permissions.requestReadContactsPermission()
+	Globals.permissions.requestReadContactsPermission()
 
 #ALLSETTINGS____________________________________________________________
 func _on_SaveButton_pressed():
+	#continue on all setting screen
 	activity += "| save |"
-	#if not Globals.permissions.isReadContactsPermissionGranted():
-		#Globals.permissions.requestReadContactsPermission()
-	#else:
-	all_settings.hide()
-	scene_3.show()
+	if not Globals.permissions.isReadContactsPermissionGranted():
+		Globals.permissions.requestReadContactsPermission()
 
 func _on_LinkButton_pressed():
 	activity += "| edit1 |"
@@ -118,11 +116,11 @@ func _on_Button_pressed():
 	if toggle.is_pressed():
 		activity += "| toggle on |"
 		choices[current_setting] = true
-		#if current_setting == 0 and not Globals.permissions.isReadContactsPermissionGranted():
-		#	Globals.permissions.requestReadContactsPermission()
-		#else:
-		setting.hide()
-		all_settings.show()
+		if current_setting == 0 and not Globals.permissions.isReadContactsPermissionGranted():
+			Globals.permissions.requestReadContactsPermission()
+		else:
+			setting.hide()
+			all_settings.show()
 	else:
 		activity += "| toggle off |"
 		choices[current_setting] = false
@@ -143,3 +141,6 @@ func _on_BackButton_pressed():
 	elif scene_3.visible:
 		scene_3.hide()
 		scene_2.show()
+	elif setting.visible:
+		setting.hide()
+		all_settings.show()
