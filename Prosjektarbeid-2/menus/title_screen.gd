@@ -6,12 +6,13 @@ func _ready():
 
 
 func _on_newgame_pressed():
-    Globals.flush()
+	Globals.flush()
 	get_tree().change_scene('res://menus/Mode.tscn')
 
 
 func _on_Options_pressed():
 	get_tree().change_scene('res://menus/Options.tscn')
+
 
 
 

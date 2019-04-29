@@ -50,15 +50,15 @@ var pre_questionnaire = []
 var post_questionnaire = []
 
 func flush():
-    health_penalty = 0
-    upgrade_activity = ["", "", ""]
-    pre_questionnaire = []
-    post_questionnaire = []
-    upgrades =  {   1: [false, false],
+	health_penalty = 0
+	upgrade_activity = ["", "", ""]
+	pre_questionnaire = []
+	post_questionnaire = []
+	upgrades =  {   1: [false, false],
 		            2: [false, false, false],
 		            3: [false, false, false]
-                }
-    data_sharing_mode = null
+		         }
+	data_sharing_mode = null
 
 func play_song(song, volume = 0):
 	# Updates the song and volume, and if not muted starts the song
