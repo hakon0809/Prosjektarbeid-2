@@ -6,6 +6,7 @@ func _ready():
 
 
 func _on_newgame_pressed():
+    Globals.flush()
 	get_tree().change_scene('res://menus/Mode.tscn')
 
 
