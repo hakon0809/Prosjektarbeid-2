@@ -34,12 +34,25 @@ func _ready():
 	prev.hide()
 
 func request_callback(request_code, permissions, granted):
-	if popup2.visible and granted:
-		popup2.page += 1
-		popup2.text.text = "Read calendar data.\nAllows an application to read your calendar data."
-		$MarginContainer/PanelContainer/Popup2/PanelContainer/MarginContainer/VBoxContainer/Button.show()
-		$MarginContainer/PanelContainer/Popup2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton.text = "SAVE"
-	elif scene_3.visible and granted:
+	if popup2.visible:
+		if popup2.page == 1 and granted:
+			popup2.page += 1
+			popup2.text.text = "Read calendar data.\nAllows an application to read your calendar data."
+			$MarginContainer/PanelContainer/Popup2/PanelContainer/MarginContainer/VBoxContainer/Button.show()
+			$MarginContainer/PanelContainer/Popup2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton.text = "SAVE"
+		elif popup2.page == 2 and granted:
+			#if $PanelContainer/MarginContainer/VBoxContainer/Button/TextureButton.pressed:
+			choices = [true, true]
+			activity += "| save on |"
+			popup2.hide()
+			scene_3.hide()
+			scene_5.show()
+			prev.hide()
+	elif scene_3.visible and request_code == 9 and granted:
+		Globals.permissions.requestReadCalendarPermission()
+	elif scene_3.visible and request_code == 0:
+		if !granted:
+			choices[1] = false
 		scene_3.hide()
 		scene_5.show()
 		prev.hide()
