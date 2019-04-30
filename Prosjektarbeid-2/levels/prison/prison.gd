@@ -20,6 +20,9 @@ func _ready():
 	button = $IntroText/PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton
 	interface = $Player/Interface/Control
 	
+	if !Globals.music_player.is_playing():
+		Globals.play_song(Globals.main_menu_song)
+	
 	dialog.hide()
 	button.text = "Next"
 	interface.hide()
