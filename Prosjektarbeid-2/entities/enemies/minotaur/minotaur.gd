@@ -130,12 +130,12 @@ func _change_state(new_state):
 			can_move = false
 			if $Sprite/AnimationPlayer.current_animation != "taunt":
 				$Sprite/AnimationPlayer.play("taunt")
-			if $Sprite/AnimationPlayer.current_animation_position > 0.3:
+			if $Sprite/AnimationPlayer.current_animation_position > 0.6:
 				can_move = true	
 		
 		
 		
-#warning-ignore:unused_argument
+
 func _physics_process(delta):
 	
 	if damage_immunity and talked_yet:
@@ -204,7 +204,7 @@ func attack(attack_damage, attack_anim, areaname):
 				body.take_damage(attack_damage)
 				can_move = true
 					
-		if $Sprite/AnimationPlayer.current_animation_position > 0.8:
+		if $Sprite/AnimationPlayer.current_animation_position > 0.6:
 			can_move = true
 			attack_delay()
 			
