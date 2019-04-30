@@ -6,6 +6,8 @@ var button
 var dialog
 var interface
 
+var encountered
+
 var dialogArrayHappy = [
 	"Ah, hello son! We've missed you so much!",
 	"Why are you back so early?",
@@ -45,23 +47,24 @@ func _ready():
 	
 	status = Globals.get_upgrade(2)
 	
-
-func _on_Area2D_body_entered(body):
-	if body.is_in_group("character"):
-		if not status[0]:
-			currentDialogArray = dialogArrayHappy
-		elif status[1] or status[2]:
-			currentDialogArray = dialogArrayPissed
-			Globals.health_penalty += 4
-		else:
-			currentDialogArray = dialogArrayMedium
-
-		dialog.show()
-		interface.hide()
-		if dialogIndex == 0:
-			dialog_text.set_text(currentDialogArray[dialogIndex])
+	encountered = false
 	
 
+func _on_Area2D_body_entered(body):
+		if body.is_in_group("character"):
+			if not encountered:
+				if not status[0]:
+					currentDialogArray = dialogArrayHappy
+				elif status[1] or status[2]:
+					currentDialogArray = dialogArrayPissed
+					Globals.health_penalty += 4
+				else:
+					currentDialogArray = dialogArrayMedium
+				encountered = true
+			dialog.show()
+			interface.hide()
+			if dialogIndex == 0:
+				dialog_text.set_text(currentDialogArray[dialogIndex])
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("character"):
