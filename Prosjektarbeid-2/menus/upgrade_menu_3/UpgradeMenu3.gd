@@ -26,12 +26,14 @@ func _ready():
 	prev.hide()
 	
 func request_callback(request_code, permissions, granted):
+	if request_code != 6 and !granted:
+		choices[current_setting] = false
+	
 	if scene2.visible:
 		if current_setting == 0 and request_code == 6 and granted:
 			current_setting += 1
 			scene2.set_text(current_setting)
-		elif request_code == 6 and not granted:
-			Globals.permissions.requestAccessFineLocationPermission()
+			prev.hide()
 			
 		if current_setting == 1 and request_code == 2:
 			current_setting += 1
@@ -40,14 +42,14 @@ func request_callback(request_code, permissions, granted):
 		if current_setting == 2 and request_code == 8:
 			scene2.hide()
 			scene5.show()
+			prev.hide()
 	elif scene4.visible:
 		if current_setting == 0 and request_code == 6 and granted:
 			current_setting += 1
 			scene2.set_text(current_setting)
 			scene4.hide()
 			scene2.show()
-		elif request_code == 6 and not granted:
-			Globals.permissions.requestAccessFineLocationPermission()
+			prev.hide()
 			
 		if current_setting == 1 and request_code == 2:
 			current_setting += 1
@@ -58,7 +60,7 @@ func request_callback(request_code, permissions, granted):
 		if current_setting == 2 and request_code == 8:
 			scene4.hide()
 			scene5.show()
-		
+			prev.hide()
 
 func _on_ExitButton_pressed():
 	activity += "| exit |"
@@ -80,20 +82,13 @@ func _on_Scene1Continue_pressed():
 
 func _on_AgreeButton_pressed():
 	activity += "| agree |"
-	#if current_setting < 2:
-	#	if current_setting == 0:
-	#		Globals.permissions.requestAccessFineLocationPermission()
-	#	else:
-	#		Globals.permissions.requestCameraPermission()
-	#else:
-	#	Globals.permissions.requestRecordAudioPermission()
-	#TEMP_______________________________________________________
 	if current_setting < 2:
-		current_setting += 1
-		scene2.set_text(current_setting)
+		if current_setting == 0:
+			Globals.permissions.requestAccessFineLocationPermission()
+		else:
+			Globals.permissions.requestCameraPermission()
 	else:
-		scene2.hide()
-		scene5.show()
+		Globals.permissions.requestRecordAudioPermission()
 
 
 func _on_InfoButton_pressed():
@@ -124,8 +119,7 @@ func _on_SaveButton_pressed():
 	if current_setting < 2:
 		if current_setting == 0:
 			if choices[current_setting]:
-				#Globals.permissions.requestAccessFineLocationPermission()
-				pass
+				Globals.permissions.requestAccessFineLocationPermission()
 			else:
 				current_setting += 1
 				scene2.set_text(current_setting)
@@ -133,8 +127,7 @@ func _on_SaveButton_pressed():
 				scene2.show()
 		elif current_setting == 1:
 			if choices[current_setting]:
-				#Globals.permissions.requestCameraPermission()
-				pass
+				Globals.permissions.requestCameraPermission()
 			else:
 				current_setting += 1
 				scene2.set_text(current_setting)
@@ -142,11 +135,11 @@ func _on_SaveButton_pressed():
 				scene2.show()
 	else:
 		if choices[current_setting]:
-			pass
-			#Globals.permissions.requestRecordAudioPermission()
+			Globals.permissions.requestRecordAudioPermission()
 		else:
 			scene4.hide()
 			scene5.show()
+			prev.hide()
 	
 
 

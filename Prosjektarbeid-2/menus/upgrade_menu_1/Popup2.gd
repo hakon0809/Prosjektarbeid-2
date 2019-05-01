@@ -26,18 +26,14 @@ func _on_BackButton_pressed():
 
 func _on_ConfirmButton_pressed():
 	if page == 1:
-		page += 1
-		text.text = "Read calendar data.\nAllows an application to read your calendar data."
-		$PanelContainer/MarginContainer/VBoxContainer/Button.show()
-		$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton.text = "SAVE"
-		#Globals.permissions.requestReadPhoneStatePermission()
+		Globals.permissions.requestReadPhoneStatePermission()
 	else:
 		if $PanelContainer/MarginContainer/VBoxContainer/Button/TextureButton.pressed:
-			scene.choices = [true, true]
-			scene.activity += "| save on |"
+			Globals.permissions.requestReadCalendarPermission()
 		else:
 			scene.choices = [true, false]
 			scene.activity += "| save off |"
-		scene.scene_3.hide()
-		scene.scene_5.show()
-		self.hide()
+			scene.scene_3.hide()
+			scene.scene_5.show()
+			scene.prev.hide()
+			self.hide()

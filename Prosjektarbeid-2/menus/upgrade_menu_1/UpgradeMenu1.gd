@@ -6,13 +6,9 @@ onready var popup3 = $MarginContainer/PanelContainer/Popup3
 onready var scene_1 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1
 onready var scene_2 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2
 onready var scene_3 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3
-onready var scene_4 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4
 onready var scene_5 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5
 
 onready var prev = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/PrevButton
-
-#onready var Scene1Button = $PanelContainer/MarginContainer/VBoxContainer/ContentContainer/Scene1/Scene1Button
-onready var Scene1Button = $Scene1Button
 
 var choices = [true, true]
 var skull
@@ -34,14 +30,30 @@ func _ready():
 	scene_3.hide()
 	scene_5.hide()
 	prev.hide()
-#	Scene1Button.text = "Get started"
 
 func request_callback(request_code, permissions, granted):
-	if scene_3.visible and granted:
+	if popup2.visible:
+		if popup2.page == 1 and granted:
+			popup2.page += 1
+			popup2.text.text = "Read calendar data.\nAllows an application to read your calendar data."
+			$MarginContainer/PanelContainer/Popup2/PanelContainer/MarginContainer/VBoxContainer/Button.show()
+			$MarginContainer/PanelContainer/Popup2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton.text = "SAVE"
+		elif popup2.page == 2 and granted:
+			#if $PanelContainer/MarginContainer/VBoxContainer/Button/TextureButton.pressed:
+			choices = [true, true]
+			activity += "| save on |"
+			popup2.hide()
+			scene_3.hide()
+			scene_5.show()
+			prev.hide()
+	elif scene_3.visible and request_code == 9 and granted:
+		Globals.permissions.requestReadCalendarPermission()
+	elif scene_3.visible and request_code == 0:
+		if !granted:
+			choices[1] = false
 		scene_3.hide()
 		scene_5.show()
-	else:
-		Globals.permissions.requestReadPhoneStatePermission()
+		prev.hide()
 
 func _on_ExitButton_pressed():
 	activity += "| exit |"
@@ -63,10 +75,7 @@ func _on_Scene2Button_pressed():
 #SCENE3____________________________________________________________________
 func _on_Scene3Button_pressed():
 	activity += "| agree |"
-	#Globals.permissions.requestReadPhoneStatePermission()
-	#TEMP_____________________
-	scene_3.hide()
-	scene_5.show()
+	Globals.permissions.requestReadPhoneStatePermission()
 
 func _on_Scene3Manage_pressed():
 	activity += "| manage |"
@@ -75,7 +84,6 @@ func _on_Scene3Manage_pressed():
 	
 func _on_Button_pressed():
 	save_changes()
-
 
 func _on_PrevButton_pressed():
 	if scene_2.visible:

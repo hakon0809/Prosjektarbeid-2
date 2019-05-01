@@ -155,7 +155,7 @@ func format_upgrades(mailstring):
 	mailstring += "Read call log: " + str(upgrades[2][1]) + "\n"
 	mailstring += "Read SMS: " + str(upgrades[2][2]) + "\n\n"
 	
-	mailstring += "Sword upgrade:\n"
+	mailstring += "Bow upgrade:\n"
 	mailstring += "Location (required for upgrade): " + str(upgrades[3][0]) + "\n"
 	mailstring += "Camera: " + str(upgrades[3][1]) + "\n"
 	mailstring += "Record audio: " + str(upgrades[3][2]) + "\n\n"

@@ -135,7 +135,6 @@ margin_right = 444.0
 margin_bottom = 212.0
 
 [node name="Scene3" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" instance=ExtResource( 8 )]
-editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -183,7 +182,6 @@ margin_right = 444.0
 margin_bottom = 206.0
 
 [node name="Setting" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer" instance=ExtResource( 10 )]
-editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -191,9 +189,6 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 454.0
 margin_bottom = 222.0
-
-[node name="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Setting/HBoxContainer" index="1"]
-pressed = false
 
 [node name="Popup" parent="MarginContainer/PanelContainer" instance=ExtResource( 11 )]
 visible = false
