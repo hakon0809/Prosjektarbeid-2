@@ -6,11 +6,9 @@ onready var popup3 = $MarginContainer/PanelContainer/Popup3
 onready var scene_1 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene1
 onready var scene_2 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene2
 onready var scene_3 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene3
-onready var scene_4 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4
 onready var scene_5 = $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene5
 
 onready var prev = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/PrevButton
-onready var Scene1Button = $Scene1Button
 
 var choices = [true, true]
 var skull
