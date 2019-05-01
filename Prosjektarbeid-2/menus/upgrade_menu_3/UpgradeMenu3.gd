@@ -44,8 +44,6 @@ func request_callback(request_code, permissions, granted):
 			scene5.show()
 			prev.hide()
 	elif scene4.visible:
-		print("scene 4")
-		print(str(current_setting) + " " + str(request_code) + " " + str(granted))
 		if current_setting == 0 and request_code == 6 and granted:
 			current_setting += 1
 			scene2.set_text(current_setting)
@@ -70,8 +68,6 @@ func _on_ExitButton_pressed():
 	popup.show()
 	
 func save_changes():
-	print("save changes")
-	print(choices)
 	Globals.set_upgrade(3, choices)
 	Globals.set_activity(2, activity)
 	skull.save_choice(choices[0])
@@ -115,14 +111,11 @@ func _on_ManageButton_pressed():
 
 
 func _on_SaveButton_pressed():
-	print("Save button pressed")
 	activity += "| save |"
 	if $MarginContainer/PanelContainer/VBoxContainer/ContentContainer/Scene4/HBoxContainer/TextureButton.pressed:
 		choices[current_setting] = true
 	else:
 		choices[current_setting] = false
-	print(current_setting)
-	print(choices[current_setting])
 	if current_setting < 2:
 		if current_setting == 0:
 			if choices[current_setting]:

@@ -66,7 +66,6 @@ func _on_ExitButton_pressed():
 	popup.show()
 	
 func save_changes():
-	print(choices)
 	Globals.set_upgrade(2, choices)
 	Globals.set_activity(1, activity)
 	skull.save_choice(choices[0])
