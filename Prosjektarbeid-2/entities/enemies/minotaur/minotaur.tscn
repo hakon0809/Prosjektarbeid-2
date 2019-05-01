@@ -12,7 +12,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.3, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 72, 73, 74 ]
@@ -124,7 +124,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-length = 0.6
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -172,7 +172,7 @@ knockback = 3
 texture = ExtResource( 2 )
 vframes = 20
 hframes = 9
-frame = 60
+frame = 50
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D/Sprite"]
 anims/blink = SubResource( 1 )
@@ -206,7 +206,7 @@ polygon = PoolVector2Array( 14, -2, 40, -2, 44, 3, 36, 9, 20, 4, 12, 6 )
 [node name="circle_sweep" type="Area2D" parent="KinematicBody2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D/circle_sweep"]
-polygon = PoolVector2Array( -17.2451, 15.9787, -16.7574, 10.1266, -17.6286, -23.9621, -31.5952, -19.614, -42.7948, -3.40749, -46.4841, 2.78524, -51.7545, 16.6201, -29.8823, 16.4883 )
+polygon = PoolVector2Array( -17.9554, 16.4844, -18.1257, 8.31091, -18.4663, -14.6771, -24.7667, -13.6554, -32.9402, -11.4417, -36.3458, -1.05457, -40.4325, 16.6547, -29.8823, 16.4883 )
 
 [node name="touch" type="Area2D" parent="KinematicBody2D"]
 

@@ -22,7 +22,6 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 534.0
 margin_bottom = 296.0
-scroll_horizontal_enabled = false
 
 [node name="VBC" type="VBoxContainer" parent="MC/SC"]
 margin_right = 524.0
