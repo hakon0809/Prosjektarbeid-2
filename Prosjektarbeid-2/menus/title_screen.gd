@@ -19,3 +19,7 @@ func _on_Options_pressed():
 
 func _on_Credits_pressed():
 	get_tree().change_scene('res://menus/credits.tscn')
+
+
+func _on_Tutorial_pressed():
+	get_tree().change_scene('res://menus/tutorial/tutorial.tscn')
