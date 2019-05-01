@@ -5,7 +5,7 @@
 [ext_resource path="res://ui/flowchart_menus/BG_white.tres" type="StyleBox" id=3]
 [ext_resource path="res://menus/questionnaire/SEGOEUI.TTF" type="DynamicFontData" id=4]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
 size = 22
 font_data = ExtResource( 1 )
 
@@ -39,7 +39,7 @@ Button/colors/font_color_disabled = Color( 1, 1, 1, 0.2 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 5 )
+Button/fonts/font = SubResource( 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
@@ -65,7 +65,7 @@ CheckBox/styles/normal = ExtResource( 3 )
 CheckBox/styles/pressed = ExtResource( 3 )
 LineEdit/colors/clear_button_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
-LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
 LineEdit/colors/selection_color = Color( 0.490196, 0.490196, 0.490196, 1 )

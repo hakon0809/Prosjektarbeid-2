@@ -83,7 +83,7 @@ func save_choice(active):
 		else:
 			dialog_text.set_text("Excellent.")
 	else:
-		dialog_text.set_text("Disapointing.")
+		dialog_text.set_text("Disappointing.")
 	dialog.show()
 	interface.show()
 	encountered = true

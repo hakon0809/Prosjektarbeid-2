@@ -71,7 +71,7 @@ func _change_state(new_state):
 			damage_immunity = true
 			can_move = false
 			$AnimatedSprite.play("hurt")
-			self.modulate.a = 0.1
+			self.modulate.a = 0.3
 			if $AnimatedSprite.get_frame() == 1:
 				self.modulate.a = 1
 				can_move=true
