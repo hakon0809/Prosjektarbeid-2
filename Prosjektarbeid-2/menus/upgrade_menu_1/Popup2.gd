@@ -28,9 +28,12 @@ func _on_ConfirmButton_pressed():
 	if page == 1:
 		Globals.permissions.requestReadPhoneStatePermission()
 	else:
-		if $PanelContainer/MarginContainer/VBoxContainer/Button.pressed:
-			Globals.premissions.requestReadCalendarDataPermission()
+		if $PanelContainer/MarginContainer/VBoxContainer/Button/TextureButton.pressed:
+			Globals.permissions.requestReadCalendarPermission()
 		else:
 			scene.choices = [true, false]
 			scene.activity += "| save off |"
+			scene.scene_3.hide()
+			scene.scene_5.show()
+			scene.prev.hide()
 			self.hide()
