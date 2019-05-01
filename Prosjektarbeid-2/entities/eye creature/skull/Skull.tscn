@@ -20,7 +20,6 @@
 [ext_resource path="res://ui/popupDialog/PopupDialog.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
@@ -30,92 +29,33 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=2]
 
-custom_solver_bias = 0.0
-radius = 10.0
-
 [sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
-extents = Vector2( 16.1395, 13.3293 )
+extents = Vector2( 40.5105, 201.428 )
 
 [node name="Skull" type="Node2D"]
-
 script = ExtResource( 1 )
-_sections_unfolded = [ "Z Index" ]
-text = [ "Welcome to my first world, kiddo.", "Here you will have to make a choice.", "Do you want this piece of armor, or take your chances?" ]
-level = 0
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
-
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D" index="0"]
-
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 6
+frame = 13
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="." index="1"]
+[node name="Area2D" type="Area2D" parent="."]
 
-editor/display_folded = true
-visible = false
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="0"]
-
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
 
-[node name="PopupDialog" parent="." index="2" instance=ExtResource( 18 )]
-
-[node name="PanelContainer" parent="PopupDialog/PopupDialog" index="0"]
-
-margin_left = 8.0
-margin_top = 0.0
-margin_right = 290.0
-margin_bottom = 86.0
-
-[node name="MarginContainer" parent="PopupDialog/PopupDialog/PanelContainer" index="0"]
-
-margin_right = 280.0
-margin_bottom = 84.0
-
-[node name="HBoxContainer" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer" index="0"]
-
-margin_right = 273.0
-margin_bottom = 77.0
-
-[node name="RichTextLabel" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="0"]
-
-margin_right = 245.0
-margin_bottom = 72.0
-
-[node name="NextButton" parent="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer" index="1"]
-
-margin_left = 249.0
-margin_top = 58.0
-margin_right = 268.0
-margin_bottom = 72.0
+[node name="PopupDialog" parent="." instance=ExtResource( 18 )]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
-
 [connection signal="pressed" from="PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
-
 
 [editable path="PopupDialog"]

@@ -6,21 +6,21 @@
 [ext_resource path="res://entities/enemies/goblinasset/goblin_2_attack_001.png" type="Texture" id=4]
 [ext_resource path="res://entities/enemies/goblinasset/goblin_2_attack_002.png" type="Texture" id=5]
 [ext_resource path="res://entities/enemies/goblinasset/goblin_2_attack_003.png" type="Texture" id=6]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_001.png" type="Texture" id=7]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_002.png" type="Texture" id=8]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_003.png" type="Texture" id=9]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_004.png" type="Texture" id=10]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_005.png" type="Texture" id=11]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_001.png" type="Texture" id=12]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_002.png" type="Texture" id=13]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_003.png" type="Texture" id=14]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_004.png" type="Texture" id=15]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_005.png" type="Texture" id=16]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_006.png" type="Texture" id=17]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_007.png" type="Texture" id=18]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_008.png" type="Texture" id=19]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_hit_001.png" type="Texture" id=20]
-[ext_resource path="res://entities/enemies/goblinasset/goblin_2_hit_002.png" type="Texture" id=21]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_hit_001.png" type="Texture" id=7]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_hit_002.png" type="Texture" id=8]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_001.png" type="Texture" id=9]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_002.png" type="Texture" id=10]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_003.png" type="Texture" id=11]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_004.png" type="Texture" id=12]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_die_005.png" type="Texture" id=13]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_001.png" type="Texture" id=14]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_002.png" type="Texture" id=15]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_003.png" type="Texture" id=16]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_004.png" type="Texture" id=17]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_005.png" type="Texture" id=18]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_006.png" type="Texture" id=19]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_007.png" type="Texture" id=20]
+[ext_resource path="res://entities/enemies/goblinasset/goblin_2_run_008.png" type="Texture" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -36,33 +36,34 @@ animations = [ {
 "name": "shot",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "die",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "walk",
 "speed": 12.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "hurt",
-"speed": 6.0
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="goblin" index="0" instance=ExtResource( 1 )]
+[node name="goblin" instance=ExtResource( 1 )]
 
+scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Transform", "collision" ]
+knockback = 6
 
 [node name="AnimatedSprite" parent="." index="0"]
 
 frames = SubResource( 1 )
-animation = "hurt"
-frame = 1
+animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]
