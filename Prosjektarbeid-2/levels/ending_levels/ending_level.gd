@@ -10,6 +10,7 @@ func _ready():
 	dialog = $PopupDialog/PopupDialog
 	button = $PopupDialog/PopupDialog/PanelContainer/MarginContainer/HBoxContainer/NextButton
 	interface = $Player/Interface/Control
+	Globals.play_song(Globals.ending_song)
 	
 	interface.hide()
 	dialog.show()
