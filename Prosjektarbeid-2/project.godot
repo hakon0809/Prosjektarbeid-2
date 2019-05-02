@@ -24,7 +24,7 @@ modules="org/godotengine/godot/AndroidPermissions"
 
 [application]
 
-config/name="Prosjektarbeid-2"
+config/name="DareToShare"
 run/main_scene="res://menus/TitleScreen.tscn"
 config/icon="res://icon.png"
 
