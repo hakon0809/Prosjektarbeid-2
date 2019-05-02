@@ -49,6 +49,9 @@ func _on_NextButton_pressed():
 		if index == text.size() - 1:
 			button.text = "Let's see"
 		dialog_text.set_text(text[level][index])
+	if index == text.size():
+		dialog.hide()
+		interface.show()
 			
 func open_choice_menu():
 	dialog.hide()
@@ -71,7 +74,7 @@ func open_choice_menu():
 	c.skull = self
 
 func save_choice(active):
-	button.hide()
+	button.text = "OK, bye"
 	if active:
 		if get_tree().get_current_scene().get_name() == "Skull_level_3":
 			dialog_text.set_text("Excellent. \nTo use the bow press and hold B, it fires upon release.")
@@ -80,6 +83,6 @@ func save_choice(active):
 	else:
 		dialog_text.set_text("Disappointing.")
 	dialog.show()
-	interface.show()
 	encountered = true
+	index += 1
 	
