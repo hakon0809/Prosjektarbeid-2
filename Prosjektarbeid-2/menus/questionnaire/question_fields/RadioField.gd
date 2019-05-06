@@ -12,6 +12,7 @@ func generate_radio(identifier):
 
 func init(question):
 	find_node("Label").text = question["question"]
+	find_node("Label").autowrap = true
 	
 	var rtype = typeof(question["radios"])
 	if rtype == TYPE_INT:
