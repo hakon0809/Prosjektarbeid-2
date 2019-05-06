@@ -26,9 +26,20 @@ func new_round():
 	$PanelContainer/BalloonSprite.rotation_degrees = 0
 	
 func finish():
+	var risk_profile = "NA"
 	if rounds_won > 0:
 		var aggregate = total_score / rounds_won
 		get_tree().get_root().get_node("Globals").set_bart_score(total_score, aggregate)
+		
+		
+		if aggregate <= 10:
+			risk_profile = "low"
+		elif aggregate <= 20:
+			risk_profile = "medium"
+		elif aggregate <= 32:
+			risk_profile = "high"
+	$PanelContainer/MarginContainer/VBoxContainer/RiskLabel.text = "The test indicated that your inclination towards risk is relativily " + risk_profile + "."
+	
 	$PanelContainer/BalloonSprite.texture = null
 	$PanelContainer/MarginContainer/Popup.hide()
 	$PanelContainer/MarginContainer/HBoxContainer.hide()
