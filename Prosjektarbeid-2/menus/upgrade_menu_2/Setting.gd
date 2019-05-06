@@ -11,7 +11,9 @@ func set_text(setting):
 		+ "\nThis is required for you to receive the upgrade."
 	elif setting == 2:
 		label.text = "Read call log"
-		text.text = "Allows the application to read your call log."
+		text.text = "Allows the application to read your call log."\
+		+ "\nThis is not required for you to receive the upgrade."
 	else:
 		label.text = "Read SMS"
-		text.text = "Allows the application to read your SMS messages."
+		text.text = "Allows the application to read your SMS messages."\
+		+ "\nThis is not required for you to receive the upgrade."

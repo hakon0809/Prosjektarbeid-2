@@ -15,10 +15,10 @@ margin_right = 544.0
 margin_bottom = 258.0
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "Read contacts
+bbcode_text = "Read contacts (required)
 Read call log
 Read SMS"
-text = "Read contacts
+text = "Read contacts (required)
 Read call log
 Read SMS"
 
