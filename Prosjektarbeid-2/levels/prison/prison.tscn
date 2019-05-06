@@ -181,12 +181,12 @@ position = Vector2( 246.119, 118.833 )
 script = ExtResource( 15 )
 
 [node name="ExplosionStart" type="Timer" parent="Effects"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 autostart = true
 
 [node name="ExplosionEnd" type="Timer" parent="Effects"]
-wait_time = 5.5
+wait_time = 3.5
 one_shot = true
 autostart = true
 
