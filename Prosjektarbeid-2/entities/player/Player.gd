@@ -248,7 +248,7 @@ func change_state(new_state):
 				if Input.is_action_just_pressed("ui_up"):
 					motion.y = JUMP_HEIGHT
 				if friction == true:
-					motion.x = lerp(motion.x, 0, 0.05)
+					motion.x = lerp(motion.x, 0, 0.12)
 			else:
 				if Input.is_action_pressed("ui_left"):
 					motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
@@ -268,7 +268,7 @@ func change_state(new_state):
 				elif motion.y > 0 and !is_on_moving_platform:
 					$Sprite.play("Fall")
 					if friction == true:
-						motion.x = lerp(motion.x, 0, 0.05)
+						motion.x = lerp(motion.x, 0, 0.12)
 
 
 		ATTACK:
