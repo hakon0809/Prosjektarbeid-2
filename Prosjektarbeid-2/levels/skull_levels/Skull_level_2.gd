@@ -17,8 +17,7 @@ func _ready():
 	if Globals.get_upgrade(1)[0]:
 		dialog_text.text = "Yaaaawn, I haven't gotten much sleep...\nI feel really tired and weak."
 	else:
-		interface.show()
-		dialog.hide()
+		dialog_text.text = "Mmmm, I slept so well.\nI feel revitalized."
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("character") && $Skull.encountered:

@@ -1,16 +1,21 @@
 extends Questionnaire
 
 var questions = [
-{	"type": LINE,
-	"question": "Do you like this question?"},
-{	"type": LINE,
-	"question": "Will this show up well?"},
 {	"type": RADIO,
-	"question": "An example radio from integer.",
-	"radios": 7},
+	"question": "Sex",
+	"radios": ["Male", "Female", "Other"]},
+	
 {	"type": RADIO,
-	"question": "An example radio from a list.",
-	"radios": ["Donkey Kong", "Monkey Mong", "Bonkey Long", "Cronkey Gong"]}
+	"question": "Age",
+	"radios": ["<13", "14-18", "19-25", "26-35", "36+"]},
+	
+{	"type": RADIO,
+	"question": "Highest Educational Level",
+	"radios": ["Primary school", "Highschool", "University", "No Education"]},
+	
+{	"type": RADIO,
+	"question": "Game Experience Level",
+	"radios": ["No Experience", "Beginner", "Intermediate", "Expert"]},
 ]
 
 func write_to_Globals(answers):

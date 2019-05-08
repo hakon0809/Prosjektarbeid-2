@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const GRAVITY = 0
 
-var speed = 150
+var speed = 210
 var velocity = Vector2()
 var damage = 1
 
